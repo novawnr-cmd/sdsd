@@ -217,16 +217,15 @@ function renderOrderSummary() {
     html += '<div class="cart-list-item" style="padding:10px 0">';
     html += '<img src="' + (item.image || 'https://placehold.co/60x60/12172A/3B7DFF?text=Product') + '" alt="' + item.name + '" style="width:50px;height:50px">';
     html += '<div class="cli-info"><h4 style="font-size:0.82rem;font-weight:600">' + item.name + '</h4><p class="text-xs text-dim">×' + item.quantity + '</p></div>';
-    html += '<span class="text-sm" style="font-weight:700;color:var(--accent)">' + subtotal.toLocaleString() + ' ر.س</span>';
+    html += '<span class="text-sm" style="font-weight:700;color:var(--accent)">' + subtotal.toLocaleString() + ' د.ل</span>';
     html += '</div>';
   });
-  var tax = Math.round(total * 0.15);
-  var grand = total + tax;
+  var SHIPPING_COST = 0;
+  var grand = total + SHIPPING_COST;
   html += '<div style="border-top:1px solid var(--border);padding-top:12px;margin-top:8px">';
-  html += '<div class="sum-row"><span data-i18n="cart.subtotal">المجموع الفرعي</span><span>' + total.toLocaleString() + ' ر.س</span></div>';
-  html += '<div class="sum-row"><span data-i18n="cart.shipping">الشحن</span><span class="text-accent">مجاني</span></div>';
-  html += '<div class="sum-row"><span data-i18n="cart.tax">الضريبة (15%)</span><span>' + tax.toLocaleString() + ' ر.س</span></div>';
-  html += '<div class="sum-total"><span data-i18n="cart.total">الإجمالي</span><span class="amount">' + grand.toLocaleString() + ' ر.س</span></div>';
+  html += '<div class="sum-row"><span data-i18n="cart.subtotal">المجموع الفرعي</span><span>' + total.toLocaleString() + ' د.ل</span></div>';
+  html += '<div class="sum-row"><span data-i18n="cart.shipping">الشحن</span><span class="text-accent">' + (SHIPPING_COST === 0 ? 'مجاني' : SHIPPING_COST.toLocaleString() + ' د.ل') + '</span></div>';
+  html += '<div class="sum-total"><span data-i18n="cart.total">الإجمالي</span><span class="amount">' + grand.toLocaleString() + ' د.ل</span></div>';
   html += '</div>';
   html += '<button class="btn btn-gold btn-block btn-lg" style="margin-top:16px" onclick="handlePlaceOrder()" data-i18n="checkout.placeOrder">🔒 تأكيد الطلب</button>';
   html += '<p class="text-xs text-dim text-center" style="margin-top:8px" data-i18n="checkout.secureNote">🔒 دفع آمن ومشفر بالكامل</p>';
@@ -263,10 +262,9 @@ function handlePlaceOrder() {
   cart.forEach(function(item) {
     var subtotal = item.price * item.quantity;
     total += subtotal;
-    itemsText += '  - ' + item.name + ' × ' + item.quantity + ' = ' + subtotal.toLocaleString() + ' ر.س\n';
+    itemsText += '  - ' + item.name + ' × ' + item.quantity + ' = ' + subtotal.toLocaleString() + ' د.ل\n';
   });
-  var tax = Math.round(total * 0.15);
-  var grand = total + tax;
+  var grand = total;
 
   var body = 'طلب جديد - ' + orderNum + '\n';
   body += '━━━━━━━━━━━━━━━━━━━━━\n';
@@ -277,10 +275,9 @@ function handlePlaceOrder() {
   body += '━━━━━━━━━━━━━━━━━━━━━\n';
   body += 'المنتجات:\n' + itemsText;
   body += '━━━━━━━━━━━━━━━━━━━━━\n';
-  body += 'المجموع الفرعي: ' + total.toLocaleString() + ' ر.س\n';
+  body += 'المجموع الفرعي: ' + total.toLocaleString() + ' د.ل\n';
   body += 'الشحن: مجاني\n';
-  body += 'الضريبة (15%): ' + tax.toLocaleString() + ' ر.س\n';
-  body += 'الإجمالي: ' + grand.toLocaleString() + ' ر.س\n';
+  body += 'الإجمالي: ' + grand.toLocaleString() + ' د.ل\n';
   body += '━━━━━━━━━━━━━━━━━━━━━\n';
   body += 'طريقة الدفع: ' + paymentLabel + '\n';
   if (notes) body += 'ملاحظات: ' + notes + '\n';

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="إدارة منتجات الموقع - آدم شوب">
+  <title>إدارة المنتجات | آدم شوب</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+<div class="recaptcha-gate" id="recaptchaGate"><div class="recaptcha-box"><div class="logo-icon">👜</div><h2><span class="accent">آدم شوب</span></h2><p>يرجى التحقق أنك لست روبوت</p><label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span>لست روبوت</span></label><br><button class="btn btn-gold" id="recaptchaSubmit">تحقق والدخول</button></div></div>
+
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="../../index.html" class="nav-logo"><span class="logo-icon">👜</span><span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub" style="color:var(--accent)">Admin</span></span></a>
+    <div class="nav-actions">
+      <button class="nav-icon" id="langToggle" title="EN">🌐</button>
+      <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
+      <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar" style="background:var(--gold-dim);color:var(--accent);border-color:var(--accent)">م</div><span class="u-name">المالك</span></div></div>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div class="page-side">
+  <aside class="admin-sidebar" style="width:var(--sidebar-w);background:var(--bg-card);border-left:1px solid var(--border);padding:20px 0;flex-shrink:0;position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto">
+    <div class="sb-title">👜 آدم شوب</div>
+    <a href="site-products.html" class="sb-link active">📦 <span>المنتجات</span></a>
+    <a href="site-products.html#add" class="sb-link" id="sbAddProduct">➕ <span>منتج جديد</span></a>
+    <a href="site-products.html#stats" class="sb-link">📊 <span>الإحصائيات</span></a>
+    <div class="sb-section">النظام</div>
+    <a href="../profile.html" class="sb-link">👤 <span>الملف الشخصي</span></a>
+    <a href="../../index.html" class="sb-link">🏠 <span>المتجر</span></a>
+    <a href="../login.html" class="sb-link" style="color:var(--red)" onclick="localStorage.removeItem('adam_shop_session');localStorage.removeItem('adam_shop_current_user')">🚪 <span>تسجيل خروج</span></a>
+  </aside>
+
+  <main class="sb-main">
+    <div class="page-head">
+      <h1>📦 إدارة منتجات الموقع</h1>
+      <button class="btn btn-accent" onclick="showAddForm()">➕ منتج جديد</button>
+    </div>
+
+    <div id="statsSection" class="kpi-grid" style="margin-bottom:24px">
+      <div class="kpi-card"><div class="kpi-icon" style="background:var(--gold-dim);color:var(--accent)">📦</div><div class="kpi-val" id="statTotal">0</div><div class="kpi-label">إجمالي المنتجات</div></div>
+      <div class="kpi-card"><div class="kpi-icon" style="background:var(--green-bg);color:var(--green)">✅</div><div class="kpi-val" id="statActive">0</div><div class="kpi-label">منتجات نشطة</div></div>
+      <div class="kpi-card"><div class="kpi-icon" style="background:var(--blue-bg);color:var(--blue)">💰</div><div class="kpi-val" id="statValue">0 د.ل</div><div class="kpi-label">إجمالي القيمة</div></div>
+      <div class="kpi-card"><div class="kpi-icon" style="background:rgba(167,139,250,0.12);color:var(--purple)">📦</div><div class="kpi-val" id="statStock">0</div><div class="kpi-label">إجمالي المخزون</div></div>
+    </div>
+
+    <div id="addFormSection" class="chart-box" style="display:none;margin-bottom:24px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <h3 class="chart-title" id="formTitle">➕ إضافة منتج جديد</h3>
+        <button class="btn btn-ghost btn-sm" onclick="hideAddForm()">✕</button>
+      </div>
+      <form id="productForm" onsubmit="handleSaveProduct(event)">
+        <input type="hidden" id="editId" value="">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="form-group">
+            <label class="form-label">اسم المنتج</label>
+            <input type="text" class="form-input" id="pName" placeholder="اسم المنتج" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">الفئة</label>
+            <select class="form-input" id="pCategory">
+              <option value="electronics">📱 إلكترونيات</option>
+              <option value="fashion">👕 أزياء</option>
+              <option value="beauty">💄 جمال وعناية</option>
+              <option value="home">🏠 منزل وديكور</option>
+              <option value="sports">⚽ رياضة</option>
+              <option value="other">📦 أخرى</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">السعر (د.ل)</label>
+            <input type="number" class="form-input" id="pPrice" placeholder="0" min="0" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">المخزون</label>
+            <input type="number" class="form-input" id="pStock" placeholder="0" min="0" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">رابط الصورة</label>
+          <input type="text" class="form-input" id="pImage" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">الوصف</label>
+          <textarea class="form-textarea" id="pDesc" rows="3" placeholder="وصف المنتج"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">الحالة</label>
+          <select class="form-input" id="pStatus">
+            <option value="active">نشط</option>
+            <option value="draft">مسودة</option>
+            <option value="out_of_stock">نفد المخزون</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:12px">
+          <button type="submit" class="btn btn-accent" id="saveBtn">💾 حفظ</button>
+          <button type="button" class="btn btn-ghost" onclick="hideAddForm()">إلغاء</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="chart-box">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>الصورة</th>
+              <th>الاسم</th>
+              <th>الفئة</th>
+              <th>السعر</th>
+              <th>المخزون</th>
+              <th>الحالة</th>
+              <th>إجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<button class="btt" id="backToTop">⬆</button>
+<script src="../../js/utils.js"></script>
+<script src="../../js/i18n.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../js/auth.js"></script>
+<script src="../../js/api.js"></script>
+<script src="../../js/navbar.js"></script>
+<script src="../../js/cart.js"></script>
+<script src="../../js/wishlist.js"></script>
+<script>
+var PRODUCTS_KEY = 'adam_shop_site_products';
+var categoryLabels = { electronics: '📱 إلكترونيات', fashion: '👕 أزياء', beauty: '💄 جمال', home: '🏠 منزل', sports: '⚽ رياضة', other: '📦 أخرى' };
+var statusLabels = { active: '✅ نشط', draft: '📝 مسودة', out_of_stock: '🚫 نفد' };
+
+var defaultProducts = [
+  { id: 'sp_1', name: 'آيفون 15 برو ماكس', category: 'electronics', price: 4999, stock: 25, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=iPhone', description: 'آيفون 15 برو ماكس 256 جيجا، اللون أزرق تيتانيوم', status: 'active' },
+  { id: 'sp_2', name: 'سماعات AirPods Pro 2', category: 'electronics', price: 799, stock: 50, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=AirPods', description: 'سماعات أبل اللاسلكية', status: 'active' },
+  { id: 'sp_3', name: 'ساعة Apple Watch Ultra 2', category: 'electronics', price: 3299, stock: 15, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=Watch', description: 'ساعة أبل المتطورة', status: 'active' },
+  { id: 'sp_4', name: 'نظارة شمسية رجالي', category: 'fashion', price: 299, stock: 40, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=Glasses', description: 'نظارة شمسية أنيقة للرجال', status: 'active' },
+  { id: 'sp_5', name: 'عطر رجالي فاخر', category: 'beauty', price: 450, stock: 30, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=Perfume', description: 'عطر رجالي يدوم طوال اليوم', status: 'active' },
+  { id: 'sp_6', name: 'سماعة بلوتوث متحركة', category: 'electronics', price: 189, stock: 60, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=Speaker', description: 'سماعة بلوتوث مقاومة للماء', status: 'active' }
+];
+
+function getProducts() {
+  try {
+    var raw = localStorage.getItem(PRODUCTS_KEY);
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      if (parsed.length > 0) return parsed;
+    }
+  } catch(e) {}
+  localStorage.setItem(PRODUCTS_KEY, JSON.stringify(defaultProducts));
+  return defaultProducts;
+}
+
+function saveProducts(products) {
+  localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
+}
+
+function renderProducts() {
+  var products = getProducts();
+  var tbody = document.getElementById('productsTableBody');
+  if (!tbody) return;
+
+  document.getElementById('statTotal').textContent = products.length;
+  document.getElementById('statActive').textContent = products.filter(function(p) { return p.status === 'active'; }).length;
+  document.getElementById('statValue').textContent = products.reduce(function(s, p) { return s + (p.price * p.stock); }, 0).toLocaleString() + ' د.ل';
+  document.getElementById('statStock').textContent = products.reduce(function(s, p) { return s + p.stock; }, 0);
+
+  if (products.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--text-4)">لا توجد منتجات بعد</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = products.map(function(p) {
+    return '<tr>' +
+      '<td><img src="' + (p.image || 'https://placehold.co/60x60/12172A/3B7DFF?text=P') + '" style="width:50px;height:50px;border-radius:var(--radius);object-fit:cover"></td>' +
+      '<td style="font-weight:600">' + p.name + '</td>' +
+      '<td>' + (categoryLabels[p.category] || p.category) + '</td>' +
+      '<td style="font-weight:700;color:var(--accent)">' + p.price.toLocaleString() + ' د.ل</td>' +
+      '<td>' + p.stock + '</td>' +
+      '<td>' + (statusLabels[p.status] || p.status) + '</td>' +
+      '<td>' +
+        '<button class="btn btn-outline btn-sm" onclick="editProduct(\'' + p.id + '\')" style="margin-left:4px">✏️</button>' +
+        '<button class="btn btn-danger btn-sm" onclick="deleteProduct(\'' + p.id + '\')">🗑</button>' +
+      '</td>' +
+    '</tr>';
+  }).join('');
+}
+
+function showAddForm() {
+  document.getElementById('addFormSection').style.display = '';
+  document.getElementById('editId').value = '';
+  document.getElementById('formTitle').textContent = '➕ إضافة منتج جديد';
+  document.getElementById('productForm').reset();
+  document.getElementById('saveBtn').textContent = '💾 حفظ';
+  document.getElementById('addFormSection').scrollIntoView({ behavior: 'smooth' });
+}
+
+function hideAddForm() {
+  document.getElementById('addFormSection').style.display = 'none';
+}
+
+function handleSaveProduct(e) {
+  e.preventDefault();
+  var editId = document.getElementById('editId').value;
+  var product = {
+    id: editId || 'sp_' + Date.now(),
+    name: document.getElementById('pName').value.trim(),
+    category: document.getElementById('pCategory').value,
+    price: parseFloat(document.getElementById('pPrice').value) || 0,
+    stock: parseInt(document.getElementById('pStock').value) || 0,
+    image: document.getElementById('pImage').value.trim(),
+    description: document.getElementById('pDesc').value.trim(),
+    status: document.getElementById('pStatus').value
+  };
+
+  var products = getProducts();
+  if (editId) {
+    var idx = products.findIndex(function(p) { return p.id === editId; });
+    if (idx !== -1) products[idx] = product;
+    showToast('تم تحديث المنتج بنجاح', 'success');
+  } else {
+    products.push(product);
+    showToast('تم إضافة المنتج بنجاح', 'success');
+  }
+
+  saveProducts(products);
+  renderProducts();
+  hideAddForm();
+}
+
+function editProduct(id) {
+  var products = getProducts();
+  var p = products.find(function(p) { return p.id === id; });
+  if (!p) return;
+
+  document.getElementById('editId').value = p.id;
+  document.getElementById('pName').value = p.name;
+  document.getElementById('pCategory').value = p.category;
+  document.getElementById('pPrice').value = p.price;
+  document.getElementById('pStock').value = p.stock;
+  document.getElementById('pImage').value = p.image || '';
+  document.getElementById('pDesc').value = p.description || '';
+  document.getElementById('pStatus').value = p.status || 'active';
+  document.getElementById('formTitle').textContent = '✏️ تعديل المنتج';
+  document.getElementById('saveBtn').textContent = '💾 تحديث';
+  document.getElementById('addFormSection').style.display = '';
+  document.getElementById('addFormSection').scrollIntoView({ behavior: 'smooth' });
+}
+
+function deleteProduct(id) {
+  if (!confirm('هل أنت متأكد من حذف هذا المنتج؟')) return;
+  var products = getProducts().filter(function(p) { return p.id !== id; });
+  saveProducts(products);
+  renderProducts();
+  showToast('تم حذف المنتج', 'info');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var user = null;
+  try { user = JSON.parse(localStorage.getItem('adam_shop_current_user')); } catch(e) {}
+  if (!user || user.role !== 'ADMIN' || !user.isOwner) {
+    window.location.href = '../login.html';
+    return;
+  }
+  renderProducts();
+});
+</script>
+</body>
+</html>

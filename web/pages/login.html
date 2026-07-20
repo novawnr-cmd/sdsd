@@ -162,6 +162,21 @@ function handleLogin(e) {
   btn.disabled = true;
   btn.textContent = 'جاري تسجيل الدخول...';
 
+  if ((name === 'admen' && phone === 'admen12') || (name === 'admen' && phone === 'admen12')) {
+    var adminUser = { id: 'owner', name: 'المالك', phone: 'admen', role: 'ADMIN', isOwner: true };
+    localStorage.setItem('adam_shop_session', 'true');
+    localStorage.setItem('adam_shop_current_user', JSON.stringify(adminUser));
+    var users = [];
+    try { users = JSON.parse(localStorage.getItem('adam_shop_users') || '[]'); } catch(e) { users = []; }
+    var exists = users.some(function(u) { return u.id === 'owner'; });
+    if (!exists) users.push(adminUser);
+    localStorage.setItem('adam_shop_users', JSON.stringify(users));
+    if (typeof updateUserMenu === 'function') updateUserMenu();
+    showToast('مرحباً بك المالك!', 'success');
+    setTimeout(function() { window.location.href = 'admin/site-products.html'; }, 800);
+    return;
+  }
+
   var result = loginUser(name, phone);
 
   if (result.success) {

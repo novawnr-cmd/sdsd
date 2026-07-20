@@ -196,6 +196,10 @@ function updateUserMenu() {
     if (userAvatar) userAvatar.textContent = (user.name || 'م')[0];
 
     var menuHTML = '';
+    if (user.role === 'ADMIN' && user.isOwner) {
+      menuHTML += '<a href="pages/admin/site-products.html">📦 إدارة المنتجات</a>';
+      menuHTML += '<div class="dropdown-sep"></div>';
+    }
     menuHTML += '<a href="pages/profile.html">👤 الملف الشخصي</a>';
     menuHTML += '<a href="pages/orders.html">📦 طلباتي</a>';
     menuHTML += '<a href="pages/wishlist.html">❤️ المفضلة</a>';
