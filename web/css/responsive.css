@@ -1,89 +1,56 @@
 /* ==========================================================================
-   Adam Shop - Responsive Overrides
+   ADAM SHOP - Responsive Overrides
    ========================================================================== */
 
-/* Tablet landscape */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .container { padding: 0 16px; }
-  .product-card .card-body { padding: 12px; }
-  .product-card .card-title { font-size: 0.85rem; }
+@media (max-width: 1024px) {
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .f-grid { grid-template-columns: repeat(2, 1fr); }
+  .pd-page { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .features-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-  html { font-size: 15px; }
-
-  /* Navbar mobile */
-  .navbar-inner { padding: 0 12px; }
-  .navbar-logo { font-size: 1.1rem; }
-
-  /* Sections */
-  .section { padding: 28px 0; }
-  .container { padding: 0 14px; }
-
-  /* Hero */
-  .hero { height: 260px; }
-  .hero-content { padding: 0 20px; }
-  .hero-content h1 { font-size: 1.4rem; margin-bottom: 8px; }
-  .hero-content p { font-size: 0.85rem; margin-bottom: 14px; }
-
-  /* Product cards */
-  .product-card .card-body { padding: 10px; }
-  .product-card .card-title { font-size: 0.85rem; -webkit-line-clamp: 1; }
-  .product-card .card-price .price { font-size: 1rem; }
-
-  /* Product page */
-  .product-page { gap: 20px; }
-  .product-info .product-title { font-size: 1.2rem; }
-  .product-info .product-price .current { font-size: 1.3rem; }
-
-  /* Cart */
-  .cart-item { gap: 12px; padding: 12px 0; }
-  .cart-item img { width: 60px; height: 60px; }
-
-  /* Auth */
-  .auth-card { padding: 24px; }
-
-  /* Footer */
-  .footer { padding: 32px 0 0; }
-  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-
-  /* Pagination */
-  .pagination button { width: 32px; height: 32px; font-size: 0.8rem; }
+  .nav-links { display: none; }
+  .nav-search { display: none; }
+  .hamburger { display: flex; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .hero { height: 320px; }
+  .hero-content { padding-right: 24px; }
+  .hero-content h1 { font-size: 1.6rem; }
+  .hero-content p { font-size: 0.9rem; }
+  .section { padding: 36px 0; }
+  .f-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .cart-grid { grid-template-columns: 1fr; }
+  .promo-mid { flex-direction: column; padding: 28px; gap: 20px; }
+  .pd-gallery { flex-direction: column; }
+  .pd-thumbs { flex-direction: row; width: auto; }
+  .pd-thumb { width: 60px; height: 60px; }
 }
 
-/* Small mobile */
 @media (max-width: 480px) {
-  html { font-size: 14px; }
-
-  .hero { height: 200px; }
-  .hero-content h1 { font-size: 1.2rem; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .p-card .p-body { padding: 10px; }
+  .p-card .p-name { font-size: 0.82rem; -webkit-line-clamp: 1; }
+  .p-card .p-price .curr { font-size: 0.95rem; }
+  .p-card .p-btn { height: 34px; font-size: 0.75rem; }
+  .hero { height: 260px; }
+  .hero-content h1 { font-size: 1.3rem; }
   .hero-content p { display: none; }
-
-  .category-card { padding: 16px 10px; }
-  .category-card .cat-icon { font-size: 1.5rem; }
-  .category-card .cat-name { font-size: 0.8rem; }
-
-  .flash-deal-card { min-width: 160px; padding: 12px; }
-
-  .product-card .card-img { padding-top: 100%; }
-
-  .tabs { overflow-x: auto; }
-  .tab { padding: 8px 14px; font-size: 0.85rem; white-space: nowrap; }
-
-  .modal-content { padding: 20px; margin: 10px; }
-
-  .auth-card { padding: 20px; }
+  .cat-circle { width: 64px; height: 64px; font-size: 1.5rem; }
+  .cat-name { font-size: 0.72rem; }
+  .kpi-grid { grid-template-columns: 1fr; }
+  .pd-actions { flex-direction: column; }
+  .pd-actions .btn { width: 100%; }
+  .features-grid { grid-template-columns: 1fr; }
 }
 
-/* Touch devices */
 @media (hover: none) {
-  .product-card:hover { transform: none; }
-  .category-card:hover { transform: none; }
+  .p-card:hover { transform: none; }
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  html { scroll-behavior: auto; }
 }

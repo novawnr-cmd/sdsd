@@ -1,267 +1,133 @@
 /* ==========================================================================
-   Adam Shop - Authentication
+   ADAM SHOP - Auth Module
    ========================================================================== */
 
-function getStoredUser() {
+function login(email, password) {
+  return apiPost('/auth/login', { email: email, password: password })
+    .then(function(data) {
+      if (data.success) {
+        localStorage.setItem('token', data.data.accessToken);
+        localStorage.setItem('refreshToken', data.data.refreshToken);
+        localStorage.setItem('user', JSON.stringify(data.data.user));
+        showToast('تم تسجيل الدخول بنجاح', 'success');
+        if (typeof updateUserMenu === 'function') updateUserMenu();
+        return data.data;
+      }
+      throw new Error(data.message || 'Login failed');
+    });
+}
+
+function register(name, email, password) {
+  return apiPost('/auth/register', { name: name, email: email, password: password })
+    .then(function(data) {
+      if (data.success) {
+        localStorage.setItem('token', data.data.accessToken);
+        localStorage.setItem('refreshToken', data.data.refreshToken);
+        localStorage.setItem('user', JSON.stringify(data.data.user));
+        showToast('تم إنشاء الحساب بنجاح', 'success');
+        if (typeof updateUserMenu === 'function') updateUserMenu();
+        return data.data;
+      }
+      throw new Error(data.message || 'Register failed');
+    });
+}
+
+function googleLogin(token) {
+  return apiPost('/auth/google', { token: token })
+    .then(function(data) {
+      if (data.success) {
+        localStorage.setItem('token', data.data.accessToken);
+        localStorage.setItem('refreshToken', data.data.refreshToken);
+        localStorage.setItem('user', JSON.stringify(data.data.user));
+        showToast('تم تسجيل الدخول بنجاح', 'success');
+        if (typeof updateUserMenu === 'function') updateUserMenu();
+        return data.data;
+      }
+      throw new Error(data.message);
+    });
+}
+
+function facebookLogin(token) {
+  return apiPost('/auth/facebook', { token: token })
+    .then(function(data) {
+      if (data.success) {
+        localStorage.setItem('token', data.data.accessToken);
+        localStorage.setItem('refreshToken', data.data.refreshToken);
+        localStorage.setItem('user', JSON.stringify(data.data.user));
+        showToast('تم تسجيل الدخول بنجاح', 'success');
+        if (typeof updateUserMenu === 'function') updateUserMenu();
+        return data.data;
+      }
+      throw new Error(data.message);
+    });
+}
+
+function logout() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('refreshToken');
+  localStorage.removeItem('user');
+  showToast('تم تسجيل الخروج', 'info');
+  if (typeof updateUserMenu === 'function') updateUserMenu();
+}
+
+function getProfile() {
+  return apiGet('/auth/profile')
+    .then(function(data) {
+      if (data.success) {
+        localStorage.setItem('user', JSON.stringify(data.data));
+        return data.data;
+      }
+      throw new Error(data.message);
+    });
+}
+
+function updateProfile(profileData) {
+  return apiPut('/auth/profile', profileData)
+    .then(function(data) {
+      if (data.success) {
+        localStorage.setItem('user', JSON.stringify(data.data));
+        showToast('تم تحديث الملف الشخصي', 'success');
+        if (typeof updateUserMenu === 'function') updateUserMenu();
+        return data.data;
+      }
+      throw new Error(data.message);
+    });
+}
+
+function isLoggedIn() {
+  return !!localStorage.getItem('token');
+}
+
+function getUser() {
   try {
-    const raw = localStorage.getItem('user');
-    return raw ? JSON.parse(raw) : null;
-  } catch {
+    var user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+  } catch(e) {
     return null;
   }
 }
 
-function storeUser(user) {
-  localStorage.setItem('user', JSON.stringify(user));
-}
-
-function clearUser() {
-  localStorage.removeItem('user');
-  localStorage.removeItem('token');
-  localStorage.removeItem('refreshToken');
-}
-
-function isLoggedIn() {
-  const token = localStorage.getItem('token');
-  return !!token && !!getStoredUser();
-}
-
-function getUser() {
-  return getStoredUser();
+function getToken() {
+  return localStorage.getItem('token');
 }
 
 function isAdmin() {
-  const user = getStoredUser();
-  return user && (user.role === 'admin' || user.isAdmin === true);
+  var user = getUser();
+  return user && user.role === 'ADMIN';
 }
 
 function isSeller() {
-  const user = getStoredUser();
-  return user && (user.role === 'seller' || user.role === 'admin' || user.isSeller === true);
+  var user = getUser();
+  return user && (user.role === 'SELLER' || user.role === 'ADMIN');
 }
 
-async function login(email, password) {
-  if (!email) throw new Error(t('errors.email_required'));
-  if (!password) throw new Error(t('errors.password_required'));
-
-  const data = await apiPost('/auth/login', { email, password });
-
-  if (data.token) {
-    localStorage.setItem('token', data.token);
-    if (data.refreshToken) {
-      localStorage.setItem('refreshToken', data.refreshToken);
-    }
+function requireAuth() {
+  if (!isLoggedIn()) {
+    showToast('يجب تسجيل الدخول أولاً', 'error');
+    setTimeout(function() {
+      window.location.href = 'login.html';
+    }, 1000);
+    return false;
   }
-
-  if (data.user) {
-    storeUser(data.user);
-  }
-
-  if (typeof showToast === 'function') {
-    showToast(t('success.login'), 'success');
-  }
-
-  document.dispatchEvent(new CustomEvent('authChanged', { detail: { action: 'login', user: data.user } }));
-
-  return data;
+  return true;
 }
-
-async function register(userData) {
-  const { name, email, password, confirmPassword, phone, role } = userData;
-
-  if (!name) throw new Error(t('errors.name_required'));
-  if (!email) throw new Error(t('errors.email_required'));
-  if (!password) throw new Error(t('errors.password_required'));
-  if (password.length < 6) throw new Error(t('errors.password_short'));
-  if (confirmPassword !== undefined && password !== confirmPassword) {
-    throw new Error(t('errors.password_mismatch'));
-  }
-
-  const payload = { name, email, password };
-  if (phone) payload.phone = phone;
-  if (role) payload.role = role;
-
-  const data = await apiPost('/auth/register', payload);
-
-  if (data.token) {
-    localStorage.setItem('token', data.token);
-    if (data.refreshToken) {
-      localStorage.setItem('refreshToken', data.refreshToken);
-    }
-  }
-
-  if (data.user) {
-    storeUser(data.user);
-  }
-
-  if (typeof showToast === 'function') {
-    showToast(t('success.register'), 'success');
-  }
-
-  document.dispatchEvent(new CustomEvent('authChanged', { detail: { action: 'register', user: data.user } }));
-
-  return data;
-}
-
-async function googleLogin(token) {
-  if (!token) throw new Error('Google token is required');
-
-  const data = await apiPost('/auth/google', { token });
-
-  if (data.token) {
-    localStorage.setItem('token', data.token);
-    if (data.refreshToken) {
-      localStorage.setItem('refreshToken', data.refreshToken);
-    }
-  }
-
-  if (data.user) {
-    storeUser(data.user);
-  }
-
-  if (typeof showToast === 'function') {
-    showToast(t('success.login'), 'success');
-  }
-
-  document.dispatchEvent(new CustomEvent('authChanged', { detail: { action: 'login', user: data.user } }));
-
-  return data;
-}
-
-async function facebookLogin(token) {
-  if (!token) throw new Error('Facebook token is required');
-
-  const data = await apiPost('/auth/facebook', { token });
-
-  if (data.token) {
-    localStorage.setItem('token', data.token);
-    if (data.refreshToken) {
-      localStorage.setItem('refreshToken', data.refreshToken);
-    }
-  }
-
-  if (data.user) {
-    storeUser(data.user);
-  }
-
-  if (typeof showToast === 'function') {
-    showToast(t('success.login'), 'success');
-  }
-
-  document.dispatchEvent(new CustomEvent('authChanged', { detail: { action: 'login', user: data.user } }));
-
-  return data;
-}
-
-function logout() {
-  clearUser();
-
-  if (typeof showToast === 'function') {
-    showToast(t('success.logout'), 'info');
-  }
-
-  document.dispatchEvent(new CustomEvent('authChanged', { detail: { action: 'logout' } }));
-
-  setTimeout(() => {
-    window.location.href = '/';
-  }, 500);
-}
-
-async function getProfile() {
-  const data = await apiGet('/auth/profile');
-  if (data && data.user) {
-    storeUser(data.user);
-  }
-  return data;
-}
-
-async function updateProfile(profileData) {
-  const data = await apiPut('/auth/profile', profileData);
-
-  if (data && data.user) {
-    storeUser(data.user);
-  }
-
-  if (typeof showToast === 'function') {
-    showToast(t('success.profile_updated'), 'success');
-  }
-
-  document.dispatchEvent(new CustomEvent('authChanged', { detail: { action: 'profileUpdated', user: data.user } }));
-
-  return data;
-}
-
-async function changePassword(currentPassword, newPassword) {
-  if (!currentPassword) throw new Error(t('errors.password_required'));
-  if (!newPassword) throw new Error(t('errors.password_required'));
-  if (newPassword.length < 6) throw new Error(t('errors.password_short'));
-
-  const data = await apiPut('/auth/password', { currentPassword, newPassword });
-
-  if (typeof showToast === 'function') {
-    showToast(t('success.password_reset'), 'success');
-  }
-
-  return data;
-}
-
-async function forgotPassword(email) {
-  if (!email) throw new Error(t('errors.email_required'));
-
-  const data = await apiPost('/auth/forgot-password', { email });
-  return data;
-}
-
-function updateAuthUI() {
-  const user = getStoredUser();
-  const authBtns = document.querySelectorAll('.navbar-auth-btns');
-  const userBtns = document.querySelectorAll('.navbar-user-menu');
-  const avatarEls = document.querySelectorAll('.navbar-avatar');
-  const nameEls = document.querySelectorAll('.navbar-username');
-
-  if (isLoggedIn()) {
-    authBtns.forEach(el => el.style.display = 'none');
-    userBtns.forEach(el => el.style.display = 'flex');
-
-    const displayName = user ? (user.name || user.email) : '';
-    const initials = displayName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-
-    avatarEls.forEach(el => {
-      if (user && user.avatar) {
-        el.innerHTML = `<img src="${user.avatar}" alt="${displayName}">`;
-      } else {
-        el.textContent = initials || 'A';
-      }
-    });
-
-    nameEls.forEach(el => {
-      el.textContent = displayName;
-    });
-  } else {
-    authBtns.forEach(el => el.style.display = 'flex');
-    userBtns.forEach(el => el.style.display = 'none');
-  }
-}
-
-function initAuth() {
-  updateAuthUI();
-
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('.logout-btn')) {
-      e.preventDefault();
-      logout();
-    }
-  });
-
-  document.addEventListener('authChanged', () => {
-    updateAuthUI();
-  });
-}
-
-(function autoInit() {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAuth);
-  } else {
-    initAuth();
-  }
-})();

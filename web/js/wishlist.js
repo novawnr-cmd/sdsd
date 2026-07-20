@@ -1,201 +1,62 @@
 /* ==========================================================================
-   Adam Shop - Wishlist Management
+   ADAM SHOP - Wishlist Module
    ========================================================================== */
 
-const WISHLIST_KEY = 'adam_shop_wishlist';
-
-function getLocalWishlist() {
+function getWishlist() {
   try {
-    const raw = localStorage.getItem(WISHLIST_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
+    var wl = localStorage.getItem('wishlist');
+    return wl ? JSON.parse(wl) : [];
+  } catch(e) {
     return [];
   }
 }
 
-function saveLocalWishlist(list) {
-  localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
+function saveWishlist(wl) {
+  localStorage.setItem('wishlist', JSON.stringify(wl));
+  var wishEl = document.getElementById('wishCount');
+  if (wishEl) {
+    var count = wl.length;
+    wishEl.textContent = count;
+    wishEl.style.display = count > 0 ? 'flex' : 'none';
+  }
 }
 
-async function getWishlist() {
-  if (isLoggedIn()) {
-    try {
-      const data = await apiGet('/wishlist');
-      const items = data?.wishlist || data?.items || data || [];
-      const list = Array.isArray(items) ? items : [];
-      saveLocalWishlist(list.map(item => item.productId || item._id || item));
-      return list;
-    } catch (error) {
-      console.warn('API wishlist fetch failed, using local:', error);
-    }
-  }
-  return getLocalWishlist();
-}
-
-async function toggleWishlist(productId) {
-  if (!productId) throw new Error('Product ID is required');
-
-  const currentlyIn = await isInWishlist(productId);
-
-  if (isLoggedIn()) {
-    try {
-      if (currentlyIn) {
-        await apiDelete(`/wishlist/${productId}`);
-        const list = getLocalWishlist().filter(id => id !== productId);
-        saveLocalWishlist(list);
-
-        if (typeof showToast === 'function') {
-          showToast(t('success.wishlist_removed'), 'info');
-        }
-
-        document.dispatchEvent(new CustomEvent('wishlistUpdated', {
-          detail: { action: 'remove', productId }
-        }));
-
-        return false;
-      } else {
-        await apiPost('/wishlist/add', { productId });
-        const list = getLocalWishlist();
-        if (!list.includes(productId)) list.push(productId);
-        saveLocalWishlist(list);
-
-        if (typeof showToast === 'function') {
-          showToast(t('success.wishlist_added'), 'success');
-        }
-
-        document.dispatchEvent(new CustomEvent('wishlistUpdated', {
-          detail: { action: 'add', productId }
-        }));
-
-        return true;
-      }
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  const localList = getLocalWishlist();
-  const index = localList.indexOf(productId);
+function toggleWishlist(productId, name, price, image) {
+  var wl = getWishlist();
+  var index = wl.findIndex(function(item) { return item.productId === productId; });
 
   if (index > -1) {
-    localList.splice(index, 1);
-    saveLocalWishlist(localList);
-
-    if (typeof showToast === 'function') {
-      showToast(t('success.wishlist_removed'), 'info');
-    }
-
-    document.dispatchEvent(new CustomEvent('wishlistUpdated', {
-      detail: { action: 'remove', productId }
-    }));
-
-    return false;
+    wl.splice(index, 1);
+    showToast('تمت الإزالة من المفضلة', 'info');
   } else {
-    localList.push(productId);
-    saveLocalWishlist(localList);
-
-    if (typeof showToast === 'function') {
-      showToast(t('success.wishlist_added'), 'success');
-    }
-
-    document.dispatchEvent(new CustomEvent('wishlistUpdated', {
-      detail: { action: 'add', productId }
-    }));
-
-    return true;
+    wl.push({
+      productId: productId,
+      name: name,
+      price: price,
+      image: image || ''
+    });
+    showToast('تمت الإضافة إلى المفضلة', 'success');
   }
+
+  saveWishlist(wl);
+  updateWishlistButtons();
 }
 
-async function isInWishlist(productId) {
-  const list = await getWishlist();
-
-  if (Array.isArray(list) && list.length > 0) {
-    if (typeof list[0] === 'object' && list[0] !== null) {
-      return list.some(item => {
-        const id = item.productId || item._id || item.id || item;
-        return id === productId || id === String(productId);
-      });
-    }
-    return list.includes(productId) || list.includes(String(productId));
-  }
-
-  return false;
+function isInWishlist(productId) {
+  return getWishlist().some(function(item) { return item.productId === productId; });
 }
 
-async function removeFromWishlist(productId) {
-  if (isLoggedIn()) {
-    try {
-      await apiDelete(`/wishlist/${productId}`);
-    } catch (error) {
-      console.warn('API remove from wishlist failed:', error);
-    }
-  }
-
-  const list = getLocalWishlist();
-  const filtered = list.filter(id => id !== productId && id !== String(productId));
-  saveLocalWishlist(filtered);
-
-  document.dispatchEvent(new CustomEvent('wishlistUpdated', {
-    detail: { action: 'remove', productId }
-  }));
-
-  return filtered;
+function getWishlistCount() {
+  return getWishlist().length;
 }
 
 function updateWishlistButtons() {
-  document.querySelectorAll('[data-wishlist-btn]').forEach(btn => {
-    const productId = btn.getAttribute('data-wishlist-btn');
-    isInWishlist(productId).then(inList => {
-      if (inList) {
-        btn.classList.add('wishlisted');
-        btn.setAttribute('data-tooltip', t('product.remove_from_wishlist'));
-      } else {
-        btn.classList.remove('wishlisted');
-        btn.setAttribute('data-tooltip', t('product.add_to_wishlist'));
-      }
-    });
-  });
-}
-
-function initWishlist() {
-  updateWishlistButtons();
-
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-wishlist-btn]');
-    if (btn) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (!isLoggedIn()) {
-        if (typeof showToast === 'function') {
-          showToast(t('nav.login'), 'warning');
-        }
-        setTimeout(() => {
-          window.location.href = '/login.html';
-        }, 1000);
-        return;
-      }
-
-      const productId = btn.getAttribute('data-wishlist-btn');
-      toggleWishlist(productId).then(() => {
-        updateWishlistButtons();
-      });
+  document.querySelectorAll('.p-fav').forEach(function(btn) {
+    var pid = btn.getAttribute('data-product-id');
+    if (pid && isInWishlist(pid)) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
     }
   });
-
-  document.addEventListener('wishlistUpdated', () => {
-    updateWishlistButtons();
-  });
-
-  document.addEventListener('authChanged', () => {
-    updateWishlistButtons();
-  });
 }
-
-(function autoInit() {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initWishlist);
-  } else {
-    initWishlist();
-  }
-})();
