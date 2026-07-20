@@ -81,8 +81,11 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label">رابط الصورة</label>
-          <input type="text" class="form-input" id="pImage" placeholder="https://...">
+          <label class="form-label">صورة المنتج</label>
+          <input type="file" class="form-input" id="pImage" accept="image/*" onchange="previewImage(event)">
+          <div id="imagePreview" style="margin-top:8px;display:none">
+            <img id="previewImg" style="width:80px;height:80px;border-radius:var(--radius);object-fit:cover">
+          </div>
         </div>
         <div class="form-group">
           <label class="form-label">الوصف</label>
@@ -139,15 +142,6 @@ var PRODUCTS_KEY = 'adam_shop_site_products';
 var categoryLabels = { electronics: '📱 إلكترونيات', fashion: '👕 أزياء', beauty: '💄 جمال', home: '🏠 منزل', sports: '⚽ رياضة', other: '📦 أخرى' };
 var statusLabels = { active: '✅ نشط', draft: '📝 مسودة', out_of_stock: '🚫 نفد' };
 
-var defaultProducts = [
-  { id: 'sp_1', name: 'آيفون 15 برو ماكس', category: 'electronics', price: 4999, stock: 25, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=iPhone', description: 'آيفون 15 برو ماكس 256 جيجا، اللون أزرق تيتانيوم', status: 'active' },
-  { id: 'sp_2', name: 'سماعات AirPods Pro 2', category: 'electronics', price: 799, stock: 50, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=AirPods', description: 'سماعات أبل اللاسلكية', status: 'active' },
-  { id: 'sp_3', name: 'ساعة Apple Watch Ultra 2', category: 'electronics', price: 3299, stock: 15, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=Watch', description: 'ساعة أبل المتطورة', status: 'active' },
-  { id: 'sp_4', name: 'نظارة شمسية رجالي', category: 'fashion', price: 299, stock: 40, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=Glasses', description: 'نظارة شمسية أنيقة للرجال', status: 'active' },
-  { id: 'sp_5', name: 'عطر رجالي فاخر', category: 'beauty', price: 450, stock: 30, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=Perfume', description: 'عطر رجالي يدوم طوال اليوم', status: 'active' },
-  { id: 'sp_6', name: 'سماعة بلوتوث متحركة', category: 'electronics', price: 189, stock: 60, image: 'https://placehold.co/100x100/12172A/3B7DFF?text=Speaker', description: 'سماعة بلوتوث مقاومة للماء', status: 'active' }
-];
-
 function getProducts() {
   try {
     var raw = localStorage.getItem(PRODUCTS_KEY);
@@ -156,8 +150,7 @@ function getProducts() {
       if (parsed.length > 0) return parsed;
     }
   } catch(e) {}
-  localStorage.setItem(PRODUCTS_KEY, JSON.stringify(defaultProducts));
-  return defaultProducts;
+  return [];
 }
 
 function saveProducts(products) {
@@ -208,6 +201,18 @@ function hideAddForm() {
   document.getElementById('addFormSection').style.display = 'none';
 }
 
+function previewImage(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('previewImg').src = e.target.result;
+    document.getElementById('imagePreview').style.display = '';
+    document.getElementById('pImage').dataset.base64 = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 function handleSaveProduct(e) {
   e.preventDefault();
   var editId = document.getElementById('editId').value;
@@ -217,7 +222,7 @@ function handleSaveProduct(e) {
     category: document.getElementById('pCategory').value,
     price: parseFloat(document.getElementById('pPrice').value) || 0,
     stock: parseInt(document.getElementById('pStock').value) || 0,
-    image: document.getElementById('pImage').value.trim(),
+    image: document.getElementById('pImage').dataset.base64 || '',
     description: document.getElementById('pDesc').value.trim(),
     status: document.getElementById('pStatus').value
   };
@@ -247,7 +252,14 @@ function editProduct(id) {
   document.getElementById('pCategory').value = p.category;
   document.getElementById('pPrice').value = p.price;
   document.getElementById('pStock').value = p.stock;
-  document.getElementById('pImage').value = p.image || '';
+  if (p.image) {
+    document.getElementById('pImage').dataset.base64 = p.image;
+    document.getElementById('previewImg').src = p.image;
+    document.getElementById('imagePreview').style.display = '';
+  } else {
+    document.getElementById('pImage').dataset.base64 = '';
+    document.getElementById('imagePreview').style.display = 'none';
+  }
   document.getElementById('pDesc').value = p.description || '';
   document.getElementById('pStatus').value = p.status || 'active';
   document.getElementById('formTitle').textContent = '✏️ تعديل المنتج';

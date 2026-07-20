@@ -63,41 +63,31 @@
     <div class="kpi-grid">
       <div class="kpi-card">
         <div class="kpi-icon" style="background:var(--gold-dim);color:var(--accent)">💰</div>
-        <div class="kpi-val">45,892 د.ل</div>
+        <div class="kpi-val" id="kpiRevenue">0 د.ل</div>
         <div class="kpi-label" data-i18n="kpi.revenue">إجمالي الإيرادات</div>
-        <div class="kpi-change up">↑ +12.5% <span data-i18n="kpi.vsLast">عن الشهر الماضي</span></div>
       </div>
       <div class="kpi-card">
         <div class="kpi-icon" style="background:var(--blue-bg);color:var(--blue)">📋</div>
-        <div class="kpi-val">128</div>
+        <div class="kpi-val" id="kpiOrders">0</div>
         <div class="kpi-label" data-i18n="kpi.orders">إجمالي الطلبات</div>
-        <div class="kpi-change up">↑ +8.3%</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-icon" style="background:var(--green-bg);color:var(--green)">📦</div>
-        <div class="kpi-val">47</div>
+        <div class="kpi-val" id="kpiProducts">0</div>
         <div class="kpi-label" data-i18n="kpi.products">المنتجات</div>
-        <div class="kpi-change up">↑ +5</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-icon" style="background:rgba(167,139,250,0.12);color:var(--purple)">✅</div>
-        <div class="kpi-val">96</div>
+        <div class="kpi-val" id="kpiActive">0</div>
         <div class="kpi-label" data-i18n="kpi.active">الطلبات النشطة</div>
-        <div class="kpi-change down">↓ -2.1%</div>
       </div>
     </div>
 
     <!-- Chart -->
     <div class="chart-box">
       <h3 class="chart-title" data-i18n="chart.sales">📈 المبيعات (آخر 7 أيام)</h3>
-      <div class="chart-bars">
-        <div class="chart-bar" style="height:45%;background:var(--accent)"><span class="cb-label">السبت</span><span class="cb-val">3.2K</span></div>
-        <div class="chart-bar" style="height:62%;background:var(--accent)"><span class="cb-label">الأحد</span><span class="cb-val">4.5K</span></div>
-        <div class="chart-bar" style="height:38%;background:var(--accent)"><span class="cb-label">الاثنين</span><span class="cb-val">2.8K</span></div>
-        <div class="chart-bar" style="height:75%;background:var(--accent)"><span class="cb-label">الثلاثاء</span><span class="cb-val">5.4K</span></div>
-        <div class="chart-bar" style="height:55%;background:var(--accent)"><span class="cb-label">الأربعاء</span><span class="cb-val">4.0K</span></div>
-        <div class="chart-bar" style="height:88%;background:var(--accent)"><span class="cb-label">الخميس</span><span class="cb-val">6.3K</span></div>
-        <div class="chart-bar" style="height:70%;background:var(--accent)"><span class="cb-label">الجمعة</span><span class="cb-val">5.1K</span></div>
+      <div class="chart-bars" id="salesChart">
+        <div style="text-align:center;padding:30px;color:var(--text-4)">لم تسجل أي مبيعات بعد</div>
       </div>
     </div>
 
@@ -118,12 +108,8 @@
               <th data-i18n="table.date">التاريخ</th>
             </tr>
           </thead>
-          <tbody>
-            <tr><td class="font-en">#ORD-1248</td><td>أحمد محمد</td><td style="color:var(--accent);font-weight:700">1,299 د.ل</td><td><span class="badge-st st-shipped">تم الشحن</span></td><td class="text-dim">18 يناير</td></tr>
-            <tr><td class="font-en">#ORD-1247</td><td>سارة العلي</td><td style="color:var(--accent);font-weight:700">899 د.ل</td><td><span class="badge-st st-processing">قيد المعالجة</span></td><td class="text-dim">18 يناير</td></tr>
-            <tr><td class="font-en">#ORD-1246</td><td>خالد الشمري</td><td style="color:var(--accent);font-weight:700">2,199 د.ل</td><td><span class="badge-st st-pending">قيد الانتظار</span></td><td class="text-dim">17 يناير</td></tr>
-            <tr><td class="font-en">#ORD-1245</td><td>نورة السعيد</td><td style="color:var(--accent);font-weight:700">449 د.ل</td><td><span class="badge-st st-delivered">تم التوصيل</span></td><td class="text-dim">17 يناير</td></tr>
-            <tr><td class="font-en">#ORD-1244</td><td>عبدالله الحربي</td><td style="color:var(--accent);font-weight:700">3,499 د.ل</td><td><span class="badge-st st-delivered">تم التوصيل</span></td><td class="text-dim">16 يناير</td></tr>
+          <tbody id="ordersTableBody">
+            <tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text-4)">لا توجد طلبات بعد</td></tr>
           </tbody>
         </table>
       </div>
@@ -137,6 +123,56 @@
 <script src="../../js/auth.js"></script>
 <script src="../../js/api.js"></script>
 <script src="../../js/navbar.js"></script>
+<script>
+function loadDashboardStats() {
+  var cart = [];
+  try { cart = JSON.parse(localStorage.getItem('cart') || '[]'); } catch(e) {}
+  
+  var orders = [];
+  try { orders = JSON.parse(localStorage.getItem('adam_shop_orders') || '[]'); } catch(e) {}
+  
+  var products = [];
+  try { products = JSON.parse(localStorage.getItem('adam_shop_site_products') || '[]'); } catch(e) {}
+  
+  var totalRevenue = orders.reduce(function(s, o) { return s + (o.total || 0); }, 0);
+  var totalOrders = orders.length;
+  var totalProducts = products.length;
+  var activeOrders = orders.filter(function(o) { return o.status === 'pending' || o.status === 'processing'; }).length;
+  
+  document.getElementById('kpiRevenue').textContent = totalRevenue.toLocaleString() + ' د.ل';
+  document.getElementById('kpiOrders').textContent = totalOrders;
+  document.getElementById('kpiProducts').textContent = totalProducts;
+  document.getElementById('kpiActive').textContent = activeOrders;
+  
+  // Render orders table
+  var tbody = document.getElementById('ordersTableBody');
+  if (orders.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text-4)">لا توجد طلبات بعد</td></tr>';
+  } else {
+    var statusMap = { pending: '⏳ قيد الانتظار', processing: '🔄 قيد المعالجة', shipped: '🚚 تم الشحن', delivered: '✅ تم التوصيل', cancelled: '❌ ملغي' };
+    tbody.innerHTML = orders.slice(-5).reverse().map(function(o) {
+      return '<tr><td class="font-en">#' + o.id + '</td><td>' + (o.customerName || 'عميل') + '</td><td style="color:var(--accent);font-weight:700">' + (o.total || 0).toLocaleString() + ' د.ل</td><td>' + (statusMap[o.status] || o.status) + '</td><td class="text-dim">' + (o.date || '') + '</td></tr>';
+    }).join('');
+  }
+  
+  // Render chart
+  var chart = document.getElementById('salesChart');
+  if (orders.length === 0) {
+    chart.innerHTML = '<div style="text-align:center;padding:30px;color:var(--text-4)">لم تسجل أي مبيعات بعد</div>';
+  } else {
+    var days = ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
+    var maxVal = Math.max.apply(null, orders.map(function(o) { return o.total || 0; }).concat([1]));
+    chart.innerHTML = days.map(function(d, i) {
+      var dayOrders = orders.filter(function(o) { var day = new Date(o.date).getDay(); return day === i; });
+      var dayTotal = dayOrders.reduce(function(s, o) { return s + (o.total || 0); }, 0);
+      var h = maxVal > 0 ? Math.max(5, (dayTotal / maxVal) * 100) : 5;
+      return '<div class="chart-bar" style="height:' + h + '%;background:var(--accent)"><span class="cb-label">' + d + '</span><span class="cb-val">' + (dayTotal > 0 ? (dayTotal / 1000).toFixed(1) + 'K' : '0') + '</span></div>';
+    }).join('');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadDashboardStats);
+</script>
 </body>
 </html>
 

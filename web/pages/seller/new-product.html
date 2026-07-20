@@ -68,16 +68,7 @@
 
           <div class="chart-box">
             <h3 class="chart-title">الصور</h3>
-            <div class="upload-zone">
-              <div class="u-icon">📷</div>
-              <p>اسحب الصور هنا أو اضغط للرفع</p>
-              <p class="text-xs text-dim">الحد الأقصى 10 صور - PNG, JPG, WebP</p>
-            </div>
-            <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
-              <div style="width:80px;height:80px;border-radius:8px;background:var(--bg-3);overflow:hidden;position:relative"><img src="https://placehold.co/80x80/12172A/3B7DFF?text=1" alt="preview" style="width:100%;height:100%;object-fit:cover"></div>
-              <div style="width:80px;height:80px;border-radius:8px;background:var(--bg-3);overflow:hidden"><img src="https://placehold.co/80x80/12172A/3B7DFF?text=2" alt="preview" style="width:100%;height:100%;object-fit:cover"></div>
-              <div style="width:80px;height:80px;border-radius:8px;background:var(--bg-3);overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px dashed var(--border-2)">+</div>
-            </div>
+            <div class="form-group"><label class="form-label">صورة المنتج</label><input type="file" class="form-input" id="newProdImage" accept="image/*" onchange="previewNewImage(event)"><div id="newImgPreview" style="margin-top:8px;display:none"><img id="newPreviewImg" style="width:80px;height:80px;border-radius:var(--radius);object-fit:cover"></div></div>
           </div>
         </div>
 
@@ -179,5 +170,17 @@
 <script src="../../js/auth.js"></script>
 <script src="../../js/api.js"></script>
 <script src="../../js/navbar.js"></script>
+<script>
+function previewNewImage(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('newPreviewImg').src = e.target.result;
+    document.getElementById('newImgPreview').style.display = '';
+  };
+  reader.readAsDataURL(file);
+}
+</script>
 </body>
 </html>
