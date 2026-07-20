@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -11,8 +11,8 @@
 
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
-    <div class="rc-crown">👑</div>
-    <h2><span class="gold">ADAM SHOP</span> Marketplace</h2>
+    <div class="logo-icon">👜</div>
+    <h2><span class="accent">آدم شوب</span></h2>
     <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
     <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
     <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
@@ -21,7 +21,7 @@
 
 <header class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">Marketplace</span></span></a>
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">👜</span><span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">ADAM SHOP</span></span></a>
     <nav class="nav-links" id="navLinks">
       <a href="../index.html" data-i18n="nav.home">الرئيسية</a><a href="categories.html" data-i18n="nav.categories">الفئات</a><a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a><a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a><a href="products.html" data-i18n="nav.brands">العلامات التجارية</a><a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a><a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
     </nav>
@@ -30,7 +30,7 @@
       <button class="nav-icon" id="langToggle" title="EN">🌐</button>
       <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
       <a href="wishlist.html" class="nav-icon">❤️<span class="count" id="wishCount" style="display:none">0</span></a>
-      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">3</span></a>
+      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">0</span></a>
       <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar">👤</div><span class="u-name" id="userName"></span></div><div class="dropdown-menu" id="userMenu"></div></div>
     </div>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -72,37 +72,33 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
             <div class="form-group">
               <label class="form-label" data-i18n="form.fullName">الاسم الكامل</label>
-              <input type="text" class="form-input" placeholder="محمد أحمد" value="محمد أحمد العلي">
+              <input type="text" class="form-input" id="checkName" placeholder="محمد أحمد">
             </div>
             <div class="form-group">
               <label class="form-label" data-i18n="form.phone">رقم الجوال</label>
-              <input type="tel" class="form-input" placeholder="05XXXXXXXX" value="0512345678">
+              <input type="tel" class="form-input" id="checkPhone" placeholder="05XXXXXXXX">
             </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" data-i18n="form.email">البريد الإلكتروني</label>
-            <input type="email" class="form-input" placeholder="email@example.com" value="mohammed@example.com">
           </div>
           <div class="form-group">
             <label class="form-label" data-i18n="form.address">العنوان</label>
-            <input type="text" class="form-input" placeholder="الشارع، رقم المبنى" value="شارع الملك فهد، مبنى 42">
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-            <div class="form-group">
-              <label class="form-label" data-i18n="form.city">المدينة</label>
-              <select class="form-select">
-                <option>الرياض</option><option>جدة</option><option>الدمام</option><option>مكة المكرمة</option><option>المدينة المنورة</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" data-i18n="form.zip">الرمز البريدي</label>
-              <input type="text" class="form-input" placeholder="12345" value="12345">
-            </div>
+            <input type="text" class="form-input" id="checkAddress" placeholder="الشارع، رقم المبنى">
           </div>
           <div class="form-group">
             <label class="form-label" data-i18n="form.notes">ملاحظات الطلب (اختياري)</label>
-            <textarea class="form-textarea" rows="3" placeholder="ملاحظات إضافية للتوصيل"></textarea>
+            <textarea class="form-textarea" id="checkNotes" rows="3" placeholder="ملاحظات إضافية للتوصيل"></textarea>
           </div>
+        </div>
+
+        <!-- Location Map -->
+        <div class="chart-box" style="margin-top:20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <h3 class="chart-title" style="margin-bottom:0">📍 موقع الشحن</h3>
+            <button class="btn btn-outline btn-sm" id="changeLocBtn">تغيير الموقع</button>
+          </div>
+          <div id="mapContainer" style="width:100%;height:200px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)">
+            <div id="mapPlaceholder" style="display:flex;align-items:center;justify-content:center;height:100%;background:var(--bg-3);color:var(--text-4);font-size:0.85rem">جاري تحميل الموقع...</div>
+          </div>
+          <div id="mapAddress" style="margin-top:8px;font-size:0.82rem;color:var(--text-3)"></div>
         </div>
 
         <!-- Payment Method -->
@@ -110,46 +106,25 @@
           <h3 class="chart-title" data-i18n="checkout.payment">طريقة الدفع</h3>
           <div class="filter-opts" style="gap:10px">
             <label class="filter-opt" style="padding:12px;border:1.5px solid var(--border-2);border-radius:var(--radius);cursor:pointer">
-              <input type="radio" name="payment" checked> 💳 <span data-i18n="checkout.creditCard">بطاقة ائتمان</span>
+              <input type="radio" name="payment" value="credit_card" checked> 💳 <span data-i18n="checkout.creditCard">بطاقة ائتمان</span>
             </label>
             <label class="filter-opt" style="padding:12px;border:1.5px solid var(--border-2);border-radius:var(--radius);cursor:pointer">
-              <input type="radio" name="payment"> 🏦 <span data-i18n="checkout.bankTransfer">تحويل بنكي</span>
+              <input type="radio" name="payment" value="bank_transfer"> 🏦 <span data-i18n="checkout.bankTransfer">تحويل بنكي</span>
             </label>
             <label class="filter-opt" style="padding:12px;border:1.5px solid var(--border-2);border-radius:var(--radius);cursor:pointer">
-              <input type="radio" name="payment"> 📱 <span data-i18n="checkout.mada">مدى</span>
+              <input type="radio" name="payment" value="mada"> 📱 <span data-i18n="checkout.mada">مدى</span>
+            </label>
+            <label class="filter-opt" style="padding:12px;border:1.5px solid var(--border-2);border-radius:var(--radius);cursor:pointer">
+              <input type="radio" name="payment" value="cod"> 💵 <span>الدفع عند الاستلام</span>
             </label>
           </div>
         </div>
       </div>
 
       <!-- Order Summary -->
-      <div class="cart-summary">
+      <div class="cart-summary" id="orderSummary">
         <h3 data-i18n="checkout.orderSummary">ملخص الطلب</h3>
-        <div class="cart-list-item" style="padding:10px 0">
-          <img src="https://placehold.co/60x60/1C2333/D4A94A?text=iPhone" alt="iPhone" style="width:50px;height:50px">
-          <div class="cli-info"><h4 style="font-size:0.82rem;font-weight:600">آيفون 15 برو ماكس</h4><p class="text-xs text-dim">×1</p></div>
-          <span class="text-sm" style="font-weight:700;color:var(--gold)">4,999 ر.س</span>
-        </div>
-        <div class="cart-list-item" style="padding:10px 0">
-          <img src="https://placehold.co/60x60/1C2333/D4A94A?text=AirPods" alt="AirPods" style="width:50px;height:50px">
-          <div class="cli-info"><h4 style="font-size:0.82rem;font-weight:600">AirPods Pro 2</h4><p class="text-xs text-dim">×2</p></div>
-          <span class="text-sm" style="font-weight:700;color:var(--gold)">1,598 ر.س</span>
-        </div>
-        <div class="cart-list-item" style="padding:10px 0;border:none">
-          <img src="https://placehold.co/60x60/1C2333/D4A94A?text=Watch" alt="Watch" style="width:50px;height:50px">
-          <div class="cli-info"><h4 style="font-size:0.82rem;font-weight:600">Apple Watch Ultra 2</h4><p class="text-xs text-dim">×1</p></div>
-          <span class="text-sm" style="font-weight:700;color:var(--gold)">3,499 ر.س</span>
-        </div>
-
-        <div style="border-top:1px solid var(--border);padding-top:12px;margin-top:8px">
-          <div class="sum-row"><span data-i18n="cart.subtotal">المجموع الفرعي</span><span>10,096 ر.س</span></div>
-          <div class="sum-row"><span data-i18n="cart.shipping">الشحن</span><span class="text-gold">مجاني</span></div>
-          <div class="sum-row"><span data-i18n="cart.tax">الضريبة (15%)</span><span>1,514 ر.س</span></div>
-          <div class="sum-total"><span data-i18n="cart.total">الإجمالي</span><span class="amount">11,610 ر.س</span></div>
-        </div>
-
-        <button class="btn btn-gold btn-block btn-lg" style="margin-top:16px" data-i18n="checkout.placeOrder">🔒 تأكيد الطلب</button>
-        <p class="text-xs text-dim text-center" style="margin-top:8px" data-i18n="checkout.secureNote">🔒 دفع آمن ومشفر بالكامل</p>
+        <p class="text-dim text-center" style="padding:20px 0">جاري تحميل السلة...</p>
       </div>
     </div>
   </div>
@@ -158,21 +133,173 @@
 <footer class="footer">
   <div class="container">
     <div class="f-grid">
-      <div><div class="f-logo"><span class="crown">👑</span><span class="name">ADAM SHOP</span></div><p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p></div>
+      <div><div class="f-logo"><span class="logo-icon">👜</span><span class="name">ADAM SHOP</span></div><p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p></div>
       <div><h4 class="f-title">روابط سريعة</h4><div class="f-links"><a href="products.html">المنتجات</a><a href="categories.html">الفئات</a><a href="products.html?sort=deals">العروض</a></div></div>
       <div><h4 class="f-title">الفئات</h4><div class="f-links"><a href="category.html?cat=electronics">📱 إلكترونيات</a><a href="category.html?cat=fashion">👕 أزياء</a><a href="category.html?cat=beauty">💄 جمال وعناية</a></div></div>
       <div><h4 class="f-title">المساعدة</h4><div class="f-links"><a href="#">الأسئلة الشائعة</a><a href="#">سياسة الشحن</a><a href="#">سياسة الإرجاع</a></div></div>
     </div>
-    <div class="f-bottom"><span>© 2026 <strong class="text-gold">ADAM SHOP</strong> Marketplace. جميع الحقوق محفوظة</span><span>💳 نقبل جميع بطاقات الائتمان</span></div>
+    <div class="f-bottom"><span>© 2026 <strong class="text-accent">آدم شوب</strong> ADAM SHOP. جميع الحقوق محفوظة</span><span>💳 نقبل جميع بطاقات الائتمان</span></div>
   </div>
 </footer>
 
 <button class="btt" id="backToTop">⬆</button>
+<script src="../js/cart.js"></script>
+<script src="../js/wishlist.js"></script>
 <script src="../js/utils.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/theme.js"></script>
 <script src="../js/auth.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/navbar.js"></script>
+<script src="../js/location.js"></script>
+<script>
+var ADMIN_EMAIL = 'admin@adamshop.com';
+
+var paymentLabels = {
+  'credit_card': '💳 بطاقة ائتمان',
+  'bank_transfer': '🏦 تحويل بنكي',
+  'mada': '📱 مدى',
+  'cod': '💵 الدفع عند الاستلام'
+};
+
+function populateFormFromUser() {
+  var user = getUser();
+  if (!user) return;
+  var nameEl = document.getElementById('checkName');
+  var phoneEl = document.getElementById('checkPhone');
+  var addrEl = document.getElementById('checkAddress');
+  if (nameEl) nameEl.value = user.name || '';
+  if (phoneEl) phoneEl.value = user.phone || '';
+  if (user.location) {
+    if (addrEl) addrEl.value = user.location.address || '';
+  }
+}
+
+function initMap() {
+  var saved = getSavedLocation() || (getUser() && getUser().location);
+  var mapContainer = document.getElementById('mapContainer');
+  var placeholder = document.getElementById('mapPlaceholder');
+  var addrDiv = document.getElementById('mapAddress');
+  if (!saved || !saved.lat || !saved.lng) {
+    if (placeholder) placeholder.textContent = 'لم يتم تحديد موقع بعد. اضغط "تغيير الموقع" لتحديد موقعك.';
+    if (addrDiv) addrDiv.textContent = '';
+    return;
+  }
+  if (placeholder) placeholder.style.display = 'none';
+  mapContainer.innerHTML = '<iframe width="100%" height="100%" style="border:0" allowfullscreen loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=' + (saved.lng - 0.01) + ',' + (saved.lat - 0.005) + ',' + (saved.lng + 0.01) + ',' + (saved.lat + 0.005) + '&layer=mapnik&marker=' + saved.lat + ',' + saved.lng + '"></iframe>';
+  if (addrDiv) addrDiv.textContent = saved.address || '';
+}
+
+function openMapPicker() {
+  showGoogleMapsPicker(function(location) {
+    saveSavedLocation(location);
+    saveLastOrderLocation(location);
+    var addrEl = document.getElementById('checkAddress');
+    if (addrEl && location.address) addrEl.value = location.address;
+    initMap();
+    showToast('تم تحديث الموقع بنجاح', 'success');
+  });
+}
+
+function renderOrderSummary() {
+  var summary = document.getElementById('orderSummary');
+  if (!summary) return;
+  var items = getCartItems();
+  if (!items || items.length === 0) {
+    summary.innerHTML = '<h3 data-i18n="checkout.orderSummary">ملخص الطلب</h3><div style="text-align:center;padding:30px 0"><p class="text-dim">سلة التسوق فارغة</p><a href="products.html" class="btn btn-accent" style="margin-top:12px">ابدأ التسوق</a></div>';
+    return;
+  }
+  var html = '<h3 data-i18n="checkout.orderSummary">ملخص الطلب</h3>';
+  var total = 0;
+  items.forEach(function(item) {
+    var subtotal = item.price * item.quantity;
+    total += subtotal;
+    html += '<div class="cart-list-item" style="padding:10px 0">';
+    html += '<img src="' + (item.image || 'https://placehold.co/60x60/12172A/3B7DFF?text=Product') + '" alt="' + item.name + '" style="width:50px;height:50px">';
+    html += '<div class="cli-info"><h4 style="font-size:0.82rem;font-weight:600">' + item.name + '</h4><p class="text-xs text-dim">×' + item.quantity + '</p></div>';
+    html += '<span class="text-sm" style="font-weight:700;color:var(--accent)">' + subtotal.toLocaleString() + ' ر.س</span>';
+    html += '</div>';
+  });
+  var tax = Math.round(total * 0.15);
+  var grand = total + tax;
+  html += '<div style="border-top:1px solid var(--border);padding-top:12px;margin-top:8px">';
+  html += '<div class="sum-row"><span data-i18n="cart.subtotal">المجموع الفرعي</span><span>' + total.toLocaleString() + ' ر.س</span></div>';
+  html += '<div class="sum-row"><span data-i18n="cart.shipping">الشحن</span><span class="text-accent">مجاني</span></div>';
+  html += '<div class="sum-row"><span data-i18n="cart.tax">الضريبة (15%)</span><span>' + tax.toLocaleString() + ' ر.س</span></div>';
+  html += '<div class="sum-total"><span data-i18n="cart.total">الإجمالي</span><span class="amount">' + grand.toLocaleString() + ' ر.س</span></div>';
+  html += '</div>';
+  html += '<button class="btn btn-gold btn-block btn-lg" style="margin-top:16px" onclick="handlePlaceOrder()" data-i18n="checkout.placeOrder">🔒 تأكيد الطلب</button>';
+  html += '<p class="text-xs text-dim text-center" style="margin-top:8px" data-i18n="checkout.secureNote">🔒 دفع آمن ومشفر بالكامل</p>';
+  summary.innerHTML = html;
+}
+
+function handlePlaceOrder() {
+  if (!requireAuth()) return;
+  var cart = getCartItems();
+  if (!cart || cart.length === 0) { showToast('السلة فارغة', 'error'); return; }
+
+  var nameEl = document.getElementById('checkName');
+  var phoneEl = document.getElementById('checkPhone');
+  var addrEl = document.getElementById('checkAddress');
+  var notesEl = document.getElementById('checkNotes');
+  var paymentEl = document.querySelector('input[name=payment]:checked');
+
+  var customerName = nameEl ? nameEl.value.trim() : '';
+  var phone = phoneEl ? phoneEl.value.trim() : '';
+  var address = addrEl ? addrEl.value.trim() : '';
+  var notes = notesEl ? notesEl.value.trim() : '';
+  var payment = paymentEl ? paymentEl.value : 'cod';
+  var paymentLabel = paymentLabels[payment] || payment;
+
+  if (!customerName) { showToast('يرجى إدخال الاسم', 'error'); return; }
+  if (!phone) { showToast('يرجى إدخال رقم الجوال', 'error'); return; }
+
+  var savedLoc = getSavedLocation();
+  var locationStr = savedLoc ? (savedLoc.address || savedLoc.lat + ', ' + savedLoc.lng) : address;
+
+  var orderNum = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
+  var total = 0;
+  var itemsText = '';
+  cart.forEach(function(item) {
+    var subtotal = item.price * item.quantity;
+    total += subtotal;
+    itemsText += '  - ' + item.name + ' × ' + item.quantity + ' = ' + subtotal.toLocaleString() + ' ر.س\n';
+  });
+  var tax = Math.round(total * 0.15);
+  var grand = total + tax;
+
+  var body = 'طلب جديد - ' + orderNum + '\n';
+  body += '━━━━━━━━━━━━━━━━━━━━━\n';
+  body += 'العميل: ' + customerName + '\n';
+  body += 'الجوال: ' + phone + '\n';
+  body += 'العنوان: ' + (address || 'غير محدد') + '\n';
+  body += 'الموقع: ' + (locationStr || 'غير محدد') + '\n';
+  body += '━━━━━━━━━━━━━━━━━━━━━\n';
+  body += 'المنتجات:\n' + itemsText;
+  body += '━━━━━━━━━━━━━━━━━━━━━\n';
+  body += 'المجموع الفرعي: ' + total.toLocaleString() + ' ر.س\n';
+  body += 'الشحن: مجاني\n';
+  body += 'الضريبة (15%): ' + tax.toLocaleString() + ' ر.س\n';
+  body += 'الإجمالي: ' + grand.toLocaleString() + ' ر.س\n';
+  body += '━━━━━━━━━━━━━━━━━━━━━\n';
+  body += 'طريقة الدفع: ' + paymentLabel + '\n';
+  if (notes) body += 'ملاحظات: ' + notes + '\n';
+
+  var mailtoLink = 'mailto:' + ADMIN_EMAIL + '?subject=' + encodeURIComponent('طلب جديد ' + orderNum + ' - ' + customerName) + '&body=' + encodeURIComponent(body);
+
+  window.location.href = mailtoLink;
+
+  clearCart();
+  showToast('تم تأكيد الطلب بنجاح! رقم الطلب: ' + orderNum, 'success');
+  setTimeout(function() { window.location.href = 'order-detail.html?id=' + orderNum; }, 1500);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  populateFormFromUser();
+  initMap();
+  renderOrderSummary();
+  document.getElementById('changeLocBtn').addEventListener('click', openMapPicker);
+});
+</script>
 </body>
 </html>

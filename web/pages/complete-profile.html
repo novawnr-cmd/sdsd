@@ -11,8 +11,8 @@
 
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
-    <div class="rc-crown">👑</div>
-    <h2><span class="gold">ADAM SHOP</span> Marketplace</h2>
+    <div class="logo-icon">👜</div>
+    <h2><span class="accent">آدم شوب</span></h2>
     <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
     <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
     <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
@@ -21,7 +21,7 @@
 
 <header class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">Marketplace</span></span></a>
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">👜</span><span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">ADAM SHOP</span></span></a>
     <nav class="nav-links" id="navLinks">
       <a href="../index.html" data-i18n="nav.home">الرئيسية</a><a href="categories.html" data-i18n="nav.categories">الفئات</a><a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a><a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a><a href="products.html" data-i18n="nav.brands">العلامات التجارية</a><a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a><a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
     </nav>
@@ -43,8 +43,8 @@
 <div class="auth-page">
   <div class="auth-card" style="max-width:520px">
     <div class="auth-logo">
-      <div class="crown">👑</div>
-      <h2><span>ADAM SHOP</span> Marketplace</h2>
+      <div class="logo-icon">👜</div>
+      <h2><span>آدم شوب</span></h2>
     </div>
     <h3 class="auth-title" data-i18n="profile.complete">أكمل ملفك الشخصي</h3>
 
@@ -53,7 +53,7 @@
       <p data-i18n="profile.completeDesc">يرجى إكمال بياناتك للحصول على أفضل تجربة تسوق</p>
     </div>
 
-    <form>
+    <form onsubmit="handleCompleteProfile(event)">
       <div style="text-align:center;margin-bottom:20px">
         <div class="profile-avatar" style="cursor:pointer">👤</div>
         <button type="button" class="btn btn-ghost btn-sm" data-i18n="profile.uploadPhoto">📷 رفع صورة</button>
@@ -104,5 +104,26 @@
 <script src="../js/auth.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/navbar.js"></script>
+<script>
+function handleCompleteProfile(e) {
+  e.preventDefault();
+  if (!requireAuth()) return;
+  var data = {
+    firstName: e.target.querySelector('input[placeholder="محمد"]').value.trim(),
+    lastName: e.target.querySelector('input[placeholder="أحمد"]').value.trim(),
+    email: e.target.querySelector('input[type=email]').value.trim(),
+    phone: e.target.querySelector('input[type=tel]').value.trim(),
+    birthdate: e.target.querySelector('input[type=date]').value,
+    gender: e.target.querySelector('select').value,
+    address: e.target.querySelector('input[placeholder="المدينة، الحي، الشارع"]').value.trim()
+  };
+  updateProfile(data)
+    .then(function() {
+      showToast('تم حفظ البيانات بنجاح', 'success');
+      setTimeout(function() { window.location.href = '../index.html'; }, 1000);
+    })
+    .catch(function(err) { showToast(err.message || 'خطأ في حفظ البيانات', 'error'); });
+}
+</script>
 </body>
 </html>

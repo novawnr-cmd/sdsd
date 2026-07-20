@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -11,8 +11,8 @@
 
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
-    <div class="rc-crown">👑</div>
-    <h2><span class="gold">ADAM SHOP</span> Admin</h2>
+    <div class="logo-icon">👜</div>
+    <h2><span class="accent">ADAM SHOP</span> Admin</h2>
     <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى لوحة الإدارة</p>
     <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
     <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
@@ -22,25 +22,25 @@
 <div class="auth-page">
   <div class="auth-card">
     <div class="auth-logo">
-      <div class="crown">👑</div>
+      <div class="logo-icon">👜</div>
       <h2><span>ADAM SHOP</span> Admin</h2>
     </div>
     <h3 class="auth-title">لوحة تحكم الإدارة</h3>
 
-    <form>
+    <form onsubmit="handleAdminLogin(event)">
       <div class="form-group">
         <label class="form-label">البريد الإلكتروني</label>
-        <input type="email" class="form-input" placeholder="admin@ADAM SHOP.com">
+        <input type="email" class="form-input" id="adminEmail" placeholder="admin@adamshop.com" required>
       </div>
       <div class="form-group">
         <label class="form-label">كلمة المرور</label>
-        <input type="password" class="form-input" placeholder="••••••••">
+        <input type="password" class="form-input" id="adminPassword" placeholder="••••••••" required>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
         <label class="form-check"><input type="checkbox"><span>تذكرني</span></label>
-        <a href="#" class="text-sm text-gold">نسيت كلمة المرور؟</a>
+        <a href="#" class="text-sm text-accent">نسيت كلمة المرور؟</a>
       </div>
-      <button type="submit" class="btn btn-gold btn-block btn-lg">🔒 دخول الإدارة</button>
+      <button type="submit" class="btn btn-gold btn-block btn-lg" id="adminLoginBtn">🔒 دخول الإدارة</button>
     </form>
 
     <div class="auth-footer" style="margin-top:16px">
@@ -55,5 +55,34 @@
 <script src="../../js/auth.js"></script>
 <script src="../../js/api.js"></script>
 <script src="../../js/navbar.js"></script>
+<script>
+function handleAdminLogin(e) {
+  e.preventDefault();
+  var email = document.getElementById('adminEmail').value.trim();
+  var password = document.getElementById('adminPassword').value;
+  var btn = document.getElementById('adminLoginBtn');
+  if (!email || !password) { showToast('يرجى ملء جميع الحقول', 'error'); return; }
+  btn.disabled = true;
+  btn.textContent = 'جاري الدخول...';
+  login(email, password)
+    .then(function(data) {
+      if (data.user && (data.user.role === 'ADMIN' || data.user.role === 'SELLER')) {
+        showToast('تم تسجيل الدخول بنجاح', 'success');
+        setTimeout(function() { window.location.href = 'dashboard.html'; }, 800);
+      } else {
+        showToast('ليس لديك صلاحية الدخول للوحة الإدارة', 'error');
+        logout();
+        btn.disabled = false;
+        btn.textContent = '🔒 دخول الإدارة';
+      }
+    })
+    .catch(function(err) {
+      showToast(err.message || 'خطأ في تسجيل الدخول', 'error');
+      btn.disabled = false;
+      btn.textContent = '🔒 دخول الإدارة';
+    });
+}
+</script>
 </body>
 </html>
+

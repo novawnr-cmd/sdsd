@@ -3,135 +3,186 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="الملف الشخصي - ADAM SHOP Marketplace">
-  <title>الملف الشخصي | ADAM SHOP Marketplace</title>
+  <meta name="description" content="الملف الشخصي - آدم شوب">
+  <title>الملف الشخصي | آدم شوب</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
-    <div class="rc-crown">👑</div>
-    <h2><span class="gold">ADAM SHOP</span> Marketplace</h2>
-    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
-    <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
-    <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
+    <div class="logo-icon">👜</div>
+    <h2><span class="accent">آدم شوب</span></h2>
+    <p>يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
+    <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span>لست روبوت</span></label><br>
+    <button class="btn btn-gold" id="recaptchaSubmit">تحقق والدخول</button>
   </div>
 </div>
 
 <header class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">Marketplace</span></span></a>
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">👜</span>
+      <span class="logo-text">
+        <span class="logo-name">آدم شوب</span>
+        <span class="logo-sub">ADAM SHOP</span>
+      </span>
+    </a>
     <nav class="nav-links" id="navLinks">
-      <a href="../index.html" data-i18n="nav.home">الرئيسية</a><a href="categories.html" data-i18n="nav.categories">الفئات</a><a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a><a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a><a href="products.html" data-i18n="nav.brands">العلامات التجارية</a><a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a><a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
+      <a href="../index.html">الرئيسية</a>
+      <a href="categories.html">الفئات</a>
+      <a href="products.html?sort=best">أفضل مبيعاً</a>
+      <a href="products.html?sort=deals">العروض</a>
     </nav>
-    <div class="nav-search"><div class="nav-search-box"><input type="text" id="navSearch" placeholder="ابحث عن منتجات..."><button class="search-btn">🔍</button></div><div class="search-dropdown" id="searchDropdown"></div></div>
+    <div class="nav-search">
+      <div class="nav-search-box">
+        <input type="text" id="navSearch" placeholder="ابحث عن منتجات...">
+        <button class="search-btn">🔍</button>
+      </div>
+      <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
     <div class="nav-actions">
       <button class="nav-icon" id="langToggle" title="EN">🌐</button>
       <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
       <a href="wishlist.html" class="nav-icon">❤️</a>
       <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">0</span></a>
-      <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar">👤</div><span class="u-name" id="userName"></span></div><div class="dropdown-menu" id="userMenu"></div></div>
+      <div class="user-dropdown" id="userDropdown">
+        <div class="nav-user" id="userBtn">
+          <div class="avatar" id="userAvatar">👤</div>
+          <span class="u-name" id="userName"></span>
+        </div>
+        <div class="dropdown-menu" id="userMenu"></div>
+      </div>
     </div>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html">الرئيسية</a><a href="categories.html">الفئات</a><a href="products.html">المنتجات</a><a href="cart.html">سلة التسوق</a><a href="wishlist.html">المفضلة</a><a href="orders.html">طلباتي</a><a href="become-seller.html">تبيع معنا</a>
+    <a href="../index.html">الرئيسية</a>
+    <a href="categories.html">الفئات</a>
+    <a href="products.html">المنتجات</a>
+    <a href="cart.html">سلة التسوق</a>
+    <a href="wishlist.html">المفضلة</a>
+    <a href="orders.html">طلباتي</a>
+    <a href="become-seller.html">تبيع معنا</a>
   </div>
 </header>
 
 <main style="margin-top:var(--nav-h)">
   <div class="container">
     <div class="bread">
-      <a href="../index.html">الرئيسية</a><span class="sep">←</span><span class="cur" data-i18n="nav.profile">الملف الشخصي</span>
+      <a href="../index.html">الرئيسية</a><span class="sep">←</span><span class="cur">الملف الشخصي</span>
     </div>
 
     <div class="cart-grid">
-      <!-- Profile Card -->
+      <!-- Profile Sidebar -->
       <div>
         <div class="profile-card">
-          <div class="profile-avatar">م</div>
-          <h2 style="font-size:1.2rem;font-weight:800;margin-bottom:4px">محمد أحمد العلي</h2>
-          <p class="text-sm text-dim">mohammed@example.com</p>
-          <p class="text-xs text-dim" style="margin-top:4px">عضو منذ يناير 2026</p>
-          <div style="display:flex;justify-content:center;gap:16px;margin-top:16px">
-            <div style="text-align:center"><div style="font-weight:800;font-size:1.2rem">12</div><div class="text-xs text-dim" data-i18n="profile.orders">الطلبات</div></div>
-            <div style="text-align:center"><div style="font-weight:800;font-size:1.2rem">4</div><div class="text-xs text-dim" data-i18n="profile.wishlistCount">المفضلة</div></div>
-            <div style="text-align:center"><div style="font-weight:800;font-size:1.2rem;color:var(--gold)">⭐ 4.9</div><div class="text-xs text-dim" data-i18n="profile.rating">التقييم</div></div>
-          </div>
+          <div class="profile-avatar" id="profileAvatar">👤</div>
+          <h2 style="font-size:1.2rem;font-weight:800;margin-bottom:4px" id="profileName">-</h2>
+          <p class="text-sm text-dim" id="profilePhone">-</p>
+          <p class="text-xs text-dim" style="margin-top:4px" id="profileJoined">-</p>
         </div>
 
         <div class="chart-box">
           <div style="display:flex;flex-direction:column;gap:4px">
-            <a href="profile.html" class="sb-link active" style="border-radius:var(--radius-sm);border-right:none">👤 <span data-i18n="nav.profile">الملف الشخصي</span></a>
-            <a href="orders.html" class="sb-link" style="border-radius:var(--radius-sm);border-right:none">📦 <span data-i18n="nav.orders">طلباتي</span></a>
-            <a href="wishlist.html" class="sb-link" style="border-radius:var(--radius-sm);border-right:none">❤️ <span data-i18n="nav.wishlist">المفضلة</span></a>
-            <a href="profile.html" class="sb-link" style="border-radius:var(--radius-sm);border-right:none">🔒 <span data-i18n="profile.security">الأمان</span></a>
-            <button class="sb-link" style="border-radius:var(--radius-sm);border-right:none;color:var(--red)">🚪 <span data-i18n="profile.logout">تسجيل الخروج</span></button>
+            <a href="profile.html" class="sb-link active" style="border-radius:var(--radius-sm);border-right:none">👤 <span>الملف الشخصي</span></a>
+            <a href="orders.html" class="sb-link" style="border-radius:var(--radius-sm);border-right:none">📦 <span>طلباتي</span></a>
+            <a href="wishlist.html" class="sb-link" style="border-radius:var(--radius-sm);border-right:none">❤️ <span>المفضلة</span></a>
+            <button class="sb-link" style="border-radius:var(--radius-sm);border-right:none;color:var(--red)" onclick="handleProfileLogout()">🚪 <span>تسجيل الخروج</span></button>
           </div>
         </div>
       </div>
 
-      <!-- Edit Form -->
+      <!-- Profile Content -->
       <div>
-        <div class="chart-box">
-          <h3 class="chart-title" data-i18n="profile.edit">تعديل الملف الشخصي</h3>
-          <form>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div class="form-group">
-                <label class="form-label" data-i18n="form.firstName">الاسم الأول</label>
-                <input type="text" class="form-input" value="محمد">
+        <!-- Personal Info Section -->
+        <div class="chart-box" id="personalSection">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h3 class="chart-title" style="margin-bottom:0">المعلومات الشخصية</h3>
+            <button class="btn btn-ghost btn-sm" onclick="toggleEdit('personal')">✏️ تعديل</button>
+          </div>
+          <div id="personalView">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div>
+                <div class="form-label">الاسم الكامل</div>
+                <div style="font-size:0.92rem;font-weight:600" id="viewName">-</div>
               </div>
-              <div class="form-group">
-                <label class="form-label" data-i18n="form.lastName">اسم العائلة</label>
-                <input type="text" class="form-input" value="أحمد العلي">
+              <div>
+                <div class="form-label">رقم الجوال الرئيسي</div>
+                <div style="font-size:0.92rem;font-weight:600" id="viewPhone">-</div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" data-i18n="form.email">البريد الإلكتروني</label>
-              <input type="email" class="form-input" value="mohammed@example.com">
-            </div>
-            <div class="form-group">
-              <label class="form-label" data-i18n="form.phone">رقم الجوال</label>
-              <input type="tel" class="form-input" value="0512345678">
-            </div>
-            <div class="form-group">
-              <label class="form-label" data-i18n="form.address">العنوان</label>
-              <input type="text" class="form-input" value="شارع الملك فهد، الرياض">
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div class="form-group">
-                <label class="form-label" data-i18n="form.city">المدينة</label>
-                <select class="form-select"><option selected>الرياض</option><option>جدة</option><option>الدمام</option></select>
+              <div>
+                <div class="form-label">رقم الجوال البديل</div>
+                <div style="font-size:0.92rem;font-weight:600" id="viewBackupPhone">-</div>
               </div>
-              <div class="form-group">
-                <label class="form-label" data-i18n="form.birthdate">تاريخ الميلاد</label>
-                <input type="date" class="form-input" value="1995-06-15">
+              <div>
+                <div class="form-label">تاريخ الانضمام</div>
+                <div style="font-size:0.92rem;font-weight:600" id="viewCreated">-</div>
               </div>
             </div>
-            <button type="submit" class="btn btn-gold" data-i18n="profile.save">حفظ التعديلات</button>
-          </form>
+          </div>
+          <div id="personalEdit" style="display:none">
+            <form onsubmit="savePersonalInfo(event)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div class="form-group">
+                  <label class="form-label">الاسم الكامل</label>
+                  <input type="text" class="form-input" id="editName">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">رقم الجوال الرئيسي</label>
+                  <input type="tel" class="form-input" id="editPhone">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">رقم الجوال البديل</label>
+                  <input type="tel" class="form-input" id="editBackupPhone">
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;margin-top:8px">
+                <button type="submit" class="btn btn-gold btn-sm">💾 حفظ</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="toggleEdit('personal')">إلغاء</button>
+              </div>
+            </form>
+          </div>
         </div>
 
-        <div class="chart-box">
-          <h3 class="chart-title" data-i18n="profile.changePassword">تغيير كلمة المرور</h3>
-          <form>
-            <div class="form-group">
-              <label class="form-label" data-i18n="profile.currentPass">كلمة المرور الحالية</label>
-              <input type="password" class="form-input" placeholder="••••••••">
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div class="form-group">
-                <label class="form-label" data-i18n="form.password">كلمة المرور الجديدة</label>
-                <input type="password" class="form-input" placeholder="••••••••">
-              </div>
-              <div class="form-group">
-                <label class="form-label" data-i18n="form.confirmPassword">تأكيد كلمة المرور</label>
-                <input type="password" class="form-input" placeholder="••••••••">
+        <!-- Location Section -->
+        <div class="chart-box" id="locationSection">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h3 class="chart-title" style="margin-bottom:0">📍 الموقع المحفوظ</h3>
+            <button class="btn btn-ghost btn-sm" onclick="editProfileLocation()">✏️ تعديل</button>
+          </div>
+          <div id="locationView">
+            <div id="locationContent">
+              <div style="text-align:center;padding:20px;color:var(--text-4)">
+                <div style="font-size:2rem;margin-bottom:8px">📍</div>
+                <p>لم تحدد موقعك بعد</p>
+                <button class="btn btn-outline btn-sm" style="margin-top:12px" onclick="editProfileLocation()">تحديد الموقع</button>
               </div>
             </div>
-            <button type="submit" class="btn btn-outline" data-i18n="profile.updatePass">تحديث كلمة المرور</button>
-          </form>
+          </div>
+        </div>
+
+        <!-- Notes Section -->
+        <div class="chart-box" id="notesSection">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h3 class="chart-title" style="margin-bottom:0">📝 ملاحظات التوصيل</h3>
+            <button class="btn btn-ghost btn-sm" onclick="toggleEdit('notes')">✏️ تعديل</button>
+          </div>
+          <div id="notesView">
+            <div style="font-size:0.9rem;color:var(--text-3)" id="viewNotes">لا توجد ملاحظات</div>
+          </div>
+          <div id="notesEdit" style="display:none">
+            <form onsubmit="saveNotes(event)">
+              <div class="form-group">
+                <textarea class="form-input form-textarea" id="editNotes" placeholder="مثال: الباب الأزرق، اتصل قبل الوصول..." rows="3"></textarea>
+                <div class="form-hint">أي معلومات تساعد المندوب على الوصول إليك بسهولة</div>
+              </div>
+              <div style="display:flex;gap:12px">
+                <button type="submit" class="btn btn-gold btn-sm">💾 حفظ</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="toggleEdit('notes')">إلغاء</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -141,21 +192,177 @@
 <footer class="footer">
   <div class="container">
     <div class="f-grid">
-      <div><div class="f-logo"><span class="crown">👑</span><span class="name">ADAM SHOP</span></div><p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p></div>
-      <div><h4 class="f-title">روابط سريعة</h4><div class="f-links"><a href="products.html">المنتجات</a><a href="categories.html">الفئات</a><a href="products.html?sort=deals">العروض</a></div></div>
-      <div><h4 class="f-title">الفئات</h4><div class="f-links"><a href="category.html?cat=electronics">📱 إلكترونيات</a><a href="category.html?cat=fashion">👕 أزياء</a><a href="category.html?cat=beauty">💄 جمال وعناية</a></div></div>
-      <div><h4 class="f-title">المساعدة</h4><div class="f-links"><a href="#">الأسئلة الشائعة</a><a href="#">سياسة الشحن</a><a href="#">سياسة الإرجاع</a></div></div>
+      <div>
+        <div class="f-logo">
+          <span class="logo-icon">👜</span>
+          <span class="name">آدم شوب</span>
+        </div>
+        <p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p>
+      </div>
+      <div>
+        <h4 class="f-title">روابط سريعة</h4>
+        <div class="f-links">
+          <a href="products.html">المنتجات</a>
+          <a href="categories.html">الفئات</a>
+          <a href="products.html?sort=deals">العروض</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="f-title">الفئات</h4>
+        <div class="f-links">
+          <a href="category.html?cat=electronics">📱 إلكترونيات</a>
+          <a href="category.html?cat=fashion">👕 أزياء</a>
+          <a href="category.html?cat=beauty">💄 جمال وعناية</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="f-title">المساعدة</h4>
+        <div class="f-links">
+          <a href="#">الأسئلة الشائعة</a>
+          <a href="#">سياسة الشحن</a>
+          <a href="#">سياسة الإرجاع</a>
+        </div>
+      </div>
     </div>
-    <div class="f-bottom"><span>© 2026 <strong class="text-gold">ADAM SHOP</strong> Marketplace. جميع الحقوق محفوظة</span><span>💳 نقبل جميع بطاقات الائتمان</span></div>
+    <div class="f-bottom">
+      <span>© 2026 <strong class="text-accent">آدم شوب</strong>. جميع الحقوق محفوظة</span>
+      <span>💳 نقبل جميع بطاقات الائتمان</span>
+    </div>
   </div>
 </footer>
 
 <button class="btt" id="backToTop">⬆</button>
+
 <script src="../js/utils.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/theme.js"></script>
 <script src="../js/auth.js"></script>
+<script src="../js/location.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/navbar.js"></script>
+<script>
+var profileUser = null;
+
+function loadProfile() {
+  if (!isLoggedIn()) {
+    showToast('يجب تسجيل الدخول أولاً', 'error');
+    setTimeout(function() { window.location.href = 'login.html'; }, 500);
+    return;
+  }
+  profileUser = getUser();
+  if (!profileUser) {
+    window.location.href = 'login.html';
+    return;
+  }
+  document.getElementById('profileAvatar').textContent = (profileUser.name || 'م')[0];
+  document.getElementById('profileName').textContent = profileUser.name || '-';
+  document.getElementById('profilePhone').textContent = profileUser.phone || '-';
+  var d = profileUser.createdAt ? new Date(profileUser.createdAt) : null;
+  var joinedText = d ? d.toLocaleDateString('ar-LY', { year: 'numeric', month: 'long', day: 'numeric' }) : '-';
+  document.getElementById('profileJoined').textContent = 'عضو منذ ' + joinedText;
+
+  document.getElementById('viewName').textContent = profileUser.name || '-';
+  document.getElementById('viewPhone').textContent = profileUser.phone || '-';
+  document.getElementById('viewBackupPhone').textContent = profileUser.backupPhone || 'غير محدد';
+  document.getElementById('viewCreated').textContent = joinedText;
+  document.getElementById('viewNotes').textContent = profileUser.notes || 'لا توجد ملاحظات';
+
+  renderProfileLocation();
+}
+
+function renderProfileLocation() {
+  var container = document.getElementById('locationContent');
+  var loc = profileUser.location || getSavedLocation();
+  if (loc && loc.lat && loc.lng) {
+    container.innerHTML =
+      '<div class="info-box" style="margin-bottom:12px">' +
+        '<h4>📍 ' + (loc.address || 'موقع محفوظ') + '</h4>' +
+        '<p style="font-size:0.78rem;color:var(--text-4)">' + loc.lat.toFixed(6) + ', ' + loc.lng.toFixed(6) + '</p>' +
+      '</div>' +
+      '<iframe width="100%" height="200" style="border:0;border-radius:var(--radius)" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=' + (loc.lng - 0.01) + ',' + (loc.lat - 0.005) + ',' + (loc.lng + 0.01) + ',' + (loc.lat + 0.005) + '&layer=mapnik&marker=' + loc.lat + ',' + loc.lng + '"></iframe>';
+  } else {
+    container.innerHTML =
+      '<div style="text-align:center;padding:20px;color:var(--text-4)">' +
+        '<div style="font-size:2rem;margin-bottom:8px">📍</div>' +
+        '<p>لم تحدد موقعك بعد</p>' +
+        '<button class="btn btn-outline btn-sm" style="margin-top:12px" onclick="editProfileLocation()">تحديد الموقع</button>' +
+      '</div>';
+  }
+}
+
+function toggleEdit(section) {
+  var view = document.getElementById(section + 'View');
+  var edit = document.getElementById(section + 'Edit');
+  if (view.style.display === 'none') {
+    view.style.display = 'block';
+    edit.style.display = 'none';
+  } else {
+    view.style.display = 'none';
+    edit.style.display = 'block';
+    if (section === 'personal') {
+      document.getElementById('editName').value = profileUser.name || '';
+      document.getElementById('editPhone').value = profileUser.phone || '';
+      document.getElementById('editBackupPhone').value = profileUser.backupPhone || '';
+    }
+    if (section === 'notes') {
+      document.getElementById('editNotes').value = profileUser.notes || '';
+    }
+  }
+}
+
+function savePersonalInfo(e) {
+  e.preventDefault();
+  var name = document.getElementById('editName').value.trim();
+  var phone = document.getElementById('editPhone').value.trim();
+  var backupPhone = document.getElementById('editBackupPhone').value.trim();
+  if (!name) { showToast('الاسم مطلوب', 'error'); return; }
+  if (!phone) { showToast('رقم الجوال مطلوب', 'error'); return; }
+
+  var result = updateUser({ name: name, phone: phone, backupPhone: backupPhone });
+  if (result.success) {
+    profileUser = result.user;
+    document.getElementById('viewName').textContent = profileUser.name;
+    document.getElementById('viewPhone').textContent = profileUser.phone;
+    document.getElementById('viewBackupPhone').textContent = profileUser.backupPhone || 'غير محدد';
+    document.getElementById('profileName').textContent = profileUser.name;
+    document.getElementById('profileAvatar').textContent = profileUser.name[0];
+    toggleEdit('personal');
+    showToast('تم حفظ التعديلات بنجاح', 'success');
+  } else {
+    showToast(result.message || 'خطأ في الحفظ', 'error');
+  }
+}
+
+function saveNotes(e) {
+  e.preventDefault();
+  var notes = document.getElementById('editNotes').value.trim();
+  var result = updateUser({ notes: notes });
+  if (result.success) {
+    profileUser = result.user;
+    document.getElementById('viewNotes').textContent = notes || 'لا توجد ملاحظات';
+    toggleEdit('notes');
+    showToast('تم حفظ الملاحظات', 'success');
+  }
+}
+
+function editProfileLocation() {
+  showGoogleMapsPicker(function(loc) {
+    var result = updateUser({ location: loc });
+    if (result.success) {
+      profileUser = result.user;
+      saveSavedLocation(loc);
+      renderProfileLocation();
+      showToast('تم تحديث الموقع بنجاح', 'success');
+    }
+  });
+}
+
+function handleProfileLogout() {
+  logout();
+  window.location.href = '../index.html';
+}
+
+loadProfile();
+</script>
 </body>
 </html>

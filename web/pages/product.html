@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -11,8 +11,8 @@
 
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
-    <div class="rc-crown">👑</div>
-    <h2><span class="gold">ADAM SHOP</span> Marketplace</h2>
+    <div class="logo-icon">👜</div>
+    <h2><span class="accent">آدم شوب</span></h2>
     <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
     <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label>
     <br>
@@ -23,8 +23,8 @@
 <header class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo">
-      <span class="crown">👑</span>
-      <span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">Marketplace</span></span>
+      <span class="logo-icon">👜</span>
+      <span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">ADAM SHOP</span></span>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
@@ -79,13 +79,13 @@
       <!-- Gallery -->
       <div class="pd-gallery">
         <div class="pd-thumbs">
-          <div class="pd-thumb active"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=iPhone+15" alt="thumb1"></div>
-          <div class="pd-thumb"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Side+View" alt="thumb2"></div>
-          <div class="pd-thumb"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Back+View" alt="thumb3"></div>
-          <div class="pd-thumb"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Camera" alt="thumb4"></div>
+          <div class="pd-thumb active"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=iPhone+15" alt="thumb1"></div>
+          <div class="pd-thumb"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=Side+View" alt="thumb2"></div>
+          <div class="pd-thumb"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=Back+View" alt="thumb3"></div>
+          <div class="pd-thumb"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=Camera" alt="thumb4"></div>
         </div>
         <div class="pd-main">
-          <img src="https://placehold.co/600x600/1C2333/D4A94A?text=iPhone+15+Pro+Max" alt="iPhone 15 Pro Max" id="pdMainImg">
+          <img src="https://placehold.co/600x600/12172A/3B7DFF?text=iPhone+15+Pro+Max" alt="iPhone 15 Pro Max" id="pdMainImg">
         </div>
       </div>
 
@@ -135,8 +135,8 @@
         </div>
 
         <div class="pd-actions">
-          <button class="btn btn-gold btn-lg" data-i18n="product.buyNow">اشترِ الآن</button>
-          <button class="btn btn-outline btn-lg" data-i18n="product.addToCart">🛒 أضف للسلة</button>
+          <button class="btn btn-gold btn-lg" onclick="addToCart('IPH15PM-256','آيفون 15 برو ماكس 256 جيجا',4999,'https://placehold.co/600x600/12172A/3B7DFF?text=iPhone+15+Pro+Max',parseInt(document.getElementById('qtyVal').textContent));window.location.href='cart.html'" data-i18n="product.buyNow">اشترِ الآن</button>
+          <button class="btn btn-outline btn-lg" onclick="addToCart('IPH15PM-256','آيفون 15 برو ماكس 256 جيجا',4999,'https://placehold.co/600x600/12172A/3B7DFF?text=iPhone+15+Pro+Max',parseInt(document.getElementById('qtyVal').textContent))" data-i18n="product.addToCart">🛒 أضف للسلة</button>
         </div>
 
         <div class="pd-meta">
@@ -234,43 +234,43 @@
       </div>
       <div class="products-grid">
         <div class="p-card">
-          <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Galaxy+S24" alt="Samsung S24"><button class="p-fav">❤️</button></div>
+          <div class="p-img"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=Galaxy+S24" alt="Samsung S24"><button class="p-fav" onclick="toggleWishlist(3001,'سامسونج جالكسي S24 الترا',4399,'https://placehold.co/400x400/12172A/3B7DFF?text=Galaxy+S24')">❤️</button></div>
           <div class="p-body">
             <span class="p-cat">هواتف ذكية</span>
             <h3 class="p-name">سامسونج جالكسي S24 الترا</h3>
             <div class="p-rating"><span class="stars">★★★★☆</span><span class="r-count">(89)</span></div>
             <div class="p-price"><span class="curr">4,399 ر.س</span></div>
-            <button class="p-btn">🛒 أضف للسلة</button>
+            <button class="p-btn" onclick="addToCart(3001,'سامسونج جالكسي S24 الترا',4399,'https://placehold.co/400x400/12172A/3B7DFF?text=Galaxy+S24')">🛒 أضف للسلة</button>
           </div>
         </div>
         <div class="p-card">
-          <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Pixel+8" alt="Pixel 8"><button class="p-fav">❤️</button></div>
+          <div class="p-img"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=Pixel+8" alt="Pixel 8"><button class="p-fav" onclick="toggleWishlist(3002,'جوجل بيكسل 8 برو',3299,'https://placehold.co/400x400/12172A/3B7DFF?text=Pixel+8')">❤️</button></div>
           <div class="p-body">
             <span class="p-cat">هواتف ذكية</span>
             <h3 class="p-name">جوجل بيكسل 8 برو</h3>
             <div class="p-rating"><span class="stars">★★★★☆</span><span class="r-count">(56)</span></div>
             <div class="p-price"><span class="curr">3,299 ر.س</span></div>
-            <button class="p-btn">🛒 أضف للسلة</button>
+            <button class="p-btn" onclick="addToCart(3002,'جوجل بيكسل 8 برو',3299,'https://placehold.co/400x400/12172A/3B7DFF?text=Pixel+8')">🛒 أضف للسلة</button>
           </div>
         </div>
         <div class="p-card">
-          <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=OnePlus" alt="OnePlus 12"><button class="p-fav">❤️</button></div>
+          <div class="p-img"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=OnePlus" alt="OnePlus 12"><button class="p-fav" onclick="toggleWishlist(3003,'ون بلس 12',3599,'https://placehold.co/400x400/12172A/3B7DFF?text=OnePlus')">❤️</button></div>
           <div class="p-body">
             <span class="p-cat">هواتف ذكية</span>
             <h3 class="p-name">ون بلس 12</h3>
             <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(34)</span></div>
             <div class="p-price"><span class="curr">3,599 ر.س</span></div>
-            <button class="p-btn">🛒 أضف للسلة</button>
+            <button class="p-btn" onclick="addToCart(3003,'ون بلس 12',3599,'https://placehold.co/400x400/12172A/3B7DFF?text=OnePlus')">🛒 أضف للسلة</button>
           </div>
         </div>
         <div class="p-card">
-          <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=iPad+Pro" alt="iPad Pro"><button class="p-fav">❤️</button></div>
+          <div class="p-img"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=iPad+Pro" alt="iPad Pro"><button class="p-fav" onclick="toggleWishlist(3004,'آيباد برو M4 11 بوصة',3999,'https://placehold.co/400x400/12172A/3B7DFF?text=iPad+Pro')">❤️</button></div>
           <div class="p-body">
             <span class="p-cat">تابلت</span>
             <h3 class="p-name">آيباد برو M4 11 بوصة</h3>
             <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(67)</span></div>
             <div class="p-price"><span class="curr">3,999 ر.س</span></div>
-            <button class="p-btn">🛒 أضف للسلة</button>
+            <button class="p-btn" onclick="addToCart(3004,'آيباد برو M4 11 بوصة',3999,'https://placehold.co/400x400/12172A/3B7DFF?text=iPad+Pro')">🛒 أضف للسلة</button>
           </div>
         </div>
       </div>
@@ -282,7 +282,7 @@
   <div class="container">
     <div class="f-grid">
       <div>
-        <div class="f-logo"><span class="crown">👑</span><span class="name">ADAM SHOP</span></div>
+        <div class="f-logo"><span class="logo-icon">👜</span><span class="name">ADAM SHOP</span></div>
         <p class="f-desc" data-i18n="footer.desc">وجهتك الأولى للتسوق الفاخر.</p>
         <div class="f-social"><a href="#">𝕏</a><a href="#">📷</a><a href="#">f</a><a href="#">▶</a></div>
       </div>
@@ -315,7 +315,7 @@
       </div>
     </div>
     <div class="f-bottom">
-      <span>© 2026 <strong class="text-gold">ADAM SHOP</strong> Marketplace. جميع الحقوق محفوظة</span>
+      <span>© 2026 <strong class="text-accent">آدم شوب</strong> ADAM SHOP. جميع الحقوق محفوظة</span>
       <span>💳 نقبل جميع بطاقات الائتمان</span>
     </div>
   </div>
@@ -323,6 +323,8 @@
 
 <button class="btt" id="backToTop">⬆</button>
 
+<script src="../js/cart.js"></script>
+<script src="../js/wishlist.js"></script>
 <script src="../js/utils.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/theme.js"></script>
@@ -331,3 +333,4 @@
 <script src="../js/navbar.js"></script>
 </body>
 </html>
+

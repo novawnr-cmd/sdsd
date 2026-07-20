@@ -112,7 +112,6 @@ function initLanguageButton() {
     var newLang = (typeof toggleLanguage === 'function') ? toggleLanguage() : 'ar';
     langBtn.textContent = newLang === 'ar' ? 'EN' : 'عربي';
 
-    // Update all translatable elements
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       var key = el.getAttribute('data-i18n');
       if (typeof t === 'function') {
@@ -125,7 +124,6 @@ function initLanguageButton() {
       }
     });
 
-    // Update placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
       var key = el.getAttribute('data-i18n-placeholder');
       if (typeof t === 'function') {
@@ -171,7 +169,6 @@ function initSearchNav() {
       searchDropdown.innerHTML = '';
       return;
     }
-    // Show mock suggestions
     searchDropdown.classList.add('active');
     searchDropdown.innerHTML = '<div class="s-item" style="justify-content:center;color:var(--text-4);padding:16px">جاري البحث...</div>';
   });
@@ -183,7 +180,6 @@ function initSearchNav() {
   });
 }
 
-// User menu content based on auth state
 function updateUserMenu() {
   var userMenu = document.getElementById('userMenu');
   var userName = document.getElementById('userName');
@@ -195,25 +191,14 @@ function updateUserMenu() {
     user = getUser();
   }
 
-  if (user) {
+  if (user && isLoggedIn()) {
     if (userName) userName.textContent = user.name || 'حسابي';
     if (userAvatar) userAvatar.textContent = (user.name || 'م')[0];
 
-    var role = user.role || 'CUSTOMER';
-    var menuHTML = '<a href="pages/profile.html">👤 الملف الشخصي</a>';
+    var menuHTML = '';
+    menuHTML += '<a href="pages/profile.html">👤 الملف الشخصي</a>';
     menuHTML += '<a href="pages/orders.html">📦 طلباتي</a>';
     menuHTML += '<a href="pages/wishlist.html">❤️ المفضلة</a>';
-
-    if (role === 'SELLER' || role === 'ADMIN') {
-      menuHTML += '<div class="dropdown-sep"></div>';
-      menuHTML += '<a href="pages/seller/dashboard.html">📊 لوحة التحكم</a>';
-      menuHTML += '<a href="pages/seller/products.html">📦 منتجاتي</a>';
-    }
-    if (role === 'ADMIN') {
-      menuHTML += '<div class="dropdown-sep"></div>';
-      menuHTML += '<a href="pages/admin/dashboard.html">🔧 لوحة الإدارة</a>';
-    }
-
     menuHTML += '<div class="dropdown-sep"></div>';
     menuHTML += '<button onclick="handleLogout()" style="color:var(--red)">🚪 تسجيل خروج</button>';
     userMenu.innerHTML = menuHTML;
@@ -221,9 +206,7 @@ function updateUserMenu() {
     if (userName) userName.textContent = '';
     if (userAvatar) userAvatar.textContent = '👤';
     userMenu.innerHTML = '<a href="pages/login.html">🔑 تسجيل الدخول</a>' +
-      '<a href="pages/register.html">📝 إنشاء حساب</a>' +
-      '<div class="dropdown-sep"></div>' +
-      '<a href="pages/become-seller.html">💼 تبيع معنا</a>';
+      '<a href="pages/register.html">📝 إنشاء حساب</a>';
   }
 }
 
@@ -234,7 +217,6 @@ function handleLogout() {
   window.location.href = 'index.html';
 }
 
-// Back to top button
 function initBackToTop() {
   var btt = document.querySelector('.btt');
   if (!btt) return;
@@ -250,7 +232,6 @@ function initBackToTop() {
   });
 }
 
-// Hero slider
 function initHeroSlider() {
   var slides = document.querySelectorAll('.hero-slide');
   var dots = document.querySelectorAll('.hero-dots span');
@@ -277,7 +258,6 @@ function initHeroSlider() {
   });
 }
 
-// Tab switching
 function initTabs() {
   document.querySelectorAll('.tab-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -295,7 +275,6 @@ function initTabs() {
   });
 }
 
-// Quantity selector
 function initQty() {
   document.querySelectorAll('.qty-box').forEach(function(box) {
     var minus = box.querySelector('.qty-minus');
@@ -317,7 +296,6 @@ function initQty() {
   });
 }
 
-// Scroll reveal animations
 function initScrollReveal() {
   var reveals = document.querySelectorAll('.reveal');
   if (reveals.length === 0) return;
@@ -333,7 +311,6 @@ function initScrollReveal() {
   reveals.forEach(function(el) { observer.observe(el); });
 }
 
-// Auto init
 (function() {
   function init() {
     initNavbar();

@@ -167,7 +167,7 @@ function initScrollReveal() {
 
 // Image URL helper
 function getImageUrl(path, placeholder) {
-  placeholder = placeholder || 'https://placehold.co/400x400/1C2333/D4A94A?text=Product';
+  placeholder = placeholder || 'https://placehold.co/400x400/12172A/3B7DFF?text=Product';
   if (!path) return placeholder;
   if (path.startsWith('http')) return path;
   var base = localStorage.getItem('api_url') || 'http://localhost:5000';
