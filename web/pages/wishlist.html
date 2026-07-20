@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ادم شوب - قائمة الأمنيات">
+    <title>ادم شوب | قائمة الأمنيات</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;}
+        .top-nav{background:linear-gradient(135deg,#141428,#1a1a35);border-bottom:1px solid rgba(255,255,255,0.06);padding:16px 32px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo h2{font-size:1.4rem;background:linear-gradient(135deg,#d4af37,#f5d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .nav-links{display:flex;gap:20px;align-items:center;}
+        .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;transition:color 0.3s;}
+        .nav-links a:hover{color:#d4af37;}
+        .page-container{max-width:1200px;margin:0 auto;padding:32px;}
+        .page-title{font-size:1.5rem;color:#fff;margin-bottom:28px;display:flex;align-items:center;gap:12px;}
+        .wishlist-count{background:rgba(212,175,55,0.15);color:#d4af37;padding:4px 12px;border-radius:16px;font-size:0.8rem;}
+        .wishlist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;}
+        .product-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;transition:all 0.3s;position:relative;}
+        .product-card:hover{transform:translateY(-4px);border-color:rgba(212,175,55,0.2);box-shadow:0 12px 30px rgba(0,0,0,0.3);}
+        .product-image{height:200px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;}
+        .remove-btn{position:absolute;top:12px;left:12px;width:32px;height:32px;border-radius:50%;background:rgba(244,67,54,0.15);border:none;color:#f44336;cursor:pointer;font-size:1rem;transition:all 0.3s;display:flex;align-items:center;justify-content:center;}
+        .remove-btn:hover{background:rgba(244,67,54,0.3);transform:scale(1.1);}
+        .product-info{padding:16px;}
+        .product-store{font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:4px;}
+        .product-name{font-size:0.95rem;color:#fff;margin-bottom:8px;font-weight:600;}
+        .product-price{font-size:1.1rem;font-weight:700;color:#d4af37;}
+        .product-price .old-price{font-size:0.8rem;color:rgba(255,255,255,0.3);text-decoration:line-through;margin-right:8px;font-weight:400;}
+        .btn-add-cart{width:100%;padding:10px;background:linear-gradient(135deg,#d4af37,#b8962e);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;margin-top:12px;transition:all 0.3s;font-size:0.9rem;}
+        .btn-add-cart:hover{box-shadow:0 6px 20px rgba(212,175,55,0.3);}
+        .empty-state{text-align:center;padding:80px 20px;color:rgba(255,255,255,0.3);}
+        .empty-state .empty-icon{font-size:5rem;margin-bottom:16px;}
+        .empty-state h3{color:rgba(255,255,255,0.5);margin-bottom:8px;font-size:1.2rem;}
+        .empty-state p{margin-bottom:24px;}
+        .btn-browse{padding:12px 32px;background:linear-gradient(135deg,#d4af37,#b8962e);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;}
+        @media(max-width:768px){.top-nav{padding:12px 16px;}.page-container{padding:20px 16px;}.wishlist-grid{grid-template-columns:repeat(2,1fr);gap:12px;}}
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-logo"><h2>ادم شوب</h2></div>
+        <div class="nav-links">
+            <a href="../index.html" data-i18n="home">الرئيسية</a>
+            <a href="orders.html" data-i18n="my_orders">طلباتي</a>
+            <a href="profile.html" data-i18n="profile">الحساب</a>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <h1 class="page-title">
+            <span data-i18n="wishlist">قائمة الأمنيات</span>
+            <span class="wishlist-count">4</span>
+        </h1>
+
+        <div class="wishlist-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    &#128241;
+                    <button class="remove-btn" onclick="this.closest('.product-card').remove()" title="إزالة">&#10005;</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-store">متجر أحمد</div>
+                    <div class="product-name">هاتف Samsung Galaxy S24</div>
+                    <div class="product-price"><span class="old-price">1,400 LYD</span>1,250 LYD</div>
+                    <button class="btn-add-cart" data-i18n="add_to_cart">أضف للسلة</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    &#128085;
+                    <button class="remove-btn" onclick="this.closest('.product-card').remove()">&#10005;</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-store">سماعات+</div>
+                    <div class="product-name">سماعة بلوتوث لاسلكية</div>
+                    <div class="product-price">180 LYD</div>
+                    <button class="btn-add-cart" data-i18n="add_to_cart">أضف للسلة</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    &#128247;
+                    <button class="remove-btn" onclick="this.closest('.product-card').remove()">&#10005;</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-store">إلكترونيات سالم</div>
+                    <div class="product-name">كاميرا رقمية Canon EOS</div>
+                    <div class="product-price"><span class="old-price">2,400 LYD</span>2,100 LYD</div>
+                    <button class="btn-add-cart" data-i18n="add_to_cart">أضف للسلة</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    &#128094;
+                    <button class="remove-btn" onclick="this.closest('.product-card').remove()">&#10005;</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-store">أزياء نور</div>
+                    <div class="product-name">قميص رجالي كلاسيكي</div>
+                    <div class="product-price">95 LYD</div>
+                    <button class="btn-add-cart" data-i18n="add_to_cart">أضف للسلة</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-state" id="emptyState" style="display:none;">
+            <div class="empty-icon">&#128148;</div>
+            <h3 data-i18n="empty_wishlist">قائمة الأمنيات فارغة</h3>
+            <p data-i18n="empty_wishlist_desc">لم تضف أي منتجات بعد</p>
+            <a href="../index.html" class="btn-browse" data-i18n="start_shopping">ابدأ التسوق</a>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script>
+        document.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const grid = document.querySelector('.wishlist-grid');
+                const cards = grid.querySelectorAll('.product-card');
+                if (cards.length <= 1) {
+                    grid.style.display = 'none';
+                    document.getElementById('emptyState').style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

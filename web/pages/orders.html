@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ادم شوب - طلباتي">
+    <title>ادم شوب | طلباتي</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;}
+        .top-nav{background:linear-gradient(135deg,#141428,#1a1a35);border-bottom:1px solid rgba(255,255,255,0.06);padding:16px 32px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo h2{font-size:1.4rem;background:linear-gradient(135deg,#d4af37,#f5d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .nav-links{display:flex;gap:20px;align-items:center;}
+        .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;transition:color 0.3s;}
+        .nav-links a:hover{color:#d4af37;}
+        .page-container{max-width:900px;margin:0 auto;padding:32px;}
+        .page-title{font-size:1.5rem;color:#fff;margin-bottom:24px;}
+        .order-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:20px;margin-bottom:16px;cursor:pointer;transition:all 0.3s;}
+        .order-card:hover{border-color:rgba(212,175,55,0.2);transform:translateY(-2px);}
+        .order-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+        .order-number{font-weight:700;color:#d4af37;font-size:1rem;}
+        .order-date{font-size:0.8rem;color:rgba(255,255,255,0.35);}
+        .order-items-preview{display:flex;gap:8px;margin-bottom:12px;overflow-x:auto;}
+        .order-item-thumb{width:48px;height:48px;border-radius:8px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+        .order-footer{display:flex;justify-content:space-between;align-items:center;}
+        .order-total{font-weight:700;color:#fff;font-size:1.05rem;}
+        .badge{padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;}
+        .badge.pending{background:rgba(255,152,0,0.15);color:#ff9800;}
+        .badge.confirmed{background:rgba(33,150,243,0.15);color:#2196f3;}
+        .badge.shipped{background:rgba(156,39,176,0.15);color:#ce93d8;}
+        .badge.delivered{background:rgba(76,175,80,0.15);color:#4caf50;}
+        .badge.cancelled{background:rgba(244,67,54,0.15);color:#f44336;}
+        .order-details{display:none;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);}
+        .order-details.active{display:block;}
+        .detail-row{display:flex;justify-content:space-between;padding:8px 0;font-size:0.9rem;}
+        .detail-row .label{color:rgba(255,255,255,0.4);}
+        .btn-view{padding:8px 20px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:8px;color:#d4af37;cursor:pointer;font-size:0.8rem;font-weight:600;text-decoration:none;}
+        .empty-state{text-align:center;padding:60px 20px;color:rgba(255,255,255,0.3);}
+        .empty-state .empty-icon{font-size:4rem;margin-bottom:12px;}
+        .empty-state h3{color:rgba(255,255,255,0.5);margin-bottom:8px;}
+        @media(max-width:768px){.top-nav{padding:12px 16px;}.page-container{padding:20px 16px;}}
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-logo"><h2>ادم شوب</h2></div>
+        <div class="nav-links">
+            <a href="../index.html" data-i18n="home">الرئيسية</a>
+            <a href="wishlist.html" data-i18n="wishlist">المفضلة</a>
+            <a href="profile.html" data-i18n="profile">الحساب</a>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <h1 class="page-title" data-i18n="my_orders">طلباتي</h1>
+
+        <div class="order-card" onclick="toggleDetails(this)">
+            <div class="order-header">
+                <div><span class="order-number">#10234</span><span class="order-date" style="margin-right:12px;">2026-07-20</span></div>
+                <span class="badge pending" data-i18n="status_pending">قيد الانتظار</span>
+            </div>
+            <div class="order-items-preview">
+                <div class="order-item-thumb">&#128241;</div>
+                <div class="order-item-thumb">&#128241;</div>
+                <div class="order-item-thumb">&#128085;</div>
+            </div>
+            <div class="order-footer">
+                <span class="order-total">1,320 LYD</span>
+                <a href="order-detail.html" class="btn-view" data-i18n="view_details" onclick="event.stopPropagation()">التفاصيل</a>
+            </div>
+            <div class="order-details">
+                <div class="detail-row"><span class="label" data-i18n="items">المنتجات</span><span>3 منتجات</span></div>
+                <div class="detail-row"><span class="label" data-i18n="subtotal">المجموع الفرعي</span><span>1,270 LYD</span></div>
+                <div class="detail-row"><span class="label" data-i18n="shipping">الشحن</span><span>50 LYD</span></div>
+                <div class="detail-row"><span class="label" data-i18n="total">المجموع</span><span style="color:#d4af37;font-weight:700;">1,320 LYD</span></div>
+            </div>
+        </div>
+
+        <div class="order-card" onclick="toggleDetails(this)">
+            <div class="order-header">
+                <div><span class="order-number">#10198</span><span class="order-date" style="margin-right:12px;">2026-07-10</span></div>
+                <span class="badge shipped" data-i18n="status_shipped">تم الشحن</span>
+            </div>
+            <div class="order-items-preview">
+                <div class="order-item-thumb">&#128247;</div>
+            </div>
+            <div class="order-footer">
+                <span class="order-total">2,150 LYD</span>
+                <a href="order-detail.html" class="btn-view" data-i18n="view_details" onclick="event.stopPropagation()">التفاصيل</a>
+            </div>
+        </div>
+
+        <div class="order-card" onclick="toggleDetails(this)">
+            <div class="order-header">
+                <div><span class="order-number">#10156</span><span class="order-date" style="margin-right:12px;">2026-06-25</span></div>
+                <span class="badge delivered" data-i18n="status_delivered">تم التوصيل</span>
+            </div>
+            <div class="order-items-preview">
+                <div class="order-item-thumb">&#128094;</div>
+                <div class="order-item-thumb">&#128094;</div>
+            </div>
+            <div class="order-footer">
+                <span class="order-total">190 LYD</span>
+                <a href="order-detail.html" class="btn-view" data-i18n="view_details" onclick="event.stopPropagation()">التفاصيل</a>
+            </div>
+        </div>
+
+        <div class="order-card" onclick="toggleDetails(this)">
+            <div class="order-header">
+                <div><span class="order-number">#10102</span><span class="order-date" style="margin-right:12px;">2026-06-10</span></div>
+                <span class="badge delivered" data-i18n="status_delivered">تم التوصيل</span>
+            </div>
+            <div class="order-items-preview">
+                <div class="order-item-thumb">&#128085;</div>
+            </div>
+            <div class="order-footer">
+                <span class="order-total">180 LYD</span>
+                <a href="order-detail.html" class="btn-view" data-i18n="view_details" onclick="event.stopPropagation()">التفاصيل</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script>
+        function toggleDetails(card) {
+            const details = card.querySelector('.order-details');
+            if (details) {
+                details.classList.toggle('active');
+            }
+        }
+    </script>
+</body>
+</html>

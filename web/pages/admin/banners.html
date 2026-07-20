@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ادم شوب - إدارة البانرات">
+    <title>ادم شوب | البانرات</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0a0a12;color:#e0e0e0;display:flex;min-height:100vh;}
+        .sidebar{width:260px;background:linear-gradient(180deg,#0d0d1a,#141428);border-left:1px solid rgba(255,255,255,0.06);padding:24px 0;position:fixed;top:0;right:0;bottom:0;overflow-y:auto;z-index:100;}
+        .sidebar-logo{text-align:center;padding:0 20px 28px;border-bottom:1px solid rgba(255,255,255,0.06);}.sidebar-logo h2{font-size:1.5rem;color:#f44336;font-weight:800;}.sidebar-logo small{color:rgba(255,255,255,0.3);font-size:0.7rem;}
+        .sidebar-nav{padding:16px 0;}.sidebar-nav a{display:flex;align-items:center;gap:12px;padding:11px 24px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;transition:all 0.3s;border-right:3px solid transparent;}.sidebar-nav a:hover{background:rgba(255,255,255,0.03);color:#fff;}.sidebar-nav a.active{background:rgba(244,67,54,0.08);color:#f44336;border-right-color:#f44336;}.sidebar-nav a .icon{font-size:1.1rem;width:22px;text-align:center;}
+        .main-content{margin-right:260px;flex:1;padding:24px 32px;}
+        .top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}.top-bar h1{font-size:1.5rem;color:#fff;}
+        .btn-primary{padding:10px 24px;background:linear-gradient(135deg,#f44336,#c62828);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:0.85rem;}
+        .banners-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+        .banner-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:14px;padding:20px;display:flex;gap:20px;align-items:center;}
+        .banner-preview{width:240px;height:100px;border-radius:10px;background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05));display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;overflow:hidden;}
+        .banner-info{flex:1;}
+        .banner-info h3{color:#fff;font-size:1rem;margin-bottom:6px;}
+        .banner-info p{color:rgba(255,255,255,0.4);font-size:0.85rem;margin-bottom:4px;}
+        .banner-meta{display:flex;gap:16px;margin-top:8px;}
+        .banner-meta span{font-size:0.75rem;color:rgba(255,255,255,0.35);}
+        .badge{padding:3px 10px;border-radius:16px;font-size:0.7rem;font-weight:600;}.badge.active{background:rgba(76,175,80,0.12);color:#4caf50;}.badge.inactive{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.3);}
+        .banner-actions{display:flex;gap:8px;flex-direction:column;}
+        .banner-actions button{padding:8px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.6);cursor:pointer;font-size:0.8rem;transition:all 0.3s;}
+        .banner-actions button:hover{background:rgba(255,255,255,0.06);color:#fff;}
+        .banner-actions .delete-btn:hover{background:rgba(244,67,54,0.12);color:#f44336;}
+        .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;align-items:center;justify-content:center;}.modal-overlay.active{display:flex;}
+        .modal{background:#1a1a2e;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px;width:90%;max-width:500px;position:relative;}
+        .modal h3{color:#fff;margin-bottom:20px;}.modal-close{position:absolute;top:14px;left:14px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:1.3rem;cursor:pointer;}
+        .form-group{margin-bottom:14px;}.form-group label{display:block;color:rgba(255,255,255,0.6);font-size:0.8rem;margin-bottom:6px;}
+        .form-group input,.form-group select{width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#fff;font-size:0.85rem;}.form-group select option{background:#1a1a2e;}
+        .upload-area{border:2px dashed rgba(255,255,255,0.1);border-radius:10px;padding:24px;text-align:center;cursor:pointer;color:rgba(255,255,255,0.3);font-size:0.85rem;}
+        .btn-save{width:100%;padding:10px;background:#f44336;color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;}
+        @media(max-width:768px){.sidebar{display:none;}.main-content{margin-right:0;}.banner-item{flex-direction:column;}.banner-preview{width:100%;}}
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-logo"><h2>&#128737; Admin</h2><small data-i18n="admin_panel">لوحة الإدارة</small></div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><span class="icon">&#127968;</span><span data-i18n="nav_dashboard">لوحة التحكم</span></a>
+            <a href="users.html"><span class="icon">&#128101;</span><span data-i18n="nav_users">المستخدمين</span></a>
+            <a href="sellers.html"><span class="icon">&#127978;</span><span data-i18n="nav_sellers">البائعين</span></a>
+            <a href="products.html"><span class="icon">&#128230;</span><span data-i18n="nav_products">المنتجات</span></a>
+            <a href="orders.html"><span class="icon">&#128196;</span><span data-i18n="nav_orders">الطلبات</span></a>
+            <a href="categories.html"><span class="icon">&#128193;</span><span data-i18n="nav_categories">الفئات</span></a>
+            <a href="reviews.html"><span class="icon">&#11088;</span><span data-i18n="nav_reviews">التقييمات</span></a>
+            <a href="coupons.html"><span class="icon">&#127915;</span><span data-i18n="nav_coupons">الكوبونات</span></a>
+            <a href="flash-deals.html"><span class="icon">&#9889;</span><span data-i18n="nav_flash_deals">عروض سريعة</span></a>
+            <a href="banners.html" class="active"><span class="icon">&#127912;</span><span data-i18n="nav_banners">البانرات</span></a>
+            <a href="settings.html"><span class="icon">&#9881;</span><span data-i18n="nav_settings">الإعدادات</span></a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <div class="top-bar"><h1 data-i18n="manage_banners">إدارة البانرات</h1><button class="btn-primary" onclick="openModal()">+ إضافة بانر</button></div>
+        <div class="banners-grid">
+            <div class="banner-item">
+                <div class="banner-preview">&#127873; تخفيضات الصيف</div>
+                <div class="banner-info">
+                    <h3>تخفيضات الصيف الكبرى</h3>
+                    <p>خصم يصل إلى 50% على جميع المنتجات</p>
+                    <div class="banner-meta"><span>الرابط: /offers/summer</span><span>الموضع: الرئيسية</span><span class="badge active">نشط</span></div>
+                </div>
+                <div class="banner-actions"><button onclick="openModal()">تعديل</button><button class="delete-btn">حذف</button></div>
+            </div>
+            <div class="banner-item">
+                <div class="banner-preview" style="background:linear-gradient(135deg,rgba(33,150,243,0.2),rgba(33,150,243,0.05));">&#128241; عروض Phones</div>
+                <div class="banner-info">
+                    <h3>عروض الهواتف الذكية</h3>
+                    <p>أفضل العروض على أحدث الهواتف</p>
+                    <div class="banner-meta"><span>الرابط: /category/electronics</span><span>الموضع: الرئيسية</span><span class="badge active">نشط</span></div>
+                </div>
+                <div class="banner-actions"><button onclick="openModal()">تعديل</button><button class="delete-btn">حذف</button></div>
+            </div>
+            <div class="banner-item">
+                <div class="banner-preview" style="background:linear-gradient(135deg,rgba(76,175,80,0.2),rgba(76,175,80,0.05));">&#127978; كن بائعاً</div>
+                <div class="banner-info">
+                    <h3>ابدأ بيعك الآن</h3>
+                    <p>انضم لآلاف البائعين على ادم شوب</p>
+                    <div class="banner-meta"><span>الرابط: /become-seller</span><span>الموضع: التذييل</span><span class="badge inactive">غير نشط</span></div>
+                </div>
+                <div class="banner-actions"><button onclick="openModal()">تعديل</button><button class="delete-btn">حذف</button></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="bannerModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">&#10005;</button>
+            <h3>إضافة/تعديل البانر</h3>
+            <form id="bannerForm">
+                <div class="form-group"><label>العنوان</label><input type="text" required></div>
+                <div class="form-group"><label>الوصف</label><input type="text"></div>
+                <div class="form-group"><label>الرابط</label><input type="text" placeholder="/page-or-url"></div>
+                <div class="form-group"><label>الموضع</label><select><option>الرئيسية (أعلى)</option><option>الرئيسية (منتصف)</option><option>الصفحة الجانبية</option><option>التذييل</option></select></div>
+                <div class="form-group"><label>صورة البانر</label><div class="upload-area">اضغط لرفع الصورة (1200x400)</div></div>
+                <button type="submit" class="btn-save">حفظ البانر</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../js/app.js"></script><script src="../../js/i18n.js"></script>
+    <script>
+        function openModal(){document.getElementById('bannerModal').classList.add('active');}
+        function closeModal(){document.getElementById('bannerModal').classList.remove('active');}
+        document.getElementById('bannerModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+        document.getElementById('bannerForm').addEventListener('submit',function(e){e.preventDefault();alert('تم حفظ البانر!');closeModal();});
+    </script>
+</body>
+</html>

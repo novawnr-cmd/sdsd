@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ادم شوب - تعديل المنتج">
+    <title>ادم شوب | تعديل المنتج</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0f0f1a; color: #e0e0e0; display: flex; min-height: 100vh; }
+        .sidebar { width: 260px; background: linear-gradient(180deg, #141428, #1a1a35); border-left: 1px solid rgba(255,255,255,0.06); padding: 24px 0; position: fixed; top: 0; right: 0; bottom: 0; overflow-y: auto; z-index: 100; }
+        .sidebar-logo { text-align: center; padding: 0 20px 28px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .sidebar-logo h2 { font-size: 1.6rem; background: linear-gradient(135deg, #d4af37, #f5d060); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .sidebar-logo small { color: rgba(255,255,255,0.4); font-size: 0.75rem; }
+        .sidebar-nav { padding: 16px 0; }
+        .sidebar-nav a { display: flex; align-items: center; gap: 12px; padding: 12px 24px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: all 0.3s; border-right: 3px solid transparent; }
+        .sidebar-nav a:hover { background: rgba(255,255,255,0.04); color: #fff; }
+        .sidebar-nav a.active { background: rgba(212,175,55,0.1); color: #d4af37; border-right-color: #d4af37; }
+        .sidebar-nav a .icon { font-size: 1.2rem; width: 24px; text-align: center; }
+        .main-content { margin-right: 260px; flex: 1; padding: 24px 32px; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+        .top-bar h1 { font-size: 1.6rem; color: #fff; }
+        .btn-back { padding: 10px 20px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; cursor: pointer; text-decoration: none; font-size: 0.9rem; }
+        .form-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 32px; margin-bottom: 20px; }
+        .form-card h3 { color: #d4af37; font-size: 1.1rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px; font-weight: 500; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; color: #fff; font-size: 0.9rem; transition: all 0.3s; font-family: inherit; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #d4af37; }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+        .form-group select option { background: #1a1a2e; }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .upload-area { border: 2px dashed rgba(212,175,55,0.3); border-radius: 16px; padding: 40px; text-align: center; cursor: pointer; transition: all 0.3s; background: rgba(255,255,255,0.02); }
+        .upload-area:hover { border-color: #d4af37; background: rgba(212,175,55,0.03); }
+        .upload-area .upload-icon { font-size: 3rem; margin-bottom: 12px; }
+        .upload-area p { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+        .upload-area input { display: none; }
+        .current-image { display: inline-block; width: 120px; height: 120px; border-radius: 12px; background: rgba(255,255,255,0.06); margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .gallery-upload { display: flex; gap: 12px; flex-wrap: wrap; }
+        .gallery-thumb { width: 80px; height: 80px; border-radius: 10px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; position: relative; }
+        .gallery-thumb .remove { position: absolute; top: 4px; left: 4px; width: 20px; height: 20px; border-radius: 50%; background: rgba(244,67,54,0.8); color: #fff; border: none; cursor: pointer; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; }
+        .gallery-add { width: 80px; height: 80px; border-radius: 10px; border: 2px dashed rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(255,255,255,0.3); font-size: 1.5rem; }
+        .product-type-selector { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+        .type-option { padding: 16px; border: 2px solid rgba(255,255,255,0.08); border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.3s; }
+        .type-option:hover { border-color: rgba(212,175,55,0.3); }
+        .type-option.selected { border-color: #d4af37; background: rgba(212,175,55,0.08); }
+        .type-option .type-icon { font-size: 1.5rem; margin-bottom: 8px; }
+        .type-option .type-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        .variant-section { display: none; margin-top: 16px; }
+        .variant-section.active { display: block; }
+        .variant-row { display: flex; gap: 12px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+        .variant-row input { padding: 10px 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; font-size: 0.85rem; }
+        .variant-row input:focus { outline: none; border-color: #d4af37; }
+        .btn-remove-variant { padding: 8px 12px; background: rgba(244,67,54,0.1); border: 1px solid rgba(244,67,54,0.2); border-radius: 8px; color: #f44336; cursor: pointer; }
+        .btn-add-variant { padding: 10px 20px; background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; }
+        .btn-add-variant:hover { border-color: #d4af37; color: #d4af37; }
+        .btn-save { padding: 14px 40px; background: linear-gradient(135deg, #d4af37, #b8962e); color: #fff; border: none; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+        .btn-save:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(212,175,55,0.3); }
+        @media(max-width:768px){ .sidebar{display:none;} .main-content{margin-right:0;} .form-row{grid-template-columns:1fr;} }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-logo"><h2>ادم شوب</h2><small data-i18n="seller_panel">لوحة البائع</small></div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><span class="icon">&#127968;</span><span data-i18n="nav_dashboard">لوحة التحكم</span></a>
+            <a href="products.html" class="active"><span class="icon">&#128230;</span><span data-i18n="nav_products">المنتجات</span></a>
+            <a href="orders.html"><span class="icon">&#128196;</span><span data-i18n="nav_orders">الطلبات</span></a>
+            <a href="coupons.html"><span class="icon">&#127915;</span><span data-i18n="nav_coupons">الكوبونات</span></a>
+            <a href="analytics.html"><span class="icon">&#128200;</span><span data-i18n="nav_analytics">التحليلات</span></a>
+            <a href="store-settings.html"><span class="icon">&#9881;</span><span data-i18n="nav_store_settings">إعدادات المتجر</span></a>
+            <a href="subscription.html"><span class="icon">&#128179;</span><span data-i18n="nav_subscription">الاشتراك</span></a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="top-bar">
+            <h1 data-i18n="edit_product">تعديل المنتج</h1>
+            <a href="products.html" class="btn-back" data-i18n="back_to_products">العودة للمنتجات</a>
+        </div>
+
+        <form id="editProductForm">
+            <div class="form-card">
+                <h3 data-i18n="product_images">صور المنتج</h3>
+                <div class="form-group">
+                    <label data-i18n="main_image">الصورة الرئيسية</label>
+                    <div class="current-image">&#128241;</div>
+                    <div class="upload-area" id="mainImageUpload">
+                        <div class="upload-icon">&#128247;</div>
+                        <p data-i18n="change_image">اضغط لتغيير الصورة الرئيسية</p>
+                        <input type="file" accept="image/*" id="mainImageInput">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="gallery_images">صور المعرض</label>
+                    <div class="gallery-upload" id="galleryUpload">
+                        <div class="gallery-thumb"><span>&#128241;</span><button type="button" class="remove">&#10005;</button></div>
+                        <div class="gallery-thumb"><span>&#128241;</span><button type="button" class="remove">&#10005;</button></div>
+                        <div class="gallery-add" id="galleryAddBtn">+</div>
+                        <input type="file" accept="image/*" id="galleryInput" multiple style="display:none;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-card">
+                <h3 data-i18n="product_info">معلومات المنتج</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="product_name_ar">اسم المنتج (عربي)</label>
+                        <input type="text" value="هاتف ذكي Samsung Galaxy S24" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="product_name_en">اسم المنتج (إنجليزي)</label>
+                        <input type="text" value="Samsung Galaxy S24 Smartphone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="description_ar">الوصف (عربي)</label>
+                        <textarea>هاتف ذكي من سامسونج بمواصفات عالية، شاشة AMOLED، كاميرا متطورة، بطارية تدوم طويلاً.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="description_en">الوصف (إنجليزي)</label>
+                        <textarea>Samsung smartphone with high specs, AMOLED display, advanced camera, long-lasting battery.</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-card">
+                <h3 data-i18n="pricing_inventory">التسعير والمخزون</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="price">السعر (LYD)</label>
+                        <input type="number" min="0" step="0.01" value="1250" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="category">الفئة</label>
+                        <select required>
+                            <option value="electronics" data-i18n="electronics" selected>إلكترونيات</option>
+                            <option data-i18n="fashion">أزياء</option>
+                            <option data-i18n="home">المنزل</option>
+                            <option data-i18n="beauty">الجمال</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="stock_quantity">كمية المخزون</label>
+                    <input type="number" min="0" value="24" required style="max-width:200px;">
+                </div>
+            </div>
+
+            <div class="form-card">
+                <h3 data-i18n="product_type">نوع المنتج</h3>
+                <div class="product-type-selector">
+                    <div class="type-option selected" onclick="selectType(this, 'simple')">
+                        <div class="type-icon">&#128196;</div>
+                        <div class="type-label" data-i18n="simple_product">منتج بسيط</div>
+                    </div>
+                    <div class="type-option" onclick="selectType(this, 'colors')">
+                        <div class="type-icon">&#127912;</div>
+                        <div class="type-label" data-i18n="colors_only">ألوان فقط</div>
+                    </div>
+                    <div class="type-option" onclick="selectType(this, 'sizes')">
+                        <div class="type-icon">&#128207;</div>
+                        <div class="type-label" data-i18n="sizes_only">أحجام فقط</div>
+                    </div>
+                    <div class="type-option" onclick="selectType(this, 'both')">
+                        <div class="type-icon">&#127752;</div>
+                        <div class="type-label" data-i18n="colors_sizes">ألوان + أحجام</div>
+                    </div>
+                </div>
+
+                <div class="variant-section" id="colorsSection">
+                    <label style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin-bottom:8px;display:block;" data-i18n="colors_variants">الألوان</label>
+                    <div id="colorsList">
+                        <div class="variant-row">
+                            <input type="text" value="أسود" placeholder="اسم اللون" style="max-width:200px;">
+                            <input type="text" value="#000000" placeholder="#FFF" style="max-width:100px;">
+                            <input type="number" value="1250" placeholder="السعر" style="max-width:120px;">
+                            <input type="number" value="10" placeholder="المخزون" style="max-width:100px;">
+                            <button type="button" class="btn-remove-variant" onclick="this.parentElement.remove()">&#10005;</button>
+                        </div>
+                        <div class="variant-row">
+                            <input type="text" value="أبيض" placeholder="اسم اللون" style="max-width:200px;">
+                            <input type="text" value="#FFFFFF" placeholder="#FFF" style="max-width:100px;">
+                            <input type="number" value="1250" placeholder="السعر" style="max-width:120px;">
+                            <input type="number" value="14" placeholder="المخزون" style="max-width:100px;">
+                            <button type="button" class="btn-remove-variant" onclick="this.parentElement.remove()">&#10005;</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add-variant" onclick="addVariant('colorsList', 'اسم اللون')" data-i18n="add_color">+ إضافة لون</button>
+                </div>
+
+                <div class="variant-section" id="sizesSection">
+                    <label style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin-bottom:8px;display:block;" data-i18n="sizes_variants">الأحجام</label>
+                    <div id="sizesList">
+                        <div class="variant-row">
+                            <input type="text" placeholder="اسم الحجم" style="max-width:200px;">
+                            <input type="number" step="0.01" placeholder="السعر" style="max-width:120px;">
+                            <input type="number" placeholder="المخزون" style="max-width:100px;">
+                            <button type="button" class="btn-remove-variant" onclick="this.parentElement.remove()">&#10005;</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add-variant" onclick="addVariant('sizesList', 'اسم الحجم')" data-i18n="add_size">+ إضافة حجم</button>
+                </div>
+
+                <div class="variant-section" id="matrixSection">
+                    <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;" data-i18n="matrix_info">أضف الألوان والأحجام من القسمين أعلاه لإنشاء المصفوفة</p>
+                </div>
+            </div>
+
+            <div style="text-align:center;margin-top:20px;display:flex;gap:12px;justify-content:center;">
+                <button type="submit" class="btn-save" data-i18n="save_changes">حفظ التغييرات</button>
+                <button type="button" class="btn-back" onclick="window.location.href='products.html'" data-i18n="cancel">إلغاء</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../../js/app.js"></script>
+    <script src="../../js/i18n.js"></script>
+    <script>
+        function selectType(el, type) {
+            document.querySelectorAll('.type-option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById('colorsSection').classList.toggle('active', type === 'colors' || type === 'both');
+            document.getElementById('sizesSection').classList.toggle('active', type === 'sizes' || type === 'both');
+            document.getElementById('matrixSection').classList.toggle('active', type === 'both');
+        }
+
+        function addVariant(listId, placeholder) {
+            const html = '<div class="variant-row"><input type="text" placeholder="' + placeholder + '" style="max-width:200px;"><input type="number" step="0.01" placeholder="السعر" style="max-width:120px;"><input type="number" placeholder="المخزون" style="max-width:100px;"><button type="button" class="btn-remove-variant" onclick="this.parentElement.remove()">&#10005;</button></div>';
+            document.getElementById(listId).insertAdjacentHTML('beforeend', html);
+        }
+
+        document.getElementById('mainImageUpload').addEventListener('click', function() { document.getElementById('mainImageInput').click(); });
+        document.getElementById('galleryAddBtn').addEventListener('click', function() { document.getElementById('galleryInput').click(); });
+
+        document.getElementById('editProductForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم حفظ التغييرات بنجاح!');
+            window.location.href = 'products.html';
+        });
+    </script>
+</body>
+</html>

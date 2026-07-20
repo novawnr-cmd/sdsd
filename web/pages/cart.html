@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="سلة التسوق - ادم شوب">
+  <title>سلة التسوق | ادم شوب</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- reCAPTCHA Gate -->
+<div class="recaptcha-gate" id="recaptchaGate">
+  <div class="recaptcha-box">
+    <div class="recaptcha-logo">🛡️</div>
+    <h2 data-i18n="captcha.title">ادم شوب</h2>
+    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت</p>
+    <div class="recaptcha-widget">
+      <label class="recaptcha-checkbox">
+        <input type="checkbox" id="recaptchaCheck">
+        <span class="checkmark"></span>
+        <span data-i18n="captcha.label">لست روبوت</span>
+      </label>
+    </div>
+    <button class="btn btn-primary" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق</button>
+  </div>
+</div>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="../index.html" class="navbar-logo"><span class="logo-gold">ادم شوب</span></a>
+    <nav class="navbar-links" id="navLinks">
+      <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+      <a href="categories.html" data-i18n="nav.categories">الأقسام</a>
+      <a href="products.html" data-i18n="nav.products">المنتجات</a>
+    </nav>
+    <div class="navbar-search">
+      <input type="text" class="search-input" id="navSearch" data-i18n-placeholder="nav.search" placeholder="ابحث عن منتج...">
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
+    <div class="navbar-actions">
+      <button class="btn-icon" id="langToggle" title="EN">EN</button>
+      <button class="btn-icon" id="themeToggle" title="Theme">🌙</button>
+      <a href="wishlist.html" class="btn-icon">
+        <span class="icon-heart"></span>
+        <span class="badge badge-danger" id="wishlistCount" style="display:none">0</span>
+      </a>
+      <a href="cart.html" class="btn-icon active">
+        <span class="icon-cart"></span>
+        <span class="badge badge-gold" id="cartCount">3</span>
+      </a>
+      <div class="user-dropdown" id="userDropdown">
+        <button class="btn-icon" id="userBtn"><span class="icon-user"></span></button>
+        <div class="dropdown-menu" id="userMenu"></div>
+      </div>
+    </div>
+    <button class="navbar-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+    <a href="categories.html" data-i18n="nav.categories">الأقسام</a>
+    <a href="products.html" data-i18n="nav.products">المنتجات</a>
+    <a href="cart.html" data-i18n="nav.cart">السلة</a>
+    <a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a>
+    <a href="orders.html" data-i18n="nav.orders">طلباتي</a>
+  </div>
+</header>
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+    <span class="separator">/</span>
+    <span data-i18n="nav.cart">سلة التسوق</span>
+  </div>
+</div>
+
+<!-- Cart Section -->
+<section class="section cart-section">
+  <div class="container">
+    <h1 class="page-title" data-i18n="cart.title">سلة التسوق</h1>
+    <p class="page-subtitle" id="cartSubtitle">3 <span data-i18n="cart.items">منتجات في السلة</span></p>
+
+    <div class="cart-layout">
+      <!-- Cart Items -->
+      <div class="cart-items" id="cartItems">
+
+        <!-- Cart Item 1 -->
+        <div class="cart-item" data-id="1">
+          <div class="cart-item-image">
+            <a href="product.html?id=1">
+              <img src="https://placehold.co/120x120/1a1a2e/ffffff?text=Phone" alt="هاتف ذكي برو">
+            </a>
+          </div>
+          <div class="cart-item-info">
+            <h3 class="cart-item-name"><a href="product.html?id=1">هاتف ذكي برو</a></h3>
+            <div class="cart-item-meta">
+              <span class="cart-item-variant"><span data-i18n="cart.color">اللون:</span> أسود منتصف الليل</span>
+              <span class="cart-item-variant"><span data-i18n="cart.storage">السعة:</span> 128 جيجا</span>
+            </div>
+            <div class="cart-item-seller"><span data-i18n="cart.seller">البائع:</span> متجر التقنية</div>
+            <div class="cart-item-stock in-stock" data-i18n="cart.inStock">متوفر</div>
+          </div>
+          <div class="cart-item-qty">
+            <div class="quantity-selector">
+              <button class="qty-btn qty-minus" aria-label="Decrease">−</button>
+              <input type="number" class="qty-input" value="1" min="1" max="10">
+              <button class="qty-btn qty-plus" aria-label="Increase">+</button>
+            </div>
+          </div>
+          <div class="cart-item-price">
+            <span class="price-current">2,499 ر.س</span>
+          </div>
+          <button class="cart-item-remove" data-i18n="cart.remove" aria-label="Remove">✕</button>
+        </div>
+
+        <!-- Cart Item 2 -->
+        <div class="cart-item" data-id="10">
+          <div class="cart-item-image">
+            <a href="product.html?id=10">
+              <img src="https://placehold.co/120x120/16213e/ffffff?text=Headphones" alt="سماعات لاسلكية">
+            </a>
+          </div>
+          <div class="cart-item-info">
+            <h3 class="cart-item-name"><a href="product.html?id=10">سماعات لاسلكية</a></h3>
+            <div class="cart-item-meta">
+              <span class="cart-item-variant"><span data-i18n="cart.color">اللون:</span> أبيض</span>
+            </div>
+            <div class="cart-item-seller"><span data-i18n="cart.seller">البائع:</span> عالم الصوت</div>
+            <div class="cart-item-stock in-stock" data-i18n="cart.inStock">متوفر</div>
+          </div>
+          <div class="cart-item-qty">
+            <div class="quantity-selector">
+              <button class="qty-btn qty-minus" aria-label="Decrease">−</button>
+              <input type="number" class="qty-input" value="2" min="1" max="10">
+              <button class="qty-btn qty-plus" aria-label="Increase">+</button>
+            </div>
+          </div>
+          <div class="cart-item-price">
+            <span class="price-current">298 ر.س</span>
+            <span class="price-old">538 ر.س</span>
+          </div>
+          <button class="cart-item-remove" data-i18n="cart.remove" aria-label="Remove">✕</button>
+        </div>
+
+        <!-- Cart Item 3 -->
+        <div class="cart-item" data-id="11">
+          <div class="cart-item-image">
+            <a href="product.html?id=11">
+              <img src="https://placehold.co/120x120/0f3460/ffffff?text=Bag" alt="حقيبة ظهر جلد">
+            </a>
+          </div>
+          <div class="cart-item-info">
+            <h3 class="cart-item-name"><a href="product.html?id=11">حقيبة ظهر جلد</a></h3>
+            <div class="cart-item-meta">
+              <span class="cart-item-variant"><span data-i18n="cart.color">اللون:</span> بني</span>
+            </div>
+            <div class="cart-item-seller"><span data-i18n="cart.seller">البائع:</span> أزياء ستايل</div>
+            <div class="cart-item-stock low-stock" data-i18n="cart.lowStock">متبقي 2 فقط!</div>
+          </div>
+          <div class="cart-item-qty">
+            <div class="quantity-selector">
+              <button class="qty-btn qty-minus" aria-label="Decrease">−</button>
+              <input type="number" class="qty-input" value="1" min="1" max="10">
+              <button class="qty-btn qty-plus" aria-label="Increase">+</button>
+            </div>
+          </div>
+          <div class="cart-item-price">
+            <span class="price-current">299 ر.س</span>
+          </div>
+          <button class="cart-item-remove" data-i18n="cart.remove" aria-label="Remove">✕</button>
+        </div>
+      </div>
+
+      <!-- Cart Empty State (hidden) -->
+      <div class="cart-empty" id="cartEmpty" style="display:none;">
+        <div class="empty-icon">🛒</div>
+        <h2 data-i18n="cart.emptyTitle">سلتك فارغة</h2>
+        <p data-i18n="cart.emptyDesc">لم تضف أي منتجات بعد. ابدأ التسوق الآن!</p>
+        <a href="products.html" class="btn btn-primary btn-lg" data-i18n="cart.startShopping">ابدأ التسوق</a>
+      </div>
+
+      <!-- Cart Summary -->
+      <div class="cart-summary" id="cartSummary">
+        <h3 data-i18n="cart.summary">ملخص الطلب</h3>
+
+        <div class="summary-row">
+          <span data-i18n="cart.subtotal">المجموع الفرعي</span>
+          <span id="subtotal">3,096 ر.س</span>
+        </div>
+        <div class="summary-row">
+          <span data-i18n="cart.shipping">الشحن</span>
+          <span class="text-success" data-i18n="cart.freeShipping">مجاني</span>
+        </div>
+        <div class="summary-row">
+          <span data-i18n="cart.discount">الخصم</span>
+          <span class="text-danger" id="discountAmount">-0 ر.س</span>
+        </div>
+        <div class="summary-row">
+          <span data-i18n="cart.tax">الضريبة (15%)</span>
+          <span id="taxAmount">464 ر.س</span>
+        </div>
+        <div class="summary-total">
+          <span data-i18n="cart.total">الإجمالي</span>
+          <span id="totalAmount" class="total-price">3,560 ر.س</span>
+        </div>
+
+        <!-- Coupon -->
+        <div class="coupon-section">
+          <h4 data-i18n="cart.couponTitle">كود الخصم</h4>
+          <div class="coupon-input-group">
+            <input type="text" class="form-input coupon-input" id="couponInput" data-i18n-placeholder="cart.couponPlaceholder" placeholder="أدخل كود الخصم">
+            <button class="btn btn-outline btn-apply-coupon" id="applyCoupon" data-i18n="cart.applyCoupon">تطبيق</button>
+          </div>
+          <div class="coupon-message" id="couponMessage"></div>
+        </div>
+
+        <!-- Savings Note -->
+        <div class="savings-note" id="savingsNote">
+          <span>🎉</span> <span data-i18n="cart.savingsNote">وفّرت 240 ر.س من هذا الطلب!</span>
+        </div>
+
+        <a href="checkout.html" class="btn btn-primary btn-block btn-checkout" id="checkoutBtn" data-i18n="cart.checkout">إتمام الشراء</a>
+        <a href="products.html" class="btn btn-outline btn-block" data-i18n="cart.continueShopping">متابعة التسوق</a>
+
+        <!-- Payment Methods -->
+        <div class="payment-methods">
+          <p data-i18n="cart.paymentMethods">طرق الدفع المقبولة:</p>
+          <div class="payment-icons">
+            <span title="Visa">💳</span>
+            <span title="Mastercard">💳</span>
+            <span title="Apple Pay">🍎</span>
+            <span title="Mada">💳</span>
+            <span title="Cash on Delivery">💵</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="footer-logo"><span class="logo-gold">ادم شوب</span></a>
+        <p data-i18n="footer.about">ادم شوب هو سوق إلكتروني متعدد البائعين.</p>
+        <div class="footer-social">
+          <a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📸</a><a href="#" class="social-icon">📺</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.quickLinks">روابط سريعة</h3>
+        <ul>
+          <li><a href="categories.html" data-i18n="nav.categories">الأقسام</a></li>
+          <li><a href="products.html" data-i18n="nav.products">المنتجات</a></li>
+          <li><a href="orders.html" data-i18n="nav.orders">طلباتي</a></li>
+          <li><a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.categories">الأقسام</h3>
+        <ul>
+          <li><a href="category.html?id=electronics" data-i18n="cat.electronics">الإلكترونيات</a></li>
+          <li><a href="category.html?id=fashion" data-i18n="cat.fashion">الأزياء</a></li>
+          <li><a href="category.html?id=home" data-i18n="cat.home">المنزل والمطبخ</a></li>
+          <li><a href="category.html?id=beauty" data-i18n="cat.beauty">الجمال والعناية</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.contact">تواصل معنا</h3>
+        <ul class="contact-list">
+          <li><span>📍</span> <span data-i18n="footer.address">الرياض، المملكة العربية السعودية</span></li>
+          <li><span>📞</span> <span data-i18n="footer.phone">+966 50 123 4567</span></li>
+          <li><span>✉️</span> <span data-i18n="footer.email">info@adamshop.com</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer.copyright">© 2026 ادم شوب. جميع الحقوق محفوظة.</p>
+      <div class="footer-payments"><span>💳</span><span>💳</span><span>🍎</span><span>💳</span><span>💵</span></div>
+    </div>
+  </div>
+  <button class="back-to-top" id="backToTop">↑</button>
+</footer>
+
+<script src="../js/utils.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/cart.js"></script>
+</body>
+</html>

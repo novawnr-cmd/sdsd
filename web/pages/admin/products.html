@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ادم شوب - إدارة المنتجات">
+    <title>ادم شوب | إدارة المنتجات</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0a0a12;color:#e0e0e0;display:flex;min-height:100vh;}
+        .sidebar{width:260px;background:linear-gradient(180deg,#0d0d1a,#141428);border-left:1px solid rgba(255,255,255,0.06);padding:24px 0;position:fixed;top:0;right:0;bottom:0;overflow-y:auto;z-index:100;}
+        .sidebar-logo{text-align:center;padding:0 20px 28px;border-bottom:1px solid rgba(255,255,255,0.06);}.sidebar-logo h2{font-size:1.5rem;color:#f44336;font-weight:800;}.sidebar-logo small{color:rgba(255,255,255,0.3);font-size:0.7rem;}
+        .sidebar-nav{padding:16px 0;}.sidebar-nav a{display:flex;align-items:center;gap:12px;padding:11px 24px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;transition:all 0.3s;border-right:3px solid transparent;}.sidebar-nav a:hover{background:rgba(255,255,255,0.03);color:#fff;}.sidebar-nav a.active{background:rgba(244,67,54,0.08);color:#f44336;border-right-color:#f44336;}.sidebar-nav a .icon{font-size:1.1rem;width:22px;text-align:center;}
+        .main-content{margin-right:260px;flex:1;padding:24px 32px;}
+        .top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}.top-bar h1{font-size:1.5rem;color:#fff;}
+        .filters-bar{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
+        .search-box{flex:1;min-width:200px;}.search-box input{width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#fff;font-size:0.85rem;}.search-box input:focus{outline:none;border-color:#f44336;}
+        .filter-select{padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#fff;font-size:0.85rem;}.filter-select option{background:#1a1a2e;}
+        .card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:14px;padding:24px;}
+        table{width:100%;border-collapse:collapse;}
+        th{text-align:right;padding:10px 14px;color:rgba(255,255,255,0.35);font-size:0.75rem;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.05);}
+        td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.03);font-size:0.85rem;}
+        .product-img{width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.06);display:inline-flex;align-items:center;justify-content:center;font-size:1.2rem;}
+        .badge{padding:3px 10px;border-radius:16px;font-size:0.7rem;font-weight:600;}.badge.active{background:rgba(76,175,80,0.12);color:#4caf50;}.badge.paused{background:rgba(255,152,0,0.12);color:#ff9800;}.badge.violation{background:rgba(244,67,54,0.12);color:#f44336;}
+        .actions{display:flex;gap:6px;}.btn-icon{width:32px;height:32px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.5);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;font-size:0.8rem;}.btn-icon:hover{background:rgba(255,255,255,0.06);color:#fff;}.btn-icon.delete:hover{background:rgba(244,67,54,0.12);color:#f44336;}
+        .pagination{display:flex;justify-content:center;gap:6px;margin-top:16px;}.pagination button{padding:7px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.5);cursor:pointer;font-size:0.8rem;}.pagination button.active{background:#f44336;color:#fff;border-color:#f44336;}
+        @media(max-width:768px){.sidebar{display:none;}.main-content{margin-right:0;}}
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-logo"><h2>&#128737; Admin</h2><small data-i18n="admin_panel">لوحة الإدارة</small></div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><span class="icon">&#127968;</span><span data-i18n="nav_dashboard">لوحة التحكم</span></a>
+            <a href="users.html"><span class="icon">&#128101;</span><span data-i18n="nav_users">المستخدمين</span></a>
+            <a href="sellers.html"><span class="icon">&#127978;</span><span data-i18n="nav_sellers">البائعين</span></a>
+            <a href="products.html" class="active"><span class="icon">&#128230;</span><span data-i18n="nav_products">المنتجات</span></a>
+            <a href="orders.html"><span class="icon">&#128196;</span><span data-i18n="nav_orders">الطلبات</span></a>
+            <a href="categories.html"><span class="icon">&#128193;</span><span data-i18n="nav_categories">الفئات</span></a>
+            <a href="reviews.html"><span class="icon">&#11088;</span><span data-i18n="nav_reviews">التقييمات</span></a>
+            <a href="coupons.html"><span class="icon">&#127915;</span><span data-i18n="nav_coupons">الكوبونات</span></a>
+            <a href="flash-deals.html"><span class="icon">&#9889;</span><span data-i18n="nav_flash_deals">عروض سريعة</span></a>
+            <a href="banners.html"><span class="icon">&#127912;</span><span data-i18n="nav_banners">البانرات</span></a>
+            <a href="settings.html"><span class="icon">&#9881;</span><span data-i18n="nav_settings">الإعدادات</span></a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <div class="top-bar"><h1 data-i18n="manage_products">إدارة المنتجات</h1></div>
+        <div class="filters-bar">
+            <div class="search-box"><input type="text" data-i18n-placeholder="search_products" placeholder="بحث عن منتج..."></div>
+            <select class="filter-select"><option value="" data-i18n="all_statuses">جميع الحالات</option><option data-i18n="active">نشط</option><option data-i18n="paused">متوقف</option><option data-i18n="violation">مخالفة</option></select>
+            <select class="filter-select"><option value="" data-i18n="all_categories">جميع الفئات</option><option>إلكترونيات</option><option>أزياء</option><option>المنزل</option></select>
+        </div>
+        <div class="card">
+            <table>
+                <thead><tr><th data-i18n="image">صورة</th><th data-i18n="product_name">المنتج</th><th data-i18n="store_name">المتجر</th><th data-i18n="category">الفئة</th><th data-i18n="price">السعر</th><th data-i18n="status">الحالة</th><th data-i18n="actions">الإجراءات</th></tr></thead>
+                <tbody>
+                    <tr><td><div class="product-img">&#128241;</div></td><td>هاتف Samsung Galaxy S24</td><td>متجر أحمد</td><td>إلكترونيات</td><td>1,250 LYD</td><td><span class="badge active">نشط</span></td><td><div class="actions"><button class="btn-icon" title="عرض">&#128065;</button><button class="btn-icon delete" title="حذف">&#128465;</button></div></td></tr>
+                    <tr><td><div class="product-img">&#128085;</div></td><td>سماعة بلوتوث لاسلكية</td><td>سماعات+</td><td>إلكترونيات</td><td>180 LYD</td><td><span class="badge active">نشط</span></td><td><div class="actions"><button class="btn-icon" title="عرض">&#128065;</button><button class="btn-icon delete" title="حذف">&#128465;</button></div></td></tr>
+                    <tr><td><div class="product-img">&#128094;</div></td><td>قميص رجالي كلاسيكي</td><td>أزياء نور</td><td>أزياء</td><td>95 LYD</td><td><span class="badge violation">مخالفة</span></td><td><div class="actions"><button class="btn-icon" title="عرض">&#128065;</button><button class="btn-icon delete" title="حذف">&#128465;</button></div></td></tr>
+                    <tr><td><div class="product-img">&#128247;</div></td><td>كاميرا رقمية Canon</td><td>إلكترونيات سالم</td><td>إلكترونيات</td><td>2,100 LYD</td><td><span class="badge active">نشط</span></td><td><div class="actions"><button class="btn-icon" title="عرض">&#128065;</button><button class="btn-icon delete" title="حذف">&#128465;</button></div></td></tr>
+                </tbody>
+            </table>
+            <div class="pagination"><button>&#8594;</button><button class="active">1</button><button>2</button><button>3</button><button>&#8592;</button></div>
+        </div>
+    </main>
+    <script src="../../js/app.js"></script><script src="../../js/i18n.js"></script>
+</body>
+</html>

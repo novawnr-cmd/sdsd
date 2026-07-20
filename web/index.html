@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ادم شوب - سوق إلكتروني متعدد البائعين. اكتشف أفضل المنتجات بأسعار مميزة.">
+  <meta name="keywords" content="تسوق, متجر إلكتروني, منتجات, عروض, ادم شوب">
+  <title>ادم شوب | الرئيسية</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- reCAPTCHA Gate -->
+<div class="recaptcha-gate" id="recaptchaGate">
+  <div class="recaptcha-box">
+    <div class="recaptcha-logo">🛡️</div>
+    <h2 data-i18n="captcha.title">ادم شوب</h2>
+    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت</p>
+    <div class="recaptcha-widget">
+      <label class="recaptcha-checkbox">
+        <input type="checkbox" id="recaptchaCheck">
+        <span class="checkmark"></span>
+        <span data-i18n="captcha.label">لست روبوت</span>
+      </label>
+    </div>
+    <button class="btn btn-primary" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق</button>
+  </div>
+</div>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <span class="logo-gold">ادم شوب</span>
+    </a>
+    <nav class="navbar-links" id="navLinks">
+      <a href="index.html" class="active" data-i18n="nav.home">الرئيسية</a>
+      <a href="pages/categories.html" data-i18n="nav.categories">الأقسام</a>
+      <a href="pages/products.html" data-i18n="nav.products">المنتجات</a>
+    </nav>
+    <div class="navbar-search">
+      <input type="text" class="search-input" id="navSearch" data-i18n-placeholder="nav.search" placeholder="ابحث عن منتج...">
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
+    <div class="navbar-actions">
+      <button class="btn-icon" id="langToggle" title="EN">EN</button>
+      <button class="btn-icon" id="themeToggle" title="Theme">🌙</button>
+      <a href="pages/wishlist.html" class="btn-icon">
+        <span class="icon-heart"></span>
+        <span class="badge badge-danger" id="wishlistCount" style="display:none">0</span>
+      </a>
+      <a href="pages/cart.html" class="btn-icon">
+        <span class="icon-cart"></span>
+        <span class="badge badge-gold" id="cartCount">0</span>
+      </a>
+      <div class="user-dropdown" id="userDropdown">
+        <button class="btn-icon" id="userBtn"><span class="icon-user"></span></button>
+        <div class="dropdown-menu" id="userMenu"></div>
+      </div>
+    </div>
+    <button class="navbar-hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-i18n="nav.home">الرئيسية</a>
+    <a href="pages/categories.html" data-i18n="nav.categories">الأقسام</a>
+    <a href="pages/products.html" data-i18n="nav.products">المنتجات</a>
+    <a href="pages/cart.html" data-i18n="nav.cart">السلة</a>
+    <a href="pages/wishlist.html" data-i18n="nav.wishlist">المفضلة</a>
+    <a href="pages/orders.html" data-i18n="nav.orders">طلباتي</a>
+  </div>
+</header>
+
+<!-- Hero Banner Slider -->
+<section class="hero-slider" id="heroSlider">
+  <div class="slider-track" id="sliderTrack">
+    <div class="slide active" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+      <div class="container slide-content">
+        <span class="slide-badge" data-i18n="hero.badge1">عرض خاص</span>
+        <h1 data-i18n="hero.title1">تخفيضات حصرية <span class="text-gold">حتى 70%</span></h1>
+        <p data-i18n="hero.desc1">اكتشف أقوى العروض على آلاف المنتجات. سارع بالتسوق قبل انتهاء العرض!</p>
+        <div class="slide-actions">
+          <a href="pages/products.html" class="btn btn-primary btn-lg" data-i18n="hero.shopNow">تسوق الآن</a>
+          <a href="pages/categories.html" class="btn btn-outline btn-lg" data-i18n="hero.viewAll">تصفح الأقسام</a>
+        </div>
+      </div>
+    </div>
+    <div class="slide" style="background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);">
+      <div class="container slide-content">
+        <span class="slide-badge" data-i18n="hero.badge2">وصل حديثاً</span>
+        <h1 data-i18n="hero.title2">أحدث صيحات <span class="text-gold">الموضة</span></h1>
+        <p data-i18n="hero.desc2">مجموعة رائعة من أحدث صيحات الموضة العالمية. جودة عالية بأسعار منافسة.</p>
+        <div class="slide-actions">
+          <a href="pages/products.html" class="btn btn-primary btn-lg" data-i18n="hero.shopNow">تسوق الآن</a>
+          <a href="pages/categories.html" class="btn btn-outline btn-lg" data-i18n="hero.explore">استكشف</a>
+        </div>
+      </div>
+    </div>
+    <div class="slide" style="background: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);">
+      <div class="container slide-content">
+        <span class="slide-badge" data-i18n="hero.badge3">توصيل مجاني</span>
+        <h1 data-i18n="hero.title3">شحن مجاني <span class="text-gold">لجميع الطلبات</span></h1>
+        <p data-i18n="hero.desc3">استمتع بالتوصيل المجاني لجميع مشترياتك. لا رسوم خفية!</p>
+        <div class="slide-actions">
+          <a href="pages/products.html" class="btn btn-primary btn-lg" data-i18n="hero.shopNow">تسوق الآن</a>
+          <a href="pages/products.html" class="btn btn-outline btn-lg" data-i18n="hero.learnMore">اعرف المزيد</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="slider-arrow slider-prev" id="sliderPrev">&#10095;</button>
+  <button class="slider-arrow slider-next" id="sliderNext">&#10094;</button>
+  <div class="slider-dots" id="sliderDots">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot" data-index="1"></span>
+    <span class="dot" data-index="2"></span>
+  </div>
+</section>
+
+<!-- Features Bar -->
+<section class="features-bar">
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-item">
+        <span class="feature-icon">🚚</span>
+        <div>
+          <h4 data-i18n="features.shipping">توصيل مجاني</h4>
+          <p data-i18n="features.shippingDesc">للطلبات فوق 200 ر.س</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🔄</span>
+        <div>
+          <h4 data-i18n="features.returns">إرجاع سهل</h4>
+          <p data-i18n="features.returnsDesc">خلال 30 يوم</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🔒</span>
+        <div>
+          <h4 data-i18n="features.secure">دفع آمن</h4>
+          <p data-i18n="features.secureDesc">حماية كاملة لبياناتك</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">💬</span>
+        <div>
+          <h4 data-i18n="features.support">دعم 24/7</h4>
+          <p data-i18n="features.supportDesc">فريق دعم متواصل</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories Grid -->
+<section class="section" id="categoriesSection">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title" data-i18n="home.categories">الأقسام الرئيسية</h2>
+      <a href="pages/categories.html" class="section-link" data-i18n="home.viewAll">عرض الكل ←</a>
+    </div>
+    <div class="categories-grid">
+      <a href="pages/category.html?id=electronics" class="category-card">
+        <div class="category-icon">💻</div>
+        <h3 data-i18n="cat.electronics">الإلكترونيات</h3>
+        <span class="category-count">245 <span data-i18n="cat.product">منتج</span></span>
+      </a>
+      <a href="pages/category.html?id=fashion" class="category-card">
+        <div class="category-icon">👗</div>
+        <h3 data-i18n="cat.fashion">الأزياء</h3>
+        <span class="category-count">532 <span data-i18n="cat.product">منتج</span></span>
+      </a>
+      <a href="pages/category.html?id=home" class="category-card">
+        <div class="category-icon">🏠</div>
+        <h3 data-i18n="cat.home">المنزل والمطبخ</h3>
+        <span class="category-count">189 <span data-i18n="cat.product">منتج</span></span>
+      </a>
+      <a href="pages/category.html?id=beauty" class="category-card">
+        <div class="category-icon">💄</div>
+        <h3 data-i18n="cat.beauty">الجمال والعناية</h3>
+        <span class="category-count">312 <span data-i18n="cat.product">منتج</span></span>
+      </a>
+      <a href="pages/category.html?id=sports" class="category-card">
+        <div class="category-icon">⚽</div>
+        <h3 data-i18n="cat.sports">الرياضة</h3>
+        <span class="category-count">176 <span data-i18n="cat.product">منتج</span></span>
+      </a>
+      <a href="pages/category.html?id=books" class="category-card">
+        <div class="category-icon">📚</div>
+        <h3 data-i18n="cat.books">الكتب</h3>
+        <span class="category-count">421 <span data-i18n="cat.product">منتج</span></span>
+      </a>
+      <a href="pages/category.html?id=automotive" class="category-card">
+        <div class="category-icon">🚗</div>
+        <h3 data-i18n="cat.automotive">السيارات</h3>
+        <span class="category-count">98 <span data-i18n="cat.product">منتج</span></span>
+      </a>
+      <a href="pages/category.html?id=kids" class="category-card">
+        <div class="category-icon">🧸</div>
+        <h3 data-i18n="cat.kids">الأطفال</h3>
+        <span class="category-count">267 <span data-i18n="cat.product">منتج</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Flash Deals -->
+<section class="section section-deals" id="flashDeals">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title" data-i18n="home.flashDeals">🔥 عروض خاطفة</h2>
+        <div class="countdown" id="flashCountdown">
+          <span class="countdown-item"><span id="cdHours">08</span><small data-i18n="time.hours">ساعة</small></span>
+          <span class="countdown-sep">:</span>
+          <span class="countdown-item"><span id="cdMinutes">45</span><small data-i18n="time.minutes">دقيقة</small></span>
+          <span class="countdown-sep">:</span>
+          <span class="countdown-item"><span id="cdSeconds">30</span><small data-i18n="time.seconds">ثانية</small></span>
+        </div>
+      </div>
+      <a href="pages/products.html?sort=deals" class="section-link" data-i18n="home.viewAll">عرض الكل ←</a>
+    </div>
+    <div class="products-scroll" id="flashDealsScroll">
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-45%</span>
+          <img src="https://placehold.co/300x300/1a1a2e/ffffff?text=Headphones" alt="سماعات لاسلكية" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn" data-i18n-aria="wishlist.add">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name" data-i18n="product.wirelessHeadphones">سماعات لاسلكية</h4>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-count">(128)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">149 ر.س</span>
+            <span class="price-old">269 ر.س</span>
+          </div>
+          <div class="deal-progress">
+            <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
+            <span data-i18n="deal.sold">بيع 72%</span>
+          </div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-30%</span>
+          <img src="https://placehold.co/300x300/16213e/ffffff?text=Watch" alt="ساعة ذكية" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn" data-i18n-aria="wishlist.add">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name" data-i18n="product.smartWatch">ساعة ذكية</h4>
+          <div class="product-rating">
+            <span class="stars">★★★★☆</span>
+            <span class="rating-count">(89)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">349 ر.س</span>
+            <span class="price-old">499 ر.س</span>
+          </div>
+          <div class="deal-progress">
+            <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
+            <span data-i18n="deal.sold">بيع 55%</span>
+          </div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-60%</span>
+          <img src="https://placehold.co/300x300/0f3460/ffffff?text=Sneakers" alt="حذاء رياضي" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn" data-i18n-aria="wishlist.add">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name" data-i18n="product.sneakers">حذاء رياضي</h4>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-count">(256)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">199 ر.س</span>
+            <span class="price-old">499 ر.س</span>
+          </div>
+          <div class="deal-progress">
+            <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+            <span data-i18n="deal.sold">بيع 88%</span>
+          </div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-25%</span>
+          <img src="https://placehold.co/300x300/2d1b69/ffffff?text=Bag" alt="حقيبة ظهر" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn" data-i18n-aria="wishlist.add">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name" data-i18n="product.backpack">حقيبة ظهر</h4>
+          <div class="product-rating">
+            <span class="stars">★★★★☆</span>
+            <span class="rating-count">(67)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">129 ر.س</span>
+            <span class="price-old">172 ر.س</span>
+          </div>
+          <div class="deal-progress">
+            <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+            <span data-i18n="deal.sold">بيع 40%</span>
+          </div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-50%</span>
+          <img src="https://placehold.co/300x300/11998e/ffffff?text=Camera" alt="كاميرا" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn" data-i18n-aria="wishlist.add">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name" data-i18n="product.camera">كاميرا رقمية</h4>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-count">(341)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">599 ر.س</span>
+            <span class="price-old">1,199 ر.س</span>
+          </div>
+          <div class="deal-progress">
+            <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+            <span data-i18n="deal.sold">بيع 65%</span>
+          </div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trending Products -->
+<section class="section" id="trendingSection">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title" data-i18n="home.trending">🔥 الأكثر رواجاً</h2>
+      <a href="pages/products.html?sort=trending" class="section-link" data-i18n="home.viewAll">عرض الكل ←</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/1a1a2e/ffffff?text=Phone" alt="هاتف ذكي" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">هاتف ذكي برو</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(312)</span></div>
+          <div class="product-price"><span class="price-current">2,499 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/16213e/ffffff?text=Laptop" alt="لابتوب" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">لابتوب ألترا</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(198)</span></div>
+          <div class="product-price"><span class="price-current">3,899 ر.س</span><span class="price-old">4,599 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-20%</span>
+          <img src="https://placehold.co/300x300/0f3460/ffffff?text=Tablet" alt="تابلت" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">تابلت برو ماكس</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(156)</span></div>
+          <div class="product-price"><span class="price-current">1,799 ر.س</span><span class="price-old">2,249 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/2d1b69/ffffff?text=TV" alt="تلفزيون" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">تلفزيون سمارت 65 بوصة</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(89)</span></div>
+          <div class="product-price"><span class="price-current">2,999 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-35%</span>
+          <img src="https://placehold.co/300x300/11998e/ffffff?text=Perfume" alt="عطر" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">عطر فرنسي فاخر</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(421)</span></div>
+          <div class="product-price"><span class="price-current">329 ر.س</span><span class="price-old">506 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/4a00e0/ffffff?text=Shoes" alt="حذاء كلاسيكي" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">حذاء جلد كلاسيكي</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(73)</span></div>
+          <div class="product-price"><span class="price-current">449 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/8e2de2/ffffff?text=Speaker" alt="سماعة" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">سماعة بلوتوث متحركة</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(203)</span></div>
+          <div class="product-price"><span class="price-current">189 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-15%</span>
+          <img src="https://placehold.co/300x300/e94560/ffffff?text=Glasses" alt="نظارات" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">نظارات شمسية أنيقة</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(145)</span></div>
+          <div class="product-price"><span class="price-current">169 ر.س</span><span class="price-old">199 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Promo Banner -->
+<section class="promo-banner" id="promoBanner">
+  <div class="container">
+    <div class="promo-content">
+      <h2 data-i18n="promo.title">خصم إضافي <span class="text-gold">20%</span> على طلبك الأول</h2>
+      <p data-i18n="promo.desc">استخدم الكود: <strong>ADAM20</strong> عند الدفع</p>
+      <a href="pages/products.html" class="btn btn-primary btn-lg" data-i18n="promo.shopNow">تسوق الآن</a>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Products -->
+<section class="section" id="latestSection">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title" data-i18n="home.latest">🆕 أحدث المنتجات</h2>
+      <a href="pages/products.html?sort=newest" class="section-link" data-i18n="home.viewAll">عرض الكل ←</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <span class="badge-new" data-i18n="badge.new">جديد</span>
+          <img src="https://placehold.co/300x300/0f3460/ffffff?text=PowerBank" alt="شاحن متنقل" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">شاحن متنقل 20000 مللي</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(56)</span></div>
+          <div class="product-price"><span class="price-current">129 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="badge-new" data-i18n="badge.new">جديد</span>
+          <img src="https://placehold.co/300x300/1a1a2e/ffffff?text=Keyboard" alt="لوحة مفاتيح" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">لوحة مفاتيح ميكانيكية</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(34)</span></div>
+          <div class="product-price"><span class="price-current">249 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="badge-new" data-i18n="badge.new">جديد</span>
+          <img src="https://placehold.co/300x300/11998e/ffffff?text=Mouse" alt="ماوس" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">ماوس لاسلكي متميز</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(78)</span></div>
+          <div class="product-price"><span class="price-current">89 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="badge-new" data-i18n="badge.new">جديد</span>
+          <img src="https://placehold.co/300x300/2d1b69/ffffff?text=Desk" alt="مكتب" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">مكتب كمبيوتر ذكي</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(45)</span></div>
+          <div class="product-price"><span class="price-current">899 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="badge-new" data-i18n="badge.new">جديد</span>
+          <img src="https://placehold.co/300x300/4a00e0/ffffff?text=Chair" alt="كرسي" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">كرسي مكتب مريح</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(167)</span></div>
+          <div class="product-price"><span class="price-current">649 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="badge-new" data-i18n="badge.new">جديد</span>
+          <img src="https://placehold.co/300x300/8e2de2/ffffff?text=Fan" alt="مروحة" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">مروحة ذكية مكتبية</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(29)</span></div>
+          <div class="product-price"><span class="price-current">79 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="badge-new" data-i18n="badge.new">جديد</span>
+          <img src="https://placehold.co/300x300/e94560/ffffff?text=Lamp" alt="مصباح" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">مصباح مكتبي LED</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(91)</span></div>
+          <div class="product-price"><span class="price-current">119 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="badge-new" data-i18n="badge.new">جديد</span>
+          <img src="https://placehold.co/300x300/16213e/ffffff?text=Clock" alt="ساعة حائط" loading="lazy">
+          <div class="product-actions-overlay">
+            <button class="btn-icon wishlist-btn">♡</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">ساعة حائط عصرية</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(53)</span></div>
+          <div class="product-price"><span class="price-current">149 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Best Sellers -->
+<section class="section" id="bestSellersSection">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title" data-i18n="home.bestSellers">⭐ الأكثر مبيعاً</h2>
+      <a href="pages/products.html?sort=bestseller" class="section-link" data-i18n="home.viewAll">عرض الكل ←</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-40%</span>
+          <img src="https://placehold.co/300x300/1a1a2e/ffffff?text=Wireless+Earbuds" alt="سماعات أذن" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">سماعات أذن لاسلكية</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(1,205)</span></div>
+          <div class="product-price"><span class="price-current">119 ر.س</span><span class="price-old">199 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/16213e/ffffff?text=T-Shirt" alt="تيشيرت" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">تيشيرت قطن فاخر</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(876)</span></div>
+          <div class="product-price"><span class="price-current">79 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-25%</span>
+          <img src="https://placehold.co/300x300/0f3460/ffffff?text=Water+Bottle" alt="زجاجة ماء" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">زجاجة ماء ذكية</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(654)</span></div>
+          <div class="product-price"><span class="price-current">59 ر.س</span><span class="price-old">79 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/2d1b69/ffffff?text=Wallet" alt="محفظة" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">محفظة جلد طبيعي</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(543)</span></div>
+          <div class="product-price"><span class="price-current">149 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/11998e/ffffff?text=Face+Cream" alt="كريم وجه" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">كريم ترطيب الوجه</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(998)</span></div>
+          <div class="product-price"><span class="price-current">99 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-30%</span>
+          <img src="https://placehold.co/300x300/4a00e0/ffffff?text=Backpack2" alt="حقيبة" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">حقيبة سفر مقاومة للماء</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(432)</span></div>
+          <div class="product-price"><span class="price-current">139 ر.س</span><span class="price-old">199 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/8e2de2/ffffff?text=Mug" alt="كوب" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">كوب حراري ذكي</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(765)</span></div>
+          <div class="product-price"><span class="price-current">69 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-20%</span>
+          <img src="https://placehold.co/300x300/e94560/ffffff?text=Notebook" alt="دفتر" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">دفتر ملاحظات جلد</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(321)</span></div>
+          <div class="product-price"><span class="price-current">47 ر.س</span><span class="price-old">59 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recommended -->
+<section class="section" id="recommendedSection">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title" data-i18n="home.recommended">💎 موصى لك</h2>
+      <a href="pages/products.html" class="section-link" data-i18n="home.viewAll">عرض الكل ←</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/1a1a2e/ffffff?text=Ring+Light" alt="إضاءة" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">إضاءة رينغ احترافية</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(234)</span></div>
+          <div class="product-price"><span class="price-current">159 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/16213e/ffffff?text=Tripod" alt="حامل كاميرا" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">حامل كاميرا ثلاثي</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(189)</span></div>
+          <div class="product-price"><span class="price-current">129 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-15%</span>
+          <img src="https://placehold.co/300x300/0f3460/ffffff?text=Microphone" alt="ميكروفون" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">ميكروفون احترافي</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(312)</span></div>
+          <div class="product-price"><span class="price-current">249 ر.س</span><span class="price-old">299 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/2d1b69/ffffff?text=Webcam" alt="كاميرا ويب" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">كاميرا ويب HD</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(156)</span></div>
+          <div class="product-price"><span class="price-current">199 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/11998e/ffffff?text=Hub" alt="هاب" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">هاب USB متعدد</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(423)</span></div>
+          <div class="product-price"><span class="price-current">89 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-35%</span>
+          <img src="https://placehold.co/300x300/4a00e0/ffffff?text=USB+Cable" alt="كابل" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">كابل شحن سريع</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(678)</span></div>
+          <div class="product-price"><span class="price-current">29 ر.س</span><span class="price-old">45 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://placehold.co/300x300/8e2de2/ffffff?text=Stand" alt="حامل لابتوب" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">حامل لابتوب معدني</h4>
+          <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(234)</span></div>
+          <div class="product-price"><span class="price-current">79 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <span class="discount-badge">-10%</span>
+          <img src="https://placehold.co/300x300/e94560/ffffff?text=Organizer" alt="منظم" loading="lazy">
+          <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+        </div>
+        <div class="product-info">
+          <h4 class="product-name">منظم مكتب خشبي</h4>
+          <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(145)</span></div>
+          <div class="product-price"><span class="price-current">109 ر.س</span><span class="price-old">121 ر.س</span></div>
+          <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-content">
+      <h2 data-i18n="newsletter.title">اشترك في نشرتنا البريدية</h2>
+      <p data-i18n="newsletter.desc">احصل على أحدث العروض والخصومات مباشرة في بريدك</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" class="newsletter-input" data-i18n-placeholder="newsletter.placeholder" placeholder="أدخل بريدك الإلكتروني" required>
+        <button type="submit" class="btn btn-primary" data-i18n="newsletter.subscribe">اشتراك</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo"><span class="logo-gold">ادم شوب</span></a>
+        <p data-i18n="footer.about">ادم شوب هو سوق إلكتروني متعدد البائعين يقدم لك أفضل المنتجات من موثوقين حول العالم بجودة عالية وأسعار منافسة.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook" class="social-icon">📘</a>
+          <a href="#" aria-label="Twitter" class="social-icon">🐦</a>
+          <a href="#" aria-label="Instagram" class="social-icon">📸</a>
+          <a href="#" aria-label="YouTube" class="social-icon">📺</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.quickLinks">روابط سريعة</h3>
+        <ul>
+          <li><a href="pages/categories.html" data-i18n="nav.categories">الأقسام</a></li>
+          <li><a href="pages/products.html" data-i18n="nav.products">المنتجات</a></li>
+          <li><a href="pages/orders.html" data-i18n="nav.orders">طلباتي</a></li>
+          <li><a href="pages/wishlist.html" data-i18n="nav.wishlist">المفضلة</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.categories">الأقسام</h3>
+        <ul>
+          <li><a href="pages/category.html?id=electronics" data-i18n="cat.electronics">الإلكترونيات</a></li>
+          <li><a href="pages/category.html?id=fashion" data-i18n="cat.fashion">الأزياء</a></li>
+          <li><a href="pages/category.html?id=home" data-i18n="cat.home">المنزل والمطبخ</a></li>
+          <li><a href="pages/category.html?id=beauty" data-i18n="cat.beauty">الجمال والعناية</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.contact">تواصل معنا</h3>
+        <ul class="contact-list">
+          <li><span>📍</span> <span data-i18n="footer.address">الرياض، المملكة العربية السعودية</span></li>
+          <li><span>📞</span> <span data-i18n="footer.phone">+966 50 123 4567</span></li>
+          <li><span>✉️</span> <span data-i18n="footer.email">info@adamshop.com</span></li>
+          <li><span>🕐</span> <span data-i18n="footer.hours">السبت - الخميس: 9 صباحاً - 9 مساءً</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer.copyright">© 2026 ادم شوب. جميع الحقوق محفوظة.</p>
+      <div class="footer-payments">
+        <span title="Visa">💳</span>
+        <span title="Mastercard">💳</span>
+        <span title="Apple Pay">🍎</span>
+        <span title="Mada">💳</span>
+        <span title="Cash on Delivery">💵</span>
+      </div>
+    </div>
+  </div>
+  <button class="back-to-top" id="backToTop" data-i18n-title="backToTop">↑</button>
+</footer>
+
+<script src="js/utils.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="تفاصيل المنتج - هاتف ذكي برو | ادم شوب">
+  <title>تفاصيل المنتج | ادم شوب</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- reCAPTCHA Gate -->
+<div class="recaptcha-gate" id="recaptchaGate">
+  <div class="recaptcha-box">
+    <div class="recaptcha-logo">🛡️</div>
+    <h2 data-i18n="captcha.title">ادم شوب</h2>
+    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت</p>
+    <div class="recaptcha-widget">
+      <label class="recaptcha-checkbox">
+        <input type="checkbox" id="recaptchaCheck">
+        <span class="checkmark"></span>
+        <span data-i18n="captcha.label">لست روبوت</span>
+      </label>
+    </div>
+    <button class="btn btn-primary" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق</button>
+  </div>
+</div>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="../index.html" class="navbar-logo"><span class="logo-gold">ادم شوب</span></a>
+    <nav class="navbar-links" id="navLinks">
+      <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+      <a href="categories.html" data-i18n="nav.categories">الأقسام</a>
+      <a href="products.html" data-i18n="nav.products">المنتجات</a>
+    </nav>
+    <div class="navbar-search">
+      <input type="text" class="search-input" id="navSearch" data-i18n-placeholder="nav.search" placeholder="ابحث عن منتج...">
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
+    <div class="navbar-actions">
+      <button class="btn-icon" id="langToggle" title="EN">EN</button>
+      <button class="btn-icon" id="themeToggle" title="Theme">🌙</button>
+      <a href="wishlist.html" class="btn-icon">
+        <span class="icon-heart"></span>
+        <span class="badge badge-danger" id="wishlistCount" style="display:none">0</span>
+      </a>
+      <a href="cart.html" class="btn-icon">
+        <span class="icon-cart"></span>
+        <span class="badge badge-gold" id="cartCount">0</span>
+      </a>
+      <div class="user-dropdown" id="userDropdown">
+        <button class="btn-icon" id="userBtn"><span class="icon-user"></span></button>
+        <div class="dropdown-menu" id="userMenu"></div>
+      </div>
+    </div>
+    <button class="navbar-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+    <a href="categories.html" data-i18n="nav.categories">الأقسام</a>
+    <a href="products.html" data-i18n="nav.products">المنتجات</a>
+    <a href="cart.html" data-i18n="nav.cart">السلة</a>
+    <a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a>
+    <a href="orders.html" data-i18n="nav.orders">طلباتي</a>
+  </div>
+</header>
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+    <span class="separator">/</span>
+    <a href="products.html" data-i18n="nav.products">المنتجات</a>
+    <span class="separator">/</span>
+    <a href="category.html?id=electronics" data-i18n="cat.electronics">الإلكترونيات</a>
+    <span class="separator">/</span>
+    <span data-i18n="product.smartPhonePro">هاتف ذكي برو</span>
+  </div>
+</div>
+
+<!-- Product Detail -->
+<section class="section product-detail-section">
+  <div class="container">
+    <div class="product-detail">
+      <!-- Image Gallery -->
+      <div class="product-gallery">
+        <div class="gallery-main" id="galleryMain">
+          <img src="https://placehold.co/600x600/1a1a2e/ffffff?text=Phone+Main" alt="هاتف ذكي برو" id="mainImage" class="gallery-main-img">
+          <span class="discount-badge-lg">-20%</span>
+          <button class="gallery-zoom" id="galleryZoom" aria-label="Zoom">🔍</button>
+        </div>
+        <div class="gallery-thumbnails" id="galleryThumbnails">
+          <button class="thumb active" data-img="https://placehold.co/600x600/1a1a2e/ffffff?text=Phone+Main">
+            <img src="https://placehold.co/100x100/1a1a2e/ffffff?text=Main" alt="صورة 1">
+          </button>
+          <button class="thumb" data-img="https://placehold.co/600x600/16213e/ffffff?text=Phone+Side">
+            <img src="https://placehold.co/100x100/16213e/ffffff?text=Side" alt="صورة 2">
+          </button>
+          <button class="thumb" data-img="https://placehold.co/600x600/0f3460/ffffff?text=Phone+Back">
+            <img src="https://placehold.co/100x100/0f3460/ffffff?text=Back" alt="صورة 3">
+          </button>
+          <button class="thumb" data-img="https://placehold.co/600x600/2d1b69/ffffff?text=Phone+Box">
+            <img src="https://placehold.co/100x100/2d1b69/ffffff?text=Box" alt="صورة 4">
+          </button>
+          <button class="thumb" data-img="https://placehold.co/600x600/11998e/ffffff?text=Phone+Detail">
+            <img src="https://placehold.co/100x100/11998e/ffffff?text=Detail" alt="صورة 5">
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-detail-info">
+        <span class="product-vendor-lg">متجر التقنية</span>
+        <h1 class="product-title" data-i18n="product.smartPhonePro">هاتف ذكي برو</h1>
+
+        <div class="product-rating-lg">
+          <div class="stars">★★★★★</div>
+          <span class="rating-text">4.8</span>
+          <span class="rating-count-lg">(312 <span data-i18n="product.reviews">تقييم</span>)</span>
+          <span class="rating-sep">|</span>
+          <span>2,456 <span data-i18n="product.sold">بيعة</span></span>
+        </div>
+
+        <div class="product-price-lg">
+          <span class="price-current-lg">2,499 ر.س</span>
+          <span class="price-old-lg">3,124 ر.س</span>
+          <span class="save-badge">وفّر 625 ر.س</span>
+        </div>
+
+        <p class="product-short-desc" data-i18n="product.phoneDesc">هاتف ذكي برو بأحدث المواصفات. شاشة AMOLED فائقة الوضوح. كاميرا ثلاثية بدقة 108 ميجا بيكسل. بطارية تدوم طول اليوم. تصميم أنيق ومقاوم للماء.</p>
+
+        <!-- Color Selector -->
+        <div class="variant-section">
+          <h4 data-i18n="product.color">اللون: <span id="selectedColor" data-i18n="product.midnightBlack">أسود منتصف الليل</span></h4>
+          <div class="color-swatches">
+            <button class="color-swatch active" data-color="أسود منتصف الليل" style="background:#1a1a2e" aria-label="Black"></button>
+            <button class="color-swatch" data-color="أزرق محيطي" style="background:#0f3460" aria-label="Blue"></button>
+            <button class="color-swatch" data-color="ذهبي فاخر" style="background:#c9a961" aria-label="Gold"></button>
+            <button class="color-swatch" data-color="فضي أنيق" style="background:#c0c0c0" aria-label="Silver"></button>
+          </div>
+        </div>
+
+        <!-- Size Selector -->
+        <div class="variant-section">
+          <h4 data-i18n="product.storage">السعة: <span id="selectedSize">128 جيجا</span></h4>
+          <div class="size-buttons">
+            <button class="size-btn" data-size="64 جيجا">64 جيجا</button>
+            <button class="size-btn active" data-size="128 جيجا">128 جيجا</button>
+            <button class="size-btn" data-size="256 جيجا">256 جيجا</button>
+            <button class="size-btn" data-size="512 جيجا">512 جيجا</button>
+          </div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="variant-section">
+          <h4 data-i18n="product.quantity">الكمية:</h4>
+          <div class="quantity-selector">
+            <button class="qty-btn" id="qtyMinus" aria-label="Decrease">−</button>
+            <input type="number" class="qty-input" id="qtyInput" value="1" min="1" max="10">
+            <button class="qty-btn" id="qtyPlus" aria-label="Increase">+</button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="product-actions-lg">
+          <button class="btn btn-primary btn-lg btn-add-cart-lg" id="addToCartBtn" data-i18n="cart.add">أضف للسلة</button>
+          <button class="btn btn-gold btn-lg" id="buyNowBtn" data-i18n="product.buyNow">اشتر الآن</button>
+        </div>
+        <div class="product-actions-secondary">
+          <button class="btn btn-outline" id="wishlistBtn"><span class="icon-heart"></span> <span data-i18n="wishlist.add">أضف للمفضلة</span></button>
+          <button class="btn btn-outline" id="shareBtn"><span data-i18n="product.share">مشاركة</span></button>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+          <div class="trust-badge">🚚 <span data-i18n="product.freeShip">شحن مجاني</span></div>
+          <div class="trust-badge">🔒 <span data-i18n="product.securePay">دفع آمن</span></div>
+          <div class="trust-badge">🔄 <span data-i18n="product.return30">إرجاع خلال 30 يوم</span></div>
+          <div class="trust-badge">✅ <span data-i18n="product.genuine">منتج أصلي</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="product-tabs" id="productTabs">
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="description" data-i18n="product.tabDesc">الوصف</button>
+        <button class="tab-btn" data-tab="specs" data-i18n="product.tabSpecs">المواصفات</button>
+        <button class="tab-btn" data-tab="reviews" data-i18n="product.tabReviews">التقييمات (312)</button>
+      </div>
+
+      <!-- Description Tab -->
+      <div class="tab-content active" id="tab-description">
+        <h3 data-i18n="product.description">وصف المنتج</h3>
+        <p data-i18n="product.fullDesc1">هاتف ذكي برو هو الجيل الأحدث من الهواتف الذكية الرائدة. يأتي الهاتف بشاشة AMOLED مصغرة بحجم 6.7 بوصة بدقة QHD+ ومعدل تحديث 120 هرتز الذي يوفر تجربة بصرية سلسة وممتعة.</p>
+        <p data-i18n="product.fullDesc2">يتميز الهاتف بكاميرا ثلاثية بدقة 108 ميجا بيكسل principal camera مع مستشعر عريض جداً ومستشعر تقليبي، مما يمكّنك من التقاط صور رائعة في جميع الظروف.</p>
+        <p data-i18n="product.fullDesc3">يعمل الهاتف بمعالج الجيل الأخير مع 8 جيجا رام الذي يوفر أداءً فائقاً وتجربة متعددة المهام سلسة. بطارية الهاتف بسعة 5000 مللي أمبير ساعة تدوم طول اليوم مع دعم الشحن السريع 65 واط.</p>
+        <p data-i18n="product.fullDesc4">الهاتف مقاوم للماء والغبار بمعيار IP68، ومصنوع من أجود المواد مع تصميم أنيق وعصري. يتوفر بـ 4 ألوان فاخرة.</p>
+      </div>
+
+      <!-- Specs Tab -->
+      <div class="tab-content" id="tab-specs">
+        <table class="specs-table">
+          <tr><td data-i18n="spec.screen">الشاشة</td><td>6.7" AMOLED, QHD+, 120Hz</td></tr>
+          <tr><td data-i18n="spec.processor">المعالج</td><td>Snapdragon 8 Gen 3</td></tr>
+          <tr><td data-i18n="spec.ram">الرام</td><td>8 GB</td></tr>
+          <tr><td data-i18n="spec.storage">السعة الداخلية</td><td>128 / 256 / 512 GB</td></tr>
+          <tr><td data-i18n="spec.camera">الكاميرا الخلفية</td><td>108MP + 12MP + 8MP</td></tr>
+          <tr><td data-i18n="spec.selfie">الكاميرا الأمامية</td><td>32MP</td></tr>
+          <tr><td data-i18n="spec.battery">البطارية</td><td>5000 mAh, شحن سريع 65W</td></tr>
+          <tr><td data-i18n="spec.os">نظام التشغيل</td><td>Android 14</td></tr>
+          <tr><td data-i18n="spec.waterproof">مقاومة الماء</td><td>IP68</td></tr>
+          <tr><td data-i18n="spec.weight">الوزن</td><td>189 جرام</td></tr>
+          <tr><td data-i18n="spec.dimensions">الأبعاد</td><td>162.3 × 76.1 × 8.2 مم</td></tr>
+          <tr><td data-i18n="spec.connectivity">الاتصال</td><td>5G, WiFi 6E, Bluetooth 5.3, NFC</td></tr>
+        </table>
+      </div>
+
+      <!-- Reviews Tab -->
+      <div class="tab-content" id="tab-reviews">
+        <div class="reviews-summary">
+          <div class="reviews-avg">
+            <div class="avg-number">4.8</div>
+            <div class="avg-stars">★★★★★</div>
+            <div class="avg-count">312 <span data-i18n="product.reviews">تقييم</span></div>
+          </div>
+          <div class="reviews-breakdown">
+            <div class="rating-row"><span>5 ★</span><div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div><span>75%</span></div>
+            <div class="rating-row"><span>4 ★</span><div class="progress-bar"><div class="progress-fill" style="width:18%"></div></div><span>18%</span></div>
+            <div class="rating-row"><span>3 ★</span><div class="progress-bar"><div class="progress-fill" style="width:5%"></div></div><span>5%</span></div>
+            <div class="rating-row"><span>2 ★</span><div class="progress-bar"><div class="progress-fill" style="width:1%"></div></div><span>1%</span></div>
+            <div class="rating-row"><span>1 ★</span><div class="progress-bar"><div class="progress-fill" style="width:1%"></div></div><span>1%</span></div>
+          </div>
+        </div>
+
+        <div class="reviews-list">
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar">م</div>
+              <div>
+                <h4>محمد العلي</h4>
+                <div class="review-stars">★★★★★</div>
+              </div>
+              <span class="review-date">15 يوليو 2026</span>
+            </div>
+            <p class="review-text" data-i18n="review1">هاتف رائع! الكاميرا ممتازة والأداء سلس جداً. البطارية تدوم طول اليوم. أنصح به بشدة.</p>
+          </div>
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar">ف</div>
+              <div>
+                <h4>فاطمة أحمد</h4>
+                <div class="review-stars">★★★★★</div>
+              </div>
+              <span class="review-date">12 يوليو 2026</span>
+            </div>
+            <p class="review-text" data-i18n="review2">أفضل هاتف اشتريته. الشاشة رائعة والتصميم أنيق. التوصيل كان سريع والتغليف ممتاز.</p>
+          </div>
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar">خ</div>
+              <div>
+                <h4>خالد الشمري</h4>
+                <div class="review-stars">★★★★☆</div>
+              </div>
+              <span class="review-date">10 يوليو 2026</span>
+            </div>
+            <p class="review-text" data-i18n="review3">منتج جيد جداً. فقط أتمنى لو كان هناك خيار شحن أسرع. الهاتف بحالة ممتازة وأداء قوي.</p>
+          </div>
+        </div>
+
+        <!-- Add Review Form -->
+        <div class="add-review-form" id="addReviewForm">
+          <h3 data-i18n="review.writeReview">اكتب تقييمك</h3>
+          <div class="form-group">
+            <label data-i18n="review.rating">التقييم</label>
+            <div class="rating-input" id="ratingInput">
+              <button data-rating="1">☆</button>
+              <button data-rating="2">☆</button>
+              <button data-rating="3">☆</button>
+              <button data-rating="4">☆</button>
+              <button data-rating="5">☆</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="review.title">العنوان</label>
+            <input type="text" class="form-input" data-i18n-placeholder="review.titlePlaceholder" placeholder="عنوان تقييمك">
+          </div>
+          <div class="form-group">
+            <label data-i18n="review.comment">التعليق</label>
+            <textarea class="form-textarea" rows="4" data-i18n-placeholder="review.commentPlaceholder" placeholder="اكتب تجربتك مع المنتج..."></textarea>
+          </div>
+          <button class="btn btn-primary" id="submitReview" data-i18n="review.submit">إرسال التقييم</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="related-section">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="product.related">منتجات مشابهة</h2>
+        <a href="products.html" class="section-link" data-i18n="home.viewAll">عرض الكل ←</a>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/300x300/16213e/ffffff?text=Laptop" alt="لابتوب" loading="lazy">
+            <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name"><a href="product.html?id=2">لابتوب ألترا</a></h4>
+            <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(198)</span></div>
+            <div class="product-price"><span class="price-current">3,899 ر.س</span><span class="price-old">4,599 ر.س</span></div>
+            <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/300x300/0f3460/ffffff?text=Tablet" alt="تابلت" loading="lazy">
+            <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name"><a href="product.html?id=3">تابلت برو ماكس</a></h4>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(156)</span></div>
+            <div class="product-price"><span class="price-current">1,799 ر.س</span></div>
+            <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/300x300/2d1b69/ffffff?text=Watch" alt="ساعة" loading="lazy">
+            <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name"><a href="product.html?id=9">ساعة ذكية</a></h4>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(345)</span></div>
+            <div class="product-price"><span class="price-current">899 ر.س</span></div>
+            <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://placehold.co/300x300/8e2de2/ffffff?text=Airpods" alt="سماعات" loading="lazy">
+            <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name"><a href="product.html?id=10">سماعات أذن لاسلكية</a></h4>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(567)</span></div>
+            <div class="product-price"><span class="price-current">449 ر.س</span></div>
+            <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="footer-logo"><span class="logo-gold">ادم شوب</span></a>
+        <p data-i18n="footer.about">ادم شوب هو سوق إلكتروني متعدد البائعين.</p>
+        <div class="footer-social">
+          <a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📸</a><a href="#" class="social-icon">📺</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.quickLinks">روابط سريعة</h3>
+        <ul>
+          <li><a href="categories.html" data-i18n="nav.categories">الأقسام</a></li>
+          <li><a href="products.html" data-i18n="nav.products">المنتجات</a></li>
+          <li><a href="orders.html" data-i18n="nav.orders">طلباتي</a></li>
+          <li><a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.categories">الأقسام</h3>
+        <ul>
+          <li><a href="category.html?id=electronics" data-i18n="cat.electronics">الإلكترونيات</a></li>
+          <li><a href="category.html?id=fashion" data-i18n="cat.fashion">الأزياء</a></li>
+          <li><a href="category.html?id=home" data-i18n="cat.home">المنزل والمطبخ</a></li>
+          <li><a href="category.html?id=beauty" data-i18n="cat.beauty">الجمال والعناية</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.contact">تواصل معنا</h3>
+        <ul class="contact-list">
+          <li><span>📍</span> <span data-i18n="footer.address">الرياض، المملكة العربية السعودية</span></li>
+          <li><span>📞</span> <span data-i18n="footer.phone">+966 50 123 4567</span></li>
+          <li><span>✉️</span> <span data-i18n="footer.email">info@adamshop.com</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer.copyright">© 2026 ادم شوب. جميع الحقوق محفوظة.</p>
+      <div class="footer-payments"><span>💳</span><span>💳</span><span>🍎</span><span>💳</span><span>💵</span></div>
+    </div>
+  </div>
+  <button class="back-to-top" id="backToTop">↑</button>
+</footer>
+
+<script src="../js/utils.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/product.js"></script>
+</body>
+</html>

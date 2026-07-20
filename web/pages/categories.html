@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="تصفح جميع الأقسام في ادم شوب - إلكترونيات، أزياء، منزل، جمال، رياضة، كتب، سيارات، أطفال">
+  <title>الأقسام | ادم شوب</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- reCAPTCHA Gate -->
+<div class="recaptcha-gate" id="recaptchaGate">
+  <div class="recaptcha-box">
+    <div class="recaptcha-logo">🛡️</div>
+    <h2 data-i18n="captcha.title">ادم شوب</h2>
+    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت</p>
+    <div class="recaptcha-widget">
+      <label class="recaptcha-checkbox">
+        <input type="checkbox" id="recaptchaCheck">
+        <span class="checkmark"></span>
+        <span data-i18n="captcha.label">لست روبوت</span>
+      </label>
+    </div>
+    <button class="btn btn-primary" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق</button>
+  </div>
+</div>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="../index.html" class="navbar-logo"><span class="logo-gold">ادم شوب</span></a>
+    <nav class="navbar-links" id="navLinks">
+      <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+      <a href="categories.html" class="active" data-i18n="nav.categories">الأقسام</a>
+      <a href="products.html" data-i18n="nav.products">المنتجات</a>
+    </nav>
+    <div class="navbar-search">
+      <input type="text" class="search-input" id="navSearch" data-i18n-placeholder="nav.search" placeholder="ابحث عن منتج...">
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
+    <div class="navbar-actions">
+      <button class="btn-icon" id="langToggle" title="EN">EN</button>
+      <button class="btn-icon" id="themeToggle" title="Theme">🌙</button>
+      <a href="wishlist.html" class="btn-icon">
+        <span class="icon-heart"></span>
+        <span class="badge badge-danger" id="wishlistCount" style="display:none">0</span>
+      </a>
+      <a href="cart.html" class="btn-icon">
+        <span class="icon-cart"></span>
+        <span class="badge badge-gold" id="cartCount">0</span>
+      </a>
+      <div class="user-dropdown" id="userDropdown">
+        <button class="btn-icon" id="userBtn"><span class="icon-user"></span></button>
+        <div class="dropdown-menu" id="userMenu"></div>
+      </div>
+    </div>
+    <button class="navbar-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+    <a href="categories.html" data-i18n="nav.categories">الأقسام</a>
+    <a href="products.html" data-i18n="nav.products">المنتجات</a>
+    <a href="cart.html" data-i18n="nav.cart">السلة</a>
+    <a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a>
+    <a href="orders.html" data-i18n="nav.orders">طلباتي</a>
+  </div>
+</header>
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+    <span class="separator">/</span>
+    <span data-i18n="nav.categories">الأقسام</span>
+  </div>
+</div>
+
+<!-- Page Header -->
+<section class="page-header">
+  <div class="container">
+    <h1 data-i18n="categories.title">جميع الأقسام</h1>
+    <p class="page-subtitle" data-i18n="categories.subtitle">اختر القسم المناسب لك وتصفح منتجاتنا المتنوعة</p>
+  </div>
+</section>
+
+<!-- Categories Grid -->
+<section class="section">
+  <div class="container">
+    <div class="categories-grid-lg">
+
+      <a href="category.html?id=electronics" class="category-card-lg">
+        <div class="category-card-image">
+          <img src="https://placehold.co/600x400/1a1a2e/ffffff?text=Electronics" alt="الإلكترونيات" loading="lazy">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <span class="category-card-icon">💻</span>
+          <h2 data-i18n="cat.electronics">الإلكترونيات</h2>
+          <p data-i18n="cat.electronicsDesc">هواتف، حواسيب، أجهزة إلكترونية</p>
+          <span class="category-card-count">245 <span data-i18n="cat.product">منتج</span></span>
+        </div>
+      </a>
+
+      <a href="category.html?id=fashion" class="category-card-lg">
+        <div class="category-card-image">
+          <img src="https://placehold.co/600x400/2d1b69/ffffff?text=Fashion" alt="الأزياء" loading="lazy">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <span class="category-card-icon">👗</span>
+          <h2 data-i18n="cat.fashion">الأزياء</h2>
+          <p data-i18n="cat.fashionDesc">ملابس، أحذية، إكسسوارات</p>
+          <span class="category-card-count">532 <span data-i18n="cat.product">منتج</span></span>
+        </div>
+      </a>
+
+      <a href="category.html?id=home" class="category-card-lg">
+        <div class="category-card-image">
+          <img src="https://placehold.co/600x400/0f3460/ffffff?text=Home" alt="المنزل والمطبخ" loading="lazy">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <span class="category-card-icon">🏠</span>
+          <h2 data-i18n="cat.home">المنزل والمطبخ</h2>
+          <p data-i18n="cat.homeDesc">أثاث، ديكور، أدوات مطبخ</p>
+          <span class="category-card-count">189 <span data-i18n="cat.product">منتج</span></span>
+        </div>
+      </a>
+
+      <a href="category.html?id=beauty" class="category-card-lg">
+        <div class="category-card-image">
+          <img src="https://placehold.co/600x400/11998e/ffffff?text=Beauty" alt="الجمال والعناية" loading="lazy">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <span class="category-card-icon">💄</span>
+          <h2 data-i18n="cat.beauty">الجمال والعناية</h2>
+          <p data-i18n="cat.beautyDesc">مكياج، عطور، عناية بالبشرة</p>
+          <span class="category-card-count">312 <span data-i18n="cat.product">منتج</span></span>
+        </div>
+      </a>
+
+      <a href="category.html?id=sports" class="category-card-lg">
+        <div class="category-card-image">
+          <img src="https://placehold.co/600x400/4a00e0/ffffff?text=Sports" alt="الرياضة" loading="lazy">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <span class="category-card-icon">⚽</span>
+          <h2 data-i18n="cat.sports">الرياضة</h2>
+          <p data-i18n="cat.sportsDesc">معدات رياضية، ملابس رياضية</p>
+          <span class="category-card-count">176 <span data-i18n="cat.product">منتج</span></span>
+        </div>
+      </a>
+
+      <a href="category.html?id=books" class="category-card-lg">
+        <div class="category-card-image">
+          <img src="https://placehold.co/600x400/8e2de2/ffffff?text=Books" alt="الكتب" loading="lazy">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <span class="category-card-icon">📚</span>
+          <h2 data-i18n="cat.books">الكتب</h2>
+          <p data-i18n="cat.booksDesc">كتب متنوعة لكل الأعمار</p>
+          <span class="category-card-count">421 <span data-i18n="cat.product">منتج</span></span>
+        </div>
+      </a>
+
+      <a href="category.html?id=automotive" class="category-card-lg">
+        <div class="category-card-image">
+          <img src="https://placehold.co/600x400/e94560/ffffff?text=Automotive" alt="السيارات" loading="lazy">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <span class="category-card-icon">🚗</span>
+          <h2 data-i18n="cat.automotive">السيارات</h2>
+          <p data-i18n="cat.automotiveDesc">قطع غيار، إكسسوارات سيارات</p>
+          <span class="category-card-count">98 <span data-i18n="cat.product">منتج</span></span>
+        </div>
+      </a>
+
+      <a href="category.html?id=kids" class="category-card-lg">
+        <div class="category-card-image">
+          <img src="https://placehold.co/600x400/c9a961/1a1a2e?text=Kids" alt="الأطفال" loading="lazy">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <span class="category-card-icon">🧸</span>
+          <h2 data-i18n="cat.kids">الأطفال</h2>
+          <p data-i18n="cat.kidsDesc">ألعاب، ملابس أطفال، أغراض مدرسية</p>
+          <span class="category-card-count">267 <span data-i18n="cat.product">منتج</span></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Promo Banner -->
+<section class="promo-banner">
+  <div class="container">
+    <div class="promo-content">
+      <h2 data-i18n="promo.title">خصم إضافي <span class="text-gold">20%</span> على طلبك الأول</h2>
+      <p data-i18n="promo.desc">استخدم الكود: <strong>ADAM20</strong> عند الدفع</p>
+      <a href="products.html" class="btn btn-primary btn-lg" data-i18n="promo.shopNow">تسوق الآن</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="footer-logo"><span class="logo-gold">ادم شوب</span></a>
+        <p data-i18n="footer.about">ادم شوب هو سوق إلكتروني متعدد البائعين.</p>
+        <div class="footer-social">
+          <a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📸</a><a href="#" class="social-icon">📺</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.quickLinks">روابط سريعة</h3>
+        <ul>
+          <li><a href="categories.html" data-i18n="nav.categories">الأقسام</a></li>
+          <li><a href="products.html" data-i18n="nav.products">المنتجات</a></li>
+          <li><a href="orders.html" data-i18n="nav.orders">طلباتي</a></li>
+          <li><a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.categories">الأقسام</h3>
+        <ul>
+          <li><a href="category.html?id=electronics" data-i18n="cat.electronics">الإلكترونيات</a></li>
+          <li><a href="category.html?id=fashion" data-i18n="cat.fashion">الأزياء</a></li>
+          <li><a href="category.html?id=home" data-i18n="cat.home">المنزل والمطبخ</a></li>
+          <li><a href="category.html?id=beauty" data-i18n="cat.beauty">الجمال والعناية</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.contact">تواصل معنا</h3>
+        <ul class="contact-list">
+          <li><span>📍</span> <span data-i18n="footer.address">الرياض، المملكة العربية السعودية</span></li>
+          <li><span>📞</span> <span data-i18n="footer.phone">+966 50 123 4567</span></li>
+          <li><span>✉️</span> <span data-i18n="footer.email">info@adamshop.com</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer.copyright">© 2026 ادم شوب. جميع الحقوق محفوظة.</p>
+      <div class="footer-payments"><span>💳</span><span>💳</span><span>🍎</span><span>💳</span><span>💵</span></div>
+    </div>
+  </div>
+  <button class="back-to-top" id="backToTop">↑</button>
+</footer>
+
+<script src="../js/utils.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/navbar.js"></script>
+</body>
+</html>

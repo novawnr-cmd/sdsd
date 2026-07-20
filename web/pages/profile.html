@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ادم shob - الملف الشخصي">
+    <title>ادم شوب | حسابي</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;}
+        .top-nav{background:linear-gradient(135deg,#141428,#1a1a35);border-bottom:1px solid rgba(255,255,255,0.06);padding:16px 32px;display:flex;justify-content:space-between;align-items:center;}
+        .nav-logo h2{font-size:1.4rem;background:linear-gradient(135deg,#d4af37,#f5d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .nav-links{display:flex;gap:20px;}
+        .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;transition:color 0.3s;}.nav-links a:hover{color:#d4af37;}
+        .page-container{max-width:800px;margin:0 auto;padding:32px;}
+        .profile-header{display:flex;gap:24px;align-items:center;margin-bottom:28px;padding:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:16px;}
+        .avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#d4af37,#b8962e);display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;flex-shrink:0;cursor:pointer;position:relative;overflow:hidden;}
+        .avatar img{width:100%;height:100%;object-fit:cover;}
+        .avatar input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+        .profile-info h2{font-size:1.3rem;color:#fff;}
+        .profile-info p{font-size:0.85rem;color:rgba(255,255,255,0.4);margin-top:4px;}
+        .profile-info .member-since{font-size:0.75rem;color:rgba(255,255,255,0.25);margin-top:8px;}
+        .section-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px;margin-bottom:20px;}
+        .section-card h3{color:#d4af37;font-size:1.05rem;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);}
+        .form-group{margin-bottom:16px;}
+        .form-group label{display:block;color:rgba(255,255,255,0.6);font-size:0.8rem;margin-bottom:6px;font-weight:500;}
+        .form-group input,.form-group select{width:100%;padding:12px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;color:#fff;font-size:0.9rem;transition:all 0.3s;box-sizing:border-box;}
+        .form-group input:focus,.form-group select:focus{outline:none;border-color:#d4af37;}
+        .form-group select option{background:#1a1a2e;}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+        .map-placeholder{height:160px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px dashed rgba(212,175,55,0.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);cursor:pointer;font-size:0.9rem;transition:all 0.3s;}
+        .map-placeholder:hover{border-color:#d4af37;background:rgba(212,175,55,0.03);}
+        .btn-save{padding:12px 36px;background:linear-gradient(135deg,#d4af37,#b8962e);color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:0.95rem;transition:all 0.3s;}
+        .btn-save:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,175,55,0.3);}
+        .btn-danger{padding:10px 24px;background:rgba(244,67,54,0.1);border:1px solid rgba(244,67,54,0.2);border-radius:10px;color:#f44336;cursor:pointer;font-size:0.85rem;margin-top:12px;}
+        .sidebar-links{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
+        .sidebar-links a{padding:8px 20px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;transition:all 0.3s;}
+        .sidebar-links a.active{background:rgba(212,175,55,0.1);border-color:rgba(212,175,55,0.2);color:#d4af37;}
+        .sidebar-links a:hover{color:#fff;}
+        @media(max-width:768px){.top-nav{padding:12px 16px;}.page-container{padding:20px 16px;}.profile-header{flex-direction:column;text-align:center;}.form-row{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-logo"><h2>ادم شوب</h2></div>
+        <div class="nav-links">
+            <a href="../index.html" data-i18n="home">الرئيسية</a>
+            <a href="orders.html" data-i18n="my_orders">طلباتي</a>
+            <a href="wishlist.html" data-i18n="wishlist">المفضلة</a>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <div class="profile-header">
+            <div class="avatar">
+                &#128100;
+                <input type="file" accept="image/*" id="avatarInput">
+            </div>
+            <div class="profile-info">
+                <h2>أحمد علي</h2>
+                <p>ahmed@email.com</p>
+                <p class="member-since" data-i18n="member_since">عضو منذ يناير 2026</p>
+            </div>
+        </div>
+
+        <div class="sidebar-links">
+            <a href="#info" class="active" data-i18n="personal_info">المعلومات الشخصية</a>
+            <a href="#password" data-i18n="change_password">تغيير كلمة المرور</a>
+            <a href="#location" data-i18n="location">الموقع</a>
+        </div>
+
+        <div class="section-card" id="info">
+            <h3 data-i18n="personal_info">المعلومات الشخصية</h3>
+            <form id="profileForm">
+                <div class="form-row">
+                    <div class="form-group"><label data-i18n="full_name">الاسم الكامل</label><input type="text" value="أحمد علي"></div>
+                    <div class="form-group"><label data-i18n="phone">رقم الهاتف</label><input type="tel" value="+218 91 234 5678"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label data-i18n="backup_phone">رقم هاتف احتياطي</label><input type="tel" value="+218 92 345 6789"></div>
+                    <div class="form-group"><label data-i18n="email">البريد الإلكتروني</label><input type="email" value="ahmed@email.com"></div>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="city">المدينة</label>
+                    <select>
+                        <option value="tripoli" selected>طرابلس</option>
+                        <option value="benghazi">بنغازي</option>
+                        <option value="misrata">مصراتة</option>
+                        <option value="tarhuna">ترهونة</option>
+                        <option value="alzawiya">الزاوية</option>
+                        <option value="syrte">سرت</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-save" data-i18n="save_changes">حفظ التغييرات</button>
+            </form>
+        </div>
+
+        <div class="section-card" id="password">
+            <h3 data-i18n="change_password">تغيير كلمة المرور</h3>
+            <form>
+                <div class="form-group"><label data-i18n="current_password">كلمة المرور الحالية</label><input type="password" placeholder="••••••••"></div>
+                <div class="form-row">
+                    <div class="form-group"><label data-i18n="new_password">كلمة المرور الجديدة</label><input type="password" placeholder="••••••••"></div>
+                    <div class="form-group"><label data-i18n="confirm_password">تأكيد كلمة المرور</label><input type="password" placeholder="••••••••"></div>
+                </div>
+                <button type="button" class="btn-save" data-i18n="update_password">تحديث كلمة المرور</button>
+            </form>
+        </div>
+
+        <div class="section-card" id="location">
+            <h3 data-i18n="location">الموقع على الخريطة</h3>
+            <div class="map-placeholder" onclick="alert('فتح خريطة')">&#128205; <span data-i18n="pick_location">اضغط لاختيار موقعك</span></div>
+        </div>
+
+        <div style="text-align:center;margin-top:12px;">
+            <button class="btn-danger" onclick="alert('تم تسجيل الخروج')" data-i18n="logout">تسجيل الخروج</button>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script>
+        document.getElementById('avatarInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    const avatar = e.target.parentElement;
+                    avatar.innerHTML = '<img src="' + ev.target.result + '"><input type="file" accept="image/*" id="avatarInput">';
+                    document.getElementById('avatarInput').addEventListener('arguments.callee', function() {});
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        document.getElementById('profileForm').addEventListener('submit', function(e) { e.preventDefault(); alert('تم حفظ التغييرات!'); });
+    </script>
+</body>
+</html>
