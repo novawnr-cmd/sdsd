@@ -391,10 +391,44 @@ function getImageUrl(path, placeholder) {
   return base.replace(/\/api\/?$/, '') + path;
 }
 
+function initRecaptcha() {
+  var gate = document.getElementById('recaptchaGate');
+  if (!gate) return;
+
+  if (sessionStorage.getItem('recaptcha_verified') === 'true') {
+    gate.classList.add('hidden');
+    return;
+  }
+
+  var checkbox = document.getElementById('recaptchaCheck');
+  var submitBtn = document.getElementById('recaptchaSubmit');
+
+  if (submitBtn) {
+    submitBtn.addEventListener('click', function() {
+      if (checkbox && checkbox.checked) {
+        sessionStorage.setItem('recaptcha_verified', 'true');
+        gate.classList.add('hidden');
+      } else {
+        showToast('يرجى التحقق أنك لست روبوت', 'error');
+      }
+    });
+  }
+
+  if (checkbox) {
+    checkbox.addEventListener('change', function() {
+      if (this.checked) {
+        submitBtn.style.opacity = '1';
+        submitBtn.style.pointerEvents = 'auto';
+      }
+    });
+  }
+}
+
 function initUtils() {
   initScrollAnimations();
   initBackToTop();
   initLazyImages();
+  initRecaptcha();
 }
 
 (function autoInit() {
