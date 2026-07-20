@@ -3,149 +3,234 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="سلة التسوق - ADAM SHOP Marketplace">
-  <title>سلة التسوق | ADAM SHOP Marketplace</title>
+  <meta name="description" content="سلة التسوق - آدم شوب">
+  <title>سلة التسوق | آدم شوب</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
+<!-- reCAPTCHA Gate -->
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
     <div class="rc-crown">👑</div>
-    <h2><span class="gold">ADAM SHOP</span> Marketplace</h2>
+    <h2><span class="gold">آدم شوب</span></h2>
     <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
     <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
     <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
   </div>
 </div>
 
+<!-- Navbar -->
 <header class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">Marketplace</span></span></a>
+    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">آدم شوب</span><span class="logo-sub">ADAM SHOP</span></span></a>
     <nav class="nav-links" id="navLinks">
-      <a href="../index.html" data-i18n="nav.home">الرئيسية</a><a href="categories.html" data-i18n="nav.categories">الفئات</a><a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a><a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a><a href="products.html" data-i18n="nav.brands">العلامات التجارية</a><a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a><a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
+      <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+      <a href="categories.html" data-i18n="nav.categories">الفئات</a>
+      <a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a>
+      <a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a>
+      <a href="products.html" data-i18n="nav.brands">العلامات التجارية</a>
+      <a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a>
+      <a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
     </nav>
     <div class="nav-search"><div class="nav-search-box"><input type="text" id="navSearch" placeholder="ابحث عن منتجات..."><button class="search-btn">🔍</button></div><div class="search-dropdown" id="searchDropdown"></div></div>
     <div class="nav-actions">
       <button class="nav-icon" id="langToggle" title="EN">🌐</button>
       <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
       <a href="wishlist.html" class="nav-icon">❤️<span class="count" id="wishCount" style="display:none">0</span></a>
-      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">3</span></a>
+      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount" style="display:none">0</span></a>
       <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar">👤</div><span class="u-name" id="userName"></span></div><div class="dropdown-menu" id="userMenu"></div></div>
     </div>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html">الرئيسية</a><a href="categories.html">الفئات</a><a href="products.html">المنتجات</a><a href="cart.html">سلة التسوق</a><a href="wishlist.html">المفضلة</a><a href="orders.html">طلباتي</a><a href="become-seller.html">تبيع معنا</a>
+    <a href="../index.html">الرئيسية</a>
+    <a href="categories.html">الفئات</a>
+    <a href="products.html">المنتجات</a>
+    <a href="cart.html">سلة التسوق</a>
+    <a href="wishlist.html">المفضلة</a>
+    <a href="orders.html">طلباتي</a>
+    <a href="become-seller.html">تبيع معنا</a>
   </div>
 </header>
 
 <main style="margin-top:var(--nav-h)">
   <div class="container">
+    <!-- Breadcrumbs -->
     <div class="bread">
-      <a href="../index.html">الرئيسية</a><span class="sep">←</span><span class="cur" data-i18n="nav.cart">سلة التسوق</span>
+      <a href="../index.html">الرئيسية</a><span class="sep">←</span><span class="cur">سلة التسوق</span>
     </div>
 
-    <h1 class="section-title" style="margin-bottom:24px" data-i18n="cart.title">🛒 سلة <span class="accent">التسوق</span></h1>
+    <h1 class="section-title" style="margin-bottom:24px;font-size:1.4rem">🛒 سلة <span class="accent">التسوق</span></h1>
 
-    <div class="cart-grid">
-      <!-- Cart Items -->
-      <div>
-        <div class="cart-list-item">
-          <img src="https://placehold.co/200x200/1C2333/D4A94A?text=iPhone+15" alt="iPhone 15">
-          <div class="cli-info">
-            <h3 class="cli-name">آيفون 15 برو ماكس 256 جيجا</h3>
-            <p class="cli-variant">اللون: أزرق تيتانيوم | السعة: 256 GB</p>
-            <p class="cli-price">4,999 ر.س</p>
-          </div>
-          <div class="qty-box">
-            <button>−</button>
-            <div class="qty-val">1</div>
-            <button>+</button>
-          </div>
-          <button class="btn-ghost" style="color:var(--red)">🗑</button>
-        </div>
-        <div class="cart-list-item">
-          <img src="https://placehold.co/200x200/1C2333/D4A94A?text=AirPods" alt="AirPods Pro">
-          <div class="cli-info">
-            <h3 class="cli-name">سماعات AirPods Pro 2</h3>
-            <p class="cli-variant">اللون: أبيض</p>
-            <p class="cli-price">799 ر.س</p>
-          </div>
-          <div class="qty-box">
-            <button>−</button>
-            <div class="qty-val">2</div>
-            <button>+</button>
-          </div>
-          <button class="btn-ghost" style="color:var(--red)">🗑</button>
-        </div>
-        <div class="cart-list-item">
-          <img src="https://placehold.co/200x200/1C2333/D4A94A?text=Watch" alt="Apple Watch">
-          <div class="cli-info">
-            <h3 class="cli-name">ساعة Apple Watch Ultra 2</h3>
-            <p class="cli-variant">المقاس: 49 مم</p>
-            <p class="cli-price">3,499 ر.س</p>
-          </div>
-          <div class="qty-box">
-            <button>−</button>
-            <div class="qty-val">1</div>
-            <button>+</button>
-          </div>
-          <button class="btn-ghost" style="color:var(--red)">🗑</button>
-        </div>
-      </div>
+    <!-- Cart Content -->
+    <div class="cart-grid" id="cartContent">
+      <!-- Cart Items Column -->
+      <div id="cartItemsList"></div>
 
-      <!-- Cart Summary -->
-      <div class="cart-summary">
-        <h3 data-i18n="cart.summary">ملخص الطلب</h3>
+      <!-- Cart Summary Column -->
+      <div class="cart-summary" id="cartSummary">
+        <h3>ملخص الطلب</h3>
         <div class="sum-row">
-          <span data-i18n="cart.subtotal">المجموع الفرعي</span>
-          <span>9,296 ر.س</span>
+          <span>المجموع الفرعي</span>
+          <span id="sumSubtotal">0 د.ل</span>
         </div>
         <div class="sum-row">
-          <span data-i18n="cart.shipping">الشحن</span>
-          <span class="text-gold" data-i18n="cart.freeShipping">مجاني</span>
-        </div>
-        <div class="sum-row">
-          <span data-i18n="cart.tax">الضريبة (15%)</span>
-          <span>1,394 ر.س</span>
+          <span>الشحن</span>
+          <span class="text-gold">مجاني</span>
         </div>
         <div class="coupon-row">
-          <input type="text" placeholder="كود الخصم" data-i18n-placeholder="cart.coupon">
-          <button class="btn btn-outline btn-sm" data-i18n="cart.apply">تطبيق</button>
+          <input type="text" placeholder="كود الخصم">
+          <button class="btn btn-outline btn-sm">تطبيق</button>
         </div>
         <div class="sum-total">
-          <span data-i18n="cart.total">الإجمالي</span>
-          <span class="amount">10,690 ر.س</span>
+          <span>الإجمالي</span>
+          <span class="amount" id="sumTotal">0 د.ل</span>
         </div>
-        <a href="checkout.html" class="btn btn-gold btn-block btn-lg" style="margin-top:16px" data-i18n="cart.checkout">إتمام الشراء</a>
-        <a href="products.html" class="btn btn-ghost btn-block" style="margin-top:8px" data-i18n="cart.continue">← متابعة التسوق</a>
+        <a href="checkout.html" class="btn btn-gold btn-block btn-lg" style="margin-top:16px">إتمام الشراء</a>
+        <a href="categories.html" class="btn btn-ghost btn-block" style="margin-top:8px">← متابعة التسوق</a>
       </div>
     </div>
 
-    <!-- Empty State (hidden by default) -->
+    <!-- Empty State -->
     <div class="empty" id="cartEmpty" style="display:none">
       <div class="e-icon">🛒</div>
-      <h3 data-i18n="cart.empty">سلة التسوق فارغة</h3>
-      <p data-i18n="cart.emptyDesc">لم تضف أي منتجات بعد. ابدأ بالتسوق الآن!</p>
-      <a href="products.html" class="btn btn-gold" data-i18n="cart.shopNow">تسوق الآن</a>
+      <h3>السلة فارغة</h3>
+      <p>لم تضف أي منتجات بعد. ابدأ بالتسوق الآن!</p>
+      <a href="categories.html" class="btn btn-gold">تصفح الفئات</a>
     </div>
   </div>
 </main>
 
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="f-grid">
-      <div><div class="f-logo"><span class="crown">👑</span><span class="name">ADAM SHOP</span></div><p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p></div>
-      <div><h4 class="f-title">روابط سريعة</h4><div class="f-links"><a href="products.html">المنتجات</a><a href="categories.html">الفئات</a><a href="products.html?sort=deals">العروض</a></div></div>
-      <div><h4 class="f-title">الفئات</h4><div class="f-links"><a href="category.html?cat=electronics">📱 إلكترونيات</a><a href="category.html?cat=fashion">👕 أزياء</a><a href="category.html?cat=beauty">💄 جمال وعناية</a></div></div>
-      <div><h4 class="f-title">المساعدة</h4><div class="f-links"><a href="#">الأسئلة الشائعة</a><a href="#">سياسة الشحن</a><a href="#">سياسة الإرجاع</a></div></div>
+      <div>
+        <div class="f-logo"><span class="crown">👑</span><span class="name">آدم شوب</span></div>
+        <p class="f-desc">وجهتك الأولى للتسوق الفاخر. نقدم لك تشكيلة واسعة من المنتجات الأصلية بأفضل الأسعار مع خدمة توصيل سريعة وآمنة.</p>
+        <div class="f-social"><a href="#">𝕏</a><a href="#">📷</a><a href="#">f</a><a href="#">▶</a></div>
+      </div>
+      <div>
+        <h4 class="f-title">روابط سريعة</h4>
+        <div class="f-links">
+          <a href="products.html">المنتجات</a>
+          <a href="categories.html">الفئات</a>
+          <a href="products.html?sort=deals">العروض</a>
+          <a href="products.html?sort=best">الأكثر مبيعاً</a>
+          <a href="become-seller.html">تبيع معنا</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="f-title">الفئات</h4>
+        <div class="f-links">
+          <a href="category.html?cat=electronics">📱 إلكترونيات</a>
+          <a href="category.html?cat=fashion">👕 أزياء</a>
+          <a href="category.html?cat=beauty">💄 جمال وعناية</a>
+          <a href="category.html?cat=home">🏠 منزل وديكور</a>
+          <a href="category.html?cat=sports">⚽ رياضة</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="f-title">المساعدة</h4>
+        <div class="f-links">
+          <a href="#">الأسئلة الشائعة</a>
+          <a href="#">سياسة الشحن</a>
+          <a href="#">سياسة الإرجاع</a>
+          <a href="#">الخصوصية</a>
+          <a href="#">الشروط والأحكام</a>
+        </div>
+      </div>
     </div>
-    <div class="f-bottom"><span>© 2026 <strong class="text-gold">ADAM SHOP</strong> Marketplace. جميع الحقوق محفوظة</span><span>💳 نقبل جميع بطاقات الائتمان</span></div>
+    <div class="f-bottom">
+      <span>© 2026 <strong class="text-gold">آدم شوب</strong> ADAM SHOP. جميع الحقوق محفوظة</span>
+      <span>💳 نقبل جميع بطاقات الائتمان</span>
+    </div>
   </div>
 </footer>
 
 <button class="btt" id="backToTop">⬆</button>
+
+<script>
+function renderCartPage() {
+  var items = typeof getCartItems === 'function' ? getCartItems() : [];
+  var listEl = document.getElementById('cartItemsList');
+  var summaryEl = document.getElementById('cartSummary');
+  var contentEl = document.getElementById('cartContent');
+  var emptyEl = document.getElementById('cartEmpty');
+
+  if (items.length === 0) {
+    contentEl.style.display = 'none';
+    emptyEl.style.display = '';
+    return;
+  }
+
+  contentEl.style.display = '';
+  emptyEl.style.display = 'none';
+
+  listEl.innerHTML = items.map(function(item) {
+    return '<div class="cart-list-item" data-cart-key="' + item.key + '">' +
+      '<div style="width:90px;height:90px;border-radius:var(--radius);background:var(--bg-3);display:flex;align-items:center;justify-content:center;font-size:2.5rem;flex-shrink:0">' + (item.image || '📦') + '</div>' +
+      '<div class="cli-info">' +
+        '<h3 class="cli-name">' + item.name + '</h3>' +
+        '<p class="cli-price" style="margin-top:4px">' + formatPrice(item.price) + '</p>' +
+      '</div>' +
+      '<div class="qty-box">' +
+        '<button class="qty-minus" onclick="changeQty(\'' + item.key + '\',' + (item.quantity - 1) + ')">−</button>' +
+        '<div class="qty-val">' + item.quantity + '</div>' +
+        '<button class="qty-plus" onclick="changeQty(\'' + item.key + '\',' + (item.quantity + 1) + ')">+</button>' +
+      '</div>' +
+      '<button class="btn-ghost" style="color:var(--red)" onclick="removeCartItem(\'' + item.key + '\')">🗑</button>' +
+    '</div>';
+  }).join('');
+
+  updateCartSummary(items);
+}
+
+function changeQty(key, newQty) {
+  if (newQty <= 0) {
+    if (typeof removeFromCart === 'function') {
+      removeFromCart(key);
+    }
+  } else {
+    if (typeof updateCartItem === 'function') {
+      updateCartItem(key, newQty);
+    }
+  }
+  renderCartPage();
+}
+
+function removeCartItem(key) {
+  if (typeof removeFromCart === 'function') {
+    removeFromCart(key);
+  }
+  renderCartPage();
+}
+
+function updateCartSummary(items) {
+  var subtotal = items.reduce(function(sum, item) { return sum + (item.price * item.quantity); }, 0);
+  document.getElementById('sumSubtotal').textContent = formatPrice(subtotal);
+  document.getElementById('sumTotal').textContent = formatPrice(subtotal);
+}
+
+(function() {
+  function boot() {
+    renderCartPage();
+    if (typeof initNavbar === 'function') initNavbar();
+    if (typeof initBackToTop === 'function') initBackToTop();
+    if (typeof updateUserMenu === 'function') updateUserMenu();
+    if (typeof updateWishlistButtons === 'function') updateWishlistButtons();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+
+<script src="../js/cart.js"></script>
+<script src="../js/wishlist.js"></script>
 <script src="../js/utils.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/theme.js"></script>

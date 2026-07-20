@@ -3,25 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="تصفح منتجات الفئة في ADAM SHOP Marketplace">
-  <title>الفئة | ADAM SHOP Marketplace</title>
+  <meta name="description" content="تصفح منتجات الفئة في آدم شوب">
+  <title>الفئة | آدم شوب</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
+<!-- reCAPTCHA Gate -->
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
     <div class="rc-crown">👑</div>
-    <h2><span class="gold">ADAM SHOP</span> Marketplace</h2>
+    <h2><span class="gold">آدم شوب</span></h2>
     <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
     <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
     <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
   </div>
 </div>
 
+<!-- Navbar -->
 <header class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">Marketplace</span></span></a>
+    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">آدم شوب</span><span class="logo-sub">ADAM SHOP</span></span></a>
     <nav class="nav-links" id="navLinks">
       <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
       <a href="categories.html" data-i18n="nav.categories">الفئات</a>
@@ -36,118 +38,402 @@
       <button class="nav-icon" id="langToggle" title="EN">🌐</button>
       <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
       <a href="wishlist.html" class="nav-icon">❤️<span class="count" id="wishCount" style="display:none">0</span></a>
-      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">0</span></a>
+      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount" style="display:none">0</span></a>
       <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar">👤</div><span class="u-name" id="userName"></span></div><div class="dropdown-menu" id="userMenu"></div></div>
     </div>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html">الرئيسية</a><a href="categories.html">الفئات</a><a href="products.html">المنتجات</a><a href="cart.html">سلة التسوق</a><a href="wishlist.html">المفضلة</a><a href="orders.html">طلباتي</a><a href="become-seller.html">تبيع معنا</a>
+    <a href="../index.html">الرئيسية</a>
+    <a href="categories.html">الفئات</a>
+    <a href="products.html">المنتجات</a>
+    <a href="cart.html">سلة التسوق</a>
+    <a href="wishlist.html">المفضلة</a>
+    <a href="orders.html">طلباتي</a>
+    <a href="become-seller.html">تبيع معنا</a>
   </div>
 </header>
 
 <main style="margin-top:var(--nav-h)">
   <div class="container">
+    <!-- Breadcrumbs -->
     <div class="bread">
-      <a href="../index.html">الرئيسية</a><span class="sep">←</span><a href="categories.html">الفئات</a><span class="sep">←</span><span class="cur" data-i18n="cat.electronics">إلكترونيات</span>
+      <a href="../index.html">الرئيسية</a>
+      <span class="sep">←</span>
+      <a href="categories.html">الفئات</a>
+      <span class="sep">←</span>
+      <span class="cur" id="breadcrumbCat">الإلكترونيات</span>
+      <span class="sep" id="breadcrumbSubSep" style="display:none">←</span>
+      <span class="cur" id="breadcrumbSub" style="display:none"></span>
     </div>
 
-    <div style="background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid var(--border);border-radius:var(--radius-xl);padding:32px;margin-bottom:32px;display:flex;align-items:center;gap:20px">
-      <div style="width:80px;height:80px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-size:2.5rem">📱</div>
+    <!-- Category Header -->
+    <div id="catHeader" style="background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid var(--border);border-radius:var(--radius-xl);padding:32px;margin-bottom:32px;display:flex;align-items:center;gap:20px">
+      <div id="catIcon" style="width:80px;height:80px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-size:2.5rem;flex-shrink:0">📱</div>
       <div>
-        <h1 class="section-title" id="catTitle" data-i18n="cat.electronics">إلكترونيات</h1>
-        <p class="text-dim" data-i18n="cat.electronics.desc">أحدث المنتجات الإلكترونية والأجهزة التقنية بأفضل الأسعار</p>
+        <h1 class="section-title" id="catTitle" style="font-size:1.4rem">الإلكترونيات</h1>
+        <p class="text-dim" id="catDesc">أحدث المنتجات الإلكترونية والأجهزة التقنية بأفضل الأسعار</p>
       </div>
     </div>
 
-    <div style="display:flex;gap:24px">
-      <!-- Filters Sidebar -->
-      <aside style="width:240px;flex-shrink:0">
-        <div class="chart-box">
-          <h3 class="chart-title" data-i18n="filter.title">التصفية</h3>
+    <!-- Subcategory Circles (shown when no sub param) -->
+    <div id="subcatsRow" style="display:none;margin-bottom:32px">
+      <div class="cat-scroll" id="subcatsScroll"></div>
+    </div>
 
-          <div class="filter-sec">
-            <div class="filter-head" data-i18n="filter.price">السعر</div>
-            <div class="price-range">
-              <input type="number" placeholder="من" data-i18n-placeholder="filter.from">
-              <span>-</span>
-              <input type="number" placeholder="إلى" data-i18n-placeholder="filter.to">
-            </div>
-          </div>
+    <!-- Sort Bar -->
+    <div class="sort-bar">
+      <span class="r-count" id="resultCount">عرض 0 منتج</span>
+      <select class="form-select" id="sortSelect" style="width:auto;height:36px">
+        <option value="new">الأحدث</option>
+        <option value="low">السعر: من الأقل</option>
+        <option value="high">السعر: من الأعلى</option>
+        <option value="rating">الأعلى تقييماً</option>
+      </select>
+    </div>
 
-          <div class="filter-sec">
-            <div class="filter-head" data-i18n="filter.brand">العلامة التجارية</div>
-            <div class="filter-opts">
-              <label class="filter-opt"><input type="checkbox"> Apple</label>
-              <label class="filter-opt"><input type="checkbox"> Samsung</label>
-              <label class="filter-opt"><input type="checkbox"> Sony</label>
-              <label class="filter-opt"><input type="checkbox"> LG</label>
-            </div>
-          </div>
+    <!-- Products Grid -->
+    <div class="products-grid" id="productsGrid"></div>
 
-          <div class="filter-sec">
-            <div class="filter-head" data-i18n="filter.rating">التقييم</div>
-            <div class="filter-opts">
-              <label class="filter-opt"><input type="checkbox"> ★★★★★</label>
-              <label class="filter-opt"><input type="checkbox"> ★★★★+</label>
-              <label class="filter-opt"><input type="checkbox"> ★★★+</label>
-            </div>
-          </div>
-
-          <button class="btn btn-gold btn-block" style="margin-top:12px" data-i18n="filter.apply">تطبيق الفلتر</button>
-        </div>
-      </aside>
-
-      <!-- Products -->
-      <div style="flex:1">
-        <div class="sort-bar">
-          <span class="r-count" data-i18n="products.showing">عرض 48 من 250 منتج</span>
-          <select class="form-select" style="width:auto;height:36px">
-            <option>الأحدث</option>
-            <option>السعر: من الأقل</option>
-            <option>السعر: من الأعلى</option>
-            <option>الأكثر مبيعاً</option>
-          </select>
-        </div>
-        <div class="products-grid">
-          <div class="p-card">
-            <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=iPhone+15" alt="iPhone 15"><span class="p-badge">جديد</span><button class="p-fav">❤️</button></div>
-            <div class="p-body"><span class="p-cat">هواتف ذكية</span><h3 class="p-name">آيفون 15 برو ماكس</h3><div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(128)</span></div><div class="p-price"><span class="curr">4,999 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
-          </div>
-          <div class="p-card">
-            <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=AirPods" alt="AirPods"><span class="p-badge">-35%</span><button class="p-fav">❤️</button></div>
-            <div class="p-body"><span class="p-cat">إلكترونيات</span><h3 class="p-name">سماعات AirPods Pro 2</h3><div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(342)</span></div><div class="p-price"><span class="curr">799 ر.س</span><span class="old">1,229 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
-          </div>
-          <div class="p-card">
-            <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Samsung+TV" alt="Samsung TV"><button class="p-fav">❤️</button></div>
-            <div class="p-body"><span class="p-cat">تلفزيونات</span><h3 class="p-name">تلفزيون سامسونج 65 بوصة QLED</h3><div class="p-rating"><span class="stars">★★★★☆</span><span class="r-count">(78)</span></div><div class="p-price"><span class="curr">3,999 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
-          </div>
-          <div class="p-card">
-            <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Sony+Camera" alt="Sony Camera"><span class="p-badge">مميز</span><button class="p-fav">❤️</button></div>
-            <div class="p-body"><span class="p-cat">كاميرات</span><h3 class="p-name">كاميرا سوني ألفا 7 كي</h3><div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(45)</span></div><div class="p-price"><span class="curr">8,499 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
-          </div>
-        </div>
-        <div class="pager">
-          <button>→</button><button class="active">1</button><button>2</button><button>3</button><button>←</button>
-        </div>
-      </div>
+    <!-- Empty State -->
+    <div class="empty" id="emptyState" style="display:none">
+      <div class="e-icon">📦</div>
+      <h3>لا توجد منتجات</h3>
+      <p>لم نتمكن من العثور على منتجات في هذه الفئة حالياً</p>
+      <a href="categories.html" class="btn btn-gold">تصفح الفئات</a>
     </div>
   </div>
 </main>
 
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="f-grid">
-      <div><div class="f-logo"><span class="crown">👑</span><span class="name">ADAM SHOP</span></div><p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p><div class="f-social"><a href="#">𝕏</a><a href="#">📷</a><a href="#">f</a><a href="#">▶</a></div></div>
-      <div><h4 class="f-title">روابط سريعة</h4><div class="f-links"><a href="products.html">المنتجات</a><a href="categories.html">الفئات</a><a href="products.html?sort=deals">العروض</a><a href="products.html?sort=best">الأكثر مبيعاً</a></div></div>
-      <div><h4 class="f-title">الفئات</h4><div class="f-links"><a href="category.html?cat=electronics">📱 إلكترونيات</a><a href="category.html?cat=fashion">👕 أزياء</a><a href="category.html?cat=beauty">💄 جمال وعناية</a><a href="category.html?cat=home">🏠 منزل وديكور</a></div></div>
-      <div><h4 class="f-title">المساعدة</h4><div class="f-links"><a href="#">الأسئلة الشائعة</a><a href="#">سياسة الشحن</a><a href="#">سياسة الإرجاع</a><a href="#">الخصوصية</a></div></div>
+      <div>
+        <div class="f-logo"><span class="crown">👑</span><span class="name">آدم شوب</span></div>
+        <p class="f-desc">وجهتك الأولى للتسوق الفاخر. نقدم لك تشكيلة واسعة من المنتجات الأصلية بأفضل الأسعار مع خدمة توصيل سريعة وآمنة.</p>
+        <div class="f-social"><a href="#">𝕏</a><a href="#">📷</a><a href="#">f</a><a href="#">▶</a></div>
+      </div>
+      <div>
+        <h4 class="f-title">روابط سريعة</h4>
+        <div class="f-links">
+          <a href="products.html">المنتجات</a>
+          <a href="categories.html">الفئات</a>
+          <a href="products.html?sort=deals">العروض</a>
+          <a href="products.html?sort=best">الأكثر مبيعاً</a>
+          <a href="become-seller.html">تبيع معنا</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="f-title">الفئات</h4>
+        <div class="f-links">
+          <a href="category.html?cat=electronics">📱 إلكترونيات</a>
+          <a href="category.html?cat=fashion">👕 أزياء</a>
+          <a href="category.html?cat=beauty">💄 جمال وعناية</a>
+          <a href="category.html?cat=home">🏠 منزل وديكور</a>
+          <a href="category.html?cat=sports">⚽ رياضة</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="f-title">المساعدة</h4>
+        <div class="f-links">
+          <a href="#">الأسئلة الشائعة</a>
+          <a href="#">سياسة الشحن</a>
+          <a href="#">سياسة الإرجاع</a>
+          <a href="#">الخصوصية</a>
+          <a href="#">الشروط والأحكام</a>
+        </div>
+      </div>
     </div>
-    <div class="f-bottom"><span>© 2026 <strong class="text-gold">ADAM SHOP</strong> Marketplace. جميع الحقوق محفوظة</span><span>💳 نقبل جميع بطاقات الائتمان</span></div>
+    <div class="f-bottom">
+      <span>© 2026 <strong class="text-gold">آدم شوب</strong> ADAM SHOP. جميع الحقوق محفوظة</span>
+      <span>💳 نقبل جميع بطاقات الائتمان</span>
+    </div>
   </div>
 </footer>
 
 <button class="btt" id="backToTop">⬆</button>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   MOCK DATA
+   ═══════════════════════════════════════════════════════════════════ */
+var allProducts = [
+  { id: '1', name: 'آيفون 15 برو ماكس', price: 4500, oldPrice: 5200, rating: 4.8, reviews: 234, cat: 'electronics', sub: 'phones', image: '📱', discount: 13 },
+  { id: '2', name: 'سماعات أبل برو', price: 1200, oldPrice: 1500, rating: 4.6, reviews: 189, cat: 'electronics', sub: 'headphones', image: '🎧', discount: 20 },
+  { id: '3', name: 'تلفزيون سامسونج 65 بوصة', price: 3800, oldPrice: 4500, rating: 4.7, reviews: 156, cat: 'electronics', sub: 'tv', image: '📺', discount: 16 },
+  { id: '4', name: 'لابتوب ماك بوك برو', price: 6500, oldPrice: 7200, rating: 4.9, reviews: 312, cat: 'electronics', sub: 'laptops', image: '💻', discount: 10 },
+  { id: '5', name: 'تابلت آيباد برو', price: 2800, oldPrice: 3200, rating: 4.7, reviews: 178, cat: 'electronics', sub: 'tablets', image: '📟', discount: 13 },
+  { id: '6', name: 'كاميرا سوني ألفا', price: 5500, oldPrice: 6000, rating: 4.8, reviews: 98, cat: 'electronics', sub: 'cameras', image: '📷', discount: 8 },
+  { id: '7', name: 'بلايستيشن 5', price: 2200, oldPrice: 2500, rating: 4.9, reviews: 445, cat: 'electronics', sub: 'gaming', image: '🎮', discount: 12 },
+  { id: '8', name: 'شاحن لاسلكي أبل', price: 180, oldPrice: 250, rating: 4.3, reviews: 567, cat: 'electronics', sub: 'accessories', image: '🔌', discount: 28 },
+  { id: '9', name: 'قميص قطني كلاسيك', price: 150, oldPrice: 200, rating: 4.4, reviews: 89, cat: 'fashion', sub: 'men', image: '👔', discount: 25 },
+  { id: '10', name: 'فستان سهرة أنيق', price: 450, oldPrice: 600, rating: 4.6, reviews: 134, cat: 'fashion', sub: 'women', image: '👗', discount: 25 },
+  { id: '11', name: 'حذاء رياضي نايكي', price: 380, oldPrice: 450, rating: 4.5, reviews: 267, cat: 'fashion', sub: 'shoes', image: '👟', discount: 16 },
+  { id: '12', name: 'حقيبة يد جل طبيعية', price: 650, oldPrice: 800, rating: 4.7, reviews: 78, cat: 'fashion', sub: 'bags', image: '👜', discount: 19 },
+  { id: '13', name: 'ساعة رولكس كلاسيك', price: 12000, oldPrice: 14000, rating: 4.9, reviews: 56, cat: 'watches', sub: 'luxury', image: '⌚', discount: 14 },
+  { id: '14', name: 'ساعة أبل ووتش', price: 1800, oldPrice: 2100, rating: 4.7, reviews: 389, cat: 'watches', sub: 'smart', image: '⌚', discount: 14 },
+  { id: '15', name: 'ساعة كاسيو رياضية', price: 280, oldPrice: 350, rating: 4.3, reviews: 234, cat: 'watches', sub: 'sport', image: '🏃', discount: 20 },
+  { id: '16', name: 'عطر توم فورد', price: 850, oldPrice: 1000, rating: 4.8, reviews: 178, cat: 'beauty', sub: 'perfume', image: '🌸', discount: 15 },
+  { id: '17', name: 'كريم تفتيح البشرة', price: 120, oldPrice: 180, rating: 4.2, reviews: 456, cat: 'beauty', sub: 'skincare', image: '🧴', discount: 33 },
+  { id: '18', name: 'طقم مكياج كامل', price: 350, oldPrice: 450, rating: 4.5, reviews: 234, cat: 'beauty', sub: 'makeup', image: '💄', discount: 22 },
+  { id: '19', name: 'كنب فاخر', price: 2500, oldPrice: 3000, rating: 4.6, reviews: 89, cat: 'home', sub: 'furniture', image: '🛋️', discount: 17 },
+  { id: '20', name: 'طقم أواني مطبخ', price: 450, oldPrice: 600, rating: 4.4, reviews: 167, cat: 'home', sub: 'kitchen', image: '🍳', discount: 25 },
+  { id: '21', name: 'نظام إضاءة ذكي', price: 380, oldPrice: 500, rating: 4.5, reviews: 123, cat: 'home', sub: 'lighting', image: '💡', discount: 24 },
+  { id: '22', name: 'جهاز تمارين منزلي', price: 1200, oldPrice: 1500, rating: 4.6, reviews: 98, cat: 'sports', sub: 'gym', image: '🏋️', discount: 20 },
+  { id: '23', name: 'كرة قدم احترافية', price: 180, oldPrice: 220, rating: 4.4, reviews: 345, cat: 'sports', sub: 'football', image: '⚽', discount: 18 },
+  { id: '24', name: 'دفتر أطفال تعليمي', price: 45, oldPrice: 60, rating: 4.3, reviews: 567, cat: 'kids', sub: 'toys', image: '📚', discount: 25 },
+  { id: '25', name: 'سماعة بلوتوث متحركة', price: 320, oldPrice: 400, rating: 4.5, reviews: 234, cat: 'electronics', sub: 'headphones', image: '🔊', discount: 20 },
+  { id: '26', name: 'ساعة كاجوال كلاسيك', price: 200, oldPrice: 280, rating: 4.2, reviews: 145, cat: 'watches', sub: 'casual', image: '🕐', discount: 29 },
+  { id: '27', name: 'شامبو مغربي أصلي', price: 85, oldPrice: 110, rating: 4.6, reviews: 389, cat: 'beauty', sub: 'hair', image: '💇', discount: 23 },
+  { id: '28', name: 'نظارات رايلي شمسية', price: 280, oldPrice: 350, rating: 4.5, reviews: 167, cat: 'fashion', sub: 'sunglasses', image: '🕶️', discount: 20 },
+  { id: '29', name: 'ساعة رياضية كاسيو', price: 350, oldPrice: 420, rating: 4.4, reviews: 278, cat: 'watches', sub: 'sport', image: '⌚', discount: 17 },
+  { id: '30', name: 'مجوهرات فضة إيطالية', price: 550, oldPrice: 700, rating: 4.7, reviews: 89, cat: 'fashion', sub: 'jewelry', image: '💍', discount: 21 }
+];
+
+/* ═══════════════════════════════════════════════════════════════════
+   CATEGORY / SUBCATEGORY MAP
+   ═══════════════════════════════════════════════════════════════════ */
+var catMap = {
+  electronics: {
+    name: 'الإلكترونيات', icon: '📱',
+    desc: 'أحدث المنتجات الإلكترونية والأجهزة التقنية بأفضل الأسعار',
+    subs: {
+      phones:     { name: 'هواتف ذكية', icon: '📱' },
+      tv:         { name: 'تلفاز', icon: '📺' },
+      headphones: { name: 'سماعات', icon: '🎧' },
+      laptops:    { name: 'لابتوب', icon: '💻' },
+      tablets:    { name: 'تابلت', icon: '📟' },
+      cameras:    { name: 'كاميرات', icon: '📷' },
+      gaming:     { name: 'ألعاب', icon: '🎮' },
+      accessories:{ name: 'ملحقات', icon: '🔌' }
+    }
+  },
+  fashion: {
+    name: 'أزياء', icon: '👕',
+    desc: 'تشكيلة واسعة من الملابس والإكسسوارات العصرية',
+    subs: {
+      men:        { name: 'رجالي', icon: '👔' },
+      women:      { name: 'نسائي', icon: '👗' },
+      shoes:      { name: 'أحذية', icon: '👟' },
+      bags:       { name: 'حقائب', icon: '👜' },
+      jewelry:    { name: 'مجوهرات', icon: '💍' },
+      sunglasses: { name: 'نظارات شمسية', icon: '🕶️' }
+    }
+  },
+  watches: {
+    name: 'ساعات', icon: '⌚',
+    desc: 'تشكيلة من أفضل الساعات العالمية والمميزة',
+    subs: {
+      luxury: { name: 'ساعات فاخرة', icon: '⌚' },
+      sport:  { name: 'ساعات رياضية', icon: '🏃' },
+      smart:  { name: 'ساعات ذكية', icon: '⌚' },
+      casual: { name: 'ساعات كاجوال', icon: '🕐' }
+    }
+  },
+  beauty: {
+    name: 'جمال وعناية', icon: '💄',
+    desc: 'منتجات العناية بالبشرة والشعر والمكياج والعطور',
+    subs: {
+      skincare: { name: 'العناية بالبشرة', icon: '🧴' },
+      makeup:   { name: 'مكياج', icon: '💄' },
+      perfume:  { name: 'عطور', icon: '🌸' },
+      hair:     { name: 'عناية بالشعر', icon: '💇' },
+      grooming: { name: 'عناية رجالية', icon: '🪒' }
+    }
+  },
+  home: {
+    name: 'منزل وديكور', icon: '🏠',
+    desc: 'أثاث ومطبخ وإضاءة وديكور لمنزل أنيق',
+    subs: {
+      furniture: { name: 'أثاث', icon: '🛋️' },
+      kitchen:   { name: 'مطبخ', icon: '🍳' },
+      lighting:  { name: 'إضاءة', icon: '💡' },
+      decor:     { name: 'ديكور', icon: '🖼️' },
+      bedroom:   { name: 'غرف نوم', icon: '🛏️' },
+      bathroom:  { name: 'حمامات', icon: '🚿' }
+    }
+  },
+  sports: {
+    name: 'رياضة', icon: '⚽',
+    desc: 'أجهزة رياضية وملابس و equipments للرياضة والنشاط الخارجي',
+    subs: {
+      gym:     { name: 'أجهزة رياضية', icon: '🏋️' },
+      football:{ name: 'كرة قدم', icon: '⚽' },
+      apparel: { name: 'ملابس رياضية', icon: '🎽' },
+      outdoor: { name: 'نشاط خارجي', icon: '🏕️' }
+    }
+  },
+  kids: {
+    name: 'أطفال', icon: '🧒',
+    desc: 'لعب وملابس ومستلزمات الأطفال',
+    subs: {
+      toys:    { name: 'لعب', icon: '🧸' },
+      clothing:{ name: 'ملابس أطفال', icon: '👶' },
+      strollers:{ name: 'عربات أطفال', icon: '🚼' },
+      baby:    { name: 'مستلزمات infants', icon: '🍼' }
+    }
+  },
+  automotive: {
+    name: 'سيارات', icon: '🚗',
+    desc: 'قطع غيار وإكسسوارات وزيوت وإطارات للسيارات',
+    subs: {
+      parts:       { name: 'قطع غيار', icon: '🔧' },
+      accessories: { name: 'إكسسوارات', icon: '🚗' },
+      oils:        { name: 'زيوت', icon: '🛢️' },
+      tires:       { name: 'إطارات', icon: '🛞' }
+    }
+  }
+};
+
+/* ═══════════════════════════════════════════════════════════════════
+   LOGIC
+   ═══════════════════════════════════════════════════════════════════ */
+var currentCat = getUrlParam('cat') || 'electronics';
+var currentSub = getUrlParam('sub') || null;
+var sortMode = 'new';
+
+function initCategoryPage() {
+  var catInfo = catMap[currentCat];
+  if (!catInfo) {
+    catInfo = catMap['electronics'];
+    currentCat = 'electronics';
+  }
+
+  // Update page title
+  document.title = catInfo.name + ' | آدم شوب';
+
+  // Update header
+  document.getElementById('catIcon').textContent = catInfo.icon;
+  document.getElementById('catTitle').textContent = catInfo.name;
+  document.getElementById('catDesc').textContent = catInfo.desc;
+  document.getElementById('breadcrumbCat').textContent = catInfo.name;
+
+  // If sub selected
+  if (currentSub && catInfo.subs[currentSub]) {
+    var subInfo = catInfo.subs[currentSub];
+    document.getElementById('breadcrumbSub').textContent = subInfo.name;
+    document.getElementById('breadcrumbSubSep').style.display = '';
+    document.getElementById('breadcrumbSub').style.display = '';
+    document.getElementById('catIcon').textContent = subInfo.icon;
+    document.getElementById('catTitle').textContent = subInfo.name;
+    document.getElementById('catDesc').textContent = subInfo.name + ' - ' + catInfo.name;
+    document.getElementById('subcatsRow').style.display = 'none';
+  } else {
+    // Show subcategory circles for main category
+    if (catInfo.subs) {
+      var subKeys = Object.keys(catInfo.subs);
+      if (subKeys.length > 0) {
+        var scroll = document.getElementById('subcatsScroll');
+        scroll.innerHTML = '';
+        subKeys.forEach(function(key) {
+          var s = catInfo.subs[key];
+          scroll.innerHTML += '<a href="category.html?cat=' + currentCat + '&sub=' + key + '" class="cat-item">' +
+            '<div class="cat-circle">' + s.icon + '</div>' +
+            '<span class="cat-name">' + s.name + '</span></a>';
+        });
+        document.getElementById('subcatsRow').style.display = '';
+      }
+    }
+  }
+
+  renderProducts();
+}
+
+function getFilteredProducts() {
+  var filtered = allProducts.filter(function(p) {
+    if (currentSub) {
+      return p.cat === currentCat && p.sub === currentSub;
+    }
+    return p.cat === currentCat;
+  });
+
+  // Sort
+  if (sortMode === 'low') {
+    filtered.sort(function(a, b) { return a.price - b.price; });
+  } else if (sortMode === 'high') {
+    filtered.sort(function(a, b) { return b.price - a.price; });
+  } else if (sortMode === 'rating') {
+    filtered.sort(function(a, b) { return b.rating - a.rating; });
+  } else {
+    filtered.sort(function(a, b) { return parseInt(b.id) - parseInt(a.id); });
+  }
+
+  return filtered;
+}
+
+function renderProducts() {
+  var products = getFilteredProducts();
+  var grid = document.getElementById('productsGrid');
+  var empty = document.getElementById('emptyState');
+  var count = document.getElementById('resultCount');
+
+  count.textContent = 'عرض ' + products.length + ' منتج';
+
+  if (products.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+
+  empty.style.display = 'none';
+  grid.innerHTML = products.map(function(p) {
+    var stars = typeof generateStars === 'function' ? generateStars(p.rating) : '★★★★★';
+    var wishActive = typeof isInWishlist === 'function' && isInWishlist(p.id) ? ' active' : '';
+    return '<div class="p-card">' +
+      '<div class="p-img">' +
+        '<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;background:var(--bg-3)">' + p.image + '</div>' +
+        (p.discount ? '<span class="p-badge">-' + p.discount + '%</span>' : '') +
+        '<button class="p-fav' + wishActive + '" data-product-id="' + p.id + '" onclick="toggleWishlist(\'' + p.id + '\',\'' + p.name.replace(/'/g, "\\'") + '\',' + p.price + ',\'' + p.image + '\')">❤️</button>' +
+      '</div>' +
+      '<div class="p-body">' +
+        '<span class="p-cat">' + getSubName(p.cat, p.sub) + '</span>' +
+        '<h3 class="p-name">' + p.name + '</h3>' +
+        '<div class="p-rating"><span class="stars">' + stars + '</span><span class="r-count">(' + p.reviews + ')</span></div>' +
+        '<div class="p-price"><span class="curr">' + formatPrice(p.price) + '</span>' +
+          (p.oldPrice ? '<span class="old">' + formatPrice(p.oldPrice) + '</span>' : '') +
+        '</div>' +
+        '<button class="p-btn" onclick="addToCart(\'' + p.id + '\',\'' + p.name.replace(/'/g, "\\'") + '\',' + p.price + ',\'' + p.image + '\',1)">🛒 أضف للسلة</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function getSubName(cat, sub) {
+  if (catMap[cat] && catMap[cat].subs[sub]) {
+    return catMap[cat].subs[sub].name;
+  }
+  return catMap[cat] ? catMap[cat].name : '';
+}
+
+function initSort() {
+  var sel = document.getElementById('sortSelect');
+  if (!sel) return;
+  sel.addEventListener('change', function() {
+    sortMode = sel.value;
+    renderProducts();
+  });
+}
+
+(function() {
+  function boot() {
+    initCategoryPage();
+    initSort();
+    if (typeof initNavbar === 'function') initNavbar();
+    if (typeof initBackToTop === 'function') initBackToTop();
+    if (typeof updateUserMenu === 'function') updateUserMenu();
+    if (typeof updateWishlistButtons === 'function') updateWishlistButtons();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+
+<script src="../js/cart.js"></script>
+<script src="../js/wishlist.js"></script>
 <script src="../js/utils.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/theme.js"></script>

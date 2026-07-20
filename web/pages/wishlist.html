@@ -3,92 +3,189 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="المفضلة - ADAM SHOP Marketplace">
-  <title>المفضلة | ADAM SHOP Marketplace</title>
+  <meta name="description" content="المفضلة - آدم شوب">
+  <title>المفضلة | آدم شوب</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
+<!-- reCAPTCHA Gate -->
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
     <div class="rc-crown">👑</div>
-    <h2><span class="gold">ADAM SHOP</span> Marketplace</h2>
+    <h2><span class="gold">آدم شوب</span></h2>
     <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
     <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
     <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
   </div>
 </div>
 
+<!-- Navbar -->
 <header class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">Marketplace</span></span></a>
+    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">آدم شوب</span><span class="logo-sub">ADAM SHOP</span></span></a>
     <nav class="nav-links" id="navLinks">
-      <a href="../index.html" data-i18n="nav.home">الرئيسية</a><a href="categories.html" data-i18n="nav.categories">الفئات</a><a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a><a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a><a href="products.html" data-i18n="nav.brands">العلامات التجارية</a><a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a><a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
+      <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+      <a href="categories.html" data-i18n="nav.categories">الفئات</a>
+      <a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a>
+      <a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a>
+      <a href="products.html" data-i18n="nav.brands">العلامات التجارية</a>
+      <a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a>
+      <a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
     </nav>
     <div class="nav-search"><div class="nav-search-box"><input type="text" id="navSearch" placeholder="ابحث عن منتجات..."><button class="search-btn">🔍</button></div><div class="search-dropdown" id="searchDropdown"></div></div>
     <div class="nav-actions">
       <button class="nav-icon" id="langToggle" title="EN">🌐</button>
       <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
-      <a href="wishlist.html" class="nav-icon">❤️<span class="count" id="wishCount">4</span></a>
-      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">0</span></a>
+      <a href="wishlist.html" class="nav-icon">❤️<span class="count" id="wishCount" style="display:none">0</span></a>
+      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount" style="display:none">0</span></a>
       <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar">👤</div><span class="u-name" id="userName"></span></div><div class="dropdown-menu" id="userMenu"></div></div>
     </div>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html">الرئيسية</a><a href="categories.html">الفئات</a><a href="products.html">المنتجات</a><a href="cart.html">سلة التسوق</a><a href="wishlist.html">المفضلة</a><a href="orders.html">طلباتي</a><a href="become-seller.html">تبيع معنا</a>
+    <a href="../index.html">الرئيسية</a>
+    <a href="categories.html">الفئات</a>
+    <a href="products.html">المنتجات</a>
+    <a href="cart.html">سلة التسوق</a>
+    <a href="wishlist.html">المفضلة</a>
+    <a href="orders.html">طلباتي</a>
+    <a href="become-seller.html">تبيع معنا</a>
   </div>
 </header>
 
 <main style="margin-top:var(--nav-h)">
   <div class="container">
+    <!-- Breadcrumbs -->
     <div class="bread">
-      <a href="../index.html">الرئيسية</a><span class="sep">←</span><span class="cur" data-i18n="nav.wishlist">المفضلة</span>
+      <a href="../index.html">الرئيسية</a><span class="sep">←</span><span class="cur">المفضلة</span>
     </div>
 
-    <h1 class="section-title" style="margin-bottom:24px">❤️ <span class="accent" data-i18n="wishlist.title">المفضلة</span></h1>
+    <h1 class="section-title" style="margin-bottom:24px;font-size:1.4rem">❤️ <span class="accent">المفضلة</span></h1>
 
-    <div class="products-grid" id="wishlistGrid">
-      <div class="p-card">
-        <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=iPhone+15" alt="iPhone 15"><span class="p-badge">جديد</span><button class="p-fav active">❤️</button></div>
-        <div class="p-body"><span class="p-cat">هواتف ذكية</span><h3 class="p-name">آيفون 15 برو ماكس 256 جيجا</h3><div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(128)</span></div><div class="p-price"><span class="curr">4,999 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
-      </div>
-      <div class="p-card">
-        <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=AirPods+Max" alt="AirPods Max"><button class="p-fav active">❤️</button></div>
-        <div class="p-body"><span class="p-cat">إلكترونيات</span><h3 class="p-name">سماعات AirPods Max</h3><div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(210)</span></div><div class="p-price"><span class="curr">1,849 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
-      </div>
-      <div class="p-card">
-        <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Watch+Ultra" alt="Watch Ultra"><button class="p-fav active">❤️</button></div>
-        <div class="p-body"><span class="p-cat">ساعات</span><h3 class="p-name">ساعة Apple Watch Ultra 2</h3><div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(210)</span></div><div class="p-price"><span class="curr">3,499 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
-      </div>
-      <div class="p-card">
-        <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Dior+Sauvage" alt="Dior"><button class="p-fav active">❤️</button></div>
-        <div class="p-body"><span class="p-cat">جمال وعناية</span><h3 class="p-name">عطر ديو سافاج 100 مل</h3><div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(456)</span></div><div class="p-price"><span class="curr">599 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
-      </div>
-    </div>
+    <!-- Wishlist Grid -->
+    <div class="products-grid" id="wishlistGrid"></div>
 
+    <!-- Empty State -->
     <div class="empty" id="wishlistEmpty" style="display:none">
       <div class="e-icon">❤️</div>
-      <h3 data-i18n="wishlist.empty">المفضلة فارغة</h3>
-      <p data-i18n="wishlist.emptyDesc">لم تضف أي منتجات للمفضلة بعد</p>
-      <a href="products.html" class="btn btn-gold" data-i18n="wishlist.browse">تصفح المنتجات</a>
+      <h3>المفضلة فارغة</h3>
+      <p>لم تضف أي منتجات للمفضلة بعد</p>
+      <a href="categories.html" class="btn btn-gold">تصفح الفئات</a>
     </div>
   </div>
 </main>
 
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="f-grid">
-      <div><div class="f-logo"><span class="crown">👑</span><span class="name">ADAM SHOP</span></div><p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p></div>
-      <div><h4 class="f-title">روابط سريعة</h4><div class="f-links"><a href="products.html">المنتجات</a><a href="categories.html">الفئات</a><a href="products.html?sort=deals">العروض</a></div></div>
-      <div><h4 class="f-title">الفئات</h4><div class="f-links"><a href="category.html?cat=electronics">📱 إلكترونيات</a><a href="category.html?cat=fashion">👕 أزياء</a><a href="category.html?cat=beauty">💄 جمال وعناية</a></div></div>
-      <div><h4 class="f-title">المساعدة</h4><div class="f-links"><a href="#">الأسئلة الشائعة</a><a href="#">سياسة الشحن</a><a href="#">سياسة الإرجاع</a></div></div>
+      <div>
+        <div class="f-logo"><span class="crown">👑</span><span class="name">آدم شوب</span></div>
+        <p class="f-desc">وجهتك الأولى للتسوق الفاخر. نقدم لك تشكيلة واسعة من المنتجات الأصلية بأفضل الأسعار مع خدمة توصيل سريعة وآمنة.</p>
+        <div class="f-social"><a href="#">𝕏</a><a href="#">📷</a><a href="#">f</a><a href="#">▶</a></div>
+      </div>
+      <div>
+        <h4 class="f-title">روابط سريعة</h4>
+        <div class="f-links">
+          <a href="products.html">المنتجات</a>
+          <a href="categories.html">الفئات</a>
+          <a href="products.html?sort=deals">العروض</a>
+          <a href="products.html?sort=best">الأكثر مبيعاً</a>
+          <a href="become-seller.html">تبيع معنا</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="f-title">الفئات</h4>
+        <div class="f-links">
+          <a href="category.html?cat=electronics">📱 إلكترونيات</a>
+          <a href="category.html?cat=fashion">👕 أزياء</a>
+          <a href="category.html?cat=beauty">💄 جمال وعناية</a>
+          <a href="category.html?cat=home">🏠 منزل وديكور</a>
+          <a href="category.html?cat=sports">⚽ رياضة</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="f-title">المساعدة</h4>
+        <div class="f-links">
+          <a href="#">الأسئلة الشائعة</a>
+          <a href="#">سياسة الشحن</a>
+          <a href="#">سياسة الإرجاع</a>
+          <a href="#">الخصوصية</a>
+          <a href="#">الشروط والأحكام</a>
+        </div>
+      </div>
     </div>
-    <div class="f-bottom"><span>© 2026 <strong class="text-gold">ADAM SHOP</strong> Marketplace. جميع الحقوق محفوظة</span><span>💳 نقبل جميع بطاقات الائتمان</span></div>
+    <div class="f-bottom">
+      <span>© 2026 <strong class="text-gold">آدم شوب</strong> ADAM SHOP. جميع الحقوق محفوظة</span>
+      <span>💳 نقبل جميع بطاقات الائتمان</span>
+    </div>
   </div>
 </footer>
 
 <button class="btt" id="backToTop">⬆</button>
+
+<script>
+function renderWishlistPage() {
+  var items = typeof getWishlist === 'function' ? getWishlist() : [];
+  var grid = document.getElementById('wishlistGrid');
+  var empty = document.getElementById('wishlistEmpty');
+
+  if (items.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+
+  empty.style.display = 'none';
+  grid.innerHTML = items.map(function(item) {
+    return '<div class="p-card" data-wl-item="' + item.productId + '">' +
+      '<div class="p-img">' +
+        '<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;background:var(--bg-3)">' + (item.image || '📦') + '</div>' +
+        '<button class="p-fav active" onclick="removeFromWishlistPage(\'' + item.productId + '\')">❤️</button>' +
+      '</div>' +
+      '<div class="p-body">' +
+        '<h3 class="p-name">' + item.name + '</h3>' +
+        '<div class="p-price"><span class="curr">' + formatPrice(item.price) + '</span></div>' +
+        '<div style="display:flex;gap:8px;margin-top:8px">' +
+          '<button class="p-btn" style="flex:1" onclick="addToCart(\'' + item.productId + '\',\'' + item.name.replace(/'/g, "\\'") + '\',' + item.price + ',\'' + (item.image || '') + '\',1)">🛒 أضف للسلة</button>' +
+          '<button class="btn btn-danger btn-sm" onclick="removeFromWishlistPage(\'' + item.productId + '\')" style="flex-shrink:0;width:40px;height:40px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:var(--radius)">🗑</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function removeFromWishlistPage(productId) {
+  if (typeof toggleWishlist === 'function') {
+    // Find item details so toggleWishlist can remove it
+    var wl = typeof getWishlist === 'function' ? getWishlist() : [];
+    var item = wl.find(function(i) { return i.productId === productId; });
+    if (item) {
+      toggleWishlist(item.productId, item.name, item.price, item.image);
+    }
+  }
+  renderWishlistPage();
+}
+
+(function() {
+  function boot() {
+    renderWishlistPage();
+    if (typeof initNavbar === 'function') initNavbar();
+    if (typeof initBackToTop === 'function') initBackToTop();
+    if (typeof updateUserMenu === 'function') updateUserMenu();
+    if (typeof updateWishlistButtons === 'function') updateWishlistButtons();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+
+<script src="../js/cart.js"></script>
+<script src="../js/wishlist.js"></script>
 <script src="../js/utils.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/theme.js"></script>
