@@ -1,135 +1,153 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ادم شوب - طلباتي">
-    <title>ادم شوب | طلباتي</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;}
-        .top-nav{background:linear-gradient(135deg,#141428,#1a1a35);border-bottom:1px solid rgba(255,255,255,0.06);padding:16px 32px;display:flex;justify-content:space-between;align-items:center;}
-        .nav-logo h2{font-size:1.4rem;background:linear-gradient(135deg,#d4af37,#f5d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-        .nav-links{display:flex;gap:20px;align-items:center;}
-        .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;transition:color 0.3s;}
-        .nav-links a:hover{color:#d4af37;}
-        .page-container{max-width:900px;margin:0 auto;padding:32px;}
-        .page-title{font-size:1.5rem;color:#fff;margin-bottom:24px;}
-        .order-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:20px;margin-bottom:16px;cursor:pointer;transition:all 0.3s;}
-        .order-card:hover{border-color:rgba(212,175,55,0.2);transform:translateY(-2px);}
-        .order-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-        .order-number{font-weight:700;color:#d4af37;font-size:1rem;}
-        .order-date{font-size:0.8rem;color:rgba(255,255,255,0.35);}
-        .order-items-preview{display:flex;gap:8px;margin-bottom:12px;overflow-x:auto;}
-        .order-item-thumb{width:48px;height:48px;border-radius:8px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
-        .order-footer{display:flex;justify-content:space-between;align-items:center;}
-        .order-total{font-weight:700;color:#fff;font-size:1.05rem;}
-        .badge{padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;}
-        .badge.pending{background:rgba(255,152,0,0.15);color:#ff9800;}
-        .badge.confirmed{background:rgba(33,150,243,0.15);color:#2196f3;}
-        .badge.shipped{background:rgba(156,39,176,0.15);color:#ce93d8;}
-        .badge.delivered{background:rgba(76,175,80,0.15);color:#4caf50;}
-        .badge.cancelled{background:rgba(244,67,54,0.15);color:#f44336;}
-        .order-details{display:none;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);}
-        .order-details.active{display:block;}
-        .detail-row{display:flex;justify-content:space-between;padding:8px 0;font-size:0.9rem;}
-        .detail-row .label{color:rgba(255,255,255,0.4);}
-        .btn-view{padding:8px 20px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);border-radius:8px;color:#d4af37;cursor:pointer;font-size:0.8rem;font-weight:600;text-decoration:none;}
-        .empty-state{text-align:center;padding:60px 20px;color:rgba(255,255,255,0.3);}
-        .empty-state .empty-icon{font-size:4rem;margin-bottom:12px;}
-        .empty-state h3{color:rgba(255,255,255,0.5);margin-bottom:8px;}
-        @media(max-width:768px){.top-nav{padding:12px 16px;}.page-container{padding:20px 16px;}}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="طلباتي - Luxora Marketplace">
+  <title>طلباتي | Luxora Marketplace</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <nav class="top-nav">
-        <div class="nav-logo"><h2>ادم شوب</h2></div>
-        <div class="nav-links">
-            <a href="../index.html" data-i18n="home">الرئيسية</a>
-            <a href="wishlist.html" data-i18n="wishlist">المفضلة</a>
-            <a href="profile.html" data-i18n="profile">الحساب</a>
-        </div>
+
+<div class="recaptcha-gate" id="recaptchaGate">
+  <div class="recaptcha-box">
+    <div class="rc-crown">👑</div>
+    <h2><span class="gold">Luxora</span> Marketplace</h2>
+    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
+    <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
+    <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
+  </div>
+</div>
+
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">Luxora</span><span class="logo-sub">Marketplace</span></span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="../index.html" data-i18n="nav.home">الرئيسية</a><a href="categories.html" data-i18n="nav.categories">الفئات</a><a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a><a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a><a href="products.html" data-i18n="nav.brands">العلامات التجارية</a><a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a><a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
     </nav>
+    <div class="nav-search"><div class="nav-search-box"><input type="text" id="navSearch" placeholder="ابحث عن منتجات..."><button class="search-btn">🔍</button></div><div class="search-dropdown" id="searchDropdown"></div></div>
+    <div class="nav-actions">
+      <button class="nav-icon" id="langToggle" title="EN">🌐</button>
+      <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
+      <a href="wishlist.html" class="nav-icon">❤️</a>
+      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">0</span></a>
+      <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar">👤</div><span class="u-name" id="userName"></span></div><div class="dropdown-menu" id="userMenu"></div></div>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">الرئيسية</a><a href="categories.html">الفئات</a><a href="products.html">المنتجات</a><a href="cart.html">سلة التسوق</a><a href="wishlist.html">المفضلة</a><a href="orders.html">طلباتي</a><a href="become-seller.html">تبيع معنا</a>
+  </div>
+</header>
 
-    <div class="page-container">
-        <h1 class="page-title" data-i18n="my_orders">طلباتي</h1>
-
-        <div class="order-card" onclick="toggleDetails(this)">
-            <div class="order-header">
-                <div><span class="order-number">#10234</span><span class="order-date" style="margin-right:12px;">2026-07-20</span></div>
-                <span class="badge pending" data-i18n="status_pending">قيد الانتظار</span>
-            </div>
-            <div class="order-items-preview">
-                <div class="order-item-thumb">&#128241;</div>
-                <div class="order-item-thumb">&#128241;</div>
-                <div class="order-item-thumb">&#128085;</div>
-            </div>
-            <div class="order-footer">
-                <span class="order-total">1,320 LYD</span>
-                <a href="order-detail.html" class="btn-view" data-i18n="view_details" onclick="event.stopPropagation()">التفاصيل</a>
-            </div>
-            <div class="order-details">
-                <div class="detail-row"><span class="label" data-i18n="items">المنتجات</span><span>3 منتجات</span></div>
-                <div class="detail-row"><span class="label" data-i18n="subtotal">المجموع الفرعي</span><span>1,270 LYD</span></div>
-                <div class="detail-row"><span class="label" data-i18n="shipping">الشحن</span><span>50 LYD</span></div>
-                <div class="detail-row"><span class="label" data-i18n="total">المجموع</span><span style="color:#d4af37;font-weight:700;">1,320 LYD</span></div>
-            </div>
-        </div>
-
-        <div class="order-card" onclick="toggleDetails(this)">
-            <div class="order-header">
-                <div><span class="order-number">#10198</span><span class="order-date" style="margin-right:12px;">2026-07-10</span></div>
-                <span class="badge shipped" data-i18n="status_shipped">تم الشحن</span>
-            </div>
-            <div class="order-items-preview">
-                <div class="order-item-thumb">&#128247;</div>
-            </div>
-            <div class="order-footer">
-                <span class="order-total">2,150 LYD</span>
-                <a href="order-detail.html" class="btn-view" data-i18n="view_details" onclick="event.stopPropagation()">التفاصيل</a>
-            </div>
-        </div>
-
-        <div class="order-card" onclick="toggleDetails(this)">
-            <div class="order-header">
-                <div><span class="order-number">#10156</span><span class="order-date" style="margin-right:12px;">2026-06-25</span></div>
-                <span class="badge delivered" data-i18n="status_delivered">تم التوصيل</span>
-            </div>
-            <div class="order-items-preview">
-                <div class="order-item-thumb">&#128094;</div>
-                <div class="order-item-thumb">&#128094;</div>
-            </div>
-            <div class="order-footer">
-                <span class="order-total">190 LYD</span>
-                <a href="order-detail.html" class="btn-view" data-i18n="view_details" onclick="event.stopPropagation()">التفاصيل</a>
-            </div>
-        </div>
-
-        <div class="order-card" onclick="toggleDetails(this)">
-            <div class="order-header">
-                <div><span class="order-number">#10102</span><span class="order-date" style="margin-right:12px;">2026-06-10</span></div>
-                <span class="badge delivered" data-i18n="status_delivered">تم التوصيل</span>
-            </div>
-            <div class="order-items-preview">
-                <div class="order-item-thumb">&#128085;</div>
-            </div>
-            <div class="order-footer">
-                <span class="order-total">180 LYD</span>
-                <a href="order-detail.html" class="btn-view" data-i18n="view_details" onclick="event.stopPropagation()">التفاصيل</a>
-            </div>
-        </div>
+<main style="margin-top:var(--nav-h)">
+  <div class="container">
+    <div class="bread">
+      <a href="../index.html">الرئيسية</a><span class="sep">←</span><span class="cur" data-i18n="nav.orders">طلباتي</span>
     </div>
 
-    <script src="../js/app.js"></script>
-    <script src="../js/i18n.js"></script>
-    <script>
-        function toggleDetails(card) {
-            const details = card.querySelector('.order-details');
-            if (details) {
-                details.classList.toggle('active');
-            }
-        }
-    </script>
+    <h1 class="section-title" style="margin-bottom:24px">📦 <span class="accent" data-i18n="orders.title">طلباتي</span></h1>
+
+    <div class="chart-box" style="margin-bottom:16px">
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-gold btn-sm" data-i18n="orders.all">الكل</button>
+        <button class="btn btn-outline btn-sm" data-i18n="orders.pending">قيد الانتظار</button>
+        <button class="btn btn-outline btn-sm" data-i18n="orders.processing">قيد المعالجة</button>
+        <button class="btn btn-outline btn-sm" data-i18n="orders.shipped">تم الشحن</button>
+        <button class="btn btn-outline btn-sm" data-i18n="orders.delivered">تم التوصيل</button>
+      </div>
+    </div>
+
+    <!-- Order 1 -->
+    <div class="chart-box" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+        <div>
+          <h3 style="font-size:0.95rem;font-weight:700">#ORD-2026-1248</h3>
+          <p class="text-xs text-dim">18 يناير 2026</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span class="badge-st st-shipped">🚚 تم الشحن</span>
+          <a href="order-detail.html" class="btn btn-outline btn-sm" data-i18n="orders.details">التفاصيل</a>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <div style="display:flex;gap:-8px">
+          <img src="https://placehold.co/50x50/1C2333/D4A94A?text=iPhone" alt="product" style="width:50px;height:50px;border-radius:8px;border:2px solid var(--bg-card)">
+          <img src="https://placehold.co/50x50/1C2333/D4A94A?text=AirPods" alt="product" style="width:50px;height:50px;border-radius:8px;border:2px solid var(--bg-card);margin-right:-12px">
+        </div>
+        <span class="text-sm text-dim">2 منتجات</span>
+        <span style="margin-right:auto"></span>
+        <span style="font-weight:800;color:var(--gold)">5,798 ر.س</span>
+      </div>
+    </div>
+
+    <!-- Order 2 -->
+    <div class="chart-box" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+        <div>
+          <h3 style="font-size:0.95rem;font-weight:700">#ORD-2026-1187</h3>
+          <p class="text-xs text-dim">5 يناير 2026</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span class="badge-st st-delivered">✓ تم التوصيل</span>
+          <a href="order-detail.html" class="btn btn-outline btn-sm" data-i18n="orders.details">التفاصيل</a>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <img src="https://placehold.co/50x50/1C2333/D4A94A?text=Watch" alt="product" style="width:50px;height:50px;border-radius:8px">
+        <span class="text-sm text-dim">1 منتج</span>
+        <span style="margin-right:auto"></span>
+        <span style="font-weight:800;color:var(--gold)">3,499 ر.س</span>
+      </div>
+    </div>
+
+    <!-- Order 3 -->
+    <div class="chart-box" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+        <div>
+          <h3 style="font-size:0.95rem;font-weight:700">#ORD-2026-1056</h3>
+          <p class="text-xs text-dim">20 ديسمبر 2025</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span class="badge-st st-delivered">✓ تم التوصيل</span>
+          <a href="order-detail.html" class="btn btn-outline btn-sm" data-i18n="orders.details">التفاصيل</a>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <img src="https://placehold.co/50x50/1C2333/D4A94A?text=Nike" alt="product" style="width:50px;height:50px;border-radius:8px">
+        <span class="text-sm text-dim">1 منتج</span>
+        <span style="margin-right:auto"></span>
+        <span style="font-weight:800;color:var(--gold)">549 ر.س</span>
+      </div>
+    </div>
+
+    <div class="empty" id="ordersEmpty" style="display:none">
+      <div class="e-icon">📦</div>
+      <h3 data-i18n="orders.empty">لا توجد طلبات</h3>
+      <p data-i18n="orders.emptyDesc">لم تقم بأي طلبات بعد</p>
+      <a href="products.html" class="btn btn-gold" data-i18n="wishlist.browse">تصفح المنتجات</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="f-grid">
+      <div><div class="f-logo"><span class="crown">👑</span><span class="name">Luxora</span></div><p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p></div>
+      <div><h4 class="f-title">روابط سريعة</h4><div class="f-links"><a href="products.html">المنتجات</a><a href="categories.html">الفئات</a><a href="products.html?sort=deals">العروض</a></div></div>
+      <div><h4 class="f-title">الفئات</h4><div class="f-links"><a href="category.html?cat=electronics">📱 إلكترونيات</a><a href="category.html?cat=fashion">👕 أزياء</a><a href="category.html?cat=beauty">💄 جمال وعناية</a></div></div>
+      <div><h4 class="f-title">المساعدة</h4><div class="f-links"><a href="#">الأسئلة الشائعة</a><a href="#">سياسة الشحن</a><a href="#">سياسة الإرجاع</a></div></div>
+    </div>
+    <div class="f-bottom"><span>© 2026 <strong class="text-gold">Luxora</strong> Marketplace. جميع الحقوق محفوظة</span><span>💳 نقبل جميع بطاقات الائتمان</span></div>
+  </div>
+</footer>
+
+<button class="btt" id="backToTop">⬆</button>
+<script src="../js/utils.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/navbar.js"></script>
 </body>
 </html>

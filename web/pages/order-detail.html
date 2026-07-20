@@ -1,135 +1,164 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ادم شوب - تفاصيل الطلب">
-    <title>ادم شوب | تفاصيل الطلب</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0f0f1a;color:#e0e0e0;min-height:100vh;}
-        .top-nav{background:linear-gradient(135deg,#141428,#1a1a35);border-bottom:1px solid rgba(255,255,255,0.06);padding:16px 32px;display:flex;justify-content:space-between;align-items:center;}
-        .nav-logo h2{font-size:1.4rem;background:linear-gradient(135deg,#d4af37,#f5d060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-        .nav-links{display:flex;gap:20px;}
-        .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.9rem;transition:color 0.3s;}
-        .nav-links a:hover{color:#d4af37;}
-        .page-container{max-width:800px;margin:0 auto;padding:32px;}
-        .breadcrumb{display:flex;gap:8px;font-size:0.85rem;margin-bottom:24px;color:rgba(255,255,255,0.35);}
-        .breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;}.breadcrumb a:hover{color:#d4af37;}
-        .order-header-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:24px;margin-bottom:20px;}
-        .order-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
-        .order-title h1{font-size:1.3rem;color:#fff;}
-        .badge{padding:5px 14px;border-radius:20px;font-size:0.8rem;font-weight:600;}
-        .badge.pending{background:rgba(255,152,0,0.15);color:#ff9800;}
-        .badge.shipped{background:rgba(156,39,176,0.15);color:#ce93d8;}
-        .status-timeline{display:flex;margin:0 -10px;}
-        .timeline-step{flex:1;text-align:center;position:relative;padding:0 10px;}
-        .timeline-step::before{content:'';position:absolute;top:14px;right:0;left:0;height:3px;background:rgba(255,255,255,0.06);z-index:0;}
-        .timeline-step:first-child::before{right:50%;}.timeline-step:last-child::before{left:50%;}
-        .timeline-dot{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.08);display:inline-flex;align-items:center;justify-content:center;font-size:0.7rem;position:relative;z-index:1;border:2px solid rgba(255,255,255,0.06);}
-        .timeline-step.done .timeline-dot{background:#4caf50;border-color:#4caf50;color:#fff;}
-        .timeline-step.current .timeline-dot{background:#d4af37;border-color:#d4af37;color:#fff;}
-        .timeline-step span{display:block;font-size:0.7rem;color:rgba(255,255,255,0.35);margin-top:8px;}
-        .section-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:24px;margin-bottom:16px;}
-        .section-card h3{color:#d4af37;font-size:1rem;margin-bottom:16px;}
-        .item-row{display:flex;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;}
-        .item-row:last-child{border-bottom:none;}
-        .item-img{width:60px;height:60px;border-radius:10px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;}
-        .item-info{flex:1;}
-        .item-name{font-size:0.9rem;color:#fff;font-weight:500;}
-        .item-variant{font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:2px;}
-        .item-qty{font-size:0.8rem;color:rgba(255,255,255,0.5);}
-        .item-price{font-weight:700;color:#d4af37;font-size:0.95rem;white-space:nowrap;}
-        .total-section{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);}
-        .total-row{display:flex;justify-content:space-between;padding:6px 0;font-size:0.9rem;}
-        .total-row.grand{font-size:1.1rem;font-weight:700;padding-top:12px;margin-top:6px;border-top:1px solid rgba(212,175,55,0.2);}
-        .total-row.grand span:last-child{color:#d4af37;}
-        .address-row{display:flex;gap:8px;padding:8px 0;font-size:0.9rem;color:rgba(255,255,255,0.6);}
-        .address-row .icon{font-size:1.2rem;}
-        .map-link{display:inline-flex;align-items:center;gap:6px;color:#d4af37;text-decoration:none;font-size:0.85rem;margin-top:8px;}
-        .map-link:hover{text-decoration:underline;}
-        @media(max-width:768px){.top-nav{padding:12px 16px;}.page-container{padding:20px 16px;}.status-timeline{margin:0 -4px;}.timeline-step{padding:0 4px;}}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="تفاصيل الطلب - Luxora Marketplace">
+  <title>تفاصيل الطلب | Luxora Marketplace</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <nav class="top-nav">
-        <div class="nav-logo"><h2>ادم شوب</h2></div>
-        <div class="nav-links">
-            <a href="../index.html" data-i18n="home">الرئيسية</a>
-            <a href="orders.html" data-i18n="my_orders">طلباتي</a>
-        </div>
+
+<div class="recaptcha-gate" id="recaptchaGate">
+  <div class="recaptcha-box">
+    <div class="rc-crown">👑</div>
+    <h2><span class="gold">Luxora</span> Marketplace</h2>
+    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
+    <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
+    <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
+  </div>
+</div>
+
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">Luxora</span><span class="logo-sub">Marketplace</span></span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="../index.html" data-i18n="nav.home">الرئيسية</a><a href="categories.html" data-i18n="nav.categories">الفئات</a><a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a><a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a><a href="products.html" data-i18n="nav.brands">العلامات التجارية</a><a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a><a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
     </nav>
+    <div class="nav-search"><div class="nav-search-box"><input type="text" id="navSearch" placeholder="ابحث عن منتجات..."><button class="search-btn">🔍</button></div><div class="search-dropdown" id="searchDropdown"></div></div>
+    <div class="nav-actions">
+      <button class="nav-icon" id="langToggle" title="EN">🌐</button>
+      <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
+      <a href="wishlist.html" class="nav-icon">❤️</a>
+      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">0</span></a>
+      <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar">👤</div><span class="u-name" id="userName"></span></div><div class="dropdown-menu" id="userMenu"></div></div>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">الرئيسية</a><a href="categories.html">الفئات</a><a href="products.html">المنتجات</a><a href="cart.html">سلة التسوق</a><a href="wishlist.html">المفضلة</a><a href="orders.html">طلباتي</a><a href="become-seller.html">تبيع معنا</a>
+  </div>
+</header>
 
-    <div class="page-container">
-        <div class="breadcrumb">
-            <a href="../index.html" data-i18n="home">الرئيسية</a> / <a href="orders.html" data-i18n="my_orders">طلباتي</a> / <span>#10234</span>
-        </div>
-
-        <div class="order-header-card">
-            <div class="order-title">
-                <div>
-                    <h1 data-i18n="order">الطلب <span style="color:#d4af37;">#10234</span></h1>
-                    <p style="font-size:0.85rem;color:rgba(255,255,255,0.35);margin-top:4px;">2026-07-20 14:30</p>
-                </div>
-                <span class="badge shipped" data-i18n="status_shipped">تم الشحن</span>
-            </div>
-            <div class="status-timeline">
-                <div class="timeline-step done"><div class="timeline-dot">&#10003;</div><span data-i18n="status_pending">الانتظار</span></div>
-                <div class="timeline-step done"><div class="timeline-dot">&#10003;</div><span data-i18n="status_confirmed">التأكيد</span></div>
-                <div class="timeline-step current"><div class="timeline-dot">&#9679;</div><span data-i18n="status_shipped">الشحن</span></div>
-                <div class="timeline-step"><div class="timeline-dot">4</div><span data-i18n="status_delivered">التوصيل</span></div>
-            </div>
-        </div>
-
-        <div class="section-card">
-            <h3 data-i18n="items">المنتجات</h3>
-            <div class="item-row">
-                <div class="item-img">&#128241;</div>
-                <div class="item-info">
-                    <div class="item-name">هاتف Samsung Galaxy S24</div>
-                    <div class="item-variant">اللون: أسود</div>
-                    <div class="item-qty">x1</div>
-                </div>
-                <div class="item-price">1,250 LYD</div>
-            </div>
-            <div class="item-row">
-                <div class="item-img">&#128241;</div>
-                <div class="item-info">
-                    <div class="item-name">غطاء هاتف iPhone 15</div>
-                    <div class="item-variant">اللون: شفاف</div>
-                    <div class="item-qty">x2</div>
-                </div>
-                <div class="item-price">70 LYD</div>
-            </div>
-            <div class="total-section">
-                <div class="total-row"><span data-i18n="subtotal">المجموع الفرعي</span><span>1,320 LYD</span></div>
-                <div class="total-row"><span data-i18n="shipping">الشحن</span><span>50 LYD</span></div>
-                <div class="total-row grand"><span data-i18n="total">المجموع</span><span>1,370 LYD</span></div>
-            </div>
-        </div>
-
-        <div class="section-card">
-            <h3 data-i18n="shipping_address">عنوان الشحن</h3>
-            <div class="address-row"><span class="icon">&#128100;</span><span>أحمد علي</span></div>
-            <div class="address-row"><span class="icon">&#128222;</span><span>+218 91 234 5678</span></div>
-            <div class="address-row"><span class="icon">&#128205;</span><span>طرابلس، حي النصر، شارع 20 مارس، مجمع 15، شقة 8</span></div>
-            <a href="https://maps.google.com" class="map-link" target="_blank">&#128205; <span data-i18n="view_on_map">عرض على الخريطة</span></a>
-        </div>
-
-        <div class="section-card">
-            <h3 data-i18n="payment_method">طريقة الدفع</h3>
-            <div style="display:flex;align-items:center;gap:12px;padding:8px 0;">
-                <span style="font-size:1.5rem;">&#128179;</span>
-                <div>
-                    <div style="font-size:0.9rem;color:#fff;" data-i18n="cash_on_delivery">الدفع عند الاستلام</div>
-                    <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);">1,370 LYD</div>
-                </div>
-            </div>
-        </div>
+<main style="margin-top:var(--nav-h)">
+  <div class="container">
+    <div class="bread">
+      <a href="../index.html">الرئيسية</a><span class="sep">←</span><a href="orders.html">طلباتي</a><span class="sep">←</span><span class="cur">#ORD-2026-1248</span>
     </div>
 
-    <script src="../js/app.js"></script>
-    <script src="../js/i18n.js"></script>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+      <div>
+        <h1 class="section-title" data-i18n="orderDetail.title">تفاصيل الطلب <span class="accent">#ORD-2026-1248</span></h1>
+        <p class="text-sm text-dim">18 يناير 2026 - 02:30 م</p>
+      </div>
+      <span class="badge-st st-shipped" style="font-size:0.82rem;padding:6px 16px">🚚 تم الشحن</span>
+    </div>
+
+    <div class="cart-grid">
+      <!-- Order Info -->
+      <div>
+        <!-- Timeline -->
+        <div class="chart-box">
+          <h3 class="chart-title" data-i18n="orderDetail.timeline">تتبع الطلب</h3>
+          <div class="timeline">
+            <div class="tl-item done">
+              <div class="tl-dot">✓</div>
+              <div class="tl-info"><h4 data-i18n="orderDetail.placed">تم استلام الطلب</h4><p>18 يناير 2026 - 02:30 م</p></div>
+            </div>
+            <div class="tl-item done">
+              <div class="tl-dot">✓</div>
+              <div class="tl-info"><h4 data-i18n="orderDetail.confirmed">تم تأكيد الطلب</h4><p>18 يناير 2026 - 03:15 م</p></div>
+            </div>
+            <div class="tl-item done">
+              <div class="tl-dot">✓</div>
+              <div class="tl-info"><h4 data-i18n="orderDetail.processing">جاري التجهيز</h4><p>19 يناير 2026 - 09:00 ص</p></div>
+            </div>
+            <div class="tl-item current">
+              <div class="tl-dot">🚚</div>
+              <div class="tl-info"><h4 data-i18n="orderDetail.shipped">تم الشحن</h4><p>19 يناير 2026 - 04:30 م</p></div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">📦</div>
+              <div class="tl-info"><h4 data-i18n="orderDetail.delivered">التوصيل</h4><p data-i18n="orderDetail.expected">المتوقع: 20 يناير 2026</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Items -->
+        <div class="chart-box">
+          <h3 class="chart-title" data-i18n="orderDetail.items">المنتجات</h3>
+          <div class="cart-list-item" style="border:none;padding:12px 0">
+            <img src="https://placehold.co/80x80/1C2333/D4A94A?text=iPhone" alt="iPhone" style="width:70px;height:70px">
+            <div class="cli-info">
+              <h3 class="cli-name">آيفون 15 برو ماكس 256 جيجا</h3>
+              <p class="cli-variant">اللون: أزرق تيتانيوم | الكمية: 1</p>
+            </div>
+            <span style="font-weight:700;color:var(--gold)">4,999 ر.س</span>
+          </div>
+          <div class="cart-list-item" style="padding:12px 0">
+            <img src="https://placehold.co/80x80/1C2333/D4A94A?text=AirPods" alt="AirPods" style="width:70px;height:70px">
+            <div class="cli-info">
+              <h3 class="cli-name">سماعات AirPods Pro 2</h3>
+              <p class="cli-variant">اللون: أبيض | الكمية: 1</p>
+            </div>
+            <span style="font-weight:700;color:var(--gold)">799 ر.س</span>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="chart-box">
+          <h3 class="chart-title" data-i18n="orderDetail.shipAddress">عنوان الشحن</h3>
+          <div style="font-size:0.88rem;color:var(--text-3);line-height:1.8">
+            <p><strong>محمد أحمد العلي</strong></p>
+            <p>شارع الملك فهد، مبنى 42</p>
+            <p>الرياض - 12345</p>
+            <p>📞 0512345678</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Summary -->
+      <div>
+        <div class="cart-summary">
+          <h3 data-i18n="orderDetail.paymentSummary">ملخص الدفع</h3>
+          <div class="sum-row"><span data-i18n="cart.subtotal">المجموع الفرعي</span><span>5,798 ر.س</span></div>
+          <div class="sum-row"><span data-i18n="cart.shipping">الشحن</span><span class="text-gold">مجاني</span></div>
+          <div class="sum-row"><span data-i18n="cart.tax">الضريبة (15%)</span><span>870 ر.س</span></div>
+          <div class="sum-total"><span data-i18n="cart.total">الإجمالي</span><span class="amount">6,668 ر.س</span></div>
+          <div style="border-top:1px solid var(--border);padding-top:12px;margin-top:12px">
+            <div class="meta-row" style="font-size:0.82rem"><span class="meta-label" data-i18n="orderDetail.payment">الدفع:</span><span>💳 Visa **** 4242</span></div>
+            <div class="meta-row" style="font-size:0.82rem"><span class="meta-label" data-i18n="orderDetail.tracking">رقم التتبع:</span><span class="font-en">SHP-2026-78945</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+          <button class="btn btn-outline btn-block btn-sm" data-i18n="orderDetail.download">📥 تحميل الفاتورة</button>
+          <button class="btn btn-outline btn-block btn-sm" data-i18n="orderDetail.help">💬 التواصل مع الدعم</button>
+          <button class="btn btn-danger btn-block btn-sm" data-i18n="orderDetail.cancel">إلغاء الطلب</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="f-grid">
+      <div><div class="f-logo"><span class="crown">👑</span><span class="name">Luxora</span></div><p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p></div>
+      <div><h4 class="f-title">روابط سريعة</h4><div class="f-links"><a href="products.html">المنتجات</a><a href="categories.html">الفئات</a><a href="products.html?sort=deals">العروض</a></div></div>
+      <div><h4 class="f-title">الفئات</h4><div class="f-links"><a href="category.html?cat=electronics">📱 إلكترونيات</a><a href="category.html?cat=fashion">👕 أزياء</a><a href="category.html?cat=beauty">💄 جمال وعناية</a></div></div>
+      <div><h4 class="f-title">المساعدة</h4><div class="f-links"><a href="#">الأسئلة الشائعة</a><a href="#">سياسة الشحن</a><a href="#">سياسة الإرجاع</a></div></div>
+    </div>
+    <div class="f-bottom"><span>© 2026 <strong class="text-gold">Luxora</strong> Marketplace. جميع الحقوق محفوظة</span><span>💳 نقبل جميع بطاقات الائتمان</span></div>
+  </div>
+</footer>
+
+<button class="btt" id="backToTop">⬆</button>
+<script src="../js/utils.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/navbar.js"></script>
 </body>
 </html>

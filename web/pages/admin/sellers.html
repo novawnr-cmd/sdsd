@@ -1,84 +1,66 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ادم شوب - إدارة البائعين">
-    <title>ادم شوب | إدارة البائعين</title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Segoe UI',Tahoma,sans-serif;background:#0a0a12;color:#e0e0e0;display:flex;min-height:100vh;}
-        .sidebar{width:260px;background:linear-gradient(180deg,#0d0d1a,#141428);border-left:1px solid rgba(255,255,255,0.06);padding:24px 0;position:fixed;top:0;right:0;bottom:0;overflow-y:auto;z-index:100;}
-        .sidebar-logo{text-align:center;padding:0 20px 28px;border-bottom:1px solid rgba(255,255,255,0.06);}.sidebar-logo h2{font-size:1.5rem;color:#f44336;font-weight:800;}.sidebar-logo small{color:rgba(255,255,255,0.3);font-size:0.7rem;}
-        .sidebar-nav{padding:16px 0;}.sidebar-nav a{display:flex;align-items:center;gap:12px;padding:11px 24px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;transition:all 0.3s;border-right:3px solid transparent;}.sidebar-nav a:hover{background:rgba(255,255,255,0.03);color:#fff;}.sidebar-nav a.active{background:rgba(244,67,54,0.08);color:#f44336;border-right-color:#f44336;}.sidebar-nav a .icon{font-size:1.1rem;width:22px;text-align:center;}
-        .main-content{margin-right:260px;flex:1;padding:24px 32px;}
-        .top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}.top-bar h1{font-size:1.5rem;color:#fff;}
-        .card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:14px;padding:24px;margin-bottom:20px;}
-        .card h3{color:#fff;font-size:1rem;margin-bottom:16px;}
-        table{width:100%;border-collapse:collapse;}
-        th{text-align:right;padding:10px 14px;color:rgba(255,255,255,0.35);font-size:0.75rem;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.05);}
-        td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.03);font-size:0.85rem;}
-        .badge{padding:3px 10px;border-radius:16px;font-size:0.7rem;font-weight:600;}
-        .badge.active{background:rgba(76,175,80,0.12);color:#4caf50;}
-        .badge.pending{background:rgba(255,152,0,0.12);color:#ff9800;}
-        .badge.suspended{background:rgba(244,67,54,0.12);color:#f44336;}
-        .badge.sub-active{background:rgba(33,150,243,0.12);color:#2196f3;}
-        .badge.sub-inactive{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.3);}
-        .actions{display:flex;gap:6px;}
-        .btn-icon{width:32px;height:32px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.5);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;font-size:0.8rem;}
-        .btn-icon:hover{background:rgba(255,255,255,0.06);color:#fff;}
-        .btn-icon.delete:hover{background:rgba(244,67,54,0.12);color:#f44336;}
-        .btn-approve{padding:6px 14px;background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.3);border-radius:6px;color:#4caf50;cursor:pointer;font-size:0.8rem;font-weight:600;}
-        .btn-reject{padding:6px 14px;background:rgba(244,67,54,0.1);border:1px solid rgba(244,67,54,0.2);border-radius:6px;color:#f44336;cursor:pointer;font-size:0.8rem;}
-        @media(max-width:768px){.sidebar{display:none;}.main-content{margin-right:0;}}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="إدارة البائعين - Luxora Marketplace">
+  <title>البائعين | Luxora Marketplace</title>
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="sidebar-logo"><h2>&#128737; Admin</h2><small data-i18n="admin_panel">لوحة الإدارة</small></div>
-        <nav class="sidebar-nav">
-            <a href="dashboard.html"><span class="icon">&#127968;</span><span data-i18n="nav_dashboard">لوحة التحكم</span></a>
-            <a href="users.html"><span class="icon">&#128101;</span><span data-i18n="nav_users">المستخدمين</span></a>
-            <a href="sellers.html" class="active"><span class="icon">&#127978;</span><span data-i18n="nav_sellers">البائعين</span></a>
-            <a href="products.html"><span class="icon">&#128230;</span><span data-i18n="nav_products">المنتجات</span></a>
-            <a href="orders.html"><span class="icon">&#128196;</span><span data-i18n="nav_orders">الطلبات</span></a>
-            <a href="categories.html"><span class="icon">&#128193;</span><span data-i18n="nav_categories">الفئات</span></a>
-            <a href="reviews.html"><span class="icon">&#11088;</span><span data-i18n="nav_reviews">التقييمات</span></a>
-            <a href="coupons.html"><span class="icon">&#127915;</span><span data-i18n="nav_coupons">الكوبونات</span></a>
-            <a href="flash-deals.html"><span class="icon">&#9889;</span><span data-i18n="nav_flash_deals">عروض سريعة</span></a>
-            <a href="banners.html"><span class="icon">&#127912;</span><span data-i18n="nav_banners">البانرات</span></a>
-            <a href="settings.html"><span class="icon">&#9881;</span><span data-i18n="nav_settings">الإعدادات</span></a>
-        </nav>
-    </aside>
+<div class="recaptcha-gate" id="recaptchaGate"><div class="recaptcha-box"><div class="rc-crown">👑</div><h2><span class="gold">Luxora</span> Admin</h2><p>يرجى التحقق أنك لست روبوت</p><label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span>لست روبوت</span></label><br><button class="btn btn-gold" id="recaptchaSubmit">تحقق والدخول</button></div></div>
 
-    <main class="main-content">
-        <div class="top-bar"><h1 data-i18n="manage_sellers">إدارة البائعين</h1></div>
+<header class="navbar" id="navbar"><div class="nav-inner"><a href="../../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">Luxora</span><span class="logo-sub" style="color:var(--red)">Admin</span></span></a><div class="nav-actions"><button class="nav-icon" id="themeToggle">🌙</button><div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar" style="background:var(--red-bg);color:var(--red);border-color:var(--red)">A</div><span class="u-name">Admin</span></div></div></div><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div></div></header>
 
-        <div class="card">
-            <h3 data-i18n="pending_applications">طلبات الانتظار</h3>
-            <table>
-                <thead><tr><th data-i18n="name">الاسم</th><th data-i18n="store_name">المتجر</th><th data-i18n="email">البريد</th><th data-i18n="date">التاريخ</th><th data-i18n="actions">الإجراءات</th></tr></thead>
-                <tbody>
-                    <tr><td>خالد الشرفي</td><td>متجر خالد للإلكترونيات</td><td>khaled@email.com</td><td>2026-07-18</td><td><div class="actions"><button class="btn-approve" onclick="alert('تم القبول')">&#10003; قبول</button><button class="btn-reject" onclick="alert('تم الرفض')">&#10005; رفض</button></div></td></tr>
-                    <tr><td>مريم علي</td><td>أزياء مريم</td><td>maryam@email.com</td><td>2026-07-17</td><td><div class="actions"><button class="btn-approve">&#10003; قبول</button><button class="btn-reject">&#10005; رفض</button></div></td></tr>
-                </tbody>
-            </table>
-        </div>
+<div class="page-side">
+  <aside class="admin-sidebar" style="width:var(--sidebar-w);background:var(--bg-card);border-left:1px solid var(--border);padding:20px 0;flex-shrink:0;position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto">
+    <div class="sb-title">👑 الإدارة</div>
+    <a href="dashboard.html" class="sb-link">📊 <span>لوحة التحكم</span></a>
+    <a href="users.html" class="sb-link">👤 <span>المستخدمين</span></a>
+    <a href="sellers.html" class="sb-link active">🏪 <span>البائعين</span></a>
+    <a href="products.html" class="sb-link">📦 <span>المنتجات</span></a>
+    <a href="orders.html" class="sb-link">📋 <span>الطلبات</span></a>
+    <a href="categories.html" class="sb-link">📂 <span>الفئات</span></a>
+    <a href="reviews.html" class="sb-link">⭐ <span>التقييمات</span></a>
+    <a href="coupons.html" class="sb-link">🏷️ <span>الكوبونات</span></a>
+    <a href="flash-deals.html" class="sb-link">⚡ <span>العروض الخاطفة</span></a>
+    <a href="banners.html" class="sb-link">🖼️ <span>البانرات</span></a>
+    <div class="sb-section">النظام</div>
+    <a href="settings.html" class="sb-link">⚙️ <span>الإعدادات</span></a>
+    <a href="login.html" class="sb-link" style="color:var(--red)">🚪 <span>تسجيل الخروج</span></a>
+  </aside>
 
-        <div class="card">
-            <h3 data-i18n="all_sellers">جميع البائعين</h3>
-            <table>
-                <thead><tr><th data-i18n="name">الاسم</th><th data-i18n="store_name">المتجر</th><th data-i18n="status">الحالة</th><th data-i18n="subscription">الاشتراك</th><th data-i18n="joined">تاريخ الانضمام</th><th data-i18n="actions">الإجراءات</th></tr></thead>
-                <tbody>
-                    <tr><td>أحمد علي</td><td>متجر أحمد للإلكترونيات</td><td><span class="badge active">نشط</span></td><td><span class="badge sub-active">نشط</span></td><td>2026-01-15</td><td><div class="actions"><button class="btn-icon" title="تعديل">&#9998;</button><button class="btn-icon delete" title="حظر">&#128683;</button></div></td></tr>
-                    <tr><td>فاطمة حسن</td><td>إلكترونيات سالم</td><td><span class="badge active">نشط</span></td><td><span class="badge sub-active">نشط</span></td><td>2026-02-20</td><td><div class="actions"><button class="btn-icon" title="تعديل">&#9998;</button><button class="btn-icon delete" title="حظر">&#128683;</button></div></td></tr>
-                    <tr><td>عمر بنغازي</td><td>سماعات+</td><td><span class="badge suspended">معلّق</span></td><td><span class="badge sub-inactive">منتهي</span></td><td>2025-11-01</td><td><div class="actions"><button class="btn-icon" title="تعديل">&#9998;</button><button class="btn-icon" title="تفعيل">&#9654;</button></div></td></tr>
-                    <tr><td>سارة المغربي</td><td>أزياء نور</td><td><span class="badge active">نشط</span></td><td><span class="badge sub-active">نشط</span></td><td>2026-03-10</td><td><div class="actions"><button class="btn-icon" title="تعديل">&#9998;</button><button class="btn-icon delete" title="حظر">&#128683;</button></div></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
-    <script src="../../js/app.js"></script>
-    <script src="../../js/i18n.js"></script>
+  <main class="sb-main">
+    <div class="page-head"><h1>🏪 البائعين</h1><span class="text-sm text-dim">156 بائع</span></div>
+
+    <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="kpi-card"><div class="kpi-icon" style="background:var(--green-bg);color:var(--green)">✅</div><div class="kpi-val">128</div><div class="kpi-label">بائع نشط</div></div>
+      <div class="kpi-card"><div class="kpi-icon" style="background:rgba(251,146,60,0.12);color:var(--orange)">⏳</div><div class="kpi-val">18</div><div class="kpi-label">بانتظار الموافقة</div></div>
+      <div class="kpi-card"><div class="kpi-icon" style="background:var(--red-bg);color:var(--red)">🚫</div><div class="kpi-val">10</div><div class="kpi-label">محظور</div></div>
+    </div>
+
+    <div class="chart-box" style="margin-bottom:16px">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <div class="nav-search-box" style="max-width:300px"><input type="text" placeholder="بحث بالاسم أو المتجر..."><button class="search-btn">🔍</button></div>
+        <select class="form-select" style="width:auto;height:36px"><option>الكل</option><option>نشط</option><option>معلق</option><option>محظور</option></select>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>المتجر</th><th>المالك</th><th>الفئة</th><th>المنتجات</th><th>المبيعات</th><th>التقييم</th><th>الحالة</th><th>إجراءات</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700">متجر التقنية</td><td>محمد العلي</td><td class="text-dim">إلكترونيات</td><td>47</td><td style="color:var(--gold);font-weight:700">128,450 ر.س</td><td>⭐ 4.8</td><td><span class="badge-st st-active">نشط</span></td><td><button class="btn btn-ghost btn-sm">👁</button><button class="btn btn-ghost btn-sm" style="color:var(--red)">🚫</button></td></tr>
+          <tr><td style="font-weight:700">أزياء فاخرة</td><td>سارة الحربي</td><td class="text-dim">أزياء</td><td>89</td><td style="color:var(--gold);font-weight:700">256,780 ر.س</td><td>⭐ 4.9</td><td><span class="badge-st st-active">نشط</span></td><td><button class="btn btn-ghost btn-sm">👁</button><button class="btn btn-ghost btn-sm" style="color:var(--red)">🚫</button></td></tr>
+          <tr><td style="font-weight:700">عالم الجمال</td><td>نورة الزهراني</td><td class="text-dim">جمال وعناية</td><td>34</td><td style="color:var(--gold);font-weight:700">89,320 ر.س</td><td>⭐ 4.7</td><td><span class="badge-st st-active">نشط</span></td><td><button class="btn btn-ghost btn-sm">👁</button><button class="btn btn-ghost btn-sm" style="color:var(--red)">🚫</button></td></tr>
+          <tr><td style="font-weight:700">ديكور منزلي</td><td>فاطمة العتيبي</td><td class="text-dim">منزل وديكور</td><td>22</td><td style="color:var(--gold);font-weight:700">45,890 ر.س</td><td>⭐ 4.6</td><td><span class="badge-st st-pending">معلق</span></td><td><button class="btn btn-ghost btn-sm">👁</button><button class="btn btn-ghost btn-sm" style="color:var(--green)">✅</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pager"><button>→</button><button class="active">1</button><button>2</button><button>←</button></div>
+  </main>
+</div>
+
+<script src="../../js/utils.js"></script><script src="../../js/i18n.js"></script><script src="../../js/theme.js"></script><script src="../../js/auth.js"></script><script src="../../js/api.js"></script><script src="../../js/navbar.js"></script>
 </body>
 </html>

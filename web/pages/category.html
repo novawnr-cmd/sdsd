@@ -3,406 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="تصفح منتجات الإلكترونيات في ادم شوب - هواتف، حواسيب، أجهزة ذكية">
-  <title>الإلكترونيات | ادم شوب</title>
+  <meta name="description" content="تصفح منتجات الفئة في Luxora Marketplace">
+  <title>الفئة | Luxora Marketplace</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-<!-- reCAPTCHA Gate -->
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
-    <div class="recaptcha-logo">🛡️</div>
-    <h2 data-i18n="captcha.title">ادم شوب</h2>
-    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت</p>
-    <div class="recaptcha-widget">
-      <label class="recaptcha-checkbox">
-        <input type="checkbox" id="recaptchaCheck">
-        <span class="checkmark"></span>
-        <span data-i18n="captcha.label">لست روبوت</span>
-      </label>
-    </div>
-    <button class="btn btn-primary" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق</button>
+    <div class="rc-crown">👑</div>
+    <h2><span class="gold">Luxora</span> Marketplace</h2>
+    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
+    <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
+    <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
   </div>
 </div>
 
-<!-- Navbar -->
 <header class="navbar" id="navbar">
-  <div class="container navbar-inner">
-    <a href="../index.html" class="navbar-logo"><span class="logo-gold">ادم شوب</span></a>
-    <nav class="navbar-links" id="navLinks">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">Luxora</span><span class="logo-sub">Marketplace</span></span></a>
+    <nav class="nav-links" id="navLinks">
       <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
-      <a href="categories.html" data-i18n="nav.categories">الأقسام</a>
-      <a href="products.html" data-i18n="nav.products">المنتجات</a>
+      <a href="categories.html" data-i18n="nav.categories">الفئات</a>
+      <a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a>
+      <a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a>
+      <a href="products.html" data-i18n="nav.brands">العلامات التجارية</a>
+      <a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a>
+      <a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
     </nav>
-    <div class="navbar-search">
-      <input type="text" class="search-input" id="navSearch" data-i18n-placeholder="nav.search" placeholder="ابحث عن منتج...">
-      <div class="search-suggestions" id="searchSuggestions"></div>
+    <div class="nav-search"><div class="nav-search-box"><input type="text" id="navSearch" placeholder="ابحث عن منتجات..."><button class="search-btn">🔍</button></div><div class="search-dropdown" id="searchDropdown"></div></div>
+    <div class="nav-actions">
+      <button class="nav-icon" id="langToggle" title="EN">🌐</button>
+      <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
+      <a href="wishlist.html" class="nav-icon">❤️<span class="count" id="wishCount" style="display:none">0</span></a>
+      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">0</span></a>
+      <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar">👤</div><span class="u-name" id="userName"></span></div><div class="dropdown-menu" id="userMenu"></div></div>
     </div>
-    <div class="navbar-actions">
-      <button class="btn-icon" id="langToggle" title="EN">EN</button>
-      <button class="btn-icon" id="themeToggle" title="Theme">🌙</button>
-      <a href="wishlist.html" class="btn-icon">
-        <span class="icon-heart"></span>
-        <span class="badge badge-danger" id="wishlistCount" style="display:none">0</span>
-      </a>
-      <a href="cart.html" class="btn-icon">
-        <span class="icon-cart"></span>
-        <span class="badge badge-gold" id="cartCount">0</span>
-      </a>
-      <div class="user-dropdown" id="userDropdown">
-        <button class="btn-icon" id="userBtn"><span class="icon-user"></span></button>
-        <div class="dropdown-menu" id="userMenu"></div>
-      </div>
-    </div>
-    <button class="navbar-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
-    <a href="categories.html" data-i18n="nav.categories">الأقسام</a>
-    <a href="products.html" data-i18n="nav.products">المنتجات</a>
-    <a href="cart.html" data-i18n="nav.cart">السلة</a>
-    <a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a>
-    <a href="orders.html" data-i18n="nav.orders">طلباتي</a>
+    <a href="../index.html">الرئيسية</a><a href="categories.html">الفئات</a><a href="products.html">المنتجات</a><a href="cart.html">سلة التسوق</a><a href="wishlist.html">المفضلة</a><a href="orders.html">طلباتي</a><a href="become-seller.html">تبيع معنا</a>
   </div>
 </header>
 
-<!-- Breadcrumbs -->
-<div class="breadcrumbs">
+<main style="margin-top:var(--nav-h)">
   <div class="container">
-    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
-    <span class="separator">/</span>
-    <a href="categories.html" data-i18n="nav.categories">الأقسام</a>
-    <span class="separator">/</span>
-    <span data-i18n="cat.electronics">الإلكترونيات</span>
-  </div>
-</div>
-
-<!-- Category Header -->
-<section class="category-hero" id="categoryHero">
-  <div class="container">
-    <div class="category-hero-content">
-      <span class="category-hero-icon">💻</span>
-      <h1 data-i18n="cat.electronics">الإلكترونيات</h1>
-      <p data-i18n="cat.electronicsDesc">اكتشف أحدث الهواتف والحواسيب والأجهزة الإلكترونية بأفضل الأسعار</p>
-      <span class="category-hero-count">245 <span data-i18n="cat.product">منتج</span></span>
-    </div>
-  </div>
-</section>
-
-<!-- Subcategories -->
-<section class="section subcategories-section">
-  <div class="container">
-    <h3 class="subcategories-title" data-i18n="category.subcats">الأقسام الفرعية</h3>
-    <div class="subcategories-scroll">
-      <a href="products.html?cat=phones" class="subcategory-chip">
-        <span>📱</span> <span data-i18n="subcat.phones">الهواتف</span>
-      </a>
-      <a href="products.html?cat=laptops" class="subcategory-chip">
-        <span>💻</span> <span data-i18n="subcat.laptops">الحواسيب المحمولة</span>
-      </a>
-      <a href="products.html?cat=tablets" class="subcategory-chip">
-        <span>📱</span> <span data-i18n="subcat.tablets">التابلت</span>
-      </a>
-      <a href="products.html?cat=tvs" class="subcategory-chip">
-        <span>📺</span> <span data-i18n="subcat.tvs">الشاشات وال televisions</span>
-      </a>
-      <a href="products.html?cat=audio" class="subcategory-chip">
-        <span>🎧</span> <span data-i18n="subcat.audio">الصوتيات</span>
-      </a>
-      <a href="products.html?cat=cameras" class="subcategory-chip">
-        <span>📷</span> <span data-i18n="subcat.cameras">الكاميرات</span>
-      </a>
-      <a href="products.html?cat=wearables" class="subcategory-chip">
-        <span>⌚</span> <span data-i18n="subcat.wearables">الأجهزة القابلة للارتداء</span>
-      </a>
-      <a href="products.html?cat=accessories" class="subcategory-chip">
-        <span>🔌</span> <span data-i18n="subcat.accessories">الملحقات</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Filters + Products -->
-<section class="section">
-  <div class="container">
-    <div class="active-filters" id="activeFilters">
-      <span data-i18n="filters.active">الفلاتر النشطة:</span>
-      <div class="filter-tags" id="filterTags"></div>
-      <button class="btn-text" id="clearAllFilters" data-i18n="filters.clearAll">مسح الكل</button>
+    <div class="bread">
+      <a href="../index.html">الرئيسية</a><span class="sep">←</span><a href="categories.html">الفئات</a><span class="sep">←</span><span class="cur" data-i18n="cat.electronics">إلكترونيات</span>
     </div>
 
-    <div class="products-layout">
+    <div style="background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid var(--border);border-radius:var(--radius-xl);padding:32px;margin-bottom:32px;display:flex;align-items:center;gap:20px">
+      <div style="width:80px;height:80px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-size:2.5rem">📱</div>
+      <div>
+        <h1 class="section-title" id="catTitle" data-i18n="cat.electronics">إلكترونيات</h1>
+        <p class="text-dim" data-i18n="cat.electronics.desc">أحدث المنتجات الإلكترونية والأجهزة التقنية بأفضل الأسعار</p>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:24px">
       <!-- Filters Sidebar -->
-      <aside class="filters-sidebar" id="filtersSidebar">
-        <div class="filter-group">
-          <div class="filter-header">
-            <h3 data-i18n="filters.subcats">الأقسام الفرعية</h3>
-            <button class="filter-toggle">▾</button>
-          </div>
-          <div class="filter-body">
-            <label class="filter-check"><input type="checkbox" value="phones"> <span data-i18n="subcat.phones">الهواتف</span> <span class="filter-count">(89)</span></label>
-            <label class="filter-check"><input type="checkbox" value="laptops"> <span data-i18n="subcat.laptops">الحواسيب المحمولة</span> <span class="filter-count">(56)</span></label>
-            <label class="filter-check"><input type="checkbox" value="tablets"> <span data-i18n="subcat.tablets">التابلت</span> <span class="filter-count">(34)</span></label>
-            <label class="filter-check"><input type="checkbox" value="tvs"> <span data-i18n="subcat.tvs">الشاشات</span> <span class="filter-count">(28)</span></label>
-            <label class="filter-check"><input type="checkbox" value="audio"> <span data-i18n="subcat.audio">الصوتيات</span> <span class="filter-count">(45)</span></label>
-            <label class="filter-check"><input type="checkbox" value="cameras"> <span data-i18n="subcat.cameras">الكاميرات</span> <span class="filter-count">(18)</span></label>
-          </div>
-        </div>
+      <aside style="width:240px;flex-shrink:0">
+        <div class="chart-box">
+          <h3 class="chart-title" data-i18n="filter.title">التصفية</h3>
 
-        <div class="filter-group">
-          <div class="filter-header">
-            <h3 data-i18n="filters.price">نطاق السعر</h3>
-            <button class="filter-toggle">▾</button>
-          </div>
-          <div class="filter-body">
+          <div class="filter-sec">
+            <div class="filter-head" data-i18n="filter.price">السعر</div>
             <div class="price-range">
-              <div class="price-inputs">
-                <div>
-                  <label data-i18n="filters.minPrice">من</label>
-                  <input type="number" class="form-input" id="priceMin" placeholder="0" min="0">
-                </div>
-                <div>
-                  <label data-i18n="filters.maxPrice">إلى</label>
-                  <input type="number" class="form-input" id="priceMax" placeholder="10000" min="0">
-                </div>
-              </div>
-              <input type="range" class="price-slider" id="priceSlider" min="0" max="10000" value="10000" step="100">
+              <input type="number" placeholder="من" data-i18n-placeholder="filter.from">
+              <span>-</span>
+              <input type="number" placeholder="إلى" data-i18n-placeholder="filter.to">
             </div>
           </div>
-        </div>
 
-        <div class="filter-group">
-          <div class="filter-header">
-            <h3 data-i18n="filters.rating">التقييم</h3>
-            <button class="filter-toggle">▾</button>
+          <div class="filter-sec">
+            <div class="filter-head" data-i18n="filter.brand">العلامة التجارية</div>
+            <div class="filter-opts">
+              <label class="filter-opt"><input type="checkbox"> Apple</label>
+              <label class="filter-opt"><input type="checkbox"> Samsung</label>
+              <label class="filter-opt"><input type="checkbox"> Sony</label>
+              <label class="filter-opt"><input type="checkbox"> LG</label>
+            </div>
           </div>
-          <div class="filter-body">
-            <label class="filter-check"><input type="radio" name="rating" value="5"> <span class="stars">★★★★★</span></label>
-            <label class="filter-check"><input type="radio" name="rating" value="4"> <span class="stars">★★★★☆</span>+</label>
-            <label class="filter-check"><input type="radio" name="rating" value="3"> <span class="stars">★★★☆☆</span>+</label>
-          </div>
-        </div>
 
-        <div class="filter-group">
-          <div class="filter-header">
-            <h3 data-i18n="filters.brand">العلامة التجارية</h3>
-            <button class="filter-toggle">▾</button>
+          <div class="filter-sec">
+            <div class="filter-head" data-i18n="filter.rating">التقييم</div>
+            <div class="filter-opts">
+              <label class="filter-opt"><input type="checkbox"> ★★★★★</label>
+              <label class="filter-opt"><input type="checkbox"> ★★★★+</label>
+              <label class="filter-opt"><input type="checkbox"> ★★★+</label>
+            </div>
           </div>
-          <div class="filter-body">
-            <label class="filter-check"><input type="checkbox" value="apple"> Apple</label>
-            <label class="filter-check"><input type="checkbox" value="samsung"> Samsung</label>
-            <label class="filter-check"><input type="checkbox" value="sony"> Sony</label>
-            <label class="filter-check"><input type="checkbox" value="lg"> LG</label>
-            <label class="filter-check"><input type="checkbox" value="xiaomi"> Xiaomi</label>
-            <label class="filter-check"><input type="checkbox" value="huawei"> Huawei</label>
-          </div>
+
+          <button class="btn btn-gold btn-block" style="margin-top:12px" data-i18n="filter.apply">تطبيق الفلتر</button>
         </div>
       </aside>
 
-      <!-- Products Area -->
-      <div class="products-area">
-        <div class="products-toolbar">
-          <div class="toolbar-left">
-            <button class="btn-icon filter-mobile-toggle" id="filterToggleMobile"><span>☰</span> <span data-i18n="filters.title">الفلاتر</span></button>
-            <span class="results-count">245 <span data-i18n="products.result">نتيجة</span></span>
+      <!-- Products -->
+      <div style="flex:1">
+        <div class="sort-bar">
+          <span class="r-count" data-i18n="products.showing">عرض 48 من 250 منتج</span>
+          <select class="form-select" style="width:auto;height:36px">
+            <option>الأحدث</option>
+            <option>السعر: من الأقل</option>
+            <option>السعر: من الأعلى</option>
+            <option>الأكثر مبيعاً</option>
+          </select>
+        </div>
+        <div class="products-grid">
+          <div class="p-card">
+            <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=iPhone+15" alt="iPhone 15"><span class="p-badge">جديد</span><button class="p-fav">❤️</button></div>
+            <div class="p-body"><span class="p-cat">هواتف ذكية</span><h3 class="p-name">آيفون 15 برو ماكس</h3><div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(128)</span></div><div class="p-price"><span class="curr">4,999 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
           </div>
-          <div class="toolbar-right">
-            <div class="sort-group">
-              <label data-i18n="products.sortBy">ترتيب حسب:</label>
-              <select class="form-select sort-select" id="sortSelect">
-                <option value="newest" data-i18n="sort.newest">الأحدث</option>
-                <option value="price-low" data-i18n="sort.priceLow">السعر: من الأقل للأعلى</option>
-                <option value="price-high" data-i18n="sort.priceHigh">السعر: من الأعلى للأقل</option>
-                <option value="popular" data-i18n="sort.popular">الأكثر شعبية</option>
-                <option value="rating" data-i18n="sort.rating">الأعلى تقييماً</option>
-              </select>
-            </div>
-            <div class="view-toggle">
-              <button class="btn-icon view-grid active" data-view="grid">▦</button>
-              <button class="btn-icon view-list" data-view="list">☰</button>
-            </div>
+          <div class="p-card">
+            <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=AirPods" alt="AirPods"><span class="p-badge">-35%</span><button class="p-fav">❤️</button></div>
+            <div class="p-body"><span class="p-cat">إلكترونيات</span><h3 class="p-name">سماعات AirPods Pro 2</h3><div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(342)</span></div><div class="p-price"><span class="curr">799 ر.س</span><span class="old">1,229 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
+          </div>
+          <div class="p-card">
+            <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Samsung+TV" alt="Samsung TV"><button class="p-fav">❤️</button></div>
+            <div class="p-body"><span class="p-cat">تلفزيونات</span><h3 class="p-name">تلفزيون سامسونج 65 بوصة QLED</h3><div class="p-rating"><span class="stars">★★★★☆</span><span class="r-count">(78)</span></div><div class="p-price"><span class="curr">3,999 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
+          </div>
+          <div class="p-card">
+            <div class="p-img"><img src="https://placehold.co/400x400/1C2333/D4A94A?text=Sony+Camera" alt="Sony Camera"><span class="p-badge">مميز</span><button class="p-fav">❤️</button></div>
+            <div class="p-body"><span class="p-cat">كاميرات</span><h3 class="p-name">كاميرا سوني ألفا 7 كي</h3><div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(45)</span></div><div class="p-price"><span class="curr">8,499 ر.س</span></div><button class="p-btn">🛒 أضف للسلة</button></div>
           </div>
         </div>
-
-        <div class="products-grid" id="productsGrid">
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-badge">-20%</span>
-              <img src="https://placehold.co/300x300/1a1a2e/ffffff?text=Phone+15" alt="هاتف ذكي برو" loading="lazy">
-              <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
-            </div>
-            <div class="product-info">
-              <span class="product-vendor">متجر التقنية</span>
-              <h4 class="product-name"><a href="product.html?id=1">هاتف ذكي برو</a></h4>
-              <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(312)</span></div>
-              <div class="product-price"><span class="price-current">2,499 ر.س</span><span class="price-old">3,124 ر.س</span></div>
-              <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img src="https://placehold.co/300x300/16213e/ffffff?text=Laptop+Air" alt="لابتوب ألترا" loading="lazy">
-              <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
-            </div>
-            <div class="product-info">
-              <span class="product-vendor">عالم الحاسوب</span>
-              <h4 class="product-name"><a href="product.html?id=2">لابتوب ألترا</a></h4>
-              <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(198)</span></div>
-              <div class="product-price"><span class="price-current">3,899 ر.س</span><span class="price-old">4,599 ر.س</span></div>
-              <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img src="https://placehold.co/300x300/0f3460/ffffff?text=iPad+Pro" alt="تابلت برو ماكس" loading="lazy">
-              <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
-            </div>
-            <div class="product-info">
-              <span class="product-vendor">متجر التقنية</span>
-              <h4 class="product-name"><a href="product.html?id=3">تابلت برو ماكس</a></h4>
-              <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(156)</span></div>
-              <div class="product-price"><span class="price-current">1,799 ر.س</span><span class="price-old">2,249 ر.س</span></div>
-              <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-badge">-15%</span>
-              <img src="https://placehold.co/300x300/2d1b69/ffffff?text=Smart+TV" alt="تلفزيون سمارت" loading="lazy">
-              <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
-            </div>
-            <div class="product-info">
-              <span class="product-vendor">عالم الكهرباء</span>
-              <h4 class="product-name"><a href="product.html?id=4">تلفزيون سمارت 65 بوصة</a></h4>
-              <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(89)</span></div>
-              <div class="product-price"><span class="price-current">2,999 ر.س</span><span class="price-old">3,528 ر.س</span></div>
-              <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img src="https://placehold.co/300x300/8e2de2/ffffff?text=AirPods" alt="سماعات لاسلكية" loading="lazy">
-              <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
-            </div>
-            <div class="product-info">
-              <span class="product-vendor">عالم الصوت</span>
-              <h4 class="product-name"><a href="product.html?id=10">سماعات لاسلكية</a></h4>
-              <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(567)</span></div>
-              <div class="product-price"><span class="price-current">449 ر.س</span></div>
-              <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img src="https://placehold.co/300x300/4a00e0/ffffff?text=Speaker" alt="سماعة بلوتوث" loading="lazy">
-              <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
-            </div>
-            <div class="product-info">
-              <span class="product-vendor">عالم الصوت</span>
-              <h4 class="product-name"><a href="product.html?id=7">سماعة بلوتوث متحركة</a></h4>
-              <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(203)</span></div>
-              <div class="product-price"><span class="price-current">189 ر.س</span></div>
-              <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-badge">-25%</span>
-              <img src="https://placehold.co/300x300/11998e/ffffff?text=Camera" alt="كاميرا رقمية" loading="lazy">
-              <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
-            </div>
-            <div class="product-info">
-              <span class="product-vendor">عالم التقنية</span>
-              <h4 class="product-name"><a href="product.html?id=12">كاميرا رقمية احترافية</a></h4>
-              <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(341)</span></div>
-              <div class="product-price"><span class="price-current">1,899 ر.س</span><span class="price-old">2,532 ر.س</span></div>
-              <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img src="https://placehold.co/300x300/e94560/ffffff?text=Smart+Watch" alt="ساعة ذكية" loading="lazy">
-              <div class="product-actions-overlay"><button class="btn-icon wishlist-btn">♡</button></div>
-            </div>
-            <div class="product-info">
-              <span class="product-vendor">عالم التقنية</span>
-              <h4 class="product-name"><a href="product.html?id=9">ساعة ذكية برو</a></h4>
-              <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(345)</span></div>
-              <div class="product-price"><span class="price-current">899 ر.س</span></div>
-              <button class="btn btn-primary btn-sm btn-add-cart" data-i18n="cart.add">أضف للسلة</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pagination -->
-        <div class="pagination" id="pagination">
-          <button class="page-btn" disabled>→</button>
-          <button class="page-btn active">1</button>
-          <button class="page-btn">2</button>
-          <button class="page-btn">3</button>
-          <button class="page-btn">...</button>
-          <button class="page-btn">10</button>
-          <button class="page-btn">←</button>
+        <div class="pager">
+          <button>→</button><button class="active">1</button><button>2</button><button>3</button><button>←</button>
         </div>
       </div>
     </div>
   </div>
-</section>
+</main>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <a href="../index.html" class="footer-logo"><span class="logo-gold">ادم شوب</span></a>
-        <p data-i18n="footer.about">ادم شوب هو سوق إلكتروني متعدد البائعين.</p>
-        <div class="footer-social">
-          <a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📸</a><a href="#" class="social-icon">📺</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h3 data-i18n="footer.quickLinks">روابط سريعة</h3>
-        <ul>
-          <li><a href="categories.html" data-i18n="nav.categories">الأقسام</a></li>
-          <li><a href="products.html" data-i18n="nav.products">المنتجات</a></li>
-          <li><a href="orders.html" data-i18n="nav.orders">طلباتي</a></li>
-          <li><a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 data-i18n="footer.categories">الأقسام</h3>
-        <ul>
-          <li><a href="category.html?id=electronics" data-i18n="cat.electronics">الإلكترونيات</a></li>
-          <li><a href="category.html?id=fashion" data-i18n="cat.fashion">الأزياء</a></li>
-          <li><a href="category.html?id=home" data-i18n="cat.home">المنزل والمطبخ</a></li>
-          <li><a href="category.html?id=beauty" data-i18n="cat.beauty">الجمال والعناية</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 data-i18n="footer.contact">تواصل معنا</h3>
-        <ul class="contact-list">
-          <li><span>📍</span> <span data-i18n="footer.address">الرياض، المملكة العربية السعودية</span></li>
-          <li><span>📞</span> <span data-i18n="footer.phone">+966 50 123 4567</span></li>
-          <li><span>✉️</span> <span data-i18n="footer.email">info@adamshop.com</span></li>
-        </ul>
-      </div>
+    <div class="f-grid">
+      <div><div class="f-logo"><span class="crown">👑</span><span class="name">Luxora</span></div><p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p><div class="f-social"><a href="#">𝕏</a><a href="#">📷</a><a href="#">f</a><a href="#">▶</a></div></div>
+      <div><h4 class="f-title">روابط سريعة</h4><div class="f-links"><a href="products.html">المنتجات</a><a href="categories.html">الفئات</a><a href="products.html?sort=deals">العروض</a><a href="products.html?sort=best">الأكثر مبيعاً</a></div></div>
+      <div><h4 class="f-title">الفئات</h4><div class="f-links"><a href="category.html?cat=electronics">📱 إلكترونيات</a><a href="category.html?cat=fashion">👕 أزياء</a><a href="category.html?cat=beauty">💄 جمال وعناية</a><a href="category.html?cat=home">🏠 منزل وديكور</a></div></div>
+      <div><h4 class="f-title">المساعدة</h4><div class="f-links"><a href="#">الأسئلة الشائعة</a><a href="#">سياسة الشحن</a><a href="#">سياسة الإرجاع</a><a href="#">الخصوصية</a></div></div>
     </div>
-    <div class="footer-bottom">
-      <p data-i18n="footer.copyright">© 2026 ادم شوب. جميع الحقوق محفوظة.</p>
-      <div class="footer-payments"><span>💳</span><span>💳</span><span>🍎</span><span>💳</span><span>💵</span></div>
-    </div>
+    <div class="f-bottom"><span>© 2026 <strong class="text-gold">Luxora</strong> Marketplace. جميع الحقوق محفوظة</span><span>💳 نقبل جميع بطاقات الائتمان</span></div>
   </div>
-  <button class="back-to-top" id="backToTop">↑</button>
 </footer>
 
+<button class="btt" id="backToTop">⬆</button>
 <script src="../js/utils.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/theme.js"></script>

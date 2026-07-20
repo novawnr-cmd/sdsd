@@ -1,343 +1,98 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ادم شوب - إنشاء حساب جديد">
-    <title>ادم شوب | إنشاء حساب</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .auth-page {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        .auth-page::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 50%);
-            animation: rotateBg 20s linear infinite;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes rotateBg {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .auth-card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 24px;
-            padding: 48px 40px;
-            width: 100%;
-            max-width: 440px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
-        }
-        .auth-logo {
-            text-align: center;
-            margin-bottom: 36px;
-        }
-        .auth-logo h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #d4af37, #f5d060);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 0;
-        }
-        .auth-logo .tagline {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
-            margin-top: 8px;
-        }
-        .form-group {
-            margin-bottom: 18px;
-            position: relative;
-        }
-        .form-group label {
-            display: block;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        .input-wrapper {
-            position: relative;
-        }
-        .input-wrapper input {
-            width: 100%;
-            padding: 14px 16px;
-            padding-left: 48px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            color: #fff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-        .input-wrapper input:focus {
-            outline: none;
-            border-color: #d4af37;
-            background: rgba(255,255,255,0.1);
-            box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
-        }
-        .input-wrapper input::placeholder {
-            color: rgba(255,255,255,0.3);
-        }
-        .input-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgba(255,255,255,0.3);
-            font-size: 1.1rem;
-        }
-        .toggle-password {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: rgba(255,255,255,0.4);
-            cursor: pointer;
-            font-size: 1.1rem;
-            padding: 4px;
-            transition: color 0.3s;
-        }
-        .toggle-password:hover {
-            color: #d4af37;
-        }
-        .btn-register {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #d4af37, #b8962e);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 8px;
-            margin-bottom: 24px;
-        }
-        .btn-register:hover {
-            background: linear-gradient(135deg, #e6c248, #d4af37);
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(212,175,55,0.3);
-        }
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(255,255,255,0.1);
-        }
-        .divider span {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.85rem;
-        }
-        .social-btn {
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            margin-bottom: 12px;
-        }
-        .social-btn:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.2);
-        }
-        .social-btn.google {
-            background: rgba(219,68,55,0.1);
-            border-color: rgba(219,68,55,0.2);
-        }
-        .social-btn.google:hover {
-            background: rgba(219,68,55,0.2);
-        }
-        .social-btn.facebook {
-            background: rgba(24,119,242,0.1);
-            border-color: rgba(24,119,242,0.2);
-        }
-        .social-btn.facebook:hover {
-            background: rgba(24,119,242,0.2);
-        }
-        .social-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-        .auth-footer {
-            text-align: center;
-            margin-top: 28px;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
-        }
-        .auth-footer a {
-            color: #d4af37;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .auth-footer a:hover {
-            text-decoration: underline;
-        }
-        .terms-text {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.75rem;
-            text-align: center;
-            margin-top: 16px;
-            line-height: 1.6;
-        }
-        .terms-text a {
-            color: #d4af37;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="إنشاء حساب جديد - Luxora Marketplace">
+  <title>إنشاء حساب | Luxora Marketplace</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <div class="auth-page">
-        <div class="auth-card">
-            <div class="auth-logo">
-                <h1>ادم شوب</h1>
-                <p class="tagline" data-i18n="register_tagline">أنشئ حسابك وابدأ التسوق</p>
-            </div>
 
-            <form id="registerForm" novalidate>
-                <div class="form-group">
-                    <label for="fullName" data-i18n="full_name">الاسم الكامل</label>
-                    <div class="input-wrapper">
-                        <span class="input-icon">&#128100;</span>
-                        <input type="text" id="fullName" name="fullName" data-i18n-placeholder="full_name_placeholder" placeholder="أدخل اسمك الكامل" required>
-                    </div>
-                </div>
+<div class="recaptcha-gate" id="recaptchaGate">
+  <div class="recaptcha-box">
+    <div class="rc-crown">👑</div>
+    <h2><span class="gold">Luxora</span> Marketplace</h2>
+    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
+    <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
+    <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
+  </div>
+</div>
 
-                <div class="form-group">
-                    <label for="email" data-i18n="email">البريد الإلكتروني</label>
-                    <div class="input-wrapper">
-                        <span class="input-icon">&#9993;</span>
-                        <input type="email" id="email" name="email" data-i18n-placeholder="email_placeholder" placeholder="أدخل بريدك الإلكتروني" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" data-i18n="password">كلمة المرور</label>
-                    <div class="input-wrapper">
-                        <input type="password" id="password" name="password" data-i18n-placeholder="create_password_placeholder" placeholder="أنشئ كلمة مرور قوية" required>
-                        <button type="button" class="toggle-password" onclick="togglePassword('password')">&#128065;</button>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmPassword" data-i18n="confirm_password">تأكيد كلمة المرور</label>
-                    <div class="input-wrapper">
-                        <input type="password" id="confirmPassword" name="confirmPassword" data-i18n-placeholder="confirm_password_placeholder" placeholder="أعد إدخال كلمة المرور" required>
-                        <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword')">&#128065;</button>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-register" data-i18n="register">إنشاء حساب</button>
-            </form>
-
-            <div class="terms-text">
-                <span data-i18n="agree_terms">بالتسجيل، أنت توافق على</span>
-                <a href="#" data-i18n="terms">الشروط والأحكام</a>
-                <span data-i18n="and">و</span>
-                <a href="#" data-i18n="privacy_policy">سياسة الخصوصية</a>
-            </div>
-
-            <div class="divider" style="margin-top: 24px;">
-                <span data-i18n="or">أو</span>
-            </div>
-
-            <button class="social-btn google" onclick="socialRegister('google')">
-                <svg viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                </svg>
-                <span data-i18n="signup_with_google">التسجيل بـ Google</span>
-            </button>
-
-            <button class="social-btn facebook" onclick="socialRegister('facebook')">
-                <svg viewBox="0 0 24 24" fill="#1877F2">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-                <span data-i18n="signup_with_facebook">التسجيل بـ Facebook</span>
-            </button>
-
-            <div class="auth-footer">
-                <span data-i18n="has_account">لديك حساب بالفعل؟</span>
-                <a href="login.html" data-i18n="login_link">تسجيل الدخول</a>
-            </div>
-        </div>
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">Luxora</span><span class="logo-sub">Marketplace</span></span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="../index.html" data-i18n="nav.home">الرئيسية</a><a href="categories.html" data-i18n="nav.categories">الفئات</a><a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a><a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a><a href="products.html" data-i18n="nav.brands">العلامات التجارية</a><a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a><a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
+    </nav>
+    <div class="nav-search"><div class="nav-search-box"><input type="text" id="navSearch" placeholder="ابحث عن منتجات..."><button class="search-btn">🔍</button></div><div class="search-dropdown" id="searchDropdown"></div></div>
+    <div class="nav-actions">
+      <button class="nav-icon" id="langToggle" title="EN">🌐</button>
+      <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
+      <a href="wishlist.html" class="nav-icon">❤️</a>
+      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">0</span></a>
+      <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar">👤</div><span class="u-name" id="userName"></span></div><div class="dropdown-menu" id="userMenu"></div></div>
     </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">الرئيسية</a><a href="categories.html">الفئات</a><a href="products.html">المنتجات</a><a href="cart.html">سلة التسوق</a><a href="wishlist.html">المفضلة</a><a href="orders.html">طلباتي</a><a href="become-seller.html">تبيع معنا</a>
+  </div>
+</header>
 
-    <script src="../js/auth.js"></script>
-    <script src="../js/i18n.js"></script>
-    <script>
-        function togglePassword(id) {
-            const input = document.getElementById(id);
-            const btn = input.nextElementSibling;
-            if (input.type === 'password') {
-                input.type = 'text';
-                btn.innerHTML = '&#128064;';
-            } else {
-                input.type = 'password';
-                btn.innerHTML = '&#128065;';
-            }
-        }
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="crown">👑</div>
+      <h2><span>Luxora</span> Marketplace</h2>
+    </div>
+    <h3 class="auth-title" data-i18n="register.title">إنشاء حساب جديد</h3>
 
-        function socialRegister(provider) {
-            console.log('Social register with:', provider);
-            window.location.href = 'complete-profile.html';
-        }
+    <form>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form.name">الاسم الكامل</label>
+        <input type="text" class="form-input" placeholder="محمد أحمد" data-i18n-placeholder="form.namePlaceholder">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form.email">البريد الإلكتروني</label>
+        <input type="email" class="form-input" placeholder="email@example.com" data-i18n-placeholder="form.emailPlaceholder">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form.phone">رقم الجوال</label>
+        <input type="tel" class="form-input" placeholder="05XXXXXXXX" data-i18n-placeholder="form.phonePlaceholder">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form.password">كلمة المرور</label>
+        <input type="password" class="form-input" placeholder="••••••••" data-i18n-placeholder="form.passwordPlaceholder">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form.confirmPassword">تأكيد كلمة المرور</label>
+        <input type="password" class="form-input" placeholder="••••••••" data-i18n-placeholder="form.confirmPasswordPlaceholder">
+      </div>
+      <label class="form-check" style="margin-bottom:20px">
+        <input type="checkbox">
+        <span data-i18n="register.agree">أوافق على <a href="#" class="text-gold">الشروط والأحكام</a> و<a href="#" class="text-gold">سياسة الخصوصية</a></span>
+      </label>
+      <button type="submit" class="btn btn-gold btn-block btn-lg" data-i18n="register.submit">إنشاء الحساب</button>
+    </form>
 
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const pass = document.getElementById('password').value;
-            const confirm = document.getElementById('confirmPassword').value;
-            if (pass !== confirm) {
-                alert('كلمتا المرور غير متطابقتين');
-                return;
-            }
-            window.location.href = 'complete-profile.html';
-        });
-    </script>
+    <div class="auth-divider" data-i18n="login.or">أو</div>
+
+    <button class="social-btn">🔵 <span data-i18n="login.google">التسجيل بـ Google</span></button>
+    <button class="social-btn">🔷 <span data-i18n="login.facebook">التسجيل بـ Facebook</span></button>
+
+    <div class="auth-footer">
+      <span data-i18n="register.hasAccount">لديك حساب بالفعل؟</span>
+      <a href="login.html" data-i18n="register.login">تسجيل الدخول</a>
+    </div>
+  </div>
+</div>
+
+<script src="../js/utils.js"></script>
+<script src="../js/i18n.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/navbar.js"></script>
 </body>
 </html>

@@ -3,504 +3,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="إتمام الشراء - ادم شوب">
-  <title>إتمام الشراء | ادم شوب</title>
+  <meta name="description" content="إتمام الطلب - Luxora Marketplace">
+  <title>إتمام الطلب | Luxora Marketplace</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-<!-- reCAPTCHA Gate -->
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
-    <div class="recaptcha-logo">🛡️</div>
-    <h2 data-i18n="captcha.title">ادم شوب</h2>
-    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت</p>
-    <div class="recaptcha-widget">
-      <label class="recaptcha-checkbox">
-        <input type="checkbox" id="recaptchaCheck">
-        <span class="checkmark"></span>
-        <span data-i18n="captcha.label">لست روبوت</span>
-      </label>
-    </div>
-    <button class="btn btn-primary" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق</button>
+    <div class="rc-crown">👑</div>
+    <h2><span class="gold">Luxora</span> Marketplace</h2>
+    <p data-i18n="captcha.subtitle">يرجى التحقق أنك لست روبوت للدخول إلى المتجر</p>
+    <label class="rc-check"><input type="checkbox" id="recaptchaCheck"><span data-i18n="captcha.label">لست روبوت</span></label><br>
+    <button class="btn btn-gold" id="recaptchaSubmit" data-i18n="captcha.verify">تحقق والدخول</button>
   </div>
 </div>
 
-<!-- Navbar -->
 <header class="navbar" id="navbar">
-  <div class="container navbar-inner">
-    <a href="../index.html" class="navbar-logo"><span class="logo-gold">ادم شوب</span></a>
-    <nav class="navbar-links" id="navLinks">
-      <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
-      <a href="categories.html" data-i18n="nav.categories">الأقسام</a>
-      <a href="products.html" data-i18n="nav.products">المنتجات</a>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="crown">👑</span><span class="logo-text"><span class="logo-name">Luxora</span><span class="logo-sub">Marketplace</span></span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="../index.html" data-i18n="nav.home">الرئيسية</a><a href="categories.html" data-i18n="nav.categories">الفئات</a><a href="products.html?sort=best" data-i18n="nav.bestsellers">أفضل مبيعاً</a><a href="products.html?sort=deals" data-i18n="nav.deals">العروض</a><a href="products.html" data-i18n="nav.brands">العلامات التجارية</a><a href="seller/dashboard.html" data-i18n="nav.stores">المتاجر</a><a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
     </nav>
-    <div class="navbar-search">
-      <input type="text" class="search-input" id="navSearch" data-i18n-placeholder="nav.search" placeholder="ابحث عن منتج...">
-      <div class="search-suggestions" id="searchSuggestions"></div>
+    <div class="nav-search"><div class="nav-search-box"><input type="text" id="navSearch" placeholder="ابحث عن منتجات..."><button class="search-btn">🔍</button></div><div class="search-dropdown" id="searchDropdown"></div></div>
+    <div class="nav-actions">
+      <button class="nav-icon" id="langToggle" title="EN">🌐</button>
+      <button class="nav-icon" id="themeToggle" title="Theme">🌙</button>
+      <a href="wishlist.html" class="nav-icon">❤️<span class="count" id="wishCount" style="display:none">0</span></a>
+      <a href="cart.html" class="nav-icon" id="cartIconBtn">🛒<span class="count" id="cartCount">3</span></a>
+      <div class="user-dropdown" id="userDropdown"><div class="nav-user" id="userBtn"><div class="avatar" id="userAvatar">👤</div><span class="u-name" id="userName"></span></div><div class="dropdown-menu" id="userMenu"></div></div>
     </div>
-    <div class="navbar-actions">
-      <button class="btn-icon" id="langToggle" title="EN">EN</button>
-      <button class="btn-icon" id="themeToggle" title="Theme">🌙</button>
-      <a href="wishlist.html" class="btn-icon">
-        <span class="icon-heart"></span>
-        <span class="badge badge-danger" id="wishlistCount" style="display:none">0</span>
-      </a>
-      <a href="cart.html" class="btn-icon">
-        <span class="icon-cart"></span>
-        <span class="badge badge-gold" id="cartCount">3</span>
-      </a>
-      <div class="user-dropdown" id="userDropdown">
-        <button class="btn-icon" id="userBtn"><span class="icon-user"></span></button>
-        <div class="dropdown-menu" id="userMenu"></div>
-      </div>
-    </div>
-    <button class="navbar-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
-    <a href="categories.html" data-i18n="nav.categories">الأقسام</a>
-    <a href="products.html" data-i18n="nav.products">المنتجات</a>
-    <a href="cart.html" data-i18n="nav.cart">السلة</a>
-    <a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a>
-    <a href="orders.html" data-i18n="nav.orders">طلباتي</a>
+    <a href="../index.html">الرئيسية</a><a href="categories.html">الفئات</a><a href="products.html">المنتجات</a><a href="cart.html">سلة التسوق</a><a href="wishlist.html">المفضلة</a><a href="orders.html">طلباتي</a><a href="become-seller.html">تبيع معنا</a>
   </div>
 </header>
 
-<!-- Breadcrumbs -->
-<div class="breadcrumbs">
+<main style="margin-top:var(--nav-h)">
   <div class="container">
-    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
-    <span class="separator">/</span>
-    <a href="cart.html" data-i18n="nav.cart">سلة التسوق</a>
-    <span class="separator">/</span>
-    <span data-i18n="checkout.title">إتمام الشراء</span>
-  </div>
-</div>
+    <div class="bread">
+      <a href="../index.html">الرئيسية</a><span class="sep">←</span><a href="cart.html">سلة التسوق</a><span class="sep">←</span><span class="cur" data-i18n="checkout.title">إتمام الطلب</span>
+    </div>
 
-<!-- Checkout Section -->
-<section class="section checkout-section">
-  <div class="container">
-    <h1 class="page-title" data-i18n="checkout.title">إتمام الشراء</h1>
-
-    <!-- Step Indicator -->
-    <div class="step-indicator" id="stepIndicator">
-      <div class="step active" data-step="1">
-        <div class="step-number">1</div>
-        <span data-i18n="checkout.stepAddress">العنوان</span>
+    <!-- Steps -->
+    <div class="check-steps" style="margin-bottom:36px">
+      <div class="check-step done">
+        <div class="sn">✓</div>
+        <span data-i18n="checkout.address">العنوان</span>
+      </div>
+      <div class="step-line done"></div>
+      <div class="check-step active">
+        <div class="sn">2</div>
+        <span data-i18n="checkout.review">المراجعة</span>
       </div>
       <div class="step-line"></div>
-      <div class="step" data-step="2">
-        <div class="step-number">2</div>
-        <span data-i18n="checkout.stepReview">مراجعة</span>
-      </div>
-      <div class="step-line"></div>
-      <div class="step" data-step="3">
-        <div class="step-number">3</div>
-        <span data-i18n="checkout.stepConfirm">التأكيد</span>
+      <div class="check-step">
+        <div class="sn">3</div>
+        <span data-i18n="checkout.confirm">التأكيد</span>
       </div>
     </div>
 
-    <div class="checkout-layout">
-
-      <!-- Step Content Area -->
-      <div class="checkout-main">
-
-        <!-- Step 1: Address -->
-        <div class="checkout-step active" id="step-1">
-          <div class="checkout-card">
-            <h2 data-i18n="checkout.shippingAddress">عنوان الشحن</h2>
-
-            <div class="address-options">
-              <h3 data-i18n="checkout.savedAddresses">العناوين المحفوظة</h3>
-
-              <label class="address-option selected">
-                <input type="radio" name="address" value="saved1" checked>
-                <div class="address-card">
-                  <div class="address-card-header">
-                    <span class="address-label" data-i18n="checkout.home">المنزل</span>
-                    <span class="address-default" data-i18n="checkout.default">افتراضي</span>
-                  </div>
-                  <p class="address-text">محمد أحمد العلي</p>
-                  <p class="address-detail">حي العليا، شارع الأمير سلطان</p>
-                  <p class="address-detail">الرياض، المملكة العربية السعودية 12211</p>
-                  <p class="address-detail">+966 50 123 4567</p>
-                </div>
-              </label>
-
-              <label class="address-option">
-                <input type="radio" name="address" value="saved2">
-                <div class="address-card">
-                  <div class="address-card-header">
-                    <span class="address-label" data-i18n="checkout.work">العمل</span>
-                  </div>
-                  <p class="address-text">محمد أحمد العلي</p>
-                  <p class="address-detail">حي العليا، برج المملكة</p>
-                  <p class="address-detail">الرياض، المملكة العربية السعودية 11564</p>
-                  <p class="address-detail">+966 55 987 6543</p>
-                </div>
-              </label>
+    <div class="cart-grid">
+      <!-- Address Form -->
+      <div>
+        <div class="chart-box">
+          <h3 class="chart-title" data-i18n="checkout.shipAddress">عنوان الشحن</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.fullName">الاسم الكامل</label>
+              <input type="text" class="form-input" placeholder="محمد أحمد" value="محمد أحمد العلي">
             </div>
-
-            <div class="address-divider">
-              <span data-i18n="checkout.or">أو</span>
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.phone">رقم الجوال</label>
+              <input type="tel" class="form-input" placeholder="05XXXXXXXX" value="0512345678">
             </div>
-
-            <!-- New Address Form -->
-            <div class="new-address-form" id="newAddressForm">
-              <h3 data-i18n="checkout.newAddress">عنوان جديد</h3>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label data-i18n="checkout.fullName">الاسم الكامل</label>
-                  <input type="text" class="form-input" id="fullName" data-i18n-placeholder="checkout.fullNamePH" placeholder="الاسم الكامل">
-                </div>
-                <div class="form-group">
-                  <label data-i18n="checkout.phone">رقم الجوال</label>
-                  <input type="tel" class="form-input" id="phone" data-i18n-placeholder="checkout.phonePH" placeholder="+966 5X XXX XXXX">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label data-i18n="checkout.region">المنطقة</label>
-                <select class="form-select" id="region">
-                  <option value="" data-i18n="checkout.selectRegion">اختر المنطقة</option>
-                  <option value="riyadh">الرياض</option>
-                  <option value="makkah">مكة المكرمة</option>
-                  <option value="madinah">المدينة المنورة</option>
-                  <option value="eastern">المنطقة الشرقية</option>
-                  <option value="asir">عسير</option>
-                  <option value="qassim">القصيم</option>
-                  <option value="tabuk">تبوك</option>
-                  <option value="jazan">جازان</option>
-                  <option value="hail">حائل</option>
-                  <option value="jawf">الجوف</option>
-                  <option value="najran">نجران</option>
-                  <option value="baha">الباحة</option>
-                  <option value="jouf">الحدود الشمالية</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label data-i18n="checkout.city">المدينة</label>
-                <input type="text" class="form-input" id="city" data-i18n-placeholder="checkout.cityPH" placeholder="المدينة">
-              </div>
-
-              <div class="form-group">
-                <label data-i18n="checkout.district">الحي</label>
-                <input type="text" class="form-input" id="district" data-i18n-placeholder="checkout.districtPH" placeholder="الحي">
-              </div>
-
-              <div class="form-group">
-                <label data-i18n="checkout.street">الشارع</label>
-                <input type="text" class="form-input" id="street" data-i18n-placeholder="checkout.streetPH" placeholder="رقم واسم الشارع">
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label data-i18n="checkout.buildingNo">رقم المبنى</label>
-                  <input type="text" class="form-input" id="buildingNo">
-                </div>
-                <div class="form-group">
-                  <label data-i18n="checkout.zipCode">الرمز البريدي</label>
-                  <input type="text" class="form-input" id="zipCode">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label data-i18n="checkout.additionalNotes">ملاحظات إضافية (اختياري)</label>
-                <textarea class="form-textarea" id="notes" rows="2" data-i18n-placeholder="checkout.notesPH" placeholder="تعليمات خاصة للتوصيل..."></textarea>
-              </div>
-
-              <!-- Map -->
-              <div class="form-group">
-                <label data-i18n="checkout.selectOnMap">حدد موقعك على الخريطة</label>
-                <div class="map-container" id="mapContainer">
-                  <div class="map-placeholder">
-                    <span>📍</span>
-                    <p data-i18n="checkout.mapPlaceholder">انقر لاختيار الموقع</p>
-                    <button class="btn btn-outline btn-sm" id="openMapBtn" data-i18n="checkout.openMap">فتح الخريطة</button>
-                  </div>
-                </div>
-              </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="form.email">البريد الإلكتروني</label>
+            <input type="email" class="form-input" placeholder="email@example.com" value="mohammed@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="form.address">العنوان</label>
+            <input type="text" class="form-input" placeholder="الشارع، رقم المبنى" value="شارع الملك فهد، مبنى 42">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.city">المدينة</label>
+              <select class="form-select">
+                <option>الرياض</option><option>جدة</option><option>الدمام</option><option>مكة المكرمة</option><option>المدينة المنورة</option>
+              </select>
             </div>
-
-            <button class="btn btn-primary btn-lg btn-block" id="toReviewBtn" data-i18n="checkout.toReview">التالي: مراجعة الطلب</button>
+            <div class="form-group">
+              <label class="form-label" data-i18n="form.zip">الرمز البريدي</label>
+              <input type="text" class="form-input" placeholder="12345" value="12345">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="form.notes">ملاحظات الطلب (اختياري)</label>
+            <textarea class="form-textarea" rows="3" placeholder="ملاحظات إضافية للتوصيل"></textarea>
           </div>
         </div>
 
-        <!-- Step 2: Review -->
-        <div class="checkout-step" id="step-2">
-          <div class="checkout-card">
-            <h2 data-i18n="checkout.reviewOrder">مراجعة الطلب</h2>
-
-            <!-- Shipping Address Summary -->
-            <div class="review-section">
-              <div class="review-section-header">
-                <h3 data-i18n="checkout.shippingAddress">عنوان الشحن</h3>
-                <button class="btn-text" id="editAddress" data-i18n="checkout.edit">تعديل</button>
-              </div>
-              <div class="review-address" id="reviewAddress">
-                <p><strong>محمد أحمد العلي</strong></p>
-                <p>حي العليا، شارع الأمير سلطان</p>
-                <p>الرياض، المملكة العربية السعودية 12211</p>
-                <p>+966 50 123 4567</p>
-              </div>
-            </div>
-
-            <!-- Items Summary -->
-            <div class="review-section">
-              <div class="review-section-header">
-                <h3 data-i18n="checkout.orderItems"> المنتجات</h3>
-                <span>3 <span data-i18n="checkout.items">منتجات</span></span>
-              </div>
-              <div class="review-items">
-                <div class="review-item">
-                  <img src="https://placehold.co/60x60/1a1a2e/ffffff?text=Phone" alt="هاتف">
-                  <div class="review-item-info">
-                    <h4>هاتف ذكي برو</h4>
-                    <p class="review-item-meta">أسود | 128 جيجا</p>
-                    <p class="review-item-meta">الكمية: 1</p>
-                  </div>
-                  <span class="review-item-price">2,499 ر.س</span>
-                </div>
-                <div class="review-item">
-                  <img src="https://placehold.co/60x60/16213e/ffffff?text=Audio" alt="سماعات">
-                  <div class="review-item-info">
-                    <h4>سماعات لاسلكية</h4>
-                    <p class="review-item-meta">أبيض</p>
-                    <p class="review-item-meta">الكمية: 2</p>
-                  </div>
-                  <span class="review-item-price">298 ر.س</span>
-                </div>
-                <div class="review-item">
-                  <img src="https://placehold.co/60x60/0f3460/ffffff?text=Bag" alt="حقيبة">
-                  <div class="review-item-info">
-                    <h4>حقيبة ظهر جلد</h4>
-                    <p class="review-item-meta">بني</p>
-                    <p class="review-item-meta">الكمية: 1</p>
-                  </div>
-                  <span class="review-item-price">299 ر.س</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Payment Method -->
-            <div class="review-section">
-              <div class="review-section-header">
-                <h3 data-i18n="checkout.paymentMethod">طريقة الدفع</h3>
-              </div>
-              <div class="payment-options">
-                <label class="payment-option selected">
-                  <input type="radio" name="payment" value="cod" checked>
-                  <div class="payment-card">
-                    <span class="payment-icon">💵</span>
-                    <div>
-                      <h4 data-i18n="checkout.cod">الدفع عند الاستلام</h4>
-                      <p data-i18n="checkout.codDesc">ادفع نقداً عند استلام طلبك</p>
-                    </div>
-                  </div>
-                </label>
-                <label class="payment-option">
-                  <input type="radio" name="payment" value="card">
-                  <div class="payment-card">
-                    <span class="payment-icon">💳</span>
-                    <div>
-                      <h4 data-i18n="checkout.creditCard">بطاقة ائتمان</h4>
-                      <p data-i18n="checkout.creditCardDesc">فيزا / ماستركارد / مدى</p>
-                    </div>
-                  </div>
-                </label>
-                <label class="payment-option">
-                  <input type="radio" name="payment" value="applepay">
-                  <div class="payment-card">
-                    <span class="payment-icon">🍎</span>
-                    <div>
-                      <h4 data-i18n="checkout.applePay">Apple Pay</h4>
-                      <p data-i18n="checkout.applePayDesc">ادفع باستخدام Apple Pay</p>
-                    </div>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            <div class="checkout-nav">
-              <button class="btn btn-outline btn-lg" id="backToAddress" data-i18n="checkout.back">← رجوع</button>
-              <button class="btn btn-primary btn-lg" id="toConfirmBtn" data-i18n="checkout.toConfirm">التالي: التأكيد</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 3: Confirm -->
-        <div class="checkout-step" id="step-3">
-          <div class="checkout-card">
-            <h2 data-i18n="checkout.confirmOrder">تأكيد الطلب</h2>
-
-            <div class="confirm-summary">
-              <div class="confirm-section">
-                <div class="confirm-row">
-                  <span data-i18n="checkout.shippingTo">شحن إلى:</span>
-                  <span id="confirmAddress">حي العليا، الرياض</span>
-                </div>
-                <div class="confirm-row">
-                  <span data-i18n="checkout.paymentMethod">طريقة الدفع:</span>
-                  <span id="confirmPayment">الدفع عند الاستلام</span>
-                </div>
-                <div class="confirm-row">
-                  <span data-i18n="checkout.estimatedDelivery">موعد التوصيل المتوقع:</span>
-                  <span class="text-success" id="confirmDelivery">3-5 أيام عمل</span>
-                </div>
-              </div>
-
-              <div class="order-terms">
-                <label class="checkbox-label">
-                  <input type="checkbox" id="agreeTerms">
-                  <span data-i18n="checkout.agreeTerms">أوافق على <a href="#">شروط وأحكام</a> و <a href="#">سياسة الخصوصية</a></span>
-                </label>
-              </div>
-
-              <div class="checkout-nav">
-                <button class="btn btn-outline btn-lg" id="backToReview" data-i18n="checkout.back">← رجوع</button>
-                <button class="btn btn-gold btn-lg btn-place-order" id="placeOrderBtn" disabled data-i18n="checkout.placeOrder">🛒 تأكيد الطلب</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Order Success (hidden by default) -->
-        <div class="checkout-step" id="step-success" style="display:none;">
-          <div class="checkout-card order-success">
-            <div class="success-icon">✅</div>
-            <h1 data-i18n="checkout.success">تم تأكيد طلبك!</h1>
-            <p class="success-order-id" data-i18n="checkout.orderId">رقم الطلب: #AD-2026-87452</p>
-            <p data-i18n="checkout.successMsg">شكراً لك! سيتم مراجعة طلبك وتجهيزه للتوصيل قريباً. يمكنك متابعة حالة طلبك من صفحة الطلبات.</p>
-            <div class="success-actions">
-              <a href="orders.html" class="btn btn-primary" data-i18n="checkout.viewOrder">متابعة الطلب</a>
-              <a href="../index.html" class="btn btn-outline" data-i18n="checkout.backToHome">العودة للرئيسية</a>
-            </div>
+        <!-- Payment Method -->
+        <div class="chart-box" style="margin-top:20px">
+          <h3 class="chart-title" data-i18n="checkout.payment">طريقة الدفع</h3>
+          <div class="filter-opts" style="gap:10px">
+            <label class="filter-opt" style="padding:12px;border:1.5px solid var(--border-2);border-radius:var(--radius);cursor:pointer">
+              <input type="radio" name="payment" checked> 💳 <span data-i18n="checkout.creditCard">بطاقة ائتمان</span>
+            </label>
+            <label class="filter-opt" style="padding:12px;border:1.5px solid var(--border-2);border-radius:var(--radius);cursor:pointer">
+              <input type="radio" name="payment"> 🏦 <span data-i18n="checkout.bankTransfer">تحويل بنكي</span>
+            </label>
+            <label class="filter-opt" style="padding:12px;border:1.5px solid var(--border-2);border-radius:var(--radius);cursor:pointer">
+              <input type="radio" name="payment"> 📱 <span data-i18n="checkout.mada">مدى</span>
+            </label>
           </div>
         </div>
       </div>
 
-      <!-- Order Summary Sidebar -->
-      <div class="checkout-sidebar">
-        <div class="checkout-card order-summary-card">
-          <h3 data-i18n="cart.summary">ملخص الطلب</h3>
-
-          <div class="summary-items">
-            <div class="summary-item">
-              <img src="https://placehold.co/50x50/1a1a2e/ffffff?text=P" alt="هاتف">
-              <div class="summary-item-info">
-                <p class="summary-item-name">هاتف ذكي برو</p>
-                <p class="summary-item-meta">×1</p>
-              </div>
-              <span>2,499 ر.س</span>
-            </div>
-            <div class="summary-item">
-              <img src="https://placehold.co/50x50/16213e/ffffff?text=H" alt="سماعات">
-              <div class="summary-item-info">
-                <p class="summary-item-name">سماعات لاسلكية</p>
-                <p class="summary-item-meta">×2</p>
-              </div>
-              <span>298 ر.س</span>
-            </div>
-            <div class="summary-item">
-              <img src="https://placehold.co/50x50/0f3460/ffffff?text=B" alt="حقيبة">
-              <div class="summary-item-info">
-                <p class="summary-item-name">حقيبة ظهر جلد</p>
-                <p class="summary-item-meta">×1</p>
-              </div>
-              <span>299 ر.س</span>
-            </div>
-          </div>
-
-          <div class="summary-totals">
-            <div class="summary-row">
-              <span data-i18n="cart.subtotal">المجموع الفرعي</span>
-              <span>3,096 ر.س</span>
-            </div>
-            <div class="summary-row">
-              <span data-i18n="cart.shipping">الشحن</span>
-              <span class="text-success" data-i18n="cart.freeShipping">مجاني</span>
-            </div>
-            <div class="summary-row">
-              <span data-i18n="cart.tax">الضريبة (15%)</span>
-              <span>464 ر.س</span>
-            </div>
-            <div class="summary-row">
-              <span data-i18n="cart.discount">الخصم</span>
-              <span class="text-danger">-0 ر.س</span>
-            </div>
-            <div class="summary-total">
-              <span data-i18n="cart.total">الإجمالي</span>
-              <span class="total-price">3,560 ر.س</span>
-            </div>
-          </div>
-
-          <div class="trust-list">
-            <div class="trust-item"><span>🔒</span> <span data-i18n="checkout.secureCheckout">دفع آمن ومشفر</span></div>
-            <div class="trust-item"><span>🚚</span> <span data-i18n="checkout.freeShipping">شحن مجاني</span></div>
-            <div class="trust-item"><span>🔄</span> <span data-i18n="checkout.easyReturns">إرجاع سهل خلال 30 يوم</span></div>
-            <div class="trust-item"><span>📞</span> <span data-i18n="checkout.support247">دعم فني على مدار الساعة</span></div>
-          </div>
+      <!-- Order Summary -->
+      <div class="cart-summary">
+        <h3 data-i18n="checkout.orderSummary">ملخص الطلب</h3>
+        <div class="cart-list-item" style="padding:10px 0">
+          <img src="https://placehold.co/60x60/1C2333/D4A94A?text=iPhone" alt="iPhone" style="width:50px;height:50px">
+          <div class="cli-info"><h4 style="font-size:0.82rem;font-weight:600">آيفون 15 برو ماكس</h4><p class="text-xs text-dim">×1</p></div>
+          <span class="text-sm" style="font-weight:700;color:var(--gold)">4,999 ر.س</span>
         </div>
+        <div class="cart-list-item" style="padding:10px 0">
+          <img src="https://placehold.co/60x60/1C2333/D4A94A?text=AirPods" alt="AirPods" style="width:50px;height:50px">
+          <div class="cli-info"><h4 style="font-size:0.82rem;font-weight:600">AirPods Pro 2</h4><p class="text-xs text-dim">×2</p></div>
+          <span class="text-sm" style="font-weight:700;color:var(--gold)">1,598 ر.س</span>
+        </div>
+        <div class="cart-list-item" style="padding:10px 0;border:none">
+          <img src="https://placehold.co/60x60/1C2333/D4A94A?text=Watch" alt="Watch" style="width:50px;height:50px">
+          <div class="cli-info"><h4 style="font-size:0.82rem;font-weight:600">Apple Watch Ultra 2</h4><p class="text-xs text-dim">×1</p></div>
+          <span class="text-sm" style="font-weight:700;color:var(--gold)">3,499 ر.س</span>
+        </div>
+
+        <div style="border-top:1px solid var(--border);padding-top:12px;margin-top:8px">
+          <div class="sum-row"><span data-i18n="cart.subtotal">المجموع الفرعي</span><span>10,096 ر.س</span></div>
+          <div class="sum-row"><span data-i18n="cart.shipping">الشحن</span><span class="text-gold">مجاني</span></div>
+          <div class="sum-row"><span data-i18n="cart.tax">الضريبة (15%)</span><span>1,514 ر.س</span></div>
+          <div class="sum-total"><span data-i18n="cart.total">الإجمالي</span><span class="amount">11,610 ر.س</span></div>
+        </div>
+
+        <button class="btn btn-gold btn-block btn-lg" style="margin-top:16px" data-i18n="checkout.placeOrder">🔒 تأكيد الطلب</button>
+        <p class="text-xs text-dim text-center" style="margin-top:8px" data-i18n="checkout.secureNote">🔒 دفع آمن ومشفر بالكامل</p>
       </div>
     </div>
   </div>
-</section>
+</main>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <a href="../index.html" class="footer-logo"><span class="logo-gold">ادم شوب</span></a>
-        <p data-i18n="footer.about">ادم شوب هو سوق إلكتروني متعدد البائعين.</p>
-        <div class="footer-social">
-          <a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📸</a><a href="#" class="social-icon">📺</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h3 data-i18n="footer.quickLinks">روابط سريعة</h3>
-        <ul>
-          <li><a href="categories.html" data-i18n="nav.categories">الأقسام</a></li>
-          <li><a href="products.html" data-i18n="nav.products">المنتجات</a></li>
-          <li><a href="orders.html" data-i18n="nav.orders">طلباتي</a></li>
-          <li><a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 data-i18n="footer.categories">الأقسام</h3>
-        <ul>
-          <li><a href="category.html?id=electronics" data-i18n="cat.electronics">الإلكترونيات</a></li>
-          <li><a href="category.html?id=fashion" data-i18n="cat.fashion">الأزياء</a></li>
-          <li><a href="category.html?id=home" data-i18n="cat.home">المنزل والمطبخ</a></li>
-          <li><a href="category.html?id=beauty" data-i18n="cat.beauty">الجمال والعناية</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 data-i18n="footer.contact">تواصل معنا</h3>
-        <ul class="contact-list">
-          <li><span>📍</span> <span data-i18n="footer.address">الرياض، المملكة العربية السعودية</span></li>
-          <li><span>📞</span> <span data-i18n="footer.phone">+966 50 123 4567</span></li>
-          <li><span>✉️</span> <span data-i18n="footer.email">info@adamshop.com</span></li>
-        </ul>
-      </div>
+    <div class="f-grid">
+      <div><div class="f-logo"><span class="crown">👑</span><span class="name">Luxora</span></div><p class="f-desc">وجهتك الأولى للتسوق الفاخر.</p></div>
+      <div><h4 class="f-title">روابط سريعة</h4><div class="f-links"><a href="products.html">المنتجات</a><a href="categories.html">الفئات</a><a href="products.html?sort=deals">العروض</a></div></div>
+      <div><h4 class="f-title">الفئات</h4><div class="f-links"><a href="category.html?cat=electronics">📱 إلكترونيات</a><a href="category.html?cat=fashion">👕 أزياء</a><a href="category.html?cat=beauty">💄 جمال وعناية</a></div></div>
+      <div><h4 class="f-title">المساعدة</h4><div class="f-links"><a href="#">الأسئلة الشائعة</a><a href="#">سياسة الشحن</a><a href="#">سياسة الإرجاع</a></div></div>
     </div>
-    <div class="footer-bottom">
-      <p data-i18n="footer.copyright">© 2026 ادم شوب. جميع الحقوق محفوظة.</p>
-      <div class="footer-payments"><span>💳</span><span>💳</span><span>🍎</span><span>💳</span><span>💵</span></div>
-    </div>
+    <div class="f-bottom"><span>© 2026 <strong class="text-gold">Luxora</strong> Marketplace. جميع الحقوق محفوظة</span><span>💳 نقبل جميع بطاقات الائتمان</span></div>
   </div>
-  <button class="back-to-top" id="backToTop">↑</button>
 </footer>
 
+<button class="btt" id="backToTop">⬆</button>
 <script src="../js/utils.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/theme.js"></script>
 <script src="../js/auth.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/navbar.js"></script>
-<script src="../js/checkout.js"></script>
 </body>
 </html>
