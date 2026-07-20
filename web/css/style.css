@@ -1398,3 +1398,36 @@ table td img { width: 42px; height: 42px; border-radius: var(--radius-sm); objec
   .pd-actions { flex-direction: column; }
   .pd-actions .btn { width: 100%; }
 }
+
+/* === ADD-TO-CART MODAL === */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal.active {
+  display: flex;
+}
+.modal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+}
+.modal-content {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  max-width: 440px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+  z-index: 1;
+}

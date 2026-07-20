@@ -140,15 +140,15 @@ function renderWishlistPage() {
   empty.style.display = 'none';
   grid.innerHTML = items.map(function(item) {
     return '<div class="p-card" data-wl-item="' + item.productId + '">' +
-      '<div class="p-img">' +
+      '<a href="product.html?id=' + item.productId + '" class="p-img" style="text-decoration:none;color:inherit">' +
         '<div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;background:var(--bg-3)">' + (item.image || '📦') + '</div>' +
-        '<button class="p-fav active" onclick="removeFromWishlistPage(\'' + item.productId + '\')">❤️</button>' +
-      '</div>' +
+        '<button class="p-fav active" onclick="event.preventDefault();removeFromWishlistPage(\'' + item.productId + '\')">❤️</button>' +
+      '</a>' +
       '<div class="p-body">' +
-        '<h3 class="p-name">' + item.name + '</h3>' +
+        '<h3 class="p-name"><a href="product.html?id=' + item.productId + '" style="text-decoration:none;color:inherit">' + item.name + '</a></h3>' +
         '<div class="p-price"><span class="curr">' + formatPrice(item.price) + '</span></div>' +
         '<div style="display:flex;gap:8px;margin-top:8px">' +
-          '<button class="p-btn" style="flex:1" onclick="addToCart(\'' + item.productId + '\',\'' + item.name.replace(/'/g, "\\'") + '\',' + item.price + ',\'' + (item.image || '') + '\',1)">🛒 أضف للسلة</button>' +
+          '<button class="p-btn" style="flex:1" onclick="handleCardAddToCart(\'' + item.productId + '\')">🛒 أضف للسلة</button>' +
           '<button class="btn btn-danger btn-sm" onclick="removeFromWishlistPage(\'' + item.productId + '\')" style="flex-shrink:0;width:40px;height:40px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:var(--radius)">🗑</button>' +
         '</div>' +
       '</div>' +
@@ -192,6 +192,7 @@ function removeFromWishlistPage(productId) {
 <script src="../js/auth.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/navbar.js"></script>
+<script src="../js/product-data.js"></script>
 </body>
 </html>
 

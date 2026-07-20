@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="تفاصيل المنتج - ADAM SHOP Marketplace">
-  <title>تفاصيل المنتج | ADAM SHOP Marketplace</title>
+  <meta name="description" content="تفاصيل المنتج - آدم شوب">
+  <title>تفاصيل المنتج | آدم شوب</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
+<!-- reCAPTCHA Gate -->
 <div class="recaptcha-gate" id="recaptchaGate">
   <div class="recaptcha-box">
     <div class="logo-icon">👜</div>
@@ -20,11 +21,12 @@
   </div>
 </div>
 
+<!-- Navbar -->
 <header class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo">
       <span class="logo-icon">👜</span>
-      <span class="logo-text"><span class="logo-name">ADAM SHOP</span><span class="logo-sub">ADAM SHOP</span></span>
+      <span class="logo-text"><span class="logo-name">آدم شوب</span><span class="logo-sub">ADAM SHOP</span></span>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
@@ -55,239 +57,72 @@
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
-    <a href="categories.html" data-i18n="nav.categories">الفئات</a>
-    <a href="products.html" data-i18n="nav.products">المنتجات</a>
-    <a href="cart.html" data-i18n="nav.cart">سلة التسوق</a>
-    <a href="wishlist.html" data-i18n="nav.wishlist">المفضلة</a>
-    <a href="orders.html" data-i18n="nav.orders">طلباتي</a>
-    <a href="become-seller.html" data-i18n="nav.sell">تبيع معنا</a>
+    <a href="../index.html">الرئيسية</a>
+    <a href="categories.html">الفئات</a>
+    <a href="products.html">المنتجات</a>
+    <a href="cart.html">سلة التسوق</a>
+    <a href="wishlist.html">المفضلة</a>
+    <a href="orders.html">طلباتي</a>
+    <a href="become-seller.html">تبيع معنا</a>
   </div>
 </header>
 
 <main style="margin-top:var(--nav-h)">
   <div class="container">
-    <div class="bread">
-      <a href="../index.html" data-i18n="nav.home">الرئيسية</a>
+    <!-- Breadcrumbs -->
+    <div class="bread" id="breadCrumbs">
+      <a href="../index.html">الرئيسية</a>
       <span class="sep">←</span>
-      <a href="products.html" data-i18n="nav.products">المنتجات</a>
+      <a href="products.html">المنتجات</a>
       <span class="sep">←</span>
-      <span class="cur" data-i18n="product.detail">تفاصيل المنتج</span>
+      <span class="cur" id="breadcrumbName">...</span>
     </div>
 
-    <div class="pd-page">
-      <!-- Gallery -->
-      <div class="pd-gallery">
-        <div class="pd-thumbs">
-          <div class="pd-thumb active"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=iPhone+15" alt="thumb1"></div>
-          <div class="pd-thumb"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=Side+View" alt="thumb2"></div>
-          <div class="pd-thumb"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=Back+View" alt="thumb3"></div>
-          <div class="pd-thumb"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=Camera" alt="thumb4"></div>
-        </div>
-        <div class="pd-main">
-          <img src="https://placehold.co/600x600/12172A/3B7DFF?text=iPhone+15+Pro+Max" alt="iPhone 15 Pro Max" id="pdMainImg">
-        </div>
-      </div>
-
-      <!-- Info -->
-      <div class="pd-info">
-        <h1 class="pd-title" data-i18n="product.name1">آيفون 15 برو ماكس 256 جيجا</h1>
-        <div class="pd-rating">
-          <span class="stars">★★★★★</span>
-          <span class="count">(128 تقييم)</span>
-          <span class="text-dim text-sm">|</span>
-          <span class="text-sm text-dim" data-i18n="product.sold">تم بيع 342 مرة</span>
-        </div>
-        <div class="pd-price">
-          <span class="curr">4,999 د.ل</span>
-          <span class="old">5,499 د.ل</span>
-          <span class="disc">-9%</span>
-        </div>
-        <p class="pd-desc" data-i18n="product.desc1">آيفون 15 برو ماكس بأحدث شريحة A17 Pro، شاشة Super Retina XDR مقاس 6.7 بوصة، كاميرا ثلاثية بدقة 48 ميجابكسل، تصميم من التيتانيوم الفاخر مع بطارية تدوم طوال اليوم.</p>
-
-        <div class="var-group">
-          <div class="var-label" data-i18n="product.color">اللون</div>
-          <div class="color-swatches">
-            <div class="c-swatch active" style="background:#1C2333" title="أزرق تيتانيوم"></div>
-            <div class="c-swatch" style="background:#D4A94A" title="ذهبي"></div>
-            <div class="c-swatch" style="background:#9CA3AF" title="فضي"></div>
-            <div class="c-swatch" style="background:#1A1A1A" title="أسود"></div>
-          </div>
-        </div>
-
-        <div class="var-group">
-          <div class="var-label" data-i18n="product.storage">السعة</div>
-          <div class="size-btns">
-            <button class="size-btn">128 GB</button>
-            <button class="size-btn active">256 GB</button>
-            <button class="size-btn">512 GB</button>
-            <button class="size-btn">1 TB</button>
-          </div>
-        </div>
-
-        <div class="var-group">
-          <div class="var-label" data-i18n="product.qty">الكمية</div>
-          <div class="qty-box">
-            <button id="qtyMinus">−</button>
-            <div class="qty-val" id="qtyVal">1</div>
-            <button id="qtyPlus">+</button>
-          </div>
-        </div>
-
-        <div class="pd-actions">
-          <button class="btn btn-gold btn-lg" onclick="addToCart('IPH15PM-256','آيفون 15 برو ماكس 256 جيجا',4999,'https://placehold.co/600x600/12172A/3B7DFF?text=iPhone+15+Pro+Max',parseInt(document.getElementById('qtyVal').textContent));window.location.href='cart.html'" data-i18n="product.buyNow">اشترِ الآن</button>
-          <button class="btn btn-outline btn-lg" onclick="addToCart('IPH15PM-256','آيفون 15 برو ماكس 256 جيجا',4999,'https://placehold.co/600x600/12172A/3B7DFF?text=iPhone+15+Pro+Max',parseInt(document.getElementById('qtyVal').textContent))" data-i18n="product.addToCart">🛒 أضف للسلة</button>
-        </div>
-
-        <div class="pd-meta">
-          <div class="meta-row"><span class="meta-label" data-i18n="product.brand">العلامة التجارية:</span><span>Apple</span></div>
-          <div class="meta-row"><span class="meta-label" data-i18n="product.warranty">الضمان:</span><span data-i18n="product.warrantyVal">ضمان سنة كاملة</span></div>
-          <div class="meta-row"><span class="meta-label" data-i18n="product.shipping">الشحن:</span><span data-i18n="product.shippingVal">شحن مجاني خلال 24 ساعة</span></div>
-          <div class="meta-row"><span class="meta-label" data-i18n="product.sku">الرمز:</span><span class="font-en">IPH15PM-256</span></div>
-        </div>
-      </div>
+    <!-- Product detail container - rendered dynamically by JS -->
+    <div id="pdContainer">
+      <div style="text-align:center;padding:60px 0;color:var(--text-4)">جاري تحميل المنتج...</div>
     </div>
 
     <!-- Tabs -->
-    <div class="tabs-bar">
-      <button class="tab-btn active" data-tab="desc" data-i18n="product.description">الوصف</button>
-      <button class="tab-btn" data-tab="specs" data-i18n="product.specs">المواصفات</button>
-      <button class="tab-btn" data-tab="reviews" data-i18n="product.reviews">التقييمات (128)</button>
-    </div>
-
-    <div class="tab-panel active" id="tab-desc">
-      <div style="max-width:720px;line-height:2;color:var(--text-3);font-size:0.92rem" data-i18n="product.fullDesc">
-        <p>آيفون 15 برو ماكس هو أقوى هاتف من Apple حتى الآن. يأتي بشريحة A17 Pro الثورية التي توفر أداءً استثنائياً مع كفاءة طاقة عالية. الشاشة من نوع Super Retina XDR مقاس 6.7 بوصة توفر تجربة بصرية خلابة مع سطوع يصل إلى 2000 نيت.</p>
-        <br>
-        <p>كاميرا ثلاثية بدقة 48 ميجابكسل تلتقط صوراً رائعة في جميع ظروف الإضاءة. تصميم من التيتانيوم الفاخر يجعل الهاتف أخف وأقوى. بطارية تدوم طوال اليوم مع دعم الشحن السريع واللاسلكي.</p>
+    <div id="pdTabsSection" style="display:none">
+      <div class="tabs-bar">
+        <button class="tab-btn active" data-tab="desc">الوصف</button>
+        <button class="tab-btn" data-tab="specs">المواصفات</button>
+        <button class="tab-btn" data-tab="reviews">التقييمات</button>
       </div>
-    </div>
-
-    <div class="tab-panel" id="tab-specs">
-      <div style="max-width:600px">
-        <table style="width:100%">
-          <tr><td style="color:var(--text-4);padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)" data-i18n="spec.screen">الشاشة</td><td style="padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)">6.7 بوصة Super Retina XDR</td></tr>
-          <tr><td style="color:var(--text-4);padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)" data-i18n="spec.chip">المعالج</td><td style="padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)">A17 Pro</td></tr>
-          <tr><td style="color:var(--text-4);padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)" data-i18n="spec.ram">الرام</td><td style="padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)">8 جيجا</td></tr>
-          <tr><td style="color:var(--text-4);padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)" data-i18n="spec.storage">السعة</td><td style="padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)">256 جيجا</td></tr>
-          <tr><td style="color:var(--text-4);padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)" data-i18n="spec.camera">الكاميرا</td><td style="padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)">48 + 12 + 12 ميجابكسل</td></tr>
-          <tr><td style="color:var(--text-4);padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)" data-i18n="spec.battery">البطارية</td><td style="padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)">4,422 مللي أمبير</td></tr>
-          <tr><td style="color:var(--text-4);padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)" data-i18n="spec.weight">الوزن</td><td style="padding:10px 16px;font-size:0.85rem;border-bottom:1px solid var(--border)">221 جرام</td></tr>
-          <tr><td style="color:var(--text-4);padding:10px 16px;font-size:0.85rem" data-i18n="spec.os">نظام التشغيل</td><td style="padding:10px 16px;font-size:0.85rem">iOS 17</td></tr>
-        </table>
+      <div class="tab-panel active" id="tab-desc">
+        <div style="max-width:720px;line-height:2;color:var(--text-3);font-size:0.92rem" id="pdFullDesc"></div>
       </div>
-    </div>
-
-    <div class="tab-panel" id="tab-reviews">
-      <div class="rev-big">
-        <div class="rev-big-num">4.8</div>
-        <div class="rev-bars">
-          <div class="rev-bar"><span>5 ★</span><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div><span>75%</span></div>
-          <div class="rev-bar"><span>4 ★</span><div class="bar-bg"><div class="bar-fill" style="width:18%"></div></div><span>18%</span></div>
-          <div class="rev-bar"><span>3 ★</span><div class="bar-bg"><div class="bar-fill" style="width:5%"></div></div><span>5%</span></div>
-          <div class="rev-bar"><span>2 ★</span><div class="bar-bg"><div class="bar-fill" style="width:1%"></div></div><span>1%</span></div>
-          <div class="rev-bar"><span>1 ★</span><div class="bar-bg"><div class="bar-fill" style="width:1%"></div></div><span>1%</span></div>
-        </div>
+      <div class="tab-panel" id="tab-specs">
+        <div style="max-width:600px"><table style="width:100%" id="pdSpecsTable"></table></div>
       </div>
-
-      <div class="rev-card">
-        <div class="rev-head">
-          <div class="rev-avatar">أ</div>
-          <div>
-            <div class="rev-name">أحمد محمد</div>
-            <div class="rev-date">15 يناير 2026</div>
-          </div>
-        </div>
-        <div class="rev-stars">★★★★★</div>
-        <div class="rev-text">هاتف رائع بكل المقاييس! الكاميرا ممتازة والأداء سريع جداً. التيتانيوم يعطي مظهر فاخر ومميز.</div>
-      </div>
-
-      <div class="rev-card">
-        <div class="rev-head">
-          <div class="rev-avatar">س</div>
-          <div>
-            <div class="rev-name">سارة العلي</div>
-            <div class="rev-date">10 يناير 2026</div>
-          </div>
-        </div>
-        <div class="rev-stars">★★★★☆</div>
-        <div class="rev-text">منتج ممتاز لكن السعر مرتفع قليلاً. البطارية تدوم طوال اليوم بشكل ممتاز.</div>
-      </div>
-
-      <div class="rev-card">
-        <div class="rev-head">
-          <div class="rev-avatar">خ</div>
-          <div>
-            <div class="rev-name">خالد الشمري</div>
-            <div class="rev-date">5 يناير 2026</div>
-          </div>
-        </div>
-        <div class="rev-stars">★★★★★</div>
-        <div class="rev-text">أفضل هاتف استخدمته! الشاشة رائعة والسرعة لا تُصدق. أوصي به بشدة.</div>
+      <div class="tab-panel" id="tab-reviews">
+        <div class="rev-big" id="pdRevBig"></div>
+        <div id="pdRevList"></div>
       </div>
     </div>
 
     <!-- Related Products -->
-    <section class="section">
+    <section class="section" id="pdRelatedSection" style="display:none">
       <div class="section-head">
-        <h2 class="section-title" data-i18n="product.related">منتجات مشابهة</h2>
+        <h2 class="section-title">منتجات مشابهة</h2>
       </div>
-      <div class="products-grid">
-        <div class="p-card">
-          <div class="p-img"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=Galaxy+S24" alt="Samsung S24"><button class="p-fav" onclick="toggleWishlist(3001,'سامسونج جالكسي S24 الترا',4399,'https://placehold.co/400x400/12172A/3B7DFF?text=Galaxy+S24')">❤️</button></div>
-          <div class="p-body">
-            <span class="p-cat">هواتف ذكية</span>
-            <h3 class="p-name">سامسونج جالكسي S24 الترا</h3>
-            <div class="p-rating"><span class="stars">★★★★☆</span><span class="r-count">(89)</span></div>
-            <div class="p-price"><span class="curr">4,399 د.ل</span></div>
-            <button class="p-btn" onclick="addToCart(3001,'سامسونج جالكسي S24 الترا',4399,'https://placehold.co/400x400/12172A/3B7DFF?text=Galaxy+S24')">🛒 أضف للسلة</button>
-          </div>
-        </div>
-        <div class="p-card">
-          <div class="p-img"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=Pixel+8" alt="Pixel 8"><button class="p-fav" onclick="toggleWishlist(3002,'جوجل بيكسل 8 برو',3299,'https://placehold.co/400x400/12172A/3B7DFF?text=Pixel+8')">❤️</button></div>
-          <div class="p-body">
-            <span class="p-cat">هواتف ذكية</span>
-            <h3 class="p-name">جوجل بيكسل 8 برو</h3>
-            <div class="p-rating"><span class="stars">★★★★☆</span><span class="r-count">(56)</span></div>
-            <div class="p-price"><span class="curr">3,299 د.ل</span></div>
-            <button class="p-btn" onclick="addToCart(3002,'جوجل بيكسل 8 برو',3299,'https://placehold.co/400x400/12172A/3B7DFF?text=Pixel+8')">🛒 أضف للسلة</button>
-          </div>
-        </div>
-        <div class="p-card">
-          <div class="p-img"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=OnePlus" alt="OnePlus 12"><button class="p-fav" onclick="toggleWishlist(3003,'ون بلس 12',3599,'https://placehold.co/400x400/12172A/3B7DFF?text=OnePlus')">❤️</button></div>
-          <div class="p-body">
-            <span class="p-cat">هواتف ذكية</span>
-            <h3 class="p-name">ون بلس 12</h3>
-            <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(34)</span></div>
-            <div class="p-price"><span class="curr">3,599 د.ل</span></div>
-            <button class="p-btn" onclick="addToCart(3003,'ون بلس 12',3599,'https://placehold.co/400x400/12172A/3B7DFF?text=OnePlus')">🛒 أضف للسلة</button>
-          </div>
-        </div>
-        <div class="p-card">
-          <div class="p-img"><img src="https://placehold.co/400x400/12172A/3B7DFF?text=iPad+Pro" alt="iPad Pro"><button class="p-fav" onclick="toggleWishlist(3004,'آيباد برو M4 11 بوصة',3999,'https://placehold.co/400x400/12172A/3B7DFF?text=iPad+Pro')">❤️</button></div>
-          <div class="p-body">
-            <span class="p-cat">تابلت</span>
-            <h3 class="p-name">آيباد برو M4 11 بوصة</h3>
-            <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(67)</span></div>
-            <div class="p-price"><span class="curr">3,999 د.ل</span></div>
-            <button class="p-btn" onclick="addToCart(3004,'آيباد برو M4 11 بوصة',3999,'https://placehold.co/400x400/12172A/3B7DFF?text=iPad+Pro')">🛒 أضف للسلة</button>
-          </div>
-        </div>
-      </div>
+      <div class="products-grid" id="relatedGrid"></div>
     </section>
   </div>
 </main>
 
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="f-grid">
       <div>
-        <div class="f-logo"><span class="logo-icon">👜</span><span class="name">ADAM SHOP</span></div>
-        <p class="f-desc" data-i18n="footer.desc">وجهتك الأولى للتسوق الفاخر.</p>
+        <div class="f-logo"><span class="logo-icon">👜</span><span class="name">آدم شوب</span></div>
+        <p class="f-desc">وجهتك الأولى للتسوق الفاخر. نقدم لك تشكيلة واسعة من المنتجات الأصلية بأفضل الأسعار مع خدمة توصيل سريعة وآمنة.</p>
         <div class="f-social"><a href="#">𝕏</a><a href="#">📷</a><a href="#">f</a><a href="#">▶</a></div>
       </div>
       <div>
-        <h4 class="f-title" data-i18n="footer.quickLinks">روابط سريعة</h4>
+        <h4 class="f-title">روابط سريعة</h4>
         <div class="f-links">
           <a href="products.html">المنتجات</a>
           <a href="categories.html">الفئات</a>
@@ -296,7 +131,7 @@
         </div>
       </div>
       <div>
-        <h4 class="f-title" data-i18n="footer.categories">الفئات</h4>
+        <h4 class="f-title">الفئات</h4>
         <div class="f-links">
           <a href="category.html?cat=electronics">📱 إلكترونيات</a>
           <a href="category.html?cat=fashion">👕 أزياء</a>
@@ -305,7 +140,7 @@
         </div>
       </div>
       <div>
-        <h4 class="f-title" data-i18n="footer.help">المساعدة</h4>
+        <h4 class="f-title">المساعدة</h4>
         <div class="f-links">
           <a href="#">الأسئلة الشائعة</a>
           <a href="#">سياسة الشحن</a>
@@ -315,7 +150,7 @@
       </div>
     </div>
     <div class="f-bottom">
-      <span>© 2026 <strong class="text-accent">آدم شوب</strong> ADAM SHOP. جميع الحقوق محفوظة</span>
+      <span>© 2026 <strong class="text-accent">آدم شوب</strong>. جميع الحقوق محفوظة</span>
       <span>💳 نقبل جميع بطاقات الائتمان</span>
     </div>
   </div>
@@ -323,9 +158,11 @@
 
 <button class="btt" id="backToTop">⬆</button>
 
+<script src="../js/utils.js"></script>
+<script src="../js/product-data.js"></script>
 <script src="../js/cart.js"></script>
 <script src="../js/wishlist.js"></script>
-<script src="../js/utils.js"></script>
+<script src="../js/product-detail.js"></script>
 <script src="../js/i18n.js"></script>
 <script src="../js/theme.js"></script>
 <script src="../js/auth.js"></script>
@@ -333,4 +170,3 @@
 <script src="../js/navbar.js"></script>
 </body>
 </html>
-

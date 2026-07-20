@@ -13,13 +13,24 @@ function getCart() {
 
 function saveCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
-  if (typeof getCartCount === 'function') {
-    var countEl = document.getElementById('cartCount');
-    if (countEl) {
-      var count = getCartCount();
-      countEl.textContent = count;
-      countEl.style.display = count > 0 ? 'flex' : 'none';
-    }
+  updateCartBadge();
+}
+
+function updateCartBadge() {
+  var countEl = document.getElementById('cartCount');
+  if (countEl) {
+    var count = getCartCount();
+    countEl.textContent = count;
+    countEl.style.display = count > 0 ? 'flex' : 'none';
+  }
+}
+
+function updateWishlistBadge() {
+  var wishEl = document.getElementById('wishCount');
+  if (wishEl && typeof getWishlistCount === 'function') {
+    var wcount = getWishlistCount();
+    wishEl.textContent = wcount;
+    wishEl.style.display = wcount > 0 ? 'flex' : 'none';
   }
 }
 

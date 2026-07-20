@@ -287,57 +287,57 @@
     </div>
     <div class="products-grid" id="trendingGrid">
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1001'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=iPhone+15" alt="iPhone 15 Pro">
           <span class="p-badge">جديد</span>
-          <button class="p-fav" onclick="toggleWishlist(1001,'آيفون 15 برو ماكس 256 جيجا',4999,'https://placehold.co/400x400/12172A/3B7DFF?text=iPhone+15')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1001,'آيفون 15 برو ماكس 256 جيجا',4999,'https://placehold.co/400x400/12172A/3B7DFF?text=iPhone+15')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">هواتف ذكية</span>
-          <h3 class="p-name">آيفون 15 برو ماكس 256 جيجا</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1001'" style="cursor:pointer">آيفون 15 برو ماكس 256 جيجا</h3>
           <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(128)</span></div>
           <div class="p-price"><span class="curr">4,999 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1001,'آيفون 15 برو ماكس 256 جيجا',4999,'https://placehold.co/400x400/12172A/3B7DFF?text=iPhone+15')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1001')">🛒 أضف للسلة</button>
         </div>
       </div>
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1002'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=Samsung+S24" alt="Samsung S24">
-          <button class="p-fav" onclick="toggleWishlist(1002,'سامسونج جالكسي S24 الترا',4399,'https://placehold.co/400x400/12172A/3B7DFF?text=Samsung+S24')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1002,'سامسونج جالكسي S24 الترا',4399,'https://placehold.co/400x400/12172A/3B7DFF?text=Samsung+S24')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">هواتف ذكية</span>
-          <h3 class="p-name">سامسونج جالكسي S24 الترا</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1002'" style="cursor:pointer">سامسونج جالكسي S24 الترا</h3>
           <div class="p-rating"><span class="stars">★★★★☆</span><span class="r-count">(89)</span></div>
           <div class="p-price"><span class="curr">4,399 د.ل</span><span class="old">4,999 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1002,'سامسونج جالكسي S24 الترا',4399,'https://placehold.co/400x400/12172A/3B7DFF?text=Samsung+S24')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1002')">🛒 أضف للسلة</button>
         </div>
       </div>
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1003'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=AirPods+Max" alt="AirPods Max">
           <span class="p-badge">-15%</span>
-          <button class="p-fav" onclick="toggleWishlist(1003,'سماعات AirPods Max لاسلكية',1849,'https://placehold.co/400x400/12172A/3B7DFF?text=AirPods+Max')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1003,'سماعات AirPods Max لاسلكية',1849,'https://placehold.co/400x400/12172A/3B7DFF?text=AirPods+Max')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">إلكترونيات</span>
-          <h3 class="p-name">سماعات AirPods Max لاسلكية</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1003'" style="cursor:pointer">سماعات AirPods Max لاسلكية</h3>
           <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(210)</span></div>
           <div class="p-price"><span class="curr">1,849 د.ل</span><span class="old">2,179 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1003,'سماعات AirPods Max لاسلكية',1849,'https://placehold.co/400x400/12172A/3B7DFF?text=AirPods+Max')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1003')">🛒 أضف للسلة</button>
         </div>
       </div>
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1004'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=Laptop" alt="MacBook Air">
-          <button class="p-fav" onclick="toggleWishlist(1004,'ماك بوك اير M3 شريحة فائقة',5499,'https://placehold.co/400x400/12172A/3B7DFF?text=Laptop')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1004,'ماك بوك اير M3 شريحة فائقة',5499,'https://placehold.co/400x400/12172A/3B7DFF?text=Laptop')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">لابتوب</span>
-          <h3 class="p-name">ماك بوك اير M3 شريحة فائقة</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1004'" style="cursor:pointer">ماك بوك اير M3 شريحة فائقة</h3>
           <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(76)</span></div>
           <div class="p-price"><span class="curr">5,499 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1004,'ماك بوك اير M3 شريحة فائقة',5499,'https://placehold.co/400x400/12172A/3B7DFF?text=Laptop')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1004')">🛒 أضف للسلة</button>
         </div>
       </div>
     </div>
@@ -367,56 +367,56 @@
     </div>
     <div class="products-grid">
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1005'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=Galaxy+Watch" alt="Galaxy Watch 6">
-          <button class="p-fav" onclick="toggleWishlist(1005,'ساعة سامسونج جالكسي ووتش 6 كلاسيك',1299,'https://placehold.co/400x400/12172A/3B7DFF?text=Galaxy+Watch')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1005,'ساعة سامسونج جالكسي ووتش 6 كلاسيك',1299,'https://placehold.co/400x400/12172A/3B7DFF?text=Galaxy+Watch')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">ساعات</span>
-          <h3 class="p-name">ساعة سامسونج جالكسي ووتش 6 كلاسيك</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1005'" style="cursor:pointer">ساعة سامسونج جالكسي ووتش 6 كلاسيك</h3>
           <div class="p-rating"><span class="stars">★★★★☆</span><span class="r-count">(45)</span></div>
           <div class="p-price"><span class="curr">1,299 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1005,'ساعة سامسونج جالكسي ووتش 6 كلاسيك',1299,'https://placehold.co/400x400/12172A/3B7DFF?text=Galaxy+Watch')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1005')">🛒 أضف للسلة</button>
         </div>
       </div>
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1006'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=Perfume" alt="Perfume">
           <span class="p-badge">مميز</span>
-          <button class="p-fav" onclick="toggleWishlist(1006,'عطر شانيل نوي دو لوم',699,'https://placehold.co/400x400/12172A/3B7DFF?text=Perfume')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1006,'عطر شانيل نوي دو لوم',699,'https://placehold.co/400x400/12172A/3B7DFF?text=Perfume')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">جمال وعناية</span>
-          <h3 class="p-name">عطر شانيل نوي دو لوم</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1006'" style="cursor:pointer">عطر شانيل نوي دو لوم</h3>
           <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(312)</span></div>
           <div class="p-price"><span class="curr">699 د.ل</span><span class="old">899 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1006,'عطر شانيل نوي دو لوم',699,'https://placehold.co/400x400/12172A/3B7DFF?text=Perfume')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1006')">🛒 أضف للسلة</button>
         </div>
       </div>
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1007'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=Shoes" alt="Nike Shoes">
-          <button class="p-fav" onclick="toggleWishlist(1007,'حذاء نايكي جوردان 1 ريترو',799,'https://placehold.co/400x400/12172A/3B7DFF?text=Shoes')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1007,'حذاء نايكي جوردان 1 ريترو',799,'https://placehold.co/400x400/12172A/3B7DFF?text=Shoes')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">رياضة</span>
-          <h3 class="p-name">حذاء نايكي جوردان 1 ريترو</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1007'" style="cursor:pointer">حذاء نايكي جوردان 1 ريترو</h3>
           <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(178)</span></div>
           <div class="p-price"><span class="curr">799 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1007,'حذاء نايكي جوردان 1 ريترو',799,'https://placehold.co/400x400/12172A/3B7DFF?text=Shoes')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1007')">🛒 أضف للسلة</button>
         </div>
       </div>
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1008'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=Lamp" alt="Smart Lamp">
-          <button class="p-fav" onclick="toggleWishlist(1008,'مصباح ذكي متعدد الألوان',189,'https://placehold.co/400x400/12172A/3B7DFF?text=Lamp')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1008,'مصباح ذكي متعدد الألوان',189,'https://placehold.co/400x400/12172A/3B7DFF?text=Lamp')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">منزل وديكور</span>
-          <h3 class="p-name">مصباح ذكي متعدد الألوان</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1008'" style="cursor:pointer">مصباح ذكي متعدد الألوان</h3>
           <div class="p-rating"><span class="stars">★★★★☆</span><span class="r-count">(63)</span></div>
           <div class="p-price"><span class="curr">189 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1008,'مصباح ذكي متعدد الألوان',189,'https://placehold.co/400x400/12172A/3B7DFF?text=Lamp')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1008')">🛒 أضف للسلة</button>
         </div>
       </div>
     </div>
@@ -432,59 +432,59 @@
     </div>
     <div class="products-grid">
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1009'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=PS5" alt="PS5">
           <span class="p-badge">الأكثر مبيعاً</span>
-          <button class="p-fav" onclick="toggleWishlist(1009,'بلاي ستيشن 5 ريزر إديشن',2199,'https://placehold.co/400x400/12172A/3B7DFF?text=PS5')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1009,'بلاي ستيشن 5 ريزر إديشن',2199,'https://placehold.co/400x400/12172A/3B7DFF?text=PS5')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">ألعاب</span>
-          <h3 class="p-name">بلاي ستيشن 5 ريزر إديشن</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1009'" style="cursor:pointer">بلاي ستيشن 5 ريزر إديشن</h3>
           <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(1,204)</span></div>
           <div class="p-price"><span class="curr">2,199 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1009,'بلاي ستيشن 5 ريزر إديشن',2199,'https://placehold.co/400x400/12172A/3B7DFF?text=PS5')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1009')">🛒 أضف للسلة</button>
         </div>
       </div>
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1010'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=Bose" alt="Bose QC">
           <span class="p-badge">الأكثر مبيعاً</span>
-          <button class="p-fav" onclick="toggleWishlist(1010,'سماعات بوز كوايت كومفورت 45',1099,'https://placehold.co/400x400/12172A/3B7DFF?text=Bose')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1010,'سماعات بوز كوايت كومفورت 45',1099,'https://placehold.co/400x400/12172A/3B7DFF?text=Bose')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">إلكترونيات</span>
-          <h3 class="p-name">سماعات بوز كوايت كومفورت 45</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1010'" style="cursor:pointer">سماعات بوز كوايت كومفورت 45</h3>
           <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(892)</span></div>
           <div class="p-price"><span class="curr">1,099 د.ل</span><span class="old">1,399 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1010,'سماعات بوز كوايت كومفورت 45',1099,'https://placehold.co/400x400/12172A/3B7DFF?text=Bose')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1010')">🛒 أضف للسلة</button>
         </div>
       </div>
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1011'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=Backpack" alt="Backpack">
           <span class="p-badge">الأكثر مبيعاً</span>
-          <button class="p-fav" onclick="toggleWishlist(1011,'حقيبة ظهر جلدية فاخرة',349,'https://placehold.co/400x400/12172A/3B7DFF?text=Backpack')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1011,'حقيبة ظهر جلدية فاخرة',349,'https://placehold.co/400x400/12172A/3B7DFF?text=Backpack')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">أزياء</span>
-          <h3 class="p-name">حقيبة ظهر جلدية فاخرة</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1011'" style="cursor:pointer">حقيبة ظهر جلدية فاخرة</h3>
           <div class="p-rating"><span class="stars">★★★★☆</span><span class="r-count">(456)</span></div>
           <div class="p-price"><span class="curr">349 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1011,'حقيبة ظهر جلدية فاخرة',349,'https://placehold.co/400x400/12172A/3B7DFF?text=Backpack')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1011')">🛒 أضف للسلة</button>
         </div>
       </div>
       <div class="p-card">
-        <div class="p-img">
+        <div class="p-img" onclick="window.location.href='pages/product.html?id=1012'" style="cursor:pointer">
           <img src="https://placehold.co/400x400/12172A/3B7DFF?text=Skincare" alt="Skincare">
           <span class="p-badge">الأكثر مبيعاً</span>
-          <button class="p-fav" onclick="toggleWishlist(1012,'مجموعة العناية بالبشرة الفاخرة',599,'https://placehold.co/400x400/12172A/3B7DFF?text=Skincare')">❤️</button>
+          <button class="p-fav" onclick="event.stopPropagation();toggleWishlist(1012,'مجموعة العناية بالبشرة الفاخرة',599,'https://placehold.co/400x400/12172A/3B7DFF?text=Skincare')">❤️</button>
         </div>
         <div class="p-body">
           <span class="p-cat">جمال وعناية</span>
-          <h3 class="p-name">مجموعة العناية بالبشرة الفاخرة</h3>
+          <h3 class="p-name" onclick="window.location.href='pages/product.html?id=1012'" style="cursor:pointer">مجموعة العناية بالبشرة الفاخرة</h3>
           <div class="p-rating"><span class="stars">★★★★★</span><span class="r-count">(723)</span></div>
           <div class="p-price"><span class="curr">599 د.ل</span></div>
-          <button class="p-btn" onclick="addToCart(1012,'مجموعة العناية بالبشرة الفاخرة',599,'https://placehold.co/400x400/12172A/3B7DFF?text=Skincare')">🛒 أضف للسلة</button>
+          <button class="p-btn" onclick="handleCardAddToCart('1012')">🛒 أضف للسلة</button>
         </div>
       </div>
     </div>
@@ -561,6 +561,7 @@
 <script src="js/auth.js"></script>
 <script src="js/api.js"></script>
 <script src="js/navbar.js"></script>
+<script src="js/product-data.js"></script>
 </body>
 </html>
 
